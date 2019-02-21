@@ -9,6 +9,7 @@
     <string name="nav_water">Water</string>
     <string name="nav_settings">Settings</string>
     <string name="title_activity_user">Login</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
     <string name="name">Name:</string>
     <string name="weight">Weight:</string>
     <string name="goal_weight">Goal weight:</string>
@@ -17,9 +18,15 @@
     <string name="kg">kg</string>
     <string name="height">Height:</string>
     <string name="cm">cm</string>
+    <string name="title_activity_water">Water</string>
+    <string name="your_recommended_daily_water_intake">Your recommended daily water intake:</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="title_activity_location">LocationActivity</string>
     <string name="login_negative">Please fill everything out.</string>
     <string name="login_positive">Login completed.</string>
+    <string name="edit">Edit</string>
+    <string name="new_entry">New entry</string>
+    <string name="litre">L</string>
 
 </resources>

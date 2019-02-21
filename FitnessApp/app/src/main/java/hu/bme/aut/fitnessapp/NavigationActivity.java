@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class NavigationActivity extends AppCompatActivity {
 
@@ -49,13 +50,33 @@ public class NavigationActivity extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
                         menuItem.setChecked(true);
+                        // close drawer when item is tapped
                         mDrawerLayout.closeDrawers();
+
+                        // Add code here to update the UI based on the item selected
+                        // For example, swap UI fragments here
 
                         switch (menuItem.getItemId()) {
                             case R.id.nav_workout: {
                                 Intent userIntent = new Intent(NavigationActivity.this, MainActivity.class);
                                 startActivity(userIntent);
+                                break;
+                            }
+                            //case R.id.nav_location: {
+                            //    Intent userIntent = new Intent(NavigationActivity.this, LocationActivity.class);
+                            //    startActivity(userIntent);
+                            //    break;
+                            //}
+                            case R.id.nav_water: {
+                                Intent userIntent = new Intent(NavigationActivity.this, WaterActivity.class);
+                                startActivity(userIntent);
+                                break;
+                            }
+                            case R.id.nav_settings: {
+                                //Intent userIntent = new Intent(NavigationActivity.this, UserActivity.class);
+                                //startActivity(userIntent);
                                 break;
                             }
                         }
@@ -67,6 +88,7 @@ public class NavigationActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -81,5 +103,15 @@ public class NavigationActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        DrawerLayout layout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        if(layout.isDrawerOpen(GravityCompat.START)){
+            layout.closeDrawer(GravityCompat.START);
+        }
+        else {
+            layout.openDrawer(GravityCompat.START);
+        }
+    }
 
 }

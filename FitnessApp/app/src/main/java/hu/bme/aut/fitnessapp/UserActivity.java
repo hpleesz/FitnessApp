@@ -1,7 +1,19 @@
 package hu.bme.aut.fitnessapp;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.arch.persistence.room.Room;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +22,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import java.util.Calendar;
+
+import hu.bme.aut.fitnessapp.broadcast_receiver.BootReceiver;
+import hu.bme.aut.fitnessapp.broadcast_receiver.NotificationReceiver;
+import hu.bme.aut.fitnessapp.broadcast_receiver.ResetWaterReceiver;
 
 
 public class UserActivity extends AppCompatActivity {
@@ -30,6 +48,11 @@ public class UserActivity extends AppCompatActivity {
     private DatePicker datePicker;
 
     public static final String USER = "user data";
+
+    public static final String CHANNEL_ID = "CHANNEL-ID";
+
+    //2 hours + 45 minutes
+    public static final int INTERVAL = 2 * 60 * 60 * 1000 + 45 * 60 * 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +88,8 @@ public class UserActivity extends AppCompatActivity {
                     saveUserData();
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.login_positive, Toast.LENGTH_LONG);
                     toast.show();
+                    startNotifications();
+                    startResetWater();
                     finish();
                 }
                 else {
@@ -135,7 +160,6 @@ public class UserActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void setLoseWeightButton() {
         if(lose_weight) {
@@ -214,11 +238,51 @@ public class UserActivity extends AppCompatActivity {
         toast.show();
     }
 
+
     public void setFirstLoginFalse() {
         SharedPreferences first = getSharedPreferences(MainActivity.FIRST, MODE_PRIVATE);
         SharedPreferences.Editor first_editor = first.edit();
         first_editor.putBoolean("First", false);
         first_editor.apply();
     }
+
+    public void startNotifications() {
+
+        PackageManager pm = this.getPackageManager();
+        ComponentName receiver = new ComponentName(this, BootReceiver.class);
+        Intent intent = new Intent(this, NotificationReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+
+        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + INTERVAL,  INTERVAL, pendingIntent);
+        pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+    }
+
+
+    public void startResetWater() {
+
+        PackageManager pm = this.getPackageManager();
+        ComponentName receiver = new ComponentName(this, BootReceiver.class);
+        Intent intent = new Intent(this, ResetWaterReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 101, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+
+        if(calendar.before(Calendar.getInstance())){
+            calendar.add(Calendar.DATE, 1);
+        }
+
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        //    alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        //}
+
+        pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+    }
+
 
 }
