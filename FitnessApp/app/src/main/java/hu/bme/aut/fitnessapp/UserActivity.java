@@ -1,8 +1,6 @@
 package hu.bme.aut.fitnessapp;
 
 import android.app.AlarmManager;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.arch.persistence.room.Room;
 import android.content.ComponentName;
@@ -10,8 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
@@ -23,11 +21,17 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Calendar;
 
 import hu.bme.aut.fitnessapp.broadcast_receiver.BootReceiver;
 import hu.bme.aut.fitnessapp.broadcast_receiver.NotificationReceiver;
 import hu.bme.aut.fitnessapp.broadcast_receiver.ResetWaterReceiver;
+import hu.bme.aut.fitnessapp.data.equipment.EquipmentItem;
+import hu.bme.aut.fitnessapp.data.equipment.EquipmentListDatabase;
 
 
 public class UserActivity extends AppCompatActivity {
@@ -90,6 +94,7 @@ public class UserActivity extends AppCompatActivity {
                     toast.show();
                     startNotifications();
                     startResetWater();
+                    fillEquipments();
                     finish();
                 }
                 else {
@@ -284,5 +289,38 @@ public class UserActivity extends AppCompatActivity {
         pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
     }
 
+
+    private void fillEquipments() {
+         final EquipmentListDatabase database = Room.databaseBuilder(
+                getApplicationContext(),
+                EquipmentListDatabase.class,
+                "equipments"
+        ).build();
+
+         Resources resources = getResources();
+         String line;
+
+         int resID = resources.getIdentifier("hu.bme.aut.fitnessapp:raw/" + "equipments", null, null);
+        InputStream is = resources.openRawResource(resID);
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                final EquipmentItem newItem = new EquipmentItem();
+                newItem.equipment_name = line;
+
+                new AsyncTask<Void, Void, EquipmentItem>() {
+
+                    @Override
+                    protected EquipmentItem doInBackground(Void... voids) {
+                        database.equipmentItemDao().insert(newItem);
+                        return newItem;
+                    }
+                }.execute();
+            }
+            is.close();
+        } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
 
 }

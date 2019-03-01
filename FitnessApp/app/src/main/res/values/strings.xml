@@ -22,11 +22,14 @@
     <string name="your_recommended_daily_water_intake">Your recommended daily water intake:</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
-    <string name="title_activity_location">LocationActivity</string>
+    <string name="title_activity_location">Locations</string>
     <string name="login_negative">Please fill everything out.</string>
     <string name="login_positive">Login completed.</string>
     <string name="edit">Edit</string>
     <string name="new_entry">New entry</string>
     <string name="litre">L</string>
+    <string name="new_location">New location</string>
+    <string name="edit_location">Edit location</string>
+    <string name="available_equipment">Available equipment:</string>
 
 </resources>

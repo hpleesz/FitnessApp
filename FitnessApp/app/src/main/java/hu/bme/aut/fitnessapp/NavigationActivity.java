@@ -64,11 +64,11 @@ public class NavigationActivity extends AppCompatActivity {
                                 startActivity(userIntent);
                                 break;
                             }
-                            //case R.id.nav_location: {
-                            //    Intent userIntent = new Intent(NavigationActivity.this, LocationActivity.class);
-                            //    startActivity(userIntent);
-                            //    break;
-                            //}
+                            case R.id.nav_location: {
+                                Intent userIntent = new Intent(NavigationActivity.this, LocationActivity.class);
+                                startActivity(userIntent);
+                                break;
+                            }
                             case R.id.nav_water: {
                                 Intent userIntent = new Intent(NavigationActivity.this, WaterActivity.class);
                                 startActivity(userIntent);

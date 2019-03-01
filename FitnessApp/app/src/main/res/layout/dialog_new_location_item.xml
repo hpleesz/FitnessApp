@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:theme="@style/addItemDialog"
+    android:padding="24dip">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/location_color"/>
+
+        <TextView
+            android:id="@+id/locationFragmentTitle"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_gravity="center_vertical"
+            android:text="@string/new_location"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dip"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="@string/name"/>
+
+    <EditText
+        android:id="@+id/LocationNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dip"
+        android:layout_marginBottom="16dip"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="@string/available_equipment"/>
+
+    <include layout="@layout/recyclerview_equipment" />
+
+
+</LinearLayout>

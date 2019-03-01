@@ -56,7 +56,7 @@
                 android:src="@drawable/gender_male_disabled"
                 android:background="@android:color/transparent"
                 android:adjustViewBounds="true"
-                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
                 android:scaleType="fitCenter"
                 />
 
@@ -67,7 +67,7 @@
                 android:src="@drawable/gender_female_disabled"
                 android:background="@android:color/transparent"
                 android:adjustViewBounds="true"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:scaleType="fitCenter" />
 
         </LinearLayout>

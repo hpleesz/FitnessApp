@@ -1,0 +1,17 @@
+package hu.bme.aut.fitnessapp.data.equipment;
+
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
+@Entity(tableName = "equipmentitem")
+public class EquipmentItem {
+
+    @ColumnInfo(name = "id")
+    @PrimaryKey(autoGenerate = true)
+    public Long equipment_id;
+
+    @ColumnInfo(name = "name")
+    public String equipment_name;
+
+}
