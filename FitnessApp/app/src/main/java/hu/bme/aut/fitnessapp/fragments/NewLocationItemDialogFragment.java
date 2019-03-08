@@ -98,7 +98,7 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
         if (activity instanceof NewLocationItemDialogListener) {
             listener = (NewLocationItemDialogListener) activity;
         } else {
-            throw new RuntimeException("Activity must implement the NewProductsItemDialogListener interface!");
+            throw new RuntimeException("Activity must implement the NewLocationItemDialogListener interface!");
         }
 
 

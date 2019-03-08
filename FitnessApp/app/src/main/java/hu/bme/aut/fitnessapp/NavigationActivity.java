@@ -1,5 +1,6 @@
 package hu.bme.aut.fitnessapp;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -64,6 +65,11 @@ public class NavigationActivity extends AppCompatActivity {
                                 startActivity(userIntent);
                                 break;
                             }
+                            case R.id.nav_weight: {
+                                Intent userIntent = new Intent(NavigationActivity.this, WeightActivity.class);
+                                startActivity(userIntent);
+                                break;
+                            }
                             case R.id.nav_location: {
                                 Intent userIntent = new Intent(NavigationActivity.this, LocationActivity.class);
                                 startActivity(userIntent);
@@ -99,6 +105,8 @@ public class NavigationActivity extends AppCompatActivity {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
+            //case R.id.action_settings:
+
         }
         return super.onOptionsItemSelected(item);
     }

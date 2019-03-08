@@ -18,10 +18,10 @@ import hu.bme.aut.fitnessapp.fragments.NewLocationItemDialogFragment;
 import hu.bme.aut.fitnessapp.data.location.LocationAdapter;
 import hu.bme.aut.fitnessapp.data.location.LocationItem;
 import hu.bme.aut.fitnessapp.data.location.LocationListDatabase;
+import hu.bme.aut.fitnessapp.fragments.NewWaterDialogFragment;
 
 public class LocationActivity extends NavigationActivity implements NewLocationItemDialogFragment.NewLocationItemDialogListener, LocationAdapter.LocationItemDeletedListener, LocationAdapter.LocationItemSelectedListener, EditLocationItemDialogFragment.EditLocationItemDialogListener{
 
-    private RecyclerView recyclerView;
     private LocationAdapter adapter;
     private LocationListDatabase database;
 
@@ -32,15 +32,6 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
         View contentView = inflater.inflate(R.layout.activity_location, null, false);
         mDrawerLayout.addView(contentView, 0);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                new NewLocationItemDialogFragment().show(getSupportFragmentManager(), NewLocationItemDialogFragment.TAG);
-            }
-        });
-
         navigationView.getMenu().getItem(3).setChecked(true);
 
         database = Room.databaseBuilder(
@@ -50,12 +41,22 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
         ).build();
 
         initRecyclerView();
+        setFloatingActionButton();
 
     }
 
+    public void setFloatingActionButton() {
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new NewLocationItemDialogFragment().show(getSupportFragmentManager(), NewLocationItemDialogFragment.TAG);
+            }
+        });
+    }
 
         private void initRecyclerView() {
-            recyclerView = findViewById(R.id.LocationRecyclerView);
+            RecyclerView recyclerView = findViewById(R.id.LocationRecyclerView);
             adapter = new LocationAdapter(this, this);
             loadItemsInBackground();
             recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -219,6 +219,15 @@ public class UserActivity extends AppCompatActivity {
         int day = datePicker.getDayOfMonth();
         editor.putInt("Day", day);
 
+        Calendar c = Calendar.getInstance();
+        int reg_year = c.get(Calendar.YEAR);
+        int reg_month = c.get(Calendar.MONTH) + 1;
+        int reg_day = c.get(Calendar.DAY_OF_MONTH);
+
+        editor.putInt("Registration year", reg_year);
+        editor.putInt("Registration month", reg_month);
+        editor.putInt("Registration day", reg_day);
+
         editor.apply();
 
         setFirstLoginFalse();
