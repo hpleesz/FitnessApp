@@ -14,7 +14,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <receiver
             android:name=".broadcast_receiver.BootReceiver"
             android:enabled="false">
@@ -22,9 +21,7 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
         <receiver android:name=".broadcast_receiver.NotificationReceiver" />
-
         <receiver android:name=".broadcast_receiver.ResetWaterReceiver" />
 
         <activity
@@ -37,27 +34,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".UserActivity"
             android:label="@string/title_activity_user"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".NavigationActivity"
             android:label="@string/title_activity_navigation"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".WaterActivity"
             android:label="@string/title_activity_water"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".LocationActivity"
             android:label="@string/title_activity_location"
             android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity
+            android:name=".WeightActivity"
+            android:label="@string/title_activity_weight"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
