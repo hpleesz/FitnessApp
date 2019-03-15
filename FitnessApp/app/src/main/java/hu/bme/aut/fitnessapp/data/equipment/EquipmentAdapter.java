@@ -54,6 +54,8 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.Equi
             for(int j = 0; j < selected.size(); j++) {
                 if (item.equipment_name.equals(selected.get(j).equipment_name))
                     holder.checkBox.setChecked(true);
+                else
+                    holder.checkBox.setChecked(false);
             }
 
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

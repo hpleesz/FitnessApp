@@ -23,6 +23,10 @@ public class PeriodSelectDialogFragment extends DialogFragment {
 
     public static final String TAG = "PeriodSelectDialogFragment";
 
+    RadioButton allButton;
+    RadioButton monthButton;
+    RadioButton weekButton;
+
     public interface PeriodSelectDialogListener {
         void onPeriodSelected();
     }
@@ -39,7 +43,6 @@ public class PeriodSelectDialogFragment extends DialogFragment {
         } else {
             throw new RuntimeException("Activity must implement the PeriodSelectDialogListener interface!");
         }
-
 
     }
 
@@ -59,32 +62,32 @@ public class PeriodSelectDialogFragment extends DialogFragment {
                 .create();
     }
 
-
     private View getContentView() {
         final View contentView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_period_select, null);
         TextView title = (TextView)contentView.findViewById(R.id.periodFragmentTitle);
         title.setText(R.string.period_select);
-        RadioButton weekButton = contentView.findViewById(R.id.weekRadioButton);
+        weekButton = contentView.findViewById(R.id.weekRadioButton);
         weekButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onRadioButtonClicked(v);
             }
         });
-        RadioButton monthButton = contentView.findViewById(R.id.monthRadioButton);
+        monthButton = contentView.findViewById(R.id.monthRadioButton);
         monthButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onRadioButtonClicked(v);
             }
         });
-        RadioButton allButton = contentView.findViewById(R.id.allRadioButton);
+        allButton = contentView.findViewById(R.id.allRadioButton);
         allButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onRadioButtonClicked(v);
             }
         });
+        setCurrentlyChecked();
         return contentView;
     }
 
@@ -107,6 +110,24 @@ public class PeriodSelectDialogFragment extends DialogFragment {
                 break;
         }
         editor.apply();
+    }
+
+    public void setCurrentlyChecked() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(WeightActivity.PERIOD, Context.MODE_PRIVATE);
+        String settings = sharedPreferences.getString("Period", "all");
+        switch (settings){
+            case "all":
+                allButton.setChecked(true);
+                break;
+            case "month" :
+                monthButton.setChecked(true);
+                break;
+            case "week" :
+                weekButton.setChecked(true);
+                break;
+
+
+        }
     }
 
 

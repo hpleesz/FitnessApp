@@ -1,5 +1,7 @@
 package hu.bme.aut.fitnessapp.data.location;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +14,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import hu.bme.aut.fitnessapp.LocationActivity;
 import hu.bme.aut.fitnessapp.R;
+import hu.bme.aut.fitnessapp.WeightActivity;
 
 public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> {
 
@@ -58,7 +62,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
 
     public void update(LocationItem locationItem) {
         for(int i = 0; i < items.size(); i++){
-            if(items.get(i).location_id.equals(locationItem.location_id))
+            if(items.get(i).location_id == locationItem.location_id)
                 items.set(i, locationItem);
         }
         notifyDataSetChanged();
@@ -112,6 +116,30 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
                 @Override
                 public void onClick(View view) {
                     select_listener.onItemSelected(item, getAdapterPosition());
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+
+                @Override
+                public boolean onLongClick(View v) {
+                    //new DeleteDialogFragment().show(getSupportFragmentManager(), DeleteDialogFragment.TAG);
+                    final AlertDialog alertDialog = new AlertDialog.Builder((LocationActivity) del_listener).create();
+                    alertDialog.setTitle("Delete item?");
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            del_listener.onItemDeleted(item);
+                            alertDialog.dismiss();
+                        }
+                    });
+                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            alertDialog.dismiss();
+                        }
+                    });
+                    alertDialog.show();
+                    return true;
                 }
             });
         }

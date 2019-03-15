@@ -9,7 +9,7 @@ public class EquipmentItem {
 
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
-    public Long equipment_id;
+    public int equipment_id;
 
     @ColumnInfo(name = "name")
     public String equipment_name;

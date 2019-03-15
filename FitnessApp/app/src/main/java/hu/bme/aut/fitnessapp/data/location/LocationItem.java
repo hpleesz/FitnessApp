@@ -35,7 +35,7 @@ public class LocationItem implements Serializable{
 
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
-    public Long location_id;
+    public int location_id;
 
     @ColumnInfo(name = "name")
     public String location_name;

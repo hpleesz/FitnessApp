@@ -3,23 +3,16 @@ package hu.bme.aut.fitnessapp;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -29,33 +22,36 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.highlight.Highlight;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-import hu.bme.aut.fitnessapp.R;
-import hu.bme.aut.fitnessapp.data.location.LocationAdapter;
-import hu.bme.aut.fitnessapp.data.location.LocationItem;
-import hu.bme.aut.fitnessapp.data.location.LocationListDatabase;
 import hu.bme.aut.fitnessapp.data.weight.WeightAdapter;
 import hu.bme.aut.fitnessapp.data.weight.WeightItem;
 import hu.bme.aut.fitnessapp.data.weight.WeightListDatabase;
-import hu.bme.aut.fitnessapp.fragments.EditLocationItemDialogFragment;
 import hu.bme.aut.fitnessapp.fragments.NewGoalReachedDialogFragment;
-import hu.bme.aut.fitnessapp.fragments.NewLocationItemDialogFragment;
-import hu.bme.aut.fitnessapp.fragments.NewWaterDialogFragment;
 import hu.bme.aut.fitnessapp.fragments.NewWeightItemDialogFragment;
 import hu.bme.aut.fitnessapp.fragments.PeriodSelectDialogFragment;
+import hu.bme.aut.fitnessapp.tools.DateFormatter;
 
-public class WeightActivity extends NavigationActivity implements NewWeightItemDialogFragment.NewWeightDialogListener, WeightAdapter.WeightItemDeletedListener, PeriodSelectDialogFragment.PeriodSelectDialogListener {
+public class WeightActivity extends NavigationActivity implements NewWeightItemDialogFragment.NewWeightDialogListener, WeightAdapter.WeightItemDeletedListener, PeriodSelectDialogFragment.PeriodSelectDialogListener, com.github.mikephil.charting.listener.OnChartValueSelectedListener {
+
+    @Override
+    public void onValueSelected(Entry e, Highlight h) {
+        updatechart(true);
+    }
+
+    @Override
+    public void onNothingSelected() {
+        updatechart(false);
+    }
 
     private enum Period {
         ALL, MONTH, WEEK
     }
 
-    private RecyclerView recyclerView;
     private WeightAdapter adapter;
     private WeightListDatabase database;
     private LineChart chart;
@@ -67,8 +63,7 @@ public class WeightActivity extends NavigationActivity implements NewWeightItemD
     private int startingyear;
 
     private SharedPreferences sharedPreferences;
-    SharedPreferences periodSharedPreferences;
-
+    private SharedPreferences periodSharedPreferences;
 
     public static final String PROGRESS = "weight progress";
     public static final String PERIOD = "period";
@@ -119,6 +114,7 @@ public class WeightActivity extends NavigationActivity implements NewWeightItemD
 
     private void drawChart() {
         chart = (LineChart) findViewById(R.id.chartWeight);
+        chart.setOnChartValueSelectedListener(this);
         XAxis xAxis = chart.getXAxis();
         xAxis.setValueFormatter(new DateFormatter());
         xAxis.setDrawAxisLine(true);
@@ -126,6 +122,7 @@ public class WeightActivity extends NavigationActivity implements NewWeightItemD
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setAxisLineWidth(3f);
         xAxis.setAxisLineColor(ContextCompat.getColor(getBaseContext(), R.color.colorBlack));
+        xAxis.setCenterAxisLabels(true);
 
         YAxis yAxisLeft = chart.getAxis(YAxis.AxisDependency.LEFT);
         yAxisLeft.setDrawGridLines(false);
@@ -156,77 +153,104 @@ public class WeightActivity extends NavigationActivity implements NewWeightItemD
     }
 
     private void initRecyclerView() {
-        recyclerView = findViewById(R.id.WeightRecyclerView);
+        RecyclerView recyclerView = findViewById(R.id.WeightRecyclerView);
         adapter = new WeightAdapter(this);
         loadItemsInBackground();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
 
-    public void updatechart()
+    public void updatechart(boolean drawvalues)
     {
-        chart.setData(loadEntries());
+        chart.setData(loadEntries(drawvalues));
         chart.notifyDataSetChanged();
         chart.invalidate();
     }
 
-    private LineData loadEntries()
+    private LineData loadEntries(boolean drawvalues)
     {
 
         List<Entry> entries = new ArrayList<Entry>();
 
         float weight = sharedPreferences.getFloat("Starting weight", 0);
 
-        long startingdate = makeLongDate(startingyear, startingmonth-1, startingday);
-        int starting_calculated = startingyear * 10000 + startingmonth * 100 + startingday;
+        //long startingdate = makeLongDate(startingyear, startingmonth-1, startingday);
+        long startingdate = makeLongDate(startingyear, startingmonth, startingday);
 
-            if(itemlist.size() > 0) {
+        //int starting_calculated = startingyear * 10000 + startingmonth * 100 + startingday;
+        int starting_calculated = makeCalculatedWeight(startingyear, startingmonth, startingday);
+
+
+
                 Calendar c = Calendar.getInstance();
-                int calculated_today = c.get(Calendar.YEAR) * 10000 + (c.get(Calendar.MONTH)+1) * 100 + c.get(Calendar.DATE);
+                //int calculated_today = c.get(Calendar.YEAR) * 10000 + (c.get(Calendar.MONTH)+1) * 100 + c.get(Calendar.DATE);
                 int limit;
-                int start;
+                int start = 0;
                 if(period == Period.MONTH) {
-                    limit = calculated_today - 30;
-                    start = itemlist.size() - 30;
+                    c.add(Calendar.DAY_OF_YEAR, -30);
+                    //limit = c.get(Calendar.YEAR) * 10000 + (c.get(Calendar.MONTH)+1) * 100 + c.get(Calendar.DATE);
+                    //limit = makeCalculatedWeight(c.get(Calendar.YEAR), c.get(Calendar.MONTH)+1, c.get(Calendar.DATE));
+                    limit = makeCalculatedWeight(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DATE));
+
+                    //limit = calculated_today - 100;
+                    //start = itemlist.size() - 30;
                 }
                 else if (period == Period.WEEK){
-                    limit = calculated_today - 7;
-                    start = itemlist.size() - 7;
+                    c.add(Calendar.DAY_OF_YEAR, -7);
+                    //limit = makeCalculatedWeight(c.get(Calendar.YEAR), c.get(Calendar.MONTH)+1, c.get(Calendar.DATE));
+                    limit = makeCalculatedWeight(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DATE));
+
+                    //limit = calculated_today - 7;
+                    //start = itemlist.size() - 7;
                 }
                 else {
                     limit = starting_calculated;
-                    start = 0;
+                    //start = 0;
                 }
 
-                if(itemlist.get(0).weight_calculated > limit) {
+        if(itemlist.size() > 0) {
+                if(starting_calculated >= limit) {
                     entries.add(new Entry((float) startingdate, weight));
-                    start = 0;
+                    //start = 0;
                 }
                 for(int i = start; i < itemlist.size(); i++){
-                    if(itemlist.get(i).weight_calculated > limit) {
-                        long itemdate = makeLongDate(itemlist.get(i).weight_year, itemlist.get(i).weight_month - 1, itemlist.get(i).weight_day);
+                    if(itemlist.get(i).weight_calculated >= limit) {
+                        //long itemdate = makeLongDate(itemlist.get(i).weight_year, itemlist.get(i).weight_month-1, itemlist.get(i).weight_day);
+                        long itemdate = makeLongDate(itemlist.get(i).weight_year, itemlist.get(i).weight_month, itemlist.get(i).weight_day);
+
                         entries.add(new Entry((float) itemdate, (float) itemlist.get(i).weight_value));
                     }
                 }
+		
+	}
+		if(itemlist.size() == 0 && starting_calculated >= limit) entries.add(new Entry((float) startingdate, weight));
+        if(entries.size() == 0) return null;
 
-
-
-            LineDataSet dataSet = new LineDataSet(entries, "weights");
+        LineDataSet dataSet = new LineDataSet(entries, "weights");
             //formazas
             dataSet.setColor(ContextCompat.getColor(getBaseContext(), R.color.colorPrimary));
+            dataSet.setDrawCircles(true);
             dataSet.setCircleColor(ContextCompat.getColor(getBaseContext(), R.color.colorAccent));
             dataSet.setCircleColorHole(ContextCompat.getColor(getBaseContext(), R.color.colorAccent));
+            dataSet.setDrawValues(drawvalues);
             dataSet.setLineWidth(3f);
-            dataSet.setCircleRadius(5f);
+            dataSet.setCircleRadius(2f);
+            dataSet.setHighLightColor(ContextCompat.getColor(getBaseContext(), R.color.colorAccent));
+            dataSet.setHighlightLineWidth(1f);
+            dataSet.setValueTextSize(8f);
             return new LineData(dataSet);
-        }
-        return null;
     }
+
 
     public long makeLongDate(int year, int month, int day) {
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
         return calendar.getTimeInMillis();
+    }
+
+    public int makeCalculatedWeight(int year, int fixedmonth, int day) {
+        int calculated = year * 10000 + fixedmonth * 100 + day;
+        return calculated;
     }
 
     private void loadItemsInBackground() {
@@ -241,7 +265,7 @@ public class WeightActivity extends NavigationActivity implements NewWeightItemD
             @Override
             protected void onPostExecute(List<WeightItem> weightItems) {
                 adapter.update(weightItems);
-                updatechart();
+                updatechart(false);
             }
         }.execute();
     }
@@ -261,7 +285,7 @@ public class WeightActivity extends NavigationActivity implements NewWeightItemD
             protected void onPostExecute(WeightItem weightItem) {
                 adapter.addItem(weightItem);
                 setMostRecentWeightAsCurrent();
-                updatechart();
+                updatechart(false);
                 checkProgress();
             }
         }.execute();
@@ -282,7 +306,7 @@ public class WeightActivity extends NavigationActivity implements NewWeightItemD
             protected void onPostExecute(WeightItem weightItem) {
                 adapter.deleteItem(weightItem);
                 setMostRecentWeightAsCurrent();
-                updatechart();
+                updatechart(false);
             }
         }.execute();
     }
@@ -332,7 +356,7 @@ public class WeightActivity extends NavigationActivity implements NewWeightItemD
     @Override
     public void onPeriodSelected() {
         setPeriod();
-        updatechart();
+        updatechart(false);
     }
 
     public void setPeriod(){

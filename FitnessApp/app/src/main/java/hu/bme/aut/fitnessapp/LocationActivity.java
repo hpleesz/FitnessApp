@@ -84,7 +84,7 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
 
                 @Override
                 protected LocationItem doInBackground(Void... voids) {
-                    newItem.location_id = database.locationItemDao().insert(newItem);
+                    newItem.location_id = (int)database.locationItemDao().insert(newItem);
                     return newItem;
                 }
 

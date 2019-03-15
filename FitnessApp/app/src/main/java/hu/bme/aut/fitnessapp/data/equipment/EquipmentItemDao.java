@@ -8,6 +8,8 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
+import hu.bme.aut.fitnessapp.data.exercise.ExerciseItem;
+
 @Dao
 public interface EquipmentItemDao {
     @Query("SELECT * FROM equipmentitem")
@@ -22,5 +24,7 @@ public interface EquipmentItemDao {
     @Delete
     void deleteItem(EquipmentItem equipmentItem);
 
+    @Query("SELECT id FROM equipmentitem WHERE id = :id")
+    int getEquipmentWithID(int id);
 
 }

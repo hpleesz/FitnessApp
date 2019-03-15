@@ -30,9 +30,6 @@ import java.util.Calendar;
 import hu.bme.aut.fitnessapp.broadcast_receiver.BootReceiver;
 import hu.bme.aut.fitnessapp.broadcast_receiver.NotificationReceiver;
 import hu.bme.aut.fitnessapp.broadcast_receiver.ResetWaterReceiver;
-import hu.bme.aut.fitnessapp.data.equipment.EquipmentItem;
-import hu.bme.aut.fitnessapp.data.equipment.EquipmentListDatabase;
-
 
 public class UserActivity extends AppCompatActivity {
 
@@ -52,8 +49,6 @@ public class UserActivity extends AppCompatActivity {
     private DatePicker datePicker;
 
     public static final String USER = "user data";
-
-    public static final String CHANNEL_ID = "CHANNEL-ID";
 
     //2 hours + 45 minutes
     public static final int INTERVAL = 2 * 60 * 60 * 1000 + 45 * 60 * 1000;
@@ -94,7 +89,7 @@ public class UserActivity extends AppCompatActivity {
                     toast.show();
                     startNotifications();
                     startResetWater();
-                    fillEquipments();
+                    //fillEquipments();
                     finish();
                 }
                 else {
@@ -214,14 +209,17 @@ public class UserActivity extends AppCompatActivity {
         //date of birth
         int year = datePicker.getYear();
         editor.putInt("Year", year);
-        int month = datePicker.getMonth() + 1;
+        //int month = datePicker.getMonth() + 1;
+        int month = datePicker.getMonth();
         editor.putInt("Month", month);
         int day = datePicker.getDayOfMonth();
         editor.putInt("Day", day);
 
         Calendar c = Calendar.getInstance();
         int reg_year = c.get(Calendar.YEAR);
-        int reg_month = c.get(Calendar.MONTH) + 1;
+        //int reg_month = c.get(Calendar.MONTH) + 1;
+        int reg_month = c.get(Calendar.MONTH);
+
         int reg_day = c.get(Calendar.DAY_OF_MONTH);
 
         editor.putInt("Registration year", reg_year);
@@ -299,37 +297,5 @@ public class UserActivity extends AppCompatActivity {
     }
 
 
-    private void fillEquipments() {
-         final EquipmentListDatabase database = Room.databaseBuilder(
-                getApplicationContext(),
-                EquipmentListDatabase.class,
-                "equipments"
-        ).build();
-
-         Resources resources = getResources();
-         String line;
-
-         int resID = resources.getIdentifier("hu.bme.aut.fitnessapp:raw/" + "equipments", null, null);
-        InputStream is = resources.openRawResource(resID);
-        try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            while ((line = br.readLine()) != null) {
-                final EquipmentItem newItem = new EquipmentItem();
-                newItem.equipment_name = line;
-
-                new AsyncTask<Void, Void, EquipmentItem>() {
-
-                    @Override
-                    protected EquipmentItem doInBackground(Void... voids) {
-                        database.equipmentItemDao().insert(newItem);
-                        return newItem;
-                    }
-                }.execute();
-            }
-            is.close();
-        } catch (IOException e) {
-                e.printStackTrace();
-            }
-    }
 
 }

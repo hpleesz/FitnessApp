@@ -1,8 +1,11 @@
 package hu.bme.aut.fitnessapp.fragments;
 
 import android.app.Dialog;
+import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Room;
+import android.arch.persistence.room.RoomDatabase;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,13 +18,21 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.data.equipment.EquipmentAdapter;
 import hu.bme.aut.fitnessapp.data.equipment.EquipmentItem;
 import hu.bme.aut.fitnessapp.data.equipment.EquipmentListDatabase;
+import hu.bme.aut.fitnessapp.data.exercise.ExerciseItem;
+import hu.bme.aut.fitnessapp.data.exercise.ExerciseListDatabase;
 import hu.bme.aut.fitnessapp.data.location.LocationItem;
 
 public class NewLocationItemDialogFragment extends DialogFragment implements EquipmentAdapter.OnCheckBoxClicked {
@@ -70,7 +81,17 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if (isValid()) {
+                        if (!isValid()) {
+                            dismiss();
+                            Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), "No name entered.", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                        else if (getLocationItem().location_equipmentItems.isEmpty()){
+                            dismiss();
+                            Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), "Please select available equipment. If you don't have any equipment, select 'No equipment'.", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                        else {
                             listener.onLocationItemCreated(getLocationItem());
                         }
                     }
@@ -101,13 +122,7 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
             throw new RuntimeException("Activity must implement the NewLocationItemDialogListener interface!");
         }
 
-
-        database = Room.databaseBuilder(
-                getActivity().getApplicationContext(),
-                EquipmentListDatabase.class,
-                "equipments"
-        ).build();
-
+        initializeDatabase();
         initRecyclerView(contentView);
 
 
@@ -142,7 +157,62 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
         return locationItem;
     }
 
+    public void initializeDatabase() {
+        RoomDatabase.Callback rdc = new RoomDatabase.Callback() {
+            public void onCreate (SupportSQLiteDatabase db) {
+                final ArrayList<EquipmentItem> list = fillEquipmentList();
 
+                new AsyncTask<Void, Void, List<EquipmentItem>>() {
+
+                    @Override
+                    protected List<EquipmentItem> doInBackground(Void... voids) {
+                        for(int i = 0; i < list.size(); i++){
+                            database.equipmentItemDao().insert(list.get(i));
+                        }
+                        return list;
+                    }
+
+                    @Override
+                    protected void onPostExecute(List<EquipmentItem> equipmentItems) {
+                        adapter.update(equipmentItems);
+                    }
+                }.execute();
+            }
+        };
+
+        database = Room.databaseBuilder(
+                getActivity().getApplicationContext(),
+                EquipmentListDatabase.class,
+                "equipments"
+        ).addCallback(rdc).build();
+
+
+    }
+
+    private ArrayList<EquipmentItem> fillEquipmentList() {
+
+        Resources resources = getResources();
+        String str;
+        ArrayList<EquipmentItem> equipmentItems = new ArrayList<>();
+
+        int resID = resources.getIdentifier("hu.bme.aut.fitnessapp:raw/" + "equipments", null, null);
+        InputStream is = resources.openRawResource(resID);
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            int id = 1;
+            while ((str = br.readLine()) != null) {
+                final EquipmentItem newItem = new EquipmentItem();
+                newItem.equipment_name = str;
+                newItem.equipment_id = id;
+                equipmentItems.add(newItem);
+                id++;
+            }
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return equipmentItems;
+    }
 
 
 }

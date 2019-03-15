@@ -86,7 +86,7 @@ public class NewWeightItemDialogFragment extends DialogFragment {
                             Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), "No weight entered.", Toast.LENGTH_LONG);
                             toast.show();
                         }
-                        else if(alreadyExists(getWeightItem()) || (c.get(Calendar.YEAR) == reg_year && c.get(Calendar.MONTH) == reg_month-1 && c.get(Calendar.DATE) == reg_day)){
+                        else if(alreadyExists(getWeightItem()) || (c.get(Calendar.YEAR) == reg_year && c.get(Calendar.MONTH) == reg_month && c.get(Calendar.DATE) == reg_day)){
                             dismiss();
                             Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), "Already entered weight for selected day!", Toast.LENGTH_LONG);
                             toast.show();
@@ -111,7 +111,8 @@ public class NewWeightItemDialogFragment extends DialogFragment {
         reg_month = sharedPreferences.getInt("Registration month", 0);
         reg_year = sharedPreferences.getInt("Registration year", 0);
         Calendar c = Calendar.getInstance();
-        c.set(reg_year, reg_month-1, reg_day);
+        //c.set(reg_year, reg_month-1, reg_day);
+        c.set(reg_year, reg_month, reg_day);
         datePicker.setMinDate(c.getTimeInMillis());
 
 
@@ -127,9 +128,11 @@ public class NewWeightItemDialogFragment extends DialogFragment {
         }
 
         weightItem.weight_day = datePicker.getDayOfMonth();
-        weightItem.weight_month = datePicker.getMonth() +1;
+        //weightItem.weight_month = datePicker.getMonth() +1;
+        weightItem.weight_month = datePicker.getMonth();
         weightItem.weight_year = datePicker.getYear();
-        weightItem.weight_calculated = weightItem.weight_year * 10000 + weightItem.weight_month * 100 + weightItem.weight_day;
+        //weightItem.weight_calculated = weightItem.weight_year * 10000 + weightItem.weight_month * 100 + weightItem.weight_day;
+        weightItem.weight_calculated = makeCalculatedWeight(weightItem.weight_year, weightItem.weight_month, weightItem.weight_day);
         return weightItem;
     }
 
@@ -150,5 +153,10 @@ public class NewWeightItemDialogFragment extends DialogFragment {
                 return true;
         }
         return false;
+    }
+
+    public int makeCalculatedWeight(int year, int fixedmonth, int day) {
+        int calculated = year * 10000 + fixedmonth * 100 + day;
+        return calculated;
     }
 }
