@@ -10,23 +10,13 @@
     android:paddingTop="8dp"
     android:paddingLeft="8dp"
     android:gravity="center_vertical"
-    tools:context=".WeightActivity">
-
-
-    <TextView
-        android:id="@+id/WeightItemDateTextView"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:textSize="18sp"
-        android:textColor="@android:color/black"/>
+    tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/WeightItemValueTextView"
-        android:layout_width="110dp"
+        android:id="@+id/ExerciseItemNameTextView"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:gravity="end"
         android:textSize="18sp"
         android:textColor="@android:color/black"/>
 
