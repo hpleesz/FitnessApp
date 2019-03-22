@@ -7,6 +7,14 @@
     android:theme="@style/addItemDialog"
     android:padding="24dip">
 
+    <TextView
+        android:id="@+id/noLocationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_locations_yet"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
     <include layout="@layout/recyclerview_location" />
 
 

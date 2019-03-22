@@ -16,13 +16,26 @@
     <LinearLayout
         android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:layout_weight="1">
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center">
 
-        <Button
-            android:id="@+id/chooseLocationButton"
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/location_color"/>
+
+
+        <TextView
+            android:id="@+id/chooseLocationTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="choose location"/>
+            android:layout_marginTop="20dp"
+            android:textSize="25sp"
+            android:textColor="@android:color/black"
+            android:text="@string/choose_location" />
+
 
     </LinearLayout>
 
@@ -31,11 +44,34 @@
         android:layout_height="0dp"
         android:layout_width="match_parent"
         android:orientation="vertical"
+        android:gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:layout_weight="2">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/button_round"
+            android:text="@string/warm_up"
+            android:textColor="@android:color/white"/>
 
-        <include layout="@layout/recyclerview_exercise" />
+        <Button
+            android:id="@+id/workoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_round"
+            android:text="@string/workout"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_round"
+            android:text="@string/stretch"
+            android:textColor="@android:color/white"/>
 
 
     </LinearLayout>
