@@ -32,14 +32,20 @@
     <string name="edit_location">Edit location</string>
     <string name="available_equipment">Available equipment:</string>
     <string name="title_activity_weight">Weight</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="goal_reached">Goal weight reached!</string>
     <string name="period_select">Select period</string>
     <string name="last_30_days">Last 30 days</string>
     <string name="last_7_days">Last 7 days</string>
     <string name="all">All</string>
     <string name="entries">Entries:</string>
+    <string name="title_activity_exercise_list">Exercises</string>
+    <string name="choose_location_toast">Please choose a location.</string>
+    <string name="choose_location">Choose location</string>
+    <string name="warm_up">Warm up</string>
+    <string name="workout">Workout</string>
+    <string name="stretch">Stretch</string>
+    <string name="no_locations_yet">No locations yet.</string>
+    <string name="reps">reps</string>
+    <string name="time">time</string>
 
 </resources>
