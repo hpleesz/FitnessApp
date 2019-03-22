@@ -53,6 +53,10 @@
         <activity
             android:name=".WeightActivity"
             android:label="@string/title_activity_weight"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ExerciseListActivity"
+            android:label="@string/title_activity_exercise_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
