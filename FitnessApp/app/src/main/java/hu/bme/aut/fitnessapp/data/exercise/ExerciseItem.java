@@ -4,6 +4,7 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverter;
+import android.os.Parcelable;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -16,7 +17,7 @@ import java.util.List;
 import hu.bme.aut.fitnessapp.data.equipment.EquipmentItem;
 
 @Entity(tableName = "exerciseitem")
-public class ExerciseItem implements Serializable{
+public class ExerciseItem implements Serializable {
 
     public static class Converters implements Serializable{
         @TypeConverter

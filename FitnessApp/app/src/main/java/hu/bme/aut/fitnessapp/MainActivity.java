@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -20,6 +21,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.MediaController;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.VideoView;
+
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,6 +36,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
 import hu.bme.aut.fitnessapp.broadcast_receiver.BootReceiver;
 import hu.bme.aut.fitnessapp.broadcast_receiver.NotificationReceiver;
@@ -50,68 +59,86 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
 
     private ExerciseListDatabase database;
     private LocationListDatabase locationdatabase;
-    private ExerciseAdapter adapter;
-    private List<ExerciseItem> itemlist;
+    private EquipmentListDatabase equipmentdatabase;
 
     public static final String WORKOUT = "workout settings";
     private SharedPreferences sharedPreferences;
-    private Button button;
+    int location_id;
+    private ArrayList<ExerciseItem> chosenExercises;
+    private ArrayList<ExerciseItem> exercisesForLocation;
+    private ArrayList<Integer> equipment_ids;
+    private List<LocationItem> locations;
+    private ArrayList<EquipmentItem> equipmentArrayList;
+    private String[] lower_body_parts = {"Quads", "Glutes", "Legs", "Adductor", "Abductor", "Hamstrings", "Calves"};
+    private String[] upper_body_parts = {"Abs", "Back", "Shoulders", "Chest", "Triceps", "Obliques", "Arms", "Biceps", "Lats", "Forearms"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View contentView = inflater.inflate(R.layout.activity_main, null, false);
         mDrawerLayout.addView(contentView, 0);
 
         navigationView.getMenu().getItem(0).setChecked(true);
 
-        button = (Button) findViewById(R.id.chooseLocationButton);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.hide();
+
+        chosenExercises = new ArrayList<>();
+        equipmentArrayList = new ArrayList<>();
+        sharedPreferences = getSharedPreferences(WORKOUT, MODE_PRIVATE);
+
+        initLocationDatabase();
+        setButtonsOnClickListeners();
+        checkFirstSignIn();
+        initializeDatabase();
+        setChooseLocationOnClickListener();
+    }
+
+    public void setChooseLocationOnClickListener() {
+        TextView chooseLocationTV = (TextView) findViewById(R.id.chooseLocationTextView);
+        int location_id = sharedPreferences.getInt("Location", 0);
+        if(location_id > 0) {
+            onLocationItemChosen();
+        }
+        chooseLocationTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new ChooseLocationItemDialogFragment().show(getSupportFragmentManager(), ChooseLocationItemDialogFragment.TAG);
             }
         });
-        sharedPreferences = getSharedPreferences(WORKOUT, MODE_PRIVATE);
-        checkFirstSignIn();
-        initializeDatabase();
-        initRecyclerView();
+    }
 
-        initLocationDatabase();
+    public void setButtonsOnClickListeners(){
+        Button workoutButton = (Button) findViewById(R.id.workoutButton);
+        workoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(location_id > 0) {
+                    Intent exercisesIntent = new Intent(MainActivity.this, ExerciseListActivity.class);
+                    exercisesIntent.putExtra("list", chosenExercises);
+                    exercisesIntent.putExtra("equipment", equipmentArrayList);
+                    startActivity(exercisesIntent);
+                }
+                else {
+                    Toast toast = Toast.makeText(getApplication().getApplicationContext(), R.string.choose_location_toast, Toast.LENGTH_LONG);
+                    toast.show();
+                }
+            }
+        });
     }
 
     public void checkFirstSignIn() {
         SharedPreferences first = getSharedPreferences(FIRST, MODE_PRIVATE);
         boolean isFirst = first.getBoolean("First", true);
         if(isFirst) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("Completed workout", true);
+            editor.apply();
             Intent userIntent = new Intent(MainActivity.this, UserActivity.class);
             startActivity(userIntent);
         }
-    }
-
-    private void initRecyclerView() {
-        RecyclerView recyclerView = findViewById(R.id.ExerciseRecyclerView);
-        adapter = new ExerciseAdapter();
-        loadItemsInBackground();
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-    }
-
-    private void loadItemsInBackground() {
-        new AsyncTask<Void, Void, List<ExerciseItem>>() {
-
-            @Override
-            protected List<ExerciseItem> doInBackground(Void... voids) {
-                return database.exerciseItemDao().getAll();
-            }
-
-            @Override
-            protected void onPostExecute(List<ExerciseItem> exerciseItemList) {
-                adapter.update(exerciseItemList);
-            }
-        }.execute();
     }
 
 
@@ -144,12 +171,6 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
         Resources resources = getResources();
         String str;
         ArrayList<ExerciseItem> exerciseItems = new ArrayList<>();
-
-        EquipmentListDatabase equipmentdatabase = Room.databaseBuilder(
-                getApplicationContext(),
-                EquipmentListDatabase.class,
-                "equipment"
-        ).build();
 
         int resID = resources.getIdentifier("hu.bme.aut.fitnessapp:raw/" + "exercises", null, null);
         InputStream is = resources.openRawResource(resID);
@@ -186,6 +207,21 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
                 LocationListDatabase.class,
                 "locations"
         ).build();
+
+        new AsyncTask<Void, Void, List<LocationItem>>() {
+
+            @Override
+            protected List<LocationItem> doInBackground(Void... voids) {
+                locations = locationdatabase.locationItemDao().getAll();
+                return locations;
+            }
+        }.execute();
+
+        equipmentdatabase = Room.databaseBuilder(
+                getApplicationContext(),
+                EquipmentListDatabase.class,
+                "equipments"
+        ).build();
     }
 
     @Override
@@ -194,31 +230,193 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
 
             @Override
             protected List<ExerciseItem> doInBackground(Void... voids) {
-                int id = sharedPreferences.getInt("Location", 1);
-                LocationItem location = locationdatabase.locationItemDao().getLocationWithID(id);
-                ArrayList<EquipmentItem> equipments = location.location_equipmentItems;
-                List<ExerciseItem> exercises = database.exerciseItemDao().getAll();
-                ArrayList<ExerciseItem> newexercises = new ArrayList<>();
-                for(int i = 0; i < equipments.size(); i++){
-                    for(int j = 0; j < equipments.size(); j++){
-                        for(int k = 0; k < exercises.size(); k++){
-                            if(exercises.get(k).equipment1 == equipments.get(i).equipment_id && exercises.get(k).equipment2 == equipments.get(j).equipment_id)
-                                newexercises.add(exercises.get(k));
-                        }
-                    }
+                if(sharedPreferences.getBoolean("Completed workout", true)){
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("Completed workout", false);
+                    setWorkoutType();
                 }
-                //if(!newexercises.isEmpty())
-                    //exercises.addAll(newexercises);
-                return newexercises;
+                loadEquipments();
+                getAvailableEquipment();
+                getExercisesForLocation();
+
+                return exercisesForLocation;
             }
 
             @Override
             protected void onPostExecute(List<ExerciseItem> exerciseItemList) {
-                adapter.update(exerciseItemList);
-                //loadItemsInBackground();
+                makeWorkout();
             }
+
         }.execute();
 
-        //adapter.update(exercises);
+    }
+
+    public void setWorkoutType() {
+        SharedPreferences user_shared_preferences = getSharedPreferences(UserActivity.USER, MODE_PRIVATE);
+        boolean muscle = user_shared_preferences.getBoolean("Gain muscle", true);
+        boolean weight = user_shared_preferences.getBoolean("Lose weight", true);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        if(muscle) {
+            String type = sharedPreferences.getString("Workout type", "Lower body");
+            if(weight) {
+                switch(type) {
+                    case "Lower body" :
+                        editor.putString("Workout type", "Cardio 1");
+                        break;
+                    case "Cardio 1" :
+                        editor.putString("Workout type", "Upper body");
+                        break;
+                    case "Upper body" :
+                        editor.putString("Workout type", "Cardio 2");
+                        break;
+                    case "Cardio 2" :
+                        editor.putString("Workout type", "Lower body");
+                }
+            }
+            else {
+                switch(type) {
+                    case "Lower body":
+                        editor.putString("Workout type", "Upper body");
+                        break;
+                    case "Upper body":
+                        editor.putString("Workout type", "Lower body");
+                        break;
+                }
+            }
+        }
+        else {
+            editor.putString("Workout type", "Cardio 1");
+        }
+        editor.apply();
+    }
+
+    public void getAvailableEquipment() {
+        location_id = sharedPreferences.getInt("Location", 1);
+        LocationItem location = locationdatabase.locationItemDao().getLocationWithID(location_id);
+        ArrayList<EquipmentItem> equipments = location.location_equipmentItems;
+        equipment_ids = new ArrayList<>();
+        for(EquipmentItem item : equipments){
+            equipment_ids.add(item.equipment_id);
+        }
+        if(equipment_ids.contains(5) && !equipment_ids.contains(4)) equipment_ids.add(4);
+        if(equipment_ids.contains(7) && !equipment_ids.contains(6)) equipment_ids.add(6);
+        if(!equipment_ids.contains(1)) equipment_ids.add(1);
+    }
+
+    public void getExercisesForLocation() {
+        exercisesForLocation = new ArrayList<>();
+        for(int i = 0; i < equipment_ids.size(); i++){
+            for(int j = 0; j < equipment_ids.size(); j++){
+                List<ExerciseItem> list = database.exerciseItemDao().getExercisesWithEquipments(equipment_ids.get(i), equipment_ids.get(j));
+                exercisesForLocation.addAll(list);
+
+            }
+        }
+    }
+
+    public void makeWorkout() {
+        chosenExercises = new ArrayList<>();
+        String workout_type = sharedPreferences.getString("Workout type", "");
+        ArrayList<String> body_parts = new ArrayList<>();
+        switch (workout_type){
+            case "Upper body" :
+                while (body_parts.size() < 10) {
+                    body_parts.add(upper_body_parts[getRandomNumber(upper_body_parts.length)]);
+                }
+                selectExercises(body_parts, 10);
+                break;
+
+            case "Lower body" :
+                while (body_parts.size() < 10) {
+                    body_parts.add(lower_body_parts[getRandomNumber(lower_body_parts.length)]);
+                }
+                selectExercises(body_parts, 10);
+                break;
+
+            case "Cardio 1" :
+            case "Cardio 2" :
+                while (body_parts.size() < 3) {
+                    body_parts.add(upper_body_parts[getRandomNumber(upper_body_parts.length)]);
+                }
+                while (body_parts.size() < 6) {
+                    body_parts.add(lower_body_parts[getRandomNumber(lower_body_parts.length)]);
+                }
+                selectExercises(body_parts, 6);
+                selectCardio();
+                break;
+        }
+
+    }
+
+    public int getRandomNumber(int max) {
+        Random r = new Random();
+        return r.nextInt(max);
+    }
+
+    public void selectExercises(ArrayList<String> body_parts, int limit) {
+        for(int i = 0; i < limit; i++){
+            ArrayList<ExerciseItem> exerciseItems = new ArrayList<>();
+            String body_part = body_parts.get(i);
+            for(int j = 0; j < exercisesForLocation.size(); j++){
+                for(int k = 0; k < exercisesForLocation.get(j).exercise_muscles.size(); k++) {
+                    String s = exercisesForLocation.get(j).exercise_muscles.get(k);
+                    if (exercisesForLocation.get(j).exercise_muscles.get(k).contains(body_part))
+                        exerciseItems.add(exercisesForLocation.get(j));
+                }
+            }
+            if(exerciseItems.size() > 0) {
+                int random = getRandomNumber(exerciseItems.size());
+                ExerciseItem exercise = exerciseItems.get(random);
+                if(!chosenExercises.contains(exercise)) {
+                    chosenExercises.add(exercise);
+                    if (exercise.exercise_name.contains("left")) {
+                        ExerciseItem exerciseItem = exerciseItems.get(random + 1);
+                        chosenExercises.add(exerciseItem);
+                        i++;
+                    }
+                    if (exercise.exercise_name.contains("right")) {
+                        ExerciseItem exerciseItem = exerciseItems.get(random - 1);
+                        chosenExercises.add(exerciseItem);
+                        i++;
+                    }
+                }
+                else i--;
+            }
+            else {
+                if(sharedPreferences.getString("Workout type", "").equals("Upper body")){
+                    body_parts.set(i, upper_body_parts[getRandomNumber(upper_body_parts.length)]);
+                    i--;
+                }
+                else {
+                    body_parts.set(i, lower_body_parts[getRandomNumber(lower_body_parts.length)]);
+                    i--;
+                }
+            }
+        }
+
+    }
+
+    public void selectCardio() {
+        ArrayList<ExerciseItem> cardio = new ArrayList<>();
+        for(int i = exercisesForLocation.size()-1; i > exercisesForLocation.size()-10; i--){
+            if(exercisesForLocation.get(i).exercise_muscles.get(0).contains("Cardiovascular System"))
+                cardio.add(exercisesForLocation.get(i));
+        }
+        int random = getRandomNumber(cardio.size());
+        chosenExercises.add(cardio.get(random));
+    }
+
+    private void loadEquipments() {
+        new AsyncTask<Void, Void, List<EquipmentItem>>() {
+
+            @Override
+            protected List<EquipmentItem> doInBackground(Void... voids) {
+                List<EquipmentItem> equipmentItemList = equipmentdatabase.equipmentItemDao().getAll();
+                for(int i = 0; i < equipmentItemList.size(); i++){
+                    equipmentArrayList.add(equipmentItemList.get(i));
+                }
+                return equipmentItemList;
+            }
+        }.execute();
     }
 }

@@ -19,18 +19,17 @@ import hu.bme.aut.fitnessapp.R;
 public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.EquipmentListViewHolder>{
 
     private final ArrayList<EquipmentItem> items;
-    private ArrayList<EquipmentItem> selected;
     private EquipmentAdapter.OnCheckBoxClicked onCheckBoxClicked;
-
+    private ArrayList<Integer> clicked;
 
     public interface OnCheckBoxClicked{
-        void onChecked(final int i);
-        void onUnchecked(final int i);
+        void onChecked(int pos);
+        void onUnchecked(int pos);
     }
 
     public EquipmentAdapter(EquipmentAdapter.OnCheckBoxClicked onCheckBoxClicked) {
         items = new ArrayList<>();
-        selected = new ArrayList<>();
+        clicked = new ArrayList<>();
         this.onCheckBoxClicked = onCheckBoxClicked;
 
     }
@@ -50,34 +49,25 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.Equi
     public void onBindViewHolder(@NonNull EquipmentAdapter.EquipmentListViewHolder holder, final int position) {
         EquipmentItem item = items.get(position);
         holder.nameTextView.setText(item.equipment_name);
-
-            for(int j = 0; j < selected.size(); j++) {
-                if (item.equipment_name.equals(selected.get(j).equipment_name))
-                    holder.checkBox.setChecked(true);
-                else
-                    holder.checkBox.setChecked(false);
-            }
-
-        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked)
-                {
-                    onCheckBoxClicked.onChecked(position);
-                }
-                else {
-                    onCheckBoxClicked.onUnchecked(position);
-                }
-            }
-
-        });
         holder.item = item;
+
+        //for(int j = 0; j < selected.size(); j++) {
+            //if (item.equipment_name.equals(selected.get(j).equipment_name))
+        for(int i = 0; i<clicked.size(); i++){
+            if(clicked.get(position) == 1)
+                holder.checkBox.setChecked(true);
+            else
+                holder.checkBox.setChecked(false);
+        }
+
     }
 
     public void update(List<EquipmentItem> equipmentItemList) {
         items.clear();
         items.addAll(equipmentItemList);
+        for(int i = 0; i < items.size(); i++) {
+            clicked.add(0);
+        }
         notifyDataSetChanged();
     }
 
@@ -97,23 +87,39 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.Equi
 
             nameTextView = itemView.findViewById(R.id.EquipmentItemName);
             checkBox = itemView.findViewById(R.id.CheckBox);
+            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked)
+                    {
+                        onCheckBoxClicked.onChecked(getAdapterPosition());
+                    }
+                    else {
+                        onCheckBoxClicked.onUnchecked(getAdapterPosition());
+                    }
+                }
+
+            });
         }
     }
 
     public ArrayList<EquipmentItem> getCheckedEquipmentList() {
+        ArrayList<EquipmentItem> selected = new ArrayList<>();
+        for(int i = 0; i < clicked.size(); i++){
+            if(clicked.get(i) == 1){
+                selected.add(items.get(i));
+            }
+        }
         return selected;
     }
 
     public void onChecked(int pos) {
-        EquipmentItem equipment = items.get(pos);
-        selected.add(equipment);
+        clicked.set(pos, 1);
     }
 
     public void onUnchecked(int pos){
-        for(int i = 0; i < selected.size(); i++)
-            if(selected.get(i).equipment_name.equals(items.get(pos).equipment_name)) {
-                selected.remove(i);
-            }
+        clicked.set(pos, 0);
     }
 
     public void setCheckedEquipmentList(ArrayList<EquipmentItem> equipments) {

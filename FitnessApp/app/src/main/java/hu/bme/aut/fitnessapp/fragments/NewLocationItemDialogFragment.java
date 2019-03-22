@@ -169,7 +169,7 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
                         for(int i = 0; i < list.size(); i++){
                             database.equipmentItemDao().insert(list.get(i));
                         }
-                        return list;
+                        return database.equipmentItemDao().getAll();
                     }
 
                     @Override
@@ -199,13 +199,13 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
         InputStream is = resources.openRawResource(resID);
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            int id = 1;
+            //int id = 1;
             while ((str = br.readLine()) != null) {
-                final EquipmentItem newItem = new EquipmentItem();
+                EquipmentItem newItem = new EquipmentItem();
                 newItem.equipment_name = str;
-                newItem.equipment_id = id;
+                //newItem.equipment_id = id;
                 equipmentItems.add(newItem);
-                id++;
+                //id++;
             }
             is.close();
         } catch (IOException e) {

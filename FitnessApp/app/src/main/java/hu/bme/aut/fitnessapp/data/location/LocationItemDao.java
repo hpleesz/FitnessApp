@@ -22,6 +22,6 @@ public interface LocationItemDao {
     void deleteItem(LocationItem locationItem);
 
     @Query("SELECT * FROM locationitem WHERE id LIKE :id")
-    LocationItem getLocationWithID(int id);
+    LocationItem getLocationWithID(long id);
 
 }

@@ -21,7 +21,6 @@ import java.util.List;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.UserActivity;
 import hu.bme.aut.fitnessapp.WeightActivity;
-import hu.bme.aut.fitnessapp.fragments.DeleteDialogFragment;
 import hu.bme.aut.fitnessapp.fragments.NewWeightItemDialogFragment;
 
 

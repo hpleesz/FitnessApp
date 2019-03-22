@@ -24,7 +24,7 @@ public interface EquipmentItemDao {
     @Delete
     void deleteItem(EquipmentItem equipmentItem);
 
-    @Query("SELECT id FROM equipmentitem WHERE id = :id")
-    int getEquipmentWithID(int id);
+    @Query("SELECT * FROM equipmentitem WHERE id = :id")
+    EquipmentItem getEquipmentWithID(int id);
 
 }

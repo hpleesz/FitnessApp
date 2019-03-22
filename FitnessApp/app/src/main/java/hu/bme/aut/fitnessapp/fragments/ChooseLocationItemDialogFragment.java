@@ -19,6 +19,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -38,6 +39,7 @@ public class ChooseLocationItemDialogFragment extends DialogFragment implements 
     private ChooseLocationAdapter adapter;
     private LocationListDatabase database;
     private SharedPreferences sharedPreferences;
+    private TextView noLocationTV;
 
     private ChooseLocationItemDialogFragment.ChooseLocationItemDialogListener listener;
     public interface ChooseLocationItemDialogListener {
@@ -78,7 +80,7 @@ public class ChooseLocationItemDialogFragment extends DialogFragment implements 
     private View getContentView() {
         View contentView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_choose_location_item, null);
         sharedPreferences = getActivity().getSharedPreferences(MainActivity.WORKOUT, Context.MODE_PRIVATE);
-
+        noLocationTV = (TextView) contentView.findViewById(R.id.noLocationTextView);
         database = Room.databaseBuilder(
                 getActivity().getApplicationContext(),
                 LocationListDatabase.class,
@@ -101,6 +103,9 @@ public class ChooseLocationItemDialogFragment extends DialogFragment implements 
             @Override
             protected void onPostExecute(List<LocationItem> locationItems) {
                 adapter.update(locationItems);
+                if(locationItems.isEmpty()){
+                    noLocationTV.setVisibility(View.VISIBLE);
+                }
             }
         }.execute();
     }
