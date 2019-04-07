@@ -57,6 +57,10 @@
         <activity
             android:name=".ExerciseListActivity"
             android:label="@string/title_activity_exercise_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ExerciseInfoActivity"
+            android:label="@string/title_activity_exercise_info"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
