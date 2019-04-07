@@ -29,4 +29,6 @@ public interface ExerciseItemDao {
     @Query("SELECT * FROM exerciseitem WHERE equipment1 = :e1 AND equipment2 = :e2")
     List<ExerciseItem> getExercisesWithEquipments(int e1, int e2);
 
+    @Query("SELECT * FROM exerciseitem WHERE id = :id")
+    ExerciseItem getExerciseWithID(long id);
 }

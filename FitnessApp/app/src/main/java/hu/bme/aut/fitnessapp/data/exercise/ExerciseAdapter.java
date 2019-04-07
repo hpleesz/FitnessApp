@@ -51,7 +51,6 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
     }
 
 
-    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ExerciseAdapter.ExerciseListViewHolder holder, final int position) {
 
@@ -75,8 +74,12 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
 
         for(int i = 0; i < equipmentItemList.size(); i++){
             for(int j = 0; j < equipmentItemList.size(); j++){
-                if(item.equipment1 == equipmentItemList.get(i).equipment_id && item.equipment2 == equipmentItemList.get(j).equipment_id)
-                    equipments = equipmentItemList.get(i).equipment_name + ", " + equipmentItemList.get(j).equipment_name;
+                if(item.equipment1 == equipmentItemList.get(i).equipment_id && item.equipment2 == equipmentItemList.get(j).equipment_id){
+                    if(i == 0) equipments = equipmentItemList.get(j).equipment_name;
+                    else if(j == 0) equipments = equipmentItemList.get(i).equipment_name;
+                    else equipments = equipmentItemList.get(i).equipment_name + ", " + equipmentItemList.get(j).equipment_name;
+
+                }
             }
         }
         holder.equipmentTextView.setText(equipments);
