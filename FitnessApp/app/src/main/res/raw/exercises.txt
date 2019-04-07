@@ -564,8 +564,6 @@ Plank one foot up, right	1	1	All Abs, Quads, Lower Back	1
 Lunge, alternated	1	1	Quads, Glutes, Legs	0
 Plank push	1	1	All Abs, Back, Chest, Triceps	0
 Push-up knees	1	1	Chest,Triceps	0
-Side plank elbow foot, left	1	1	All Abs, Back, Obliques	0
-Side plank elbow foot, right	1	1	All Abs, Back, Obliques	0
 Split squat, left	1	1	Quads, Glutes, Legs	0
 Split squat, right	1	1	Quads, Glutes, Legs	0
 Board to Mountain	1	1	Triceps, All Abs, Chest, Shoulder	0
