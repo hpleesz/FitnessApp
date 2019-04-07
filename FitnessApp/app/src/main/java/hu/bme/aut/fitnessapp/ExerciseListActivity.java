@@ -35,8 +35,7 @@ public class ExerciseListActivity extends NavigationActivity {
 
     private ExerciseAdapter adapter;
     private ArrayList<ExerciseItem> exerciseItems;
-    private List<EquipmentItem> equipmentItemList;
-    private EquipmentListDatabase database;
+    private ArrayList<EquipmentItem> equipmentItemList;
     private RecyclerView recyclerView;
 
     public static String PACKAGE_NAME;
@@ -49,31 +48,30 @@ public class ExerciseListActivity extends NavigationActivity {
         mDrawerLayout.addView(contentView, 0);
 
         navigationView.getMenu().getItem(0).setChecked(true);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setImageDrawable(getDrawable(R.drawable.ic_play_arrow_white));
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        database = Room.databaseBuilder(
-                getApplicationContext(),
-                EquipmentListDatabase.class,
-                "equipments"
-        ).build();
-        //loadEquipments();
 
         Intent i = getIntent();
         exerciseItems = (ArrayList<ExerciseItem>) i.getSerializableExtra("list");
         equipmentItemList = (ArrayList<EquipmentItem>) i.getSerializableExtra("equipment");
 
         PACKAGE_NAME = getApplicationContext().getPackageName();
+
+        setFloatingActionButton();
         initRecyclerView();
     }
 
+    public void setFloatingActionButton() {
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setImageDrawable(getDrawable(R.drawable.ic_play_arrow_white));
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ExerciseListActivity.this, ExerciseInfoActivity.class);
+                intent.putExtra("exercises", exerciseItems);
+                intent.putExtra("equipment", equipmentItemList);
+                startActivity(intent);
+            }
+        });
+    }
     private void initRecyclerView() {
         recyclerView = findViewById(R.id.ExerciseRecyclerView);
         adapter = new ExerciseAdapter(exerciseItems, equipmentItemList);
@@ -81,17 +79,5 @@ public class ExerciseListActivity extends NavigationActivity {
         recyclerView.setAdapter(adapter);
 
     }
-
-    private void loadEquipments() {
-        new AsyncTask<Void, Void, List<EquipmentItem>>() {
-
-            @Override
-            protected List<EquipmentItem> doInBackground(Void... voids) {
-                equipmentItemList = database.equipmentItemDao().getAll();
-                return equipmentItemList;
-            }
-        }.execute();
-    }
-
 
 }

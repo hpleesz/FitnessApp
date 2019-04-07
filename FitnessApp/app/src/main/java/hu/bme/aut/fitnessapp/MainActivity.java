@@ -92,16 +92,12 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
         initLocationDatabase();
         setButtonsOnClickListeners();
         checkFirstSignIn();
-        initializeDatabase();
         setChooseLocationOnClickListener();
+        continueWorkout();
     }
 
     public void setChooseLocationOnClickListener() {
         TextView chooseLocationTV = (TextView) findViewById(R.id.chooseLocationTextView);
-        int location_id = sharedPreferences.getInt("Location", 0);
-        if(location_id > 0) {
-            onLocationItemChosen();
-        }
         chooseLocationTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,6 +128,7 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
     public void checkFirstSignIn() {
         SharedPreferences first = getSharedPreferences(FIRST, MODE_PRIVATE);
         boolean isFirst = first.getBoolean("First", true);
+        boolean loadDatabase = first.getBoolean("Load database", true);
         if(isFirst) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("Completed workout", true);
@@ -139,32 +136,21 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
             Intent userIntent = new Intent(MainActivity.this, UserActivity.class);
             startActivity(userIntent);
         }
-    }
-
-
-    public void initializeDatabase() {
-        RoomDatabase.Callback rdc = new RoomDatabase.Callback() {
-            public void onCreate (SupportSQLiteDatabase db) {
-                final ArrayList<ExerciseItem> list = fillExerciseList();
-
-                new AsyncTask<Void, Void, List<ExerciseItem>>() {
-
-                    @Override
-                    protected List<ExerciseItem> doInBackground(Void... voids) {
-                        for(int i = 0; i < list.size(); i++){
-                            database.exerciseItemDao().insert(list.get(i));
-                        }
-                        return list;
-                    }
-                }.execute();
+        else {
+            if(loadDatabase) {
+                SharedPreferences.Editor editor = first.edit();
+                editor.putBoolean("Load database", false);
+                editor.apply();
+                initializeDatabase();
             }
-        };
-
-        database = Room.databaseBuilder(
-                getApplicationContext(),
-                ExerciseListDatabase.class,
-                "exercises"
-        ).addCallback(rdc).build();
+            else {
+                database = Room.databaseBuilder(
+                        getApplicationContext(),
+                        ExerciseListDatabase.class,
+                        "exercises"
+                ).build();
+            }
+        }
     }
 
     public ArrayList<ExerciseItem> fillExerciseList() {
@@ -233,21 +219,16 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
                 if(sharedPreferences.getBoolean("Completed workout", true)){
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putBoolean("Completed workout", false);
+                    editor.apply();
                     setWorkoutType();
                 }
                 loadEquipments();
                 getAvailableEquipment();
-                getExercisesForLocation();
 
                 return exercisesForLocation;
             }
-
-            @Override
-            protected void onPostExecute(List<ExerciseItem> exerciseItemList) {
-                makeWorkout();
-            }
-
         }.execute();
+
 
     }
 
@@ -291,27 +272,55 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
     }
 
     public void getAvailableEquipment() {
-        location_id = sharedPreferences.getInt("Location", 1);
-        LocationItem location = locationdatabase.locationItemDao().getLocationWithID(location_id);
-        ArrayList<EquipmentItem> equipments = location.location_equipmentItems;
-        equipment_ids = new ArrayList<>();
-        for(EquipmentItem item : equipments){
-            equipment_ids.add(item.equipment_id);
-        }
-        if(equipment_ids.contains(5) && !equipment_ids.contains(4)) equipment_ids.add(4);
-        if(equipment_ids.contains(7) && !equipment_ids.contains(6)) equipment_ids.add(6);
-        if(!equipment_ids.contains(1)) equipment_ids.add(1);
+        new AsyncTask<Void, Void, List<EquipmentItem>>() {
+
+            @Override
+            protected List<EquipmentItem> doInBackground(Void... voids) {
+                location_id =sharedPreferences.getInt("Location",1);
+                LocationItem location = locationdatabase.locationItemDao().getLocationWithID(location_id);
+                ArrayList<EquipmentItem> equipments = location.location_equipmentItems;
+                equipment_ids = new ArrayList<>();
+                for(
+                        EquipmentItem item :equipments)
+
+                {
+                    equipment_ids.add(item.equipment_id);
+                }
+                if(equipment_ids.contains(5)&&!equipment_ids.contains(4))equipment_ids.add(4);
+                if(equipment_ids.contains(7)&&!equipment_ids.contains(6))equipment_ids.add(6);
+                if(!equipment_ids.contains(1))equipment_ids.add(1);
+                return equipments;
+            }
+
+            @Override
+            protected void onPostExecute(List<EquipmentItem> equipmentItems) {
+                getExercisesForLocation();
+            }
+
+        }.execute();
     }
 
     public void getExercisesForLocation() {
-        exercisesForLocation = new ArrayList<>();
-        for(int i = 0; i < equipment_ids.size(); i++){
-            for(int j = 0; j < equipment_ids.size(); j++){
-                List<ExerciseItem> list = database.exerciseItemDao().getExercisesWithEquipments(equipment_ids.get(i), equipment_ids.get(j));
-                exercisesForLocation.addAll(list);
+        new AsyncTask<Void, Void, List<ExerciseItem>>() {
+            @Override
+            protected List<ExerciseItem> doInBackground(Void... voids) {
+                exercisesForLocation = new ArrayList<>();
+                //List<ExerciseItem> list2 = database.exerciseItemDao().getAll();
+                for(int i = 0; i < equipment_ids.size(); i++){
+                    for(int j = 0; j < equipment_ids.size(); j++){
+                        List<ExerciseItem> list = database.exerciseItemDao().getExercisesWithEquipments(equipment_ids.get(i), equipment_ids.get(j));
+                        exercisesForLocation.addAll(list);
 
+                    }
+                }
+                return exercisesForLocation;
             }
-        }
+
+            @Override
+            protected void onPostExecute(List<ExerciseItem> exerciseItemList) {
+                makeWorkout();
+            }
+        }.execute();
     }
 
     public void makeWorkout() {
@@ -398,12 +407,40 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
 
     public void selectCardio() {
         ArrayList<ExerciseItem> cardio = new ArrayList<>();
-        for(int i = exercisesForLocation.size()-1; i > exercisesForLocation.size()-10; i--){
+        for(int i = exercisesForLocation.size()-1; i >= 0; i--){
             if(exercisesForLocation.get(i).exercise_muscles.get(0).contains("Cardiovascular System"))
                 cardio.add(exercisesForLocation.get(i));
         }
         int random = getRandomNumber(cardio.size());
         chosenExercises.add(cardio.get(random));
+    }
+
+    public void continueWorkout() {
+        boolean completed = sharedPreferences.getBoolean("Completed workout", false);
+        if(!completed){
+            new AsyncTask<Void, Void, List<ExerciseItem>>() {
+
+                @Override
+                protected List<ExerciseItem> doInBackground(Void... voids) {
+                    int numberOfExercises = sharedPreferences.getInt("Number of exercises", 6);
+                    for(int i = 0; i < numberOfExercises; i++) {
+                        ExerciseItem item = database.exerciseItemDao().getExerciseWithID(sharedPreferences.getLong("Exercise " + i, 1));
+                        chosenExercises.add(item);
+                    }
+                    return chosenExercises;
+                }
+
+                @Override
+                protected void onPostExecute(List<ExerciseItem> exerciseItems) {
+                    Intent exercisesIntent = new Intent(MainActivity.this, ExerciseInfoActivity.class);
+                    exercisesIntent.putExtra("exercises", chosenExercises);
+                    exercisesIntent.putExtra("equipment", equipmentArrayList);
+                    startActivity(exercisesIntent);
+                }
+
+            }.execute();
+
+        }
     }
 
     private void loadEquipments() {
@@ -412,11 +449,35 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
             @Override
             protected List<EquipmentItem> doInBackground(Void... voids) {
                 List<EquipmentItem> equipmentItemList = equipmentdatabase.equipmentItemDao().getAll();
-                for(int i = 0; i < equipmentItemList.size(); i++){
-                    equipmentArrayList.add(equipmentItemList.get(i));
-                }
+                //for(int i = 0; i < equipmentItemList.size(); i++){
+                //equipmentArrayList.add(equipmentItemList.get(i));
+                equipmentArrayList.addAll(equipmentItemList);
+                //}
                 return equipmentItemList;
             }
         }.execute();
     }
+
+    public void initializeDatabase() {
+        database = Room.databaseBuilder(
+                getApplicationContext(),
+                ExerciseListDatabase.class,
+                "exercises"
+        ).build();
+
+        final ArrayList<ExerciseItem> list = fillExerciseList();
+
+        new AsyncTask<Void, Void, List<ExerciseItem>>() {
+
+            @Override
+            protected List<ExerciseItem> doInBackground(Void... voids) {
+                for(int i = 0; i < list.size(); i++){
+                    database.exerciseItemDao().insert(list.get(i));
+                }
+                return list;
+            }
+        }.execute();
+
+    }
+
 }
