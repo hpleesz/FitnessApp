@@ -42,7 +42,6 @@ public class NewWeightItemDialogFragment extends DialogFragment {
     private int reg_month;
     private int reg_year;
 
-
     public static final String TAG = "NewWeightDialogFragment";
 
     public interface NewWeightDialogListener {

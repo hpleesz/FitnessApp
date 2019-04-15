@@ -3,6 +3,7 @@ package hu.bme.aut.fitnessapp;
 import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -65,6 +66,11 @@ public class NavigationActivity extends AppCompatActivity {
                                 startActivity(userIntent);
                                 break;
                             }
+                            case R.id.nav_measurements: {
+                                Intent userIntent = new Intent(NavigationActivity.this, MeasurementsActivity.class);
+                                startActivity(userIntent);
+                                break;
+                            }
                             case R.id.nav_weight: {
                                 Intent userIntent = new Intent(NavigationActivity.this, WeightActivity.class);
                                 startActivity(userIntent);
@@ -81,8 +87,8 @@ public class NavigationActivity extends AppCompatActivity {
                                 break;
                             }
                             case R.id.nav_settings: {
-                                //Intent userIntent = new Intent(NavigationActivity.this, UserActivity.class);
-                                //startActivity(userIntent);
+                                Intent userIntent = new Intent(NavigationActivity.this, SettingsActivity.class);
+                                startActivity(userIntent);
                                 break;
                             }
                         }

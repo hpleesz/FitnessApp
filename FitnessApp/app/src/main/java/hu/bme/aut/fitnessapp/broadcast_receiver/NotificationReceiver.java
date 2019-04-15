@@ -18,6 +18,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import hu.bme.aut.fitnessapp.R;
+import hu.bme.aut.fitnessapp.UserActivity;
 import hu.bme.aut.fitnessapp.WaterActivity;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -69,7 +70,7 @@ public class NotificationReceiver extends BroadcastReceiver{
 
         Date currentTime = Calendar.getInstance().getTime();
 
-        if(isWithinRange(currentTime, 800, 2000)) {
+        if(isWithinRange(currentTime, 800, 2000) && notificationsTurnedOn(context)) {
             if ((isWithinRange(currentTime, 800, 1100) && (percent < 25))
                     || (isWithinRange(currentTime, 1100, 1400) && (percent < 50))
                     || (isWithinRange(currentTime, 1400, 1700) && (percent < 75))
@@ -88,5 +89,9 @@ public class NotificationReceiver extends BroadcastReceiver{
         return to > from && t >= from && t<= to;
     }
 
+    public boolean notificationsTurnedOn(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(UserActivity.USER, MODE_PRIVATE);
+        return sharedPreferences.getBoolean("Notifications on", true);
+    }
 
 }

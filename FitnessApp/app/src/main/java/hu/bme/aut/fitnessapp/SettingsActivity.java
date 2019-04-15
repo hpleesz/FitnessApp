@@ -1,43 +1,28 @@
 package hu.bme.aut.fitnessapp;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.arch.persistence.db.SupportSQLiteDatabase;
-import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
-import android.content.ComponentName;
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
-import hu.bme.aut.fitnessapp.broadcast_receiver.BootReceiver;
-import hu.bme.aut.fitnessapp.broadcast_receiver.NotificationReceiver;
-import hu.bme.aut.fitnessapp.broadcast_receiver.ResetWaterReceiver;
-import hu.bme.aut.fitnessapp.data.exercise.ExerciseItem;
-import hu.bme.aut.fitnessapp.data.exercise.ExerciseListDatabase;
+public class SettingsActivity extends NavigationActivity {
 
-public class UserActivity extends AppCompatActivity {
+    private Switch notificationSwitch;
+    private SharedPreferences sharedPreferences;
 
     private boolean male = false;
     private boolean female = false;
@@ -54,49 +39,44 @@ public class UserActivity extends AppCompatActivity {
     private EditText goalWeightEditText;
     private DatePicker datePicker;
 
-    public static final String USER = "user data";
-
-    //2 hours + 45 minutes
-    public static final int INTERVAL = 2 * 60 * 60 * 1000 + 45 * 60 * 1000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View contentView = inflater.inflate(R.layout.activity_settings, null, false);
+        mDrawerLayout.addView(contentView, 0);
+        navigationView.getMenu().getItem(5).setChecked(true);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        assignLayoutElements();
-        setFloatingActionButton();
-        setGenderOnClickListeners();
-        setGoalOnClickListeners();
+        sharedPreferences = getSharedPreferences(UserActivity.USER, MODE_PRIVATE);
 
-    }
 
-    public void assignLayoutElements() {
-        nameEditText = findViewById(R.id.nameEditText);
-        weightEditText = findViewById(R.id.weightEditText);
-        heightEditText = findViewById(R.id.heightEditText);
-        goalWeightEditText = findViewById(R.id.goalWeightEditText);
+        notificationSwitch = (Switch)findViewById(R.id.notificationSwitch);
+        notificationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                if(isChecked){
+                    editor.putBoolean("Notifications on", true);
+                }
+                else {
+                    editor.putBoolean("Notifications on", false);
+                }
+                editor.apply();
+            }
+        });
 
-        datePicker = findViewById(R.id.dateOfBirthPicker);
-        datePicker.setMaxDate(System.currentTimeMillis());
-    }
+        notificationSwitch.setChecked(sharedPreferences.getBoolean("Notifications on", true));
 
-    public void setFloatingActionButton() {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setImageDrawable(getDrawable(R.drawable.ic_check));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(checkDataValidity()){
                     saveUserData();
-                    Toast toast = Toast.makeText(getApplicationContext(), R.string.login_positive, Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Changes saved.", Toast.LENGTH_LONG);
                     toast.show();
-                    startNotifications();
-                    startResetWater();
-                    //fillEquipments();
-                    finish();
                 }
                 else {
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.login_negative, Toast.LENGTH_LONG);
@@ -104,11 +84,52 @@ public class UserActivity extends AppCompatActivity {
                 }
             }
         });
+
+        assignLayoutElements();
+        setGenderOnClickListeners();
+        setGoalOnClickListeners();
+
+    }
+
+    public void assignLayoutElements() {
+        nameEditText = findViewById(R.id.nameEditText);
+        String name = sharedPreferences.getString("Name", "");
+        nameEditText.setText(name);
+
+        weightEditText = findViewById(R.id.weightEditText);
+        float starting_weight = sharedPreferences.getFloat("Starting weight", 0);
+        weightEditText.setText(Float.toString(starting_weight));
+
+        heightEditText = findViewById(R.id.heightEditText);
+        float height = sharedPreferences.getFloat("Height", 0);
+        heightEditText.setText(Float.toString(height));
+
+        goalWeightEditText = findViewById(R.id.goalWeightEditText);
+        float goal_weight = sharedPreferences.getFloat("Goal weight", 0);
+        goalWeightEditText.setText(Float.toString(goal_weight));
+
+        maleButton = findViewById(R.id.buttonMale);
+        femaleButton = findViewById(R.id.buttonFemale);
+        loseWeightButton = findViewById(R.id.buttonLoseWeight);
+        gainMuscleButton = findViewById(R.id.buttonGainMuscle);
+
+        male = sharedPreferences.getBoolean("Male", true);
+        female = !male;
+        lose_weight = sharedPreferences.getBoolean("Lose weight", true);
+        gain_muscle = sharedPreferences.getBoolean("Gain muscle", true);
+        setGenderButtons();
+        setLoseWeightButton();
+        setMuscleButton();
+
+        datePicker = findViewById(R.id.dateOfBirthPicker);
+        int year = sharedPreferences.getInt("Year", 2019);
+        int month = sharedPreferences.getInt("Month", 1);
+        int day = sharedPreferences.getInt("Day", 1);
+        datePicker.updateDate(year, month, day);
+        datePicker.setMaxDate(System.currentTimeMillis());
     }
 
     private void setGenderOnClickListeners() {
-        maleButton = findViewById(R.id.buttonMale);
-        femaleButton = findViewById(R.id.buttonFemale);
 
         maleButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,8 +162,6 @@ public class UserActivity extends AppCompatActivity {
     }
 
     private void setGoalOnClickListeners() {
-        loseWeightButton = findViewById(R.id.buttonLoseWeight);
-        gainMuscleButton = findViewById(R.id.buttonGainMuscle);
 
         loseWeightButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,8 +204,7 @@ public class UserActivity extends AppCompatActivity {
 
 
     private void saveUserData() {
-        SharedPreferences user_settings = getSharedPreferences(USER, MODE_PRIVATE);
-        SharedPreferences.Editor editor = user_settings.edit();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
 
         //name
         String name = nameEditText.getText().toString();
@@ -235,9 +253,7 @@ public class UserActivity extends AppCompatActivity {
         editor.putBoolean("Notifications on", true);
 
         editor.apply();
-
-        setFirstLoginFalse();
-    }
+        }
 
     public boolean checkDataValidity() {
         int name_length = nameEditText.getText().toString().length();
@@ -250,59 +266,6 @@ public class UserActivity extends AppCompatActivity {
         }
         else
             return true;
-    }
-
-    @Override
-    public void onBackPressed() {
-        Toast toast = Toast.makeText(getApplicationContext(), R.string.login_negative, Toast.LENGTH_LONG);
-        toast.show();
-    }
-
-
-    public void setFirstLoginFalse() {
-        SharedPreferences first = getSharedPreferences(MainActivity.FIRST, MODE_PRIVATE);
-        SharedPreferences.Editor first_editor = first.edit();
-        first_editor.putBoolean("First", false);
-        first_editor.putBoolean("Load database", true);
-        first_editor.apply();
-    }
-
-    public void startNotifications() {
-
-        PackageManager pm = this.getPackageManager();
-        ComponentName receiver = new ComponentName(this, BootReceiver.class);
-        Intent intent = new Intent(this, NotificationReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-
-        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + INTERVAL,  INTERVAL, pendingIntent);
-        pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
-    }
-
-
-    public void startResetWater() {
-
-        PackageManager pm = this.getPackageManager();
-        ComponentName receiver = new ComponentName(this, BootReceiver.class);
-        Intent intent = new Intent(this, ResetWaterReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 101, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-
-        if(calendar.before(Calendar.getInstance())){
-            calendar.add(Calendar.DATE, 1);
-        }
-
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        //    alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-        //}
-
-        pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
     }
 
 }

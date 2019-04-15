@@ -115,6 +115,7 @@ public class WeightActivity extends NavigationActivity implements NewWeightItemD
     private void drawChart() {
         chart = (LineChart) findViewById(R.id.chartWeight);
         chart.setOnChartValueSelectedListener(this);
+        chart.setNoDataTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorPrimary));
         XAxis xAxis = chart.getXAxis();
         xAxis.setValueFormatter(new DateFormatter());
         xAxis.setDrawAxisLine(true);
