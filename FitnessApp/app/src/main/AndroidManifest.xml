@@ -61,6 +61,18 @@
         <activity
             android:name=".ExerciseInfoActivity"
             android:label="@string/title_activity_exercise_info"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MeasurementsActivity"
+            android:label="@string/title_activity_measurements"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MeasurementsGraphActivity"
+            android:label="@string/title_activity_measurements_graph"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
