@@ -51,15 +51,14 @@ public class SettingsActivity extends NavigationActivity {
         sharedPreferences = getSharedPreferences(UserActivity.USER, MODE_PRIVATE);
 
 
-        notificationSwitch = (Switch)findViewById(R.id.notificationSwitch);
+        notificationSwitch = (Switch) findViewById(R.id.notificationSwitch);
         notificationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                if(isChecked){
+                if (isChecked) {
                     editor.putBoolean("Notifications on", true);
-                }
-                else {
+                } else {
                     editor.putBoolean("Notifications on", false);
                 }
                 editor.apply();
@@ -73,12 +72,11 @@ public class SettingsActivity extends NavigationActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkDataValidity()){
+                if (checkDataValidity()) {
                     saveUserData();
                     Toast toast = Toast.makeText(getApplicationContext(), "Changes saved.", Toast.LENGTH_LONG);
                     toast.show();
-                }
-                else {
+                } else {
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.login_negative, Toast.LENGTH_LONG);
                     toast.show();
                 }
@@ -154,8 +152,7 @@ public class SettingsActivity extends NavigationActivity {
         if (male) {
             maleButton.setImageDrawable(getResources().getDrawable(R.drawable.gender_male));
             femaleButton.setImageDrawable(getResources().getDrawable(R.drawable.gender_female_disabled));
-        }
-        else {
+        } else {
             femaleButton.setImageDrawable(getResources().getDrawable(R.drawable.gender_female));
             maleButton.setImageDrawable(getResources().getDrawable(R.drawable.gender_male_disabled));
         }
@@ -166,7 +163,7 @@ public class SettingsActivity extends NavigationActivity {
         loseWeightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(lose_weight)
+                if (lose_weight)
                     lose_weight = false;
                 else
                     lose_weight = true;
@@ -177,7 +174,7 @@ public class SettingsActivity extends NavigationActivity {
         gainMuscleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(gain_muscle)
+                if (gain_muscle)
                     gain_muscle = false;
                 else
                     gain_muscle = true;
@@ -187,18 +184,16 @@ public class SettingsActivity extends NavigationActivity {
     }
 
     private void setLoseWeightButton() {
-        if(lose_weight) {
+        if (lose_weight) {
             loseWeightButton.setImageDrawable(getResources().getDrawable(R.drawable.goal_lose));
-        }
-        else
+        } else
             loseWeightButton.setImageDrawable(getResources().getDrawable(R.drawable.goal_lose_disabled));
     }
 
     private void setMuscleButton() {
-        if(gain_muscle) {
+        if (gain_muscle) {
             gainMuscleButton.setImageDrawable(getResources().getDrawable(R.drawable.goal_muscle));
-        }
-        else
+        } else
             gainMuscleButton.setImageDrawable(getResources().getDrawable(R.drawable.goal_muscle_disabled));
     }
 
@@ -226,6 +221,14 @@ public class SettingsActivity extends NavigationActivity {
         editor.putBoolean("Lose weight", lose_weight);
         editor.putBoolean("Gain muscle", gain_muscle);
 
+        SharedPreferences workout_settings = getSharedPreferences(MainActivity.WORKOUT, MODE_PRIVATE);
+        SharedPreferences.Editor workout_editor = workout_settings.edit();
+
+        if (gain_muscle) workout_editor.putString("Workout type", "Lower body");
+        else workout_editor.putString("Workout type", "Cardio 1");
+
+        workout_editor.apply();
+
         //goal weight
         float goal_weight = Float.parseFloat(goalWeightEditText.getText().toString());
         editor.putFloat("Goal weight", goal_weight);
@@ -239,21 +242,10 @@ public class SettingsActivity extends NavigationActivity {
         int day = datePicker.getDayOfMonth();
         editor.putInt("Day", day);
 
-        Calendar c = Calendar.getInstance();
-        int reg_year = c.get(Calendar.YEAR);
-        //int reg_month = c.get(Calendar.MONTH) + 1;
-        int reg_month = c.get(Calendar.MONTH);
-
-        int reg_day = c.get(Calendar.DAY_OF_MONTH);
-
-        editor.putInt("Registration year", reg_year);
-        editor.putInt("Registration month", reg_month);
-        editor.putInt("Registration day", reg_day);
-
         editor.putBoolean("Notifications on", true);
 
         editor.apply();
-        }
+    }
 
     public boolean checkDataValidity() {
         int name_length = nameEditText.getText().toString().length();
@@ -261,10 +253,9 @@ public class SettingsActivity extends NavigationActivity {
         int height_length = heightEditText.getText().toString().length();
         int goal_length = goalWeightEditText.getText().toString().length();
 
-        if(name_length == 0 || weight_length == 0 || height_length == 0 || goal_length == 0 || (!female && !male) || (!lose_weight && !gain_muscle)) {
+        if (name_length == 0 || weight_length == 0 || height_length == 0 || goal_length == 0 || (!female && !male) || (!lose_weight && !gain_muscle)) {
             return false;
-        }
-        else
+        } else
             return true;
     }
 

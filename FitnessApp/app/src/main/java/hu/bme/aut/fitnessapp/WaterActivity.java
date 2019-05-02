@@ -17,7 +17,7 @@ import android.widget.Toast;
 import hu.bme.aut.fitnessapp.fragments.EditWaterDialogFragment;
 import hu.bme.aut.fitnessapp.fragments.NewWaterDialogFragment;
 
-public class WaterActivity extends NavigationActivity implements NewWaterDialogFragment.NewWaterDialogListener, EditWaterDialogFragment.EditWaterDialogListener{
+public class WaterActivity extends NavigationActivity implements NewWaterDialogFragment.NewWaterDialogListener, EditWaterDialogFragment.EditWaterDialogListener {
 
     private float recommended;
     private float water;
@@ -54,7 +54,7 @@ public class WaterActivity extends NavigationActivity implements NewWaterDialogF
     }
 
     public void setConsumedWaterClick() {
-        consumedWaterTV = (TextView)findViewById(R.id.consumedWaterTextView);
+        consumedWaterTV = (TextView) findViewById(R.id.consumedWaterTextView);
         consumedWaterTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,13 +64,13 @@ public class WaterActivity extends NavigationActivity implements NewWaterDialogF
     }
 
     public void setRecommendedWaterText() {
-        TextView recommendedWaterTV = (TextView)findViewById(R.id.recommendedWaterTextView);
+        TextView recommendedWaterTV = (TextView) findViewById(R.id.recommendedWaterTextView);
         SharedPreferences user = getSharedPreferences(UserActivity.USER, MODE_PRIVATE);
         SharedPreferences.Editor editor = user.edit();
         float current_weight = user.getFloat("Current weight", 0);
         editor.apply();
 
-        recommended = (float)(current_weight * 0.033 + 1);
+        recommended = (float) (current_weight * 0.033 + 1);
         double display = Math.round(recommended * 10d) / 10d;
         String text = Double.toString(display) + " " + getString(R.string.litre);
         recommendedWaterTV.setText(text);
@@ -90,12 +90,12 @@ public class WaterActivity extends NavigationActivity implements NewWaterDialogF
     }
 
     public void setBottleImage() {
-        ImageView bottle = (ImageView)findViewById(R.id.consumedWaterImage);
-        int percent = (int)((water / recommended) * 100);
+        ImageView bottle = (ImageView) findViewById(R.id.consumedWaterImage);
+        int percent = (int) ((water / recommended) * 100);
         setPercentText(percent);
         drawRecommendedCompleted(percent);
-        for(int i = 100; i >= 0; i=i-10) {
-            if(percent >= i) {
+        for (int i = 100; i >= 0; i = i - 10) {
+            if (percent >= i) {
                 String name = "bottle" + i;
                 int id = getResources().getIdentifier(name, "drawable", getPackageName());
                 bottle.setImageResource(id);
@@ -105,19 +105,18 @@ public class WaterActivity extends NavigationActivity implements NewWaterDialogF
     }
 
     public void setPercentText(int percent) {
-        TextView percentTextView = (TextView)findViewById(R.id.percentTextView);
+        TextView percentTextView = (TextView) findViewById(R.id.percentTextView);
         String percentString = percent + "%" + " complete";
         percentTextView.setText(percentString);
     }
 
     public void drawRecommendedCompleted(int percent) {
-        ImageView fireworkImageView = (ImageView)findViewById(R.id.fireWorkImageView);
-        ImageView celebrationImageView = (ImageView)findViewById(R.id.celebrationImageView);
-        if(percent >= 100) {
+        ImageView fireworkImageView = (ImageView) findViewById(R.id.fireWorkImageView);
+        ImageView celebrationImageView = (ImageView) findViewById(R.id.celebrationImageView);
+        if (percent >= 100) {
             fireworkImageView.setVisibility(View.VISIBLE);
             celebrationImageView.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             fireworkImageView.setVisibility(View.INVISIBLE);
             celebrationImageView.setVisibility(View.INVISIBLE);
         }

@@ -57,7 +57,10 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.WeightView
 
     public void update(List<WeightItem> weightItems) {
         items.clear();
-        items.addAll(weightItems);
+        for(int i = 0; i < weightItems.size(); i++){
+            addItem(weightItems.get(i));
+        }
+        //items.addAll(weightItems);
         notifyDataSetChanged();
     }
 

@@ -34,7 +34,7 @@ import hu.bme.aut.fitnessapp.data.location.LocationItem;
 import hu.bme.aut.fitnessapp.data.location.LocationListDatabase;
 
 
-public class ChooseLocationItemDialogFragment extends DialogFragment implements ChooseLocationAdapter.LocationItemSelectedListener{
+public class ChooseLocationItemDialogFragment extends DialogFragment implements ChooseLocationAdapter.LocationItemSelectedListener {
 
     private ChooseLocationAdapter adapter;
     private LocationListDatabase database;
@@ -42,6 +42,7 @@ public class ChooseLocationItemDialogFragment extends DialogFragment implements 
     private TextView noLocationTV;
 
     private ChooseLocationItemDialogFragment.ChooseLocationItemDialogListener listener;
+
     public interface ChooseLocationItemDialogListener {
         void onLocationItemChosen();
     }
@@ -103,7 +104,7 @@ public class ChooseLocationItemDialogFragment extends DialogFragment implements 
             @Override
             protected void onPostExecute(List<LocationItem> locationItems) {
                 adapter.update(locationItems);
-                if(locationItems.isEmpty()){
+                if (locationItems.isEmpty()) {
                     noLocationTV.setVisibility(View.VISIBLE);
                 }
             }
@@ -115,6 +116,7 @@ public class ChooseLocationItemDialogFragment extends DialogFragment implements 
     public void onItemSelected(LocationItem item, int position) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("Location", item.location_id);
+        editor.putString("Location Name", item.location_name);
         editor.apply();
         listener.onLocationItemChosen();
         dismiss();

@@ -42,14 +42,13 @@ public class NewGoalReachedDialogFragment extends DialogFragment {
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                            dismiss();
-                        }
+                        dismiss();
+                    }
                 })
                 .create();
     }
 
     private View getContentView() {
-        final View contentView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_goal_reached, null);
-        return contentView;
+        return LayoutInflater.from(getContext()).inflate(R.layout.dialog_goal_reached, null);
     }
 }

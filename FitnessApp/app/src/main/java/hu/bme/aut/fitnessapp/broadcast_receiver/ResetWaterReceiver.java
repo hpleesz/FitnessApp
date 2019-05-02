@@ -16,7 +16,7 @@ import hu.bme.aut.fitnessapp.WaterActivity;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class ResetWaterReceiver extends BroadcastReceiver{
+public class ResetWaterReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -36,14 +36,11 @@ public class ResetWaterReceiver extends BroadcastReceiver{
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
 
-        if(calendar.before(Calendar.getInstance())){
+        if (calendar.before(Calendar.getInstance())) {
             calendar.add(Calendar.DATE, 1);
         }
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        //    alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-        //}
 
         pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
     }

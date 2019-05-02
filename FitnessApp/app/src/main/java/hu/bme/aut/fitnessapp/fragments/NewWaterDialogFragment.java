@@ -59,7 +59,7 @@ public class NewWaterDialogFragment extends DialogFragment {
 
     private View getContentView() {
         final View contentView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_new_water, null);
-        TextView title = (TextView)contentView.findViewById(R.id.waterFragmentTitle);
+        TextView title = (TextView) contentView.findViewById(R.id.waterFragmentTitle);
         title.setText(R.string.new_entry);
         amountEditText = contentView.findViewById(R.id.waterAmountEditText);
 
@@ -76,7 +76,6 @@ public class NewWaterDialogFragment extends DialogFragment {
         }
         return water;
     }
-
 
 
 }

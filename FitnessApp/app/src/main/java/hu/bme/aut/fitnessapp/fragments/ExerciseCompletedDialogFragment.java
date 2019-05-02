@@ -30,6 +30,7 @@ public class ExerciseCompletedDialogFragment extends DialogFragment {
     public interface ExerciseCompletedListener {
         void onExerciseCompleted();
     }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +62,7 @@ public class ExerciseCompletedDialogFragment extends DialogFragment {
     private View getContentView() {
         final View contentView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_goal_reached, null);
         TextView title = contentView.findViewById(R.id.goalReachedTitle);
-        title.setText("Workout completed!");
+        title.setText(R.string.workout_completed);
         return contentView;
     }
 }

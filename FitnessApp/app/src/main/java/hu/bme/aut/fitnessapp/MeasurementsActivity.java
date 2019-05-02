@@ -22,7 +22,7 @@ import hu.bme.aut.fitnessapp.data.measurement.MeasurementDatabase;
 import hu.bme.aut.fitnessapp.data.measurement.MeasurementItem;
 import hu.bme.aut.fitnessapp.fragments.NewMeasurementItemDialogFragment;
 
-public class MeasurementsActivity  extends NavigationActivity {
+public class MeasurementsActivity extends NavigationActivity {
 
     private ImageView measurementsMale;
     private MeasurementDatabase database;
@@ -35,11 +35,10 @@ public class MeasurementsActivity  extends NavigationActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences(UserActivity.USER, MODE_PRIVATE);
         View contentView;
-        if(sharedPreferences.getBoolean("Male", true)){
+        if (sharedPreferences.getBoolean("Male", true)) {
             contentView = inflater.inflate(R.layout.activity_measurements_male, null, false);
 
-        }
-        else {
+        } else {
             contentView = inflater.inflate(R.layout.activity_measurements_female, null, false);
 
         }
@@ -80,34 +79,34 @@ public class MeasurementsActivity  extends NavigationActivity {
 
     public void setCurrentMeasurements() {
         ArrayList<TextView> textViews = new ArrayList<>();
-        TextView shoulderTextView = (TextView)findViewById(R.id.shoulderTextView);
+        TextView shoulderTextView = (TextView) findViewById(R.id.shoulderTextView);
         textViews.add(shoulderTextView);
-        TextView chestTextView = (TextView)findViewById(R.id.chestTextView);
+        TextView chestTextView = (TextView) findViewById(R.id.chestTextView);
         textViews.add(chestTextView);
-        TextView waistTextView = (TextView)findViewById(R.id.waistTextView);
+        TextView waistTextView = (TextView) findViewById(R.id.waistTextView);
         textViews.add(waistTextView);
-        TextView hipsTextView = (TextView)findViewById(R.id.hipsTextView);
+        TextView hipsTextView = (TextView) findViewById(R.id.hipsTextView);
         textViews.add(hipsTextView);
-        TextView rightUpperArmTextView = (TextView)findViewById(R.id.rightUpperArmTextView);
+        TextView rightUpperArmTextView = (TextView) findViewById(R.id.rightUpperArmTextView);
         textViews.add(rightUpperArmTextView);
-        TextView leftUpperArmTextView = (TextView)findViewById(R.id.leftUpperArmTextView);
+        TextView leftUpperArmTextView = (TextView) findViewById(R.id.leftUpperArmTextView);
         textViews.add(leftUpperArmTextView);
-        TextView rightForearmTextView = (TextView)findViewById(R.id.rightForearmTextView);
+        TextView rightForearmTextView = (TextView) findViewById(R.id.rightForearmTextView);
         textViews.add(rightForearmTextView);
-        TextView leftForearmTextView = (TextView)findViewById(R.id.leftForearmTextView);
+        TextView leftForearmTextView = (TextView) findViewById(R.id.leftForearmTextView);
         textViews.add(leftForearmTextView);
-        TextView rightThighTextView = (TextView)findViewById(R.id.rightThighTextView);
+        TextView rightThighTextView = (TextView) findViewById(R.id.rightThighTextView);
         textViews.add(rightThighTextView);
-        TextView leftThighTextView = (TextView)findViewById(R.id.leftThighTextView);
+        TextView leftThighTextView = (TextView) findViewById(R.id.leftThighTextView);
         textViews.add(leftThighTextView);
-        TextView rightCalfTextView = (TextView)findViewById(R.id.rightCalfTextView);
+        TextView rightCalfTextView = (TextView) findViewById(R.id.rightCalfTextView);
         textViews.add(rightCalfTextView);
-        TextView leftCalfTextView = (TextView)findViewById(R.id.leftCalfTextView);
+        TextView leftCalfTextView = (TextView) findViewById(R.id.leftCalfTextView);
         textViews.add(leftCalfTextView);
 
         SharedPreferences sharedPreferences = getSharedPreferences(MeasurementsGraphActivity.MEASUREMENTS, MODE_PRIVATE);
-        for(int i = 0; i < NewMeasurementItemDialogFragment.body_parts.length; i++) {
-            String text = sharedPreferences.getString(NewMeasurementItemDialogFragment.body_parts[i],"--");
+        for (int i = 0; i < NewMeasurementItemDialogFragment.body_parts.length; i++) {
+            String text = sharedPreferences.getString(NewMeasurementItemDialogFragment.body_parts[i], "--");
             textViews.get(i).setText(text + " " + getString(R.string.cm));
         }
     }

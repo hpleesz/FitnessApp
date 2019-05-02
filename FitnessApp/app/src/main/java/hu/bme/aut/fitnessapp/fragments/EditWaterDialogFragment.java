@@ -65,7 +65,7 @@ public class EditWaterDialogFragment extends DialogFragment {
 
     private View getContentView() {
         final View contentView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_new_water, null);
-        TextView title = (TextView)contentView.findViewById(R.id.waterFragmentTitle);
+        TextView title = (TextView) contentView.findViewById(R.id.waterFragmentTitle);
         title.setText(R.string.edit);
         amountEditText = contentView.findViewById(R.id.waterAmountEditText);
         water_consumed = getActivity().getSharedPreferences(WaterActivity.WATER, MODE_PRIVATE);

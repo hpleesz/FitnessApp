@@ -4,12 +4,14 @@ package hu.bme.aut.fitnessapp.data.exercise;
 import android.annotation.SuppressLint;
 import android.arch.persistence.room.Room;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -20,17 +22,20 @@ import android.widget.VideoView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import hu.bme.aut.fitnessapp.ExerciseListActivity;
+import hu.bme.aut.fitnessapp.MainActivity;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.data.equipment.EquipmentItem;
 
 
-public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ExerciseListViewHolder>{
+public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ExerciseListViewHolder> {
 
     private final ArrayList<ExerciseItem> items;
     private Context context;
     private List<EquipmentItem> equipmentItemList;
+    private SharedPreferences sharedPreferences;
 
 
     public ExerciseAdapter(ArrayList<ExerciseItem> items, List<EquipmentItem> equipmentItems) {
@@ -47,6 +52,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
                 .from(parent.getContext())
                 .inflate(R.layout.item_exercise_list, parent, false);
         context = parent.getContext();
+        sharedPreferences = context.getSharedPreferences(MainActivity.WORKOUT, Context.MODE_PRIVATE);
         return new ExerciseAdapter.ExerciseListViewHolder(itemView);
     }
 
@@ -59,12 +65,12 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
         holder.videoView.setVisibility(View.GONE);
         holder.placeHolder.setVisibility(View.VISIBLE);
 
-        if(item.reps_time == 0) holder.repsTextView.setText(R.string.reps);
+        if (item.reps_time == 0) holder.repsTextView.setText(R.string.reps);
         else holder.repsTextView.setText(R.string.time);
 
         String muscles = item.exercise_muscles.get(0);
-        if(item.exercise_muscles.size() > 1) {
-            for (int i = 1; i < item.exercise_muscles.size(); i++){
+        if (item.exercise_muscles.size() > 1) {
+            for (int i = 1; i < item.exercise_muscles.size(); i++) {
                 muscles = muscles + ", " + item.exercise_muscles.get(i);
             }
         }
@@ -72,12 +78,13 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
 
         String equipments = "";
 
-        for(int i = 0; i < equipmentItemList.size(); i++){
-            for(int j = 0; j < equipmentItemList.size(); j++){
-                if(item.equipment1 == equipmentItemList.get(i).equipment_id && item.equipment2 == equipmentItemList.get(j).equipment_id){
-                    if(i == 0) equipments = equipmentItemList.get(j).equipment_name;
-                    else if(j == 0) equipments = equipmentItemList.get(i).equipment_name;
-                    else equipments = equipmentItemList.get(i).equipment_name + ", " + equipmentItemList.get(j).equipment_name;
+        for (int i = 0; i < equipmentItemList.size(); i++) {
+            for (int j = 0; j < equipmentItemList.size(); j++) {
+                if (item.equipment1 == equipmentItemList.get(i).equipment_id && item.equipment2 == equipmentItemList.get(j).equipment_id) {
+                    if (i == 0) equipments = equipmentItemList.get(j).equipment_name;
+                    else if (j == 0) equipments = equipmentItemList.get(i).equipment_name;
+                    else
+                        equipments = equipmentItemList.get(i).equipment_name + ", " + equipmentItemList.get(j).equipment_name;
 
                 }
             }
@@ -120,6 +127,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
         TextView equipmentTextView;
         ExerciseItem item;
         VideoView videoView;
+        TextureView textureView;
         View placeHolder;
 
         ExerciseListViewHolder(final View itemView) {
@@ -130,6 +138,8 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
             repsTextView = itemView.findViewById(R.id.ExerciseItemRepsTextView);
             musclesTextView = itemView.findViewById(R.id.ExerciseItemMusclesTextView);
             videoView = itemView.findViewById(R.id.videoView);
+            videoView.start();
+
             videoView.setVisibility(View.GONE);
 
 
@@ -140,9 +150,10 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
                         videoView.start();
                     } else {
                         videoView.pause();
-                }
+                    }
                 }
             });
+
 
 
             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -152,7 +163,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
                     mp.setOnInfoListener(new MediaPlayer.OnInfoListener() {
                         @Override
                         public boolean onInfo(MediaPlayer mp, int what, int extra) {
-                            if(what == MediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START) {
+                            if (what == MediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START) {
                                 placeHolder.setVisibility(View.GONE);
                                 return true;
                             }
@@ -161,6 +172,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
                     });
                 }
             });
+
 
             itemView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
                 @Override
@@ -181,4 +193,42 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
         }
     }
 
+    /*
+    private void replaceExercise(int position) {
+        String workout_type = sharedPreferences.getString("Workout type", "Lower body");
+        ArrayList<String> body_parts = new ArrayList<>();
+        int idx = 0;
+        String bodypart = "";
+        switch (workout_type) {
+            case "Upper body":
+                idx = getRandomNumber(MainActivity.upper_body_parts.length);
+                bodypart = MainActivity.upper_body_parts[idx];
+                break;
+
+            case "Lower body":
+                idx = getRandomNumber(MainActivity.lower_body_parts.length);
+                bodypart = MainActivity.lower_body_parts[idx];
+                break;
+
+            case "Cardio 1":
+            case "Cardio 2":
+                int upper_or_lower = getRandomNumber(2);
+                if(upper_or_lower == 0) {
+                    idx = getRandomNumber(MainActivity.upper_body_parts.length);
+                    bodypart = MainActivity.upper_body_parts[idx];
+                }
+                else {
+                    idx = getRandomNumber(MainActivity.lower_body_parts.length);
+                    bodypart = MainActivity.lower_body_parts[idx];
+                }
+                break;
+        }
+
+    }
+
+    public int getRandomNumber(int max) {
+        Random r = new Random();
+        return r.nextInt(max);
+    }
+    */
 }

@@ -32,13 +32,9 @@ import hu.bme.aut.fitnessapp.data.weight.WeightListDatabase;
 
 public class NewMeasurementItemDialogFragment extends DialogFragment {
 
-    private EditText valueEditText;
     private DatePicker datePicker;
     private MeasurementDatabase database;
     private List<MeasurementItem> list;
-    private int reg_day;
-    private int reg_month;
-    private int reg_year;
     private String alreadyExists;
 
 
@@ -86,17 +82,15 @@ public class NewMeasurementItemDialogFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Calendar c = Calendar.getInstance();
-                        if(getMeasurementItems().size() == 0) {
+                        if (getMeasurementItems().size() == 0) {
                             dismiss();
-                            Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), "No values entered.", Toast.LENGTH_LONG);
+                            Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), R.string.no_values_entered, Toast.LENGTH_LONG);
                             toast.show();
-                        }
-                        else if(alreadyExists(getMeasurementItems())) {
+                        } else if (alreadyExists(getMeasurementItems())) {
                             dismiss();
-                            Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), "Measurements for " + alreadyExists + " already entered for this date.", Toast.LENGTH_LONG);
+                            Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), getString(R.string.measurements_for) + " " + alreadyExists + " " + getString(R.string.already_entered), Toast.LENGTH_LONG);
                             toast.show();
-                        }
-                        else{
+                        } else {
                             ArrayList<MeasurementItem> items = getMeasurementItems();
                             listener.onMeasurementItemsCreated(items);
 
@@ -109,15 +103,14 @@ public class NewMeasurementItemDialogFragment extends DialogFragment {
 
     private View getContentView() {
         final View contentView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_new_measurement, null);
-        TextView title = (TextView)contentView.findViewById(R.id.measurementFragmentTitle);
+        TextView title = (TextView) contentView.findViewById(R.id.measurementFragmentTitle);
         title.setText(R.string.new_entry);
-        valueEditText = contentView.findViewById(R.id.weightValueEditText);
         datePicker = contentView.findViewById(R.id.datePicker);
         datePicker.setMaxDate(System.currentTimeMillis());
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(UserActivity.USER, Context.MODE_PRIVATE);
-        reg_day = sharedPreferences.getInt("Registration day", 0);
-        reg_month = sharedPreferences.getInt("Registration month", 0);
-        reg_year = sharedPreferences.getInt("Registration year", 0);
+        int reg_day = sharedPreferences.getInt("Registration day", 0);
+        int reg_month = sharedPreferences.getInt("Registration month", 0);
+        int reg_year = sharedPreferences.getInt("Registration year", 0);
         Calendar c = Calendar.getInstance();
         c.set(reg_year, reg_month, reg_day);
         datePicker.setMinDate(c.getTimeInMillis());
@@ -149,13 +142,12 @@ public class NewMeasurementItemDialogFragment extends DialogFragment {
         editTexts.add(leftCalfEditText);
 
 
-
         return contentView;
     }
 
     private ArrayList<MeasurementItem> getMeasurementItems() {
         ArrayList<MeasurementItem> newItems = new ArrayList<>();
-        for(int i = 0; i < 12; i++){
+        for (int i = 0; i < 12; i++) {
             MeasurementItem measurementItem = new MeasurementItem();
             measurementItem.measurement_day = datePicker.getDayOfMonth();
             measurementItem.measurement_month = datePicker.getMonth();
@@ -169,7 +161,7 @@ public class NewMeasurementItemDialogFragment extends DialogFragment {
                 measurementItem.measurement_value = -1;
             }
 
-            if(measurementItem.measurement_value != -1)
+            if (measurementItem.measurement_value != -1)
                 newItems.add(measurementItem);
         }
 
@@ -189,9 +181,9 @@ public class NewMeasurementItemDialogFragment extends DialogFragment {
     }
 
 
-    public boolean alreadyExists(ArrayList<MeasurementItem> items){
+    public boolean alreadyExists(ArrayList<MeasurementItem> items) {
         boolean exists = false;
-        for(int j = 0; j < items.size(); j++) {
+        for (int j = 0; j < items.size(); j++) {
             for (int i = 0; i < list.size(); i++) {
                 if ((items.get(j).measurement_calculated == list.get(i).measurement_calculated) && items.get(j).body_part.equals(list.get(i).body_part)) {
                     if (!alreadyExists.equals(""))
@@ -206,7 +198,6 @@ public class NewMeasurementItemDialogFragment extends DialogFragment {
     }
 
     public int makeCalculatedMeasurement(int year, int fixedmonth, int day) {
-        int calculated = year * 10000 + fixedmonth * 100 + day;
-        return calculated;
+        return year * 10000 + fixedmonth * 100 + day;
     }
 }

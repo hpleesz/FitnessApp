@@ -26,9 +26,8 @@ import hu.bme.aut.fitnessapp.data.equipment.EquipmentListDatabase;
 import hu.bme.aut.fitnessapp.data.location.LocationAdapter;
 import hu.bme.aut.fitnessapp.data.location.LocationItem;
 
-public class EditLocationItemDialogFragment extends DialogFragment implements EquipmentAdapter.OnCheckBoxClicked{
+public class EditLocationItemDialogFragment extends DialogFragment implements EquipmentAdapter.OnCheckBoxClicked {
 
-    private int position;
     private LocationItem item;
 
     private EquipmentAdapter adapter;
@@ -65,7 +64,7 @@ public class EditLocationItemDialogFragment extends DialogFragment implements Eq
         } else {
             throw new RuntimeException("Activity must implement the EditLocationItemDialogListener interface!");
         }
-        position = getArguments().getInt("Position");
+        int position = getArguments().getInt("Position");
         item = (LocationItem) getArguments().getSerializable("Item");
     }
 
@@ -97,7 +96,7 @@ public class EditLocationItemDialogFragment extends DialogFragment implements Eq
 
     private View getContentView() {
         View contentView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_new_location_item, null);
-        TextView title = (TextView)contentView.findViewById(R.id.locationFragmentTitle);
+        TextView title = (TextView) contentView.findViewById(R.id.locationFragmentTitle);
         title.setText(R.string.edit_location);
         nameEditText = contentView.findViewById(R.id.LocationNameEditText);
         nameEditText.setText(item.location_name);
@@ -152,8 +151,6 @@ public class EditLocationItemDialogFragment extends DialogFragment implements Eq
 
         return locationItem;
     }
-
-
 
 
 }

@@ -14,6 +14,7 @@ import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -59,6 +60,8 @@ public class UserActivity extends AppCompatActivity {
     //2 hours + 45 minutes
     public static final int INTERVAL = 2 * 60 * 60 * 1000 + 45 * 60 * 1000;
 
+    private ExerciseListDatabase database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +74,7 @@ public class UserActivity extends AppCompatActivity {
         setFloatingActionButton();
         setGenderOnClickListeners();
         setGoalOnClickListeners();
+        //loadExercises();
 
     }
 
@@ -89,16 +93,16 @@ public class UserActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkDataValidity()){
+                if (checkDataValidity()) {
                     saveUserData();
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.login_positive, Toast.LENGTH_LONG);
                     toast.show();
                     startNotifications();
                     startResetWater();
                     //fillEquipments();
+                    loadExercises();
                     finish();
-                }
-                else {
+                } else {
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.login_negative, Toast.LENGTH_LONG);
                     toast.show();
                 }
@@ -133,8 +137,7 @@ public class UserActivity extends AppCompatActivity {
         if (male) {
             maleButton.setImageDrawable(getResources().getDrawable(R.drawable.gender_male));
             femaleButton.setImageDrawable(getResources().getDrawable(R.drawable.gender_female_disabled));
-        }
-        else {
+        } else {
             femaleButton.setImageDrawable(getResources().getDrawable(R.drawable.gender_female));
             maleButton.setImageDrawable(getResources().getDrawable(R.drawable.gender_male_disabled));
         }
@@ -147,7 +150,7 @@ public class UserActivity extends AppCompatActivity {
         loseWeightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(lose_weight)
+                if (lose_weight)
                     lose_weight = false;
                 else
                     lose_weight = true;
@@ -158,7 +161,7 @@ public class UserActivity extends AppCompatActivity {
         gainMuscleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(gain_muscle)
+                if (gain_muscle)
                     gain_muscle = false;
                 else
                     gain_muscle = true;
@@ -168,18 +171,16 @@ public class UserActivity extends AppCompatActivity {
     }
 
     private void setLoseWeightButton() {
-        if(lose_weight) {
+        if (lose_weight) {
             loseWeightButton.setImageDrawable(getResources().getDrawable(R.drawable.goal_lose));
-        }
-        else
+        } else
             loseWeightButton.setImageDrawable(getResources().getDrawable(R.drawable.goal_lose_disabled));
     }
 
     private void setMuscleButton() {
-        if(gain_muscle) {
+        if (gain_muscle) {
             gainMuscleButton.setImageDrawable(getResources().getDrawable(R.drawable.goal_muscle));
-        }
-        else
+        } else
             gainMuscleButton.setImageDrawable(getResources().getDrawable(R.drawable.goal_muscle_disabled));
     }
 
@@ -245,10 +246,9 @@ public class UserActivity extends AppCompatActivity {
         int height_length = heightEditText.getText().toString().length();
         int goal_length = goalWeightEditText.getText().toString().length();
 
-        if(name_length == 0 || weight_length == 0 || height_length == 0 || goal_length == 0 || (!female && !male) || (!lose_weight && !gain_muscle)) {
+        if (name_length == 0 || weight_length == 0 || height_length == 0 || goal_length == 0 || (!female && !male) || (!lose_weight && !gain_muscle)) {
             return false;
-        }
-        else
+        } else
             return true;
     }
 
@@ -275,7 +275,7 @@ public class UserActivity extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
 
-        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + INTERVAL,  INTERVAL, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + INTERVAL, INTERVAL, pendingIntent);
         pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
     }
 
@@ -293,7 +293,7 @@ public class UserActivity extends AppCompatActivity {
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
 
-        if(calendar.before(Calendar.getInstance())){
+        if (calendar.before(Calendar.getInstance())) {
             calendar.add(Calendar.DATE, 1);
         }
 
@@ -303,6 +303,64 @@ public class UserActivity extends AppCompatActivity {
         //}
 
         pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+    }
+
+    public void loadExercises() {
+
+        database = Room.databaseBuilder(
+                getApplicationContext(),
+                ExerciseListDatabase.class,
+                "exercises"
+        ).build();
+
+        final ArrayList<ExerciseItem> list = fillExerciseList();
+
+        new AsyncTask<Void, Void, List<ExerciseItem>>() {
+
+            @Override
+            protected List<ExerciseItem> doInBackground(Void... voids) {
+                for (int i = 0; i < list.size(); i++) {
+                    database.exerciseItemDao().insert(list.get(i));
+                }
+                return list;
+            }
+        }.execute();
+
+    }
+
+
+    public ArrayList<ExerciseItem> fillExerciseList() {
+        Resources resources = getResources();
+        String str;
+        ArrayList<ExerciseItem> exerciseItems = new ArrayList<>();
+
+        int resID = resources.getIdentifier("hu.bme.aut.fitnessapp:raw/" + "exercises", null, null);
+        InputStream is = resources.openRawResource(resID);
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            while ((str = br.readLine()) != null) {
+                String[] line = str.split("\t");
+                ExerciseItem newItem = new ExerciseItem();
+
+                newItem.exercise_name = line[0];
+
+                newItem.equipment1 = Integer.parseInt(line[1]);
+                newItem.equipment2 = Integer.parseInt(line[2]);
+                String[] muscles = line[3].split(", ");
+                ArrayList<String> musclesList = new ArrayList<>();
+                for (int i = 0; i < muscles.length; i++) {
+                    musclesList.add(muscles[i]);
+                }
+                newItem.exercise_muscles = musclesList;
+                newItem.reps_time = Integer.parseInt(line[4]);
+
+                exerciseItems.add(newItem);
+            }
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return exerciseItems;
     }
 
 }

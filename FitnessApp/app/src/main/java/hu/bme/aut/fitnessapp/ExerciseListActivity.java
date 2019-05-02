@@ -33,10 +33,9 @@ import hu.bme.aut.fitnessapp.fragments.ChooseLocationItemDialogFragment;
 
 public class ExerciseListActivity extends NavigationActivity {
 
-    private ExerciseAdapter adapter;
     private ArrayList<ExerciseItem> exerciseItems;
     private ArrayList<EquipmentItem> equipmentItemList;
-    private RecyclerView recyclerView;
+    private SharedPreferences sharedPreferences;
 
     public static String PACKAGE_NAME;
 
@@ -49,14 +48,18 @@ public class ExerciseListActivity extends NavigationActivity {
 
         navigationView.getMenu().getItem(0).setChecked(true);
 
+        PACKAGE_NAME = getApplicationContext().getPackageName();
+        sharedPreferences = getSharedPreferences(MainActivity.WORKOUT, MODE_PRIVATE);
+
+        getExtraFromIntent();
+        setFloatingActionButton();
+        initRecyclerView();
+    }
+
+    public void getExtraFromIntent() {
         Intent i = getIntent();
         exerciseItems = (ArrayList<ExerciseItem>) i.getSerializableExtra("list");
         equipmentItemList = (ArrayList<EquipmentItem>) i.getSerializableExtra("equipment");
-
-        PACKAGE_NAME = getApplicationContext().getPackageName();
-
-        setFloatingActionButton();
-        initRecyclerView();
     }
 
     public void setFloatingActionButton() {
@@ -65,6 +68,12 @@ public class ExerciseListActivity extends NavigationActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Workout started -> not completed
+                SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.WORKOUT, MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("Completed workout", false);
+                editor.apply();
+
                 Intent intent = new Intent(ExerciseListActivity.this, ExerciseInfoActivity.class);
                 intent.putExtra("exercises", exerciseItems);
                 intent.putExtra("equipment", equipmentItemList);
@@ -72,12 +81,15 @@ public class ExerciseListActivity extends NavigationActivity {
             }
         });
     }
+
     private void initRecyclerView() {
-        recyclerView = findViewById(R.id.ExerciseRecyclerView);
-        adapter = new ExerciseAdapter(exerciseItems, equipmentItemList);
+        RecyclerView recyclerView = findViewById(R.id.ExerciseRecyclerView);
+        ExerciseAdapter adapter = new ExerciseAdapter(exerciseItems, equipmentItemList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(adapter);
 
     }
+
+
 
 }

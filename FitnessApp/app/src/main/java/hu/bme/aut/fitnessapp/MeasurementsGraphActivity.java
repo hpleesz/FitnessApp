@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -25,8 +27,9 @@ import hu.bme.aut.fitnessapp.data.measurement.MeasurementItem;
 import hu.bme.aut.fitnessapp.fragments.MeasurementsGraphFragment;
 import hu.bme.aut.fitnessapp.fragments.NewLocationItemDialogFragment;
 import hu.bme.aut.fitnessapp.fragments.NewMeasurementItemDialogFragment;
+import hu.bme.aut.fitnessapp.fragments.PeriodSelectDialogFragment;
 
-public class MeasurementsGraphActivity extends NavigationActivity implements NewMeasurementItemDialogFragment.NewMeasurementDialogListener, MeasurementAdapter.MeasurementItemDeletedListener{
+public class MeasurementsGraphActivity extends NavigationActivity implements NewMeasurementItemDialogFragment.NewMeasurementDialogListener, MeasurementAdapter.MeasurementItemDeletedListener {
 
     private MeasurementDatabase database;
     private ViewPager viewPager;
@@ -97,7 +100,7 @@ public class MeasurementsGraphActivity extends NavigationActivity implements New
         }.execute();
     }
 
-    public void setCurrentValues(){
+    public void setCurrentValues() {
 
         new AsyncTask<Void, Void, Boolean>() {
 
@@ -105,13 +108,14 @@ public class MeasurementsGraphActivity extends NavigationActivity implements New
             protected Boolean doInBackground(Void... voids) {
                 SharedPreferences sharedPreferences = getSharedPreferences(MEASUREMENTS, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                for(int i = 0; i < NewMeasurementItemDialogFragment.body_parts.length; i++){
+                for (int i = 0; i < NewMeasurementItemDialogFragment.body_parts.length; i++) {
                     List<MeasurementItem> items = database.measurementItemDao().getMeasurementsWithBodyPart(NewMeasurementItemDialogFragment.body_parts[i]);
                     String value = "--";
-                    if(items.size() != 0) {
+                    if (items.size() != 0) {
                         int max = 0;
-                        for(int j = 1; j < items.size(); j++){
-                            if(items.get(j).measurement_calculated > items.get(max).measurement_calculated) max = j;
+                        for (int j = 1; j < items.size(); j++) {
+                            if (items.get(j).measurement_calculated > items.get(max).measurement_calculated)
+                                max = j;
                         }
                         value = Double.toString(items.get(max).measurement_value);
                     }
@@ -124,4 +128,5 @@ public class MeasurementsGraphActivity extends NavigationActivity implements New
         }.execute();
 
     }
+
 }

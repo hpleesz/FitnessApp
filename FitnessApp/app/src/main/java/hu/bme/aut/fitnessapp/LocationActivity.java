@@ -20,7 +20,7 @@ import hu.bme.aut.fitnessapp.data.location.LocationItem;
 import hu.bme.aut.fitnessapp.data.location.LocationListDatabase;
 import hu.bme.aut.fitnessapp.fragments.NewWaterDialogFragment;
 
-public class LocationActivity extends NavigationActivity implements NewLocationItemDialogFragment.NewLocationItemDialogListener, LocationAdapter.LocationItemDeletedListener, LocationAdapter.LocationItemSelectedListener, EditLocationItemDialogFragment.EditLocationItemDialogListener{
+public class LocationActivity extends NavigationActivity implements NewLocationItemDialogFragment.NewLocationItemDialogListener, LocationAdapter.LocationItemDeletedListener, LocationAdapter.LocationItemSelectedListener, EditLocationItemDialogFragment.EditLocationItemDialogListener {
 
     private LocationAdapter adapter;
     private LocationListDatabase database;
@@ -55,45 +55,45 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
         });
     }
 
-        private void initRecyclerView() {
-            RecyclerView recyclerView = findViewById(R.id.LocationRecyclerView);
-            adapter = new LocationAdapter(this, this);
-            loadItemsInBackground();
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setAdapter(adapter);
-        }
+    private void initRecyclerView() {
+        RecyclerView recyclerView = findViewById(R.id.LocationRecyclerView);
+        adapter = new LocationAdapter(this, this);
+        loadItemsInBackground();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+    }
 
-        private void loadItemsInBackground() {
-            new AsyncTask<Void, Void, List<LocationItem>>() {
+    private void loadItemsInBackground() {
+        new AsyncTask<Void, Void, List<LocationItem>>() {
 
-                @Override
-                protected List<LocationItem> doInBackground(Void... voids) {
-                    return database.locationItemDao().getAll();
-                }
+            @Override
+            protected List<LocationItem> doInBackground(Void... voids) {
+                return database.locationItemDao().getAll();
+            }
 
-                @Override
-                protected void onPostExecute(List<LocationItem> locationItems) {
-                    adapter.update(locationItems);
-                }
-            }.execute();
-        }
+            @Override
+            protected void onPostExecute(List<LocationItem> locationItems) {
+                adapter.update(locationItems);
+            }
+        }.execute();
+    }
 
-        @Override
-        public void onLocationItemCreated(final LocationItem newItem) {
-            new AsyncTask<Void, Void, LocationItem>() {
+    @Override
+    public void onLocationItemCreated(final LocationItem newItem) {
+        new AsyncTask<Void, Void, LocationItem>() {
 
-                @Override
-                protected LocationItem doInBackground(Void... voids) {
-                    newItem.location_id = (int)database.locationItemDao().insert(newItem);
-                    return newItem;
-                }
+            @Override
+            protected LocationItem doInBackground(Void... voids) {
+                newItem.location_id = (int) database.locationItemDao().insert(newItem);
+                return newItem;
+            }
 
-                @Override
-                protected void onPostExecute(LocationItem locationItem) {
-                    adapter.addItem(locationItem);
-                }
-            }.execute();
-        }
+            @Override
+            protected void onPostExecute(LocationItem locationItem) {
+                adapter.addItem(locationItem);
+            }
+        }.execute();
+    }
 
     @Override
     public void onLocationItemUpdated(final LocationItem newItem) {
@@ -112,34 +112,34 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
         }.execute();
     }
 
-        @Override
-        public void onItemDeleted(final LocationItem item) {
-            new AsyncTask<Void, Void, LocationItem>() {
+    @Override
+    public void onItemDeleted(final LocationItem item) {
+        new AsyncTask<Void, Void, LocationItem>() {
 
-                @Override
-                protected LocationItem doInBackground(Void... voids) {
-                    database.locationItemDao().deleteItem(item);
-                    return item;
-                }
+            @Override
+            protected LocationItem doInBackground(Void... voids) {
+                database.locationItemDao().deleteItem(item);
+                return item;
+            }
 
-                @Override
-                protected void onPostExecute(LocationItem locationItem) {
-                    adapter.deleteItem(locationItem);
-                }
-            }.execute();
-        }
+            @Override
+            protected void onPostExecute(LocationItem locationItem) {
+                adapter.deleteItem(locationItem);
+            }
+        }.execute();
+    }
 
-        @Override
-        public void onItemSelected(final LocationItem item, int position) {
-            Bundle bundle = new Bundle();
-            bundle.putInt("Position", position);
-            bundle.putSerializable("Item", item);
-            EditLocationItemDialogFragment fragment = new EditLocationItemDialogFragment();
-            fragment.setArguments(bundle);
-            fragment.show(getSupportFragmentManager(), EditLocationItemDialogFragment.TAG);
-
-        }
-
+    @Override
+    public void onItemSelected(final LocationItem item, int position) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("Position", position);
+        bundle.putSerializable("Item", item);
+        EditLocationItemDialogFragment fragment = new EditLocationItemDialogFragment();
+        fragment.setArguments(bundle);
+        fragment.show(getSupportFragmentManager(), EditLocationItemDialogFragment.TAG);
 
     }
+
+
+}
 

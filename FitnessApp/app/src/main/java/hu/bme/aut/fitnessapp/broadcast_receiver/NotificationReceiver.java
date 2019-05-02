@@ -23,7 +23,7 @@ import hu.bme.aut.fitnessapp.WaterActivity;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class NotificationReceiver extends BroadcastReceiver{
+public class NotificationReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -40,19 +40,19 @@ public class NotificationReceiver extends BroadcastReceiver{
                 .setUsage(AudioAttributes.USAGE_NOTIFICATION)
                 .build();
 
-        if(Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                CharSequence name = "Channel name";
-                String description = "Channel description";
-                int importance = NotificationManager.IMPORTANCE_HIGH;
-                NotificationChannel channel = new NotificationChannel("default", name, importance);
-                channel.setDescription(description);
-                channel.enableLights(true);
-                channel.enableVibration(true);
-                channel.setVibrationPattern(new long[] { 1000 , 1000 , 1000, 1000});
-                channel.setLightColor(Color.BLUE);
-                channel.setSound(Settings.System.DEFAULT_NOTIFICATION_URI, audioAttributes );
-                notificationManager = context.getSystemService(NotificationManager.class);
-                notificationManager.createNotificationChannel(channel);
+        if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            CharSequence name = "Channel name";
+            String description = "Channel description";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel("default", name, importance);
+            channel.setDescription(description);
+            channel.enableLights(true);
+            channel.enableVibration(true);
+            channel.setVibrationPattern(new long[]{1000, 1000, 1000, 1000});
+            channel.setLightColor(Color.BLUE);
+            channel.setSound(Settings.System.DEFAULT_NOTIFICATION_URI, audioAttributes);
+            notificationManager = context.getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
         }
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "default")
                 .setContentIntent(pendingIntent)
@@ -65,18 +65,18 @@ public class NotificationReceiver extends BroadcastReceiver{
         SharedPreferences water = context.getSharedPreferences(WaterActivity.WATER, MODE_PRIVATE);
         float consumed = water.getFloat("Consumed", 0);
         float recommended = water.getFloat("Recommended", 0);
-        int percent = (int)((consumed / recommended) * 100);
+        int percent = (int) ((consumed / recommended) * 100);
         builder.setContentText("You are at " + percent + "% of your recommended water intake.");
 
         Date currentTime = Calendar.getInstance().getTime();
 
-        if(isWithinRange(currentTime, 800, 2000) && notificationsTurnedOn(context)) {
+        if (isWithinRange(currentTime, 800, 2000) && notificationsTurnedOn(context)) {
             if ((isWithinRange(currentTime, 800, 1100) && (percent < 25))
                     || (isWithinRange(currentTime, 1100, 1400) && (percent < 50))
                     || (isWithinRange(currentTime, 1400, 1700) && (percent < 75))
                     || (isWithinRange(currentTime, 1700, 2000) && (percent < 100)))
 
-                notificationManager.notify(100, builder.build()) ;
+                notificationManager.notify(100, builder.build());
 
         }
 
@@ -86,7 +86,7 @@ public class NotificationReceiver extends BroadcastReceiver{
         Calendar c = Calendar.getInstance();
         c.setTime(testDate);
         int t = c.get(Calendar.HOUR_OF_DAY) * 100 + c.get(Calendar.MINUTE);
-        return to > from && t >= from && t<= to;
+        return to > from && t >= from && t <= to;
     }
 
     public boolean notificationsTurnedOn(Context context) {

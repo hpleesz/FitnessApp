@@ -83,15 +83,13 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (!isValid()) {
                             dismiss();
-                            Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), "No name entered.", Toast.LENGTH_LONG);
+                            Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), R.string.no_name_entered, Toast.LENGTH_LONG);
                             toast.show();
-                        }
-                        else if (getLocationItem().location_equipmentItems.isEmpty()){
+                        } else if (getLocationItem().location_equipmentItems.isEmpty()) {
                             dismiss();
-                            Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), "Please select available equipment. If you don't have any equipment, select 'No equipment'.", Toast.LENGTH_LONG);
+                            Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), R.string.no_equipment_selected, Toast.LENGTH_LONG);
                             toast.show();
-                        }
-                        else {
+                        } else {
                             listener.onLocationItemCreated(getLocationItem());
                         }
                     }
@@ -159,14 +157,14 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
 
     public void initializeDatabase() {
         RoomDatabase.Callback rdc = new RoomDatabase.Callback() {
-            public void onCreate (SupportSQLiteDatabase db) {
+            public void onCreate(SupportSQLiteDatabase db) {
                 final ArrayList<EquipmentItem> list = fillEquipmentList();
 
                 new AsyncTask<Void, Void, List<EquipmentItem>>() {
 
                     @Override
                     protected List<EquipmentItem> doInBackground(Void... voids) {
-                        for(int i = 0; i < list.size(); i++){
+                        for (int i = 0; i < list.size(); i++) {
                             database.equipmentItemDao().insert(list.get(i));
                         }
                         return database.equipmentItemDao().getAll();

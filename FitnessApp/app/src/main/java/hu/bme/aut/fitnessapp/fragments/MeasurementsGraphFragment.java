@@ -47,14 +47,10 @@ import hu.bme.aut.fitnessapp.data.weight.WeightItem;
 import hu.bme.aut.fitnessapp.tools.DateFormatter;
 
 
-public class MeasurementsGraphFragment extends Fragment implements
-        //MeasurementAdapter.MeasurementItemDeletedListener,
-        com.github.mikephil.charting.listener.OnChartValueSelectedListener
-        //, NewMeasurementItemDialogFragment.NewMeasurementDialogListener
-        {
+public class MeasurementsGraphFragment extends Fragment implements com.github.mikephil.charting.listener.OnChartValueSelectedListener
+{
 
     private MeasurementDatabase database;
-    private RecyclerView recyclerView;
     private MeasurementAdapter adapter;
     private String bodyPart;
     private LineChart chart;
@@ -86,7 +82,8 @@ public class MeasurementsGraphFragment extends Fragment implements
         ).build();
 
         TextView title = (TextView) rootView.findViewById(R.id.measurementsEntries);
-        title.setText(bodyPart + " " + getString(R.string.entries));
+        String text = bodyPart + " " + getString(R.string.entries);
+        title.setText(text);
 
         chart = (LineChart) rootView.findViewById(R.id.chartMeasurement);
 
@@ -96,8 +93,8 @@ public class MeasurementsGraphFragment extends Fragment implements
     }
 
     private void initRecyclerView(View rootView) {
-        recyclerView = (RecyclerView)rootView.findViewById(R.id.MeasurementRecyclerView);
-        adapter = new MeasurementAdapter((MeasurementsGraphActivity)getActivity());
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.MeasurementRecyclerView);
+        adapter = new MeasurementAdapter((MeasurementsGraphActivity) getActivity());
         loadItemsInBackground();
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
@@ -134,25 +131,22 @@ public class MeasurementsGraphFragment extends Fragment implements
         chart.setDrawGridBackground(false);
     }
 
-    public void updatechart(boolean drawvalues)
-    {
+    public void updatechart(boolean drawvalues) {
         chart.setData(loadEntries(drawvalues));
         chart.notifyDataSetChanged();
         chart.invalidate();
     }
 
-    private LineData loadEntries(boolean drawvalues)
-    {
+    private LineData loadEntries(boolean drawvalues) {
 
         List<Entry> entries = new ArrayList<>();
 
-        if(itemlist.size() > 0) {
-            for(int i = 0; i < itemlist.size(); i++) {
+        if (itemlist.size() > 0) {
+            for (int i = 0; i < itemlist.size(); i++) {
                 long itemdate = makeLongDate(itemlist.get(i).measurement_year, itemlist.get(i).measurement_month, itemlist.get(i).measurement_day);
                 entries.add(new Entry((float) itemdate, (float) itemlist.get(i).measurement_value));
             }
-        }
-        else return null;
+        } else return null;
 
         LineDataSet dataSet = new LineDataSet(entries, "measurements");
         //formazas
@@ -193,32 +187,6 @@ public class MeasurementsGraphFragment extends Fragment implements
     }
 
 
-    /*
-    @Override
-    public void onMeasurementItemsCreated(final ArrayList<MeasurementItem> newItems) {
-        new AsyncTask<Void, Void, ArrayList<MeasurementItem>>() {
-
-            @Override
-            protected ArrayList<MeasurementItem> doInBackground(Void... voids) {
-                for(int i = 0; i < newItems.size(); i++) {
-                    newItems.get(i).measurement_id = database.measurementItemDao().insert(newItems.get(i));
-                }
-                return newItems;
-            }
-
-            @Override
-            protected void onPostExecute(ArrayList<MeasurementItem> measurementItems) {
-                for(int i = 0; i < newItems.size(); i++) {
-                    adapter.addItem(measurementItems.get(i));
-                }
-                itemlist = adapter.getItems(bodyPart);
-                //setMostRecentWeightAsCurrent();
-                updatechart(false);
-            }
-        }.execute();
-    }execute
-    */
-
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
@@ -228,31 +196,11 @@ public class MeasurementsGraphFragment extends Fragment implements
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         loadItemsInBackground();
     }
-    /*
-    @Override
-    public void onItemDeleted(final MeasurementItem item) {
-        new AsyncTask<Void, Void, MeasurementItem>() {
 
-            @Override
-            protected MeasurementItem doInBackground(Void... voids) {
-                database.measurementItemDao().deleteItem(item);
-                itemlist = adapter.getItems(bodyPart);
-                return item;
-            }
-
-            @Override
-            protected void onPostExecute(MeasurementItem measurementItem) {
-                adapter.deleteItem(measurementItem);
-                //setMostRecentWeightAsCurrent();
-                updatechart(false);
-            }
-        }.execute();
-    }
-    */
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {

@@ -64,7 +64,7 @@ public class PeriodSelectDialogFragment extends DialogFragment {
 
     private View getContentView() {
         final View contentView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_period_select, null);
-        TextView title = (TextView)contentView.findViewById(R.id.periodFragmentTitle);
+        TextView title = (TextView) contentView.findViewById(R.id.periodFragmentTitle);
         title.setText(R.string.period_select);
         weekButton = contentView.findViewById(R.id.weekRadioButton);
         weekButton.setOnClickListener(new View.OnClickListener() {
@@ -95,17 +95,17 @@ public class PeriodSelectDialogFragment extends DialogFragment {
         boolean checked = ((RadioButton) view).isChecked();
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(WeightActivity.PERIOD, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        switch(view.getId()) {
-            case R.id.allRadioButton :
-                if(checked)
+        switch (view.getId()) {
+            case R.id.allRadioButton:
+                if (checked)
                     editor.putString("Period", "all");
-                    break;
-            case R.id.monthRadioButton :
-                if(checked)
+                break;
+            case R.id.monthRadioButton:
+                if (checked)
                     editor.putString("Period", "month");
                 break;
-            case R.id.weekRadioButton :
-                if(checked)
+            case R.id.weekRadioButton:
+                if (checked)
                     editor.putString("Period", "week");
                 break;
         }
@@ -115,21 +115,20 @@ public class PeriodSelectDialogFragment extends DialogFragment {
     public void setCurrentlyChecked() {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(WeightActivity.PERIOD, Context.MODE_PRIVATE);
         String settings = sharedPreferences.getString("Period", "all");
-        switch (settings){
+        switch (settings) {
             case "all":
                 allButton.setChecked(true);
                 break;
-            case "month" :
+            case "month":
                 monthButton.setChecked(true);
                 break;
-            case "week" :
+            case "week":
                 weekButton.setChecked(true);
                 break;
 
 
         }
     }
-
 
 
 }

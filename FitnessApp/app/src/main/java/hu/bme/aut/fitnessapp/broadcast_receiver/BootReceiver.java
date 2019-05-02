@@ -12,6 +12,7 @@ import java.util.Calendar;
 
 import hu.bme.aut.fitnessapp.UserActivity;
 
+
 public class BootReceiver extends BroadcastReceiver {
 
     public void onReceive(Context context, Intent intent) {
@@ -38,9 +39,7 @@ public class BootReceiver extends BroadcastReceiver {
 
 
             waterAlarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, waterPendingIntent);
-            //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            //    waterAlarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), waterPendingIntent);
-            //}
+
 
         }
     }
