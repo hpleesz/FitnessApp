@@ -1,41 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:theme="@style/addItemDialog"
-    android:padding="24dip">
+    android:padding="24dip"
+    android:theme="@style/addItemDialog">
 
 
     <ImageView
         android:id="@+id/fireWorkImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/fireworks1"
-        android:layout_gravity="right" />
+        android:layout_gravity="right"
+        android:src="@drawable/fireworks1" />
 
 
-        <TextView
-            android:id="@+id/goalReachedTitle"
-            android:layout_marginStart="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:textColor="@color/colorPrimary"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:text="@string/goal_reached"/>
+    <TextView
+        android:id="@+id/goalReachedTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/goal_reached"
+        android:textColor="@color/colorPrimary"
+        android:textSize="25sp" />
 
 
     <ImageView
         android:id="@+id/celebrationImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/fireworks2"
-        android:layout_gravity="bottom" />
-
+        android:layout_gravity="bottom"
+        android:src="@drawable/fireworks2" />
 
 
 </LinearLayout>

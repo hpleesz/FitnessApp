@@ -7,24 +7,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingTop="64dp"
-    android:paddingLeft="8dp"
     tools:context=".MainActivity">
 
 
     <LinearLayout
-        android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:orientation="vertical"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/location_color"/>
+            android:src="@drawable/location_color" />
 
 
         <TextView
@@ -32,29 +32,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textSize="25sp"
+            android:text="@string/choose_location"
             android:textColor="@android:color/black"
-            android:text="@string/choose_location" />
+            android:textSize="25sp" />
 
 
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:layout_weight="2">
+        android:layout_weight="2"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <Button
+            android:id="@+id/warmupButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:background="@drawable/button_round"
             android:text="@string/warm_up"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/workoutButton"
@@ -63,15 +64,23 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/button_round"
             android:text="@string/workout"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white" />
 
         <Button
+            android:id="@+id/stretchButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/button_round"
             android:text="@string/stretch"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:visibility="gone" />
 
 
     </LinearLayout>

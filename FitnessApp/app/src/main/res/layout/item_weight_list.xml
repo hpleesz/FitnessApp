@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center_vertical"
     android:orientation="horizontal"
     android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingTop="8dp"
-    android:paddingLeft="8dp"
-    android:gravity="center_vertical"
     tools:context=".WeightActivity">
 
 
@@ -18,8 +18,8 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:textSize="18sp"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/WeightItemValueTextView"
@@ -27,8 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:gravity="end"
-        android:textSize="18sp"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
 
 
 </LinearLayout>

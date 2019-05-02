@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:theme="@style/addItemDialog"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dip">
+    android:padding="24dip"
+    android:theme="@style/addItemDialog">
 
     <TextView
         android:id="@+id/periodFragmentTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
         android:paddingBottom="30dp"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="25sp" />
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -24,20 +23,22 @@
             android:id="@+id/allRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="@string/all" />
+            android:text="@string/all"
+            android:textSize="18sp" />
+
         <RadioButton
             android:id="@+id/weekRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="@string/last_7_days" />
+            android:text="@string/last_7_days"
+            android:textSize="18sp" />
+
         <RadioButton
             android:id="@+id/monthRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="@string/last_30_days" />
+            android:text="@string/last_30_days"
+            android:textSize="18sp" />
 
     </RadioGroup>
 

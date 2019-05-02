@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:theme="@style/addItemDialog"
-    android:padding="24dip">
+    android:padding="24dip"
+    android:theme="@style/addItemDialog">
 
     <TextView
         android:id="@+id/noLocationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/no_locations_yet"
         android:layout_gravity="center"
-        android:visibility="gone"/>
+        android:text="@string/no_locations_yet"
+        android:visibility="gone" />
 
     <include layout="@layout/recyclerview_location" />
 

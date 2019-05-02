@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingRight="16dp"
-        android:paddingLeft="16dp"
-        android:paddingTop="80dp"
-        android:orientation="vertical" >
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="80dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/your_recommended_daily_water_intake"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
+        android:layout_gravity="center_horizontal"
         android:gravity="center"
-        android:layout_gravity="center_horizontal" />
+        android:text="@string/your_recommended_daily_water_intake"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:paddingTop="20dp">
 
-    <TextView
-        android:id="@+id/recommendedWaterTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/recommendedWaterTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/bottle100"/>
+            android:src="@drawable/bottle100" />
 
     </LinearLayout>
 
@@ -44,32 +44,32 @@
         android:id="@+id/fireWorkImageView"
         android:layout_width="90dp"
         android:layout_height="90dp"
+        android:layout_gravity="right"
         android:layout_marginTop="50dp"
         android:src="@drawable/fireworks1"
-        android:layout_gravity="right"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="30dp"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:paddingTop="30dp">
 
         <TextView
             android:id="@+id/consumedWaterTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:layout_gravity="center"
             android:textColor="@android:color/black"
-            android:layout_gravity="center"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/consumedWaterImage"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/bottle0"/>
+            android:src="@drawable/bottle0" />
 
     </LinearLayout>
 
@@ -77,19 +77,19 @@
         android:id="@+id/percentTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:paddingTop="20dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
         android:textColor="@android:color/black"
-        android:layout_gravity="center"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/celebrationImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/fireworks2"
-        android:layout_marginTop="40dp"
         android:layout_gravity="bottom"
-        android:visibility="invisible"/>
+        android:layout_marginTop="40dp"
+        android:src="@drawable/fireworks2"
+        android:visibility="invisible" />
 
-    </LinearLayout>
+</LinearLayout>

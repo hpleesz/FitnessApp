@@ -1,12 +1,10 @@
-<android.support.v7.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ExerciseRecyclerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:clipToPadding="false"
-    android:scrollbars="horizontal"
-    android:scrollbarThumbHorizontal="@drawable/scrollbar"
     android:orientation="horizontal"
-    />
+    android:scrollbarThumbHorizontal="@drawable/scrollbar"
+    android:scrollbars="horizontal"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
