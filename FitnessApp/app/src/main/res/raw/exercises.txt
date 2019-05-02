@@ -21,7 +21,7 @@ Russian twist	4	1	Obliques, All Abs	0
 Bench press, dumbbells	5	10	Chest, Triceps	0
 Butterfly	5	10	Chest	0
 Bench press, neutral grip	5	10	Chest, Front Shoulders, Triceps	0
-Bent-over row	5	1	Upper Back, Biceps, Back Shoulders	0
+Bent-over row, dumbbells	5	1	Upper Back, Biceps, Back Shoulders	0
 Front raise, alternated	5	1	Shoulders	0
 Hammer curl, alternated	5	1	Biceps	0
 Biceps curl into shoulder press	5	1	Biceps, Shoulders	0
@@ -68,8 +68,8 @@ Goblet lateral lunge, left	4	1	Quads, Glutes, Legs	0
 Goblet lateral lunge, right	4	1	Quads, Glutes, Legs	0
 Triceps extension standing, left	4	1	Triceps	0
 Triceps extension standing, right	4	1	Triceps	0
-Bent-over row supported, left	4	1	Upper Back, Biceps, Back Shoulders	0
-Bent-over row supported, right	4	1	Upper Back, Biceps, Back Shoulders	0
+Bent-over row supported, dumbbell, left	4	1	Upper Back, Biceps, Back Shoulders	0
+Bent-over row supported, dumbbell, right	4	1	Upper Back, Biceps, Back Shoulders	0
 Lunge, dumbbells, left	5	1	Quads, Glutes	0
 Lunge, dumbbells, right	5	1	Quads, Glutes	0
 Goblet lateral lunge, alternated	4	1	Quads, Glutes, Legs	0
@@ -99,10 +99,10 @@ Pullover	4	10	Upper Chest	0
 Overhead reverse lunge, dumbbells, left	5	1	Glutes, Quads, Back, Arms	0
 Overhead reverse lunge, dumbbells, right	5	1	Glutes, Quads, Back, Arms	0
 Squat to hammer curl	5	1	Biceps, Quads, Glutes	0
-Bent-over row, left	4	1	Upper Back, Biceps, Shoulders	0
-Bent-over row, right	4	1	Upper Back, Biceps, Shoulders	0
+Bent-over row, dumbbell, left	4	1	Upper Back, Biceps, Shoulders	0
+Bent-over row, dumbbell, right	4	1	Upper Back, Biceps, Shoulders	0
 Shoulder press small	5	1	Shoulders	0
-Burpee	5	1	Full Body, Cardiovascular System	0
+Burpee, dumbbells	5	1	Full Body, Glutes, Quads, Lower Back	0
 Sumo squat, dumbbell	4	1	Quads, Glutes	0
 Wrist extension, left	4	1	Forearms	0
 Wrist extension, right	4	1	Forearms	0
@@ -225,7 +225,7 @@ Reverse lunge, alternated	3	1	Quads, Glutes	0
 Wrist curl behind back	3	1	Forearms	0
 Hang clean and jerk	3	1	Legs, Shoulders, Full Body	0
 Overhead lunge, alternated	3	1	Quads, Glutes	0
-One leg deadlift, left	3	1	Glutes, Lower Back, Hamstrings	0
+One leg deadlift, left	3	1	Glutes, Lower Back, Quads	0
 One leg deadlift, right	3	1	Glutes, Lower Back, Quads	0
 Lunge, barbell, left	3	1	Quads, Glutes	0
 Lunge, barbell, right	3	1	Quads, Glutes	0
@@ -269,7 +269,7 @@ Deadlift sumo stance	3	1	Lower Back, Glutes, Quads, Legs	0
 Shoulder press	3	1	Shoulders	0
 Triceps extension seated	3	1	Triceps	0
 Push-up, barbell	3	1	Chest, Triceps, Lower Back	0
-Lateral lunge, alternated	3	1	Quads, Glutes, Legs	0
+Lateral lunge, barbell, alternated	3	1	Quads, Glutes, Legs	0
 Lateral lunge, left	3	1	Quads, Glutes, Legs	0
 Lateral lunge, right	3	1	Quads, Glutes, Legs	0
 Lateral lunge overhead, alternated	3	1	Quads, Glutes, Legs, Shoulders	0
@@ -295,7 +295,7 @@ Step up step down knee raise, right	2	1	Quads, Glutes, Legs	0
 Shuffle jumps	2	1	Quads, Glutes, Legs, Cardiovascular System	0
 Lunge, left	2	1	Quads, Glutes, Legs	0
 Lunge, right	2	1	Quads, Glutes, Legs	0
-Burpee jump	2	1	Full Body, Cardiovascular System	0
+Burpee jump	2	1	Full Body, Quads, Glutes, Shoulders, Cardiovascular System	0
 Step down reverse, left	2	1	Quads, Glutes, Legs	0
 Step down reverse, right	2	1	Quads, Glutes	0
 Step up, left	2	1	Quads, Glutes, Legs	0
@@ -363,7 +363,7 @@ Stiff leg deadlift	7	1	Hamstrings, Glutes, Lower Back	0
 Bottom up press	7	1	Shoulders, Triceps	0
 Bottom up hammer curl, left	6	1	Biceps, Forearms	0
 Bottom up hammer curl, right	6	1	Biceps, Forearms	0
-Bent-over row	7	1	Upper Back, Lats, Biceps, Back Shoulders	0
+Bent-over row, kettlebells	7	1	Upper Back, Lats, Biceps, Back Shoulders	0
 High pull sumo stance	6	1	Quads, Glutes, Shoulders, Legs	0
 Hang clean press, left	6	1	Quads, Glutes, Triceps, Shoulders	0
 Hang clean press, right	6	1	Quads, Glutes, Triceps, Shoulders	0
@@ -381,8 +381,8 @@ Swing, left	6	1	Quads, Glutes, Lower Back, Abs	0
 Swing, right	6	1	Quads, Glutes, Lower Back, Abs	0
 Power clean press, left	6	1	Quads, Glutes, Triceps, Shoulders	0
 Power clean press, right	6	1	Quads, Glutes, Triceps, Shoulders	0
-Bent-over row supported, left	6	1	Upper Back, Lats, Biceps, Back Shoulders	0
-Bent-over row supported, right	6	1	Upper Back, Lats, Biceps, Back Shoulders	0
+Bent-over row supported, kettlebell, left	6	1	Upper Back, Lats, Biceps, Back Shoulders	0
+Bent-over row supported, kettlebell, right	6	1	Upper Back, Lats, Biceps, Back Shoulders	0
 Bulgarian split squat, kettlebells, left	7	2	Quads, Glutes, Legs	0
 Bulgarian split squat, kettlebells, right	7	2	Quads, Glutes, Legs	0
 Goblet lateral lunge, kettlebell, alternated	6	1	Quads, Glutes, Legs	0
@@ -423,8 +423,8 @@ Bottom up press, left	6	1	Shoulders, Triceps	0
 Bottom up press, right	6	1	Shoulders, Triceps	0
 Lunge, kettlebells, left	7	1	Quads, Glutes, Back, Legs	0
 Lunge, kettlebells, right	7	1	Quads, Glutes, Back, Legs	0
-Bent-over row, left	6	1	Upper Back, Biceps, Back Shoulders	0
-Bent-over row, right	6	1	Upper Back, Biceps, Back Shoulders	0
+Bent-over row, kettlebell, left	6	1	Upper Back, Biceps, Back Shoulders	0
+Bent-over row, kettlebell, right	6	1	Upper Back, Biceps, Back Shoulders	0
 Bottom up push press, left	6	1	Shoulders, Triceps	0
 Bottom up push press, right	6	1	Shoulders, Triceps	0
 Lunge walk shoulder press, kettlebells	7	1	Quads, Glutes, Shoulders	0
@@ -546,6 +546,382 @@ Core rotation single handle, left	14	1	Obliques, Lats, Biceps	0
 Core rotation single handle, right	14	1	Obliques, Lats, Biceps	0
 Core rotation arms extended, left	14	1	Obliques, Front Shoulders	0
 Core rotation arms extended, right	14	1	Obliques, Front Shoulders	0
+Crunch, exercise ball	11	1	Abs	0
+Jackknife, exercise ball	11	1	Abs	0
+Ab rollout, exercise ball	11	1	Abs	0
+Overhead squat, exercise ball	11	1	Quads, Glutes, Back, Shoulders	0
+Plank, exercise ball	11	1	Abs	0
+Crunch legs elevated, exercise ball	11	1	Abs	0
+Wall squat, exercise ball	11	1	Quads, Glutes	0
+Reverse crunch, exercise ball	11	1	Abs, Hamstrings	0
+Pass the ball crunch	11	1	Abs	0
+Hip bridge rolling	11	1	Hamstrings, Glutes	0
+Hip bridge full extended	11	1	Lower Back, Hamstrings, Glutes	0
+Superman, exercise ball, alternated	11	1	Back, Glutes	0
+Hip thrust, exercise ball	11	1	Glutes	0
+Bridge, exercise ball	11	1	Glutes	1
+Rotation crunch, exercise ball, alternated	11	1	Abs, Obliques	0
+Bulgarian split squat, exercise ball, left	11	1	Quads, Glutes	0
+Bulgarian split squat, exercise ball, right	11	1	Quads, Glutes	0
+Triceps extension weighted	5	11	Triceps	0
+Sit-up, exercise ball	11	1	Abs	0
+Side crunch, exercise ball, left	11	1	Obliques	0
+Side crunch, exercise ball, right	11	1	Obliques	0
+Rotation crunch, exercise ball, left	11	1	Obliques, Abs	0
+Rotation crunch, exercise ball, right	11	1	Obliques, Abs	0
+Push-up, exercise ball	11	1	Chest	0
+Push-up, feet on exercise ball	11	1	Chest, Triceps	0
+Hip adduction lying, exercise ball	11	1	Adductor	0
+Hip bridge leg raise, exercise ball, alternated	11	1	Glutes, Hamstrings, Lower Back	0
+Triceps extension, exercise ball	11	1	Triceps	0
+Hip abduction, exercise ball, left	11	1	Abductor	0
+Hip abduction, exercise ball, right	11	1	Abductor	0
+Plank circles, exercise ball, alternated	11	1	Abs	0
+Plank circles, exercise ball, left	11	1	Abs	0
+Plank circles, exercise ball, right	11	1	Abs	0
+Superman, exercise ball	11	1	Lower Back	0
+Single leg hamstring ball roll, left	11	1	Hamstrings, Glutes	0
+Single leg hamstring ball roll, right	11	1	Hamstrings, Glutes	0
+Single leg hamstring ball roll hip lift, left	11	1	Hamstrings, Glutes	0
+Single leg hamstring ball roll hip lift, right	11	1	Hamstrings, Glutes	0
+Wall squat, exercise ball, left	11	1	Quads, Glutes	0
+Wall squat, exercise ball, right	11	1	Quads, Glutes	0
+Reverse fly, exercise ball	11	1	Upper Back, Shoulders	0
+Reverse fly static, exercise ball	11	1	Upper Back, Shoulders	1
+Retroflexion shoulders, exercise ball	11	1	Upper Back, Shoulders	0
+Retroflexion shoulders static, exercise ball	11	1	Upper Back, Shoulders	1
+Overhead squat, elastic band	12	1	Quads, Glutes	0
+Biceps curl, elastic band	12	1	Biceps	0
+Lateral raise, elastic band	12	1	Shoulders	0
+Air lunge, elastic band, left	12	1	Quads, Glutes, Shoulders	0
+Air lunge, elastic band, right	12	1	Quads, Glutes, Shoulders	0
+Air squat, elastic band	12	1	Quads, Glutes, Shoulders	0
+Squat walk, elastic band	12	1	Abductor, Glutes	0
+Chest press, elastic band	12	1	Chest, Triceps	0
+Bruger split squat, elastic band, left	12	1	Quads, Glutes, Shoulders	0
+Bruger split squat, elastic band, right	12	1	Quads, Glutes, Shoulders	0
+Calf raise, elastic band	12	2	Calves	0
+Rowing, elastic band	12	1	Upper Back, Biceps, Lats	0
+Side bend, elastic band, left	12	1	Obliques	0
+Side bend, elastic band, right	12	1	Obliques	0
+Triceps extension, elastic band	12	1	Triceps	0
+Resisted push-up, elastic band	12	1	Chest, Triceps	0
+Squat, elastic band	12	1	Quads, Glutes, Back	0
+Lateral raise thumbs up, elastic band	12	1	Shoulders	0
+Overhead split squat, elastic band, left	12	1	Quads, Glutes	0
+Overhead split squat, elastic band, right	12	1	Quads, Glutes	0
+Front squats, elastic band	12	1	Quads, Glutes, Lower Back	0
+Neck press to side, elastic band, left	12	1	Biceps, Shoulders, Triceps	0
+Neck press to side, elastic band, right	12	1	Biceps, Shoulders, Triceps	0
+Reverse fly palms down, elastic band	12	1	Upper Back, Shoulders	0
+Reverse fly palms up, elastic band	12	1	Upper Back, Shoulders	0
+Air squat, resistance band	13	1	Quads, Glutes, Abductor	0
+Hip bridge, resistance band	13	1	Glutes, Abductor	0
+Bent-over row, resistance band, left	13	1	Upper Back, Biceps, Lats	0
+Bent-over row, resistance band, right	13	1	Upper Back, Biceps, Lats	0
+Dynamic hand planks, resistance band	13	1	Abs, Shoulders	0
+Side pivot, resistance band, left	13	1	Glutes, Abductor	0
+Side pivot, resistance band, right	13	1	Glutes, Abductor	0
+Backward walk, resistance band	13	1	Quads, Glutes, Abductor	0
+One leg squat, resistance band, left	13	1	Quads	0
+One leg squat, resistance band, right	13	1	Quads	0
+Cross arm triceps pushdowns, resistance band, left	13	1	Triceps	0
+Cross arm triceps pushdowns, resistance band, right	13	1	Triceps	0
+Forward walk, resistance band	13	1	Quads, Glutes, Abductor	0
+Front pivot, resistance band, left	13	1	Quads	0
+Front pivot, resistance band, right	13	1	Quads	0
+Reverse pivot, resistance band, left	13	1	Glutes, Hamstrings	0
+Reverse pivot, resistance band, right	13	1	Glutes, Hamstrings	0
+Reverse pivot, resistance band, alternated	13	1	Glutes, Hamstrings	0
+Side walk, resistance band, left	13	1	Quads, Glutes, Abductor	0
+Side walk, resistance band, right	13	1	Quads, Glutes, Abductor	0
+Alternated pivot, resistance band, left	13	1	Quads, Glutes, Abductor	0
+Alternated pivot, resistance band, right	13	1	Quads, Glutes, Abductor	0
+Hip abduction standing, resistance band, left	13	1	Abductor	0
+Hip abduction standing, resistance band, right	13	1	Abductor	0
+Forward walk dribble, resistance band	13	1	Quads, Glutes, Abductor	0
+Lying hip flexion, resistance band, left	13	1	Quads	0
+Lying hip flexion, resistance band, right	13	1	Quads	0
+Triceps extension, resistance band, left	13	1	Triceps	0
+Triceps extension, resistance band, right	13	1	Triceps	0
+Side walk dribble, resistance band, left	13	1	Quads, Glutes, Abductor	0
+Side walk dribble, resistance band, right	13	1	Quads, Glutes, Abductor	0
+Lying hip abduction, resistance band	13	1	Abductor	0
+Clamshell, resistance band, left	13	1	Abductor	0
+Clamshell, resistance band, right	13	1	Abductor	0
+Front leg raise, resistance band, left	13	1	Quads	0
+Front leg raise, resistance band, right	13	1	Quads	0
+Side leg raise, resistance band, left	13	1	Abductor	0
+Side leg raise, resistance band, right	13	1	Abductor	0
+Ankle extension, resistance band, left	13	1	Calves	0
+Ankle extension, resistance band, right	13	1	Calves	0
+Hip abduction, resistance band, alternated	13	1	Abductor, Glutes	0
+Side pivot, resistance band, alternated	13	1	Glutes, Abductor	0
+Front pivot, resistance band, alternated	13	1	Quads	0
+Side to side waves, battle rope, alternated	15	1	Shoulders, Biceps	1
+Waves up and down, battle rope	15	1	Shoulders, Biceps, Abs	1
+Squat with waves, battle rope, alternated	15	1	Shoulders, Biceps, Quads, Glutes	1
+Split squat with waves, battle rope, left	15	1	Shoulders, Biceps, Quads, Glutes	1
+Split squat with waves, battle rope, right	15	1	Shoulders, Biceps, Quads, Glutes	1
+Slams, battle rope	15	1	Shoulders, Abs, Lats, Quads	0
+Waves up and down, battle rope, left	15	1	Front Shoulders, Obliques, Lats, Abs	1
+Waves up and down, battle rope, right	15	1	Front Shoulders, Obliques, Lats, Abs	1
+Fencing, battle rope, left	15	1	Biceps, Quads, Obliques, Shoulders	0
+Fencing, battle rope, right	15	1	Biceps, Quads, Obliques, Shoulders	0
+Push-up, reverse bosu	16	1	Chest, Triceps	0
+Back extension, bosu	16	1	Lower Back	0
+Split squat, bosu, right	16	1	Quads, Glutes	0
+Split squat, bosu, left	16	1	Quads, Glutes	0
+Crunch, bosu	16	1	Abs	0
+Airplane hip extended, bosu, alternated	16	1	Glutes, Lower Back	0
+Back rotation, bosu, alternated	16	1	Lower Back	0
+Hip drop, reverse bosu, left	16	1	Quads, Glutes, Legs	0
+Hip drop, reverse bosu, right	16	1	Quads, Glutes, Legs	0
+Squat, reverse bosu	16	1	Quads, Glutes, Legs	0
+Plank feet wide, bosu, left	16	1	Obliques, Shoulders	0
+Plank feet wide, bosu, right	16	1	Obliques, Shoulders	0
+Hand walk sideways, bosu	16	1	Chest, Arms, Shoulders	0
+Jogging, bosu	16	1	Quads, Legs	0
+Lunge, reverse bosu, alternated	16	1	Quads, Legs, Glutes	0
+Lunge, reverse bosu, left	16	1	Quads, Legs, Glutes	0
+Lunge, reverse bosu, right	16	1	Quads, Legs, Glutes	0
+Lying side balance, bosu, left	16	1	Obliques	1
+Lying side balance, bosu, right	16	1	Obliques	1
+Gluteus raise, bosu	16	1	Glutes, Lower Back	0
+Step over, bosu, right	16	1	Quads, Glutes	0
+Split squat, reverse bosu, left	16	1	Quads, Glutes	0
+Split squat, reverse bosu, right	16	1	Quads, Glutes	0
+Lunge jumps, bosu	16	1	Quads, Glutes	0
+Biceps curl, gymstick	18	1	Biceps	0
+Reverse lunge, gymstick, left	18	1	Quads, Glutes	0
+Reverse lunge, gymstick, right	18	1	Quads, Glutes	0
+Front raise, gymstick	18	1	Front Shoulders	0
+Shoulder front press, gymstick	18	1	Shoulders, Triceps	0
+Squat, gymstick	18	1	Quads, Glutes, Legs	0
+Thruster, gymstick	18	1	Quads, Glutes, Shoulders, Triceps	0
+Chopper low to high, medicine ball	19	1	Obliques, Front Shoulders	0
+Arch chop, medicine ball	19	1	Obliques	0
+Slam ball, medicine ball	19	1	Arms, Shoulders, Back, Chest	0
+Front squat, medicine ball	19	1	Quads, Glutes	0
+Chopper high to low, medicine ball	19	1	Obliques, Front Shoulders, Lower Back	0
+Chest throw, medicine ball	19	1	Arms, Shoulders, Chest	0
+Sit-up overhead throw, medicine ball	19	1	Abs, Shoulders, Arms, Back	0
+Front lunge, medicine ball, left	19	1	Glutes, Quads, Legs	0
+Front lunge, medicine ball, right	19	1	Glutes, Quads, Legs	0
+Sit-up chest throw, medicine ball	19	1	Abs, Shoulders, Arms, Chest	0
+Overhead throw, medicine ball	19	1	Shoulders, Arms, Back	0
+Push-up alternated, medicine ball	19	1	Triceps, Chest	0
+Split jumps, medicine ball	19	1	Quads, Glutes	0
+Push-up, medicine ball	19	1	Chest, Triceps	0
+Chest throw lying, medicine ball	19	1	Chest, Triceps, Shoulders	0
+Wall ball, medicine ball	19	1	Quads, Glutes, Shoulders, Arms	0
+Hip throw, medicine ball, left	19	1	Obliques, Shoulders	0
+Hip throw, medicine ball, right	19	1	Obliques, Shoulders	0
+Horizontal chop, medicine ball	19	1	Obliques, Shoulders	0
+Deadlift, medicine ball	19	1	Lower Back, Hamstrings, Glutes	0
+Thruster, medicine ball	19	1	Quads, Glutes, Shoulders	0
+Front lunge, medicine ball, alternated	19	1	Quads, Glutes, Legs	0
+Sit-up, medicine ball	19	1	Abs, Shoulders	0
+Lateral jumps, medicine ball	19	1	Quads, Glutes, Shoulders, Arms	0
+Horizontal shake, medicine ball	19	1	Abs, Shoulders, Lower Back	0
+Front push squat, medicine ball	19	1	Quads, Glutes, Shoulders	0
+Hip throw, medicine ball, alternated	19	1	Arms, Shoulders, Back	0
+Power clean, medicine ball	19	1	Quads, Glutes, Shoulders, Arms	0
+One arm throw, medicine ball, left	19	1	Arms, Shoulders, Chest	0
+One arm throw, medicine ball, right	19	1	Arms, Shoulders, Chest	0
+Lunge walk overhead, medicine ball	19	1	Quads, Glutes, Shoulders	0
+Lunge walk overhead press, medicine ball	19	1	Quads, Glutes, Shoulders	0
+Lunge walk press rotation, medicine ball	19	1	Quads, Glutes, Shoulders, Abs	0
+Lunge walk press, medicine ball	19	1	Quads, Glutes, Shoulders, Abs	0
+Shoulder press, medicine ball	19	1	Shoulders	0
+Crunch balanced straight legs, medicine ball	19	1	Abs, Shoulders	0
+Bicep curl, medicine ball	19	1	Biceps	0
+Triceps extension, medicine ball	19	1	Triceps	0
+Crunch arms extended, medicine ball	19	1	Abs	0
+Straight leg raise, medicine ball	19	1	Abs	0
+Chopper low to high, medicine ball, left	19	1	Obliques, Shoulders	0
+Chopper low to high, medicine ball, right	19	1	Obliques, Shoulders	0
+Russian twist, medicine ball	19	1	Obliques, Abs, Lower Back	0
+Horizontal row, pulley, left	20	1	Upper Back, Biceps, Shoulders	0
+Horizontal row, pulley, right	20	1	Upper Back, Biceps, Shoulders	0
+Biceps curl, pulley	20	1	Biceps	0
+Triceps extension, pulley, left	20	1	Triceps	0
+Triceps extension, pulley, right	20	1	Triceps	0
+Crossover, pulley	20	1	Chest	0
+Reverse fly standing, pulley	20	1	Upper Back, Lats	0
+Core rotation standing, pulley, left	20	1	Obliques	0
+Core rotation standing, pulley, right	20	1	Obliques	0
+Lateral raise, pulley, left	20	1	Shoulders	0
+Lateral raise, pulley, right	20	1	Shoulders	0
+Upright row standing, pulley	20	1	Shoulders, Biceps	0
+Row standing, pulley, left	20	1	Upper Back, Biceps	0
+Row standing, pulley, right	20	1	Upper Back, Biceps	0
+Wood chop high to low, pulley, left	20	1	Obliques, Shoulders	0
+Wood chop high to low, pulley, right	20	1	Obliques, Shoulders	0
+Hip extension standing, pulley, left	20	1	Glutes	0
+Hip extension standing, pulley, right	20	1	Glutes	0
+Wood chop low to high, pulley, left	20	1	Obliques, Shoulders	0
+Wood chop low to high, pulley, right	20	1	Obliques, Shoulders	0
+Calf raise, pulley	20	1	Calves	0
+Pallof press, pulley, left	20	1	Obliques	0
+Pallof press, pulley, right	20	1	Obliques	0
+Hip abduction standing, pulley, left	20	1	Abductor	0
+Hip abduction standing, pulley, right	20	1	Abductor	0
+Lateral raise behind back, pulley, left	20	1	Front Shoulders	0
+Lateral raise behind back, pulley, right	20	1	Front Shoulders	0
+Overhead curl, pulley	20	1	Biceps	0
+Adduction leg standing, pulley, left	20	1	Adductor	0
+Adduction leg standing, pulley, right	20	1	Adductor	0
+Leg extension seated, pulley, left	20	10	Quads	0
+Leg extension seated, pulley, right	20	10	Quads	0
+Reverse fly, pulley, left	20	1	Shoulders	0
+Reverse fly, pulley, right	20	1	Shoulders	0
+Wrist curl behind back, pulley	20	1	Forearms	0
+Overhead triceps extension, pulley	20	1	Triceps	0
+Hamstring curl standing, pulley, left	20	1	Hamstrings	0
+Hamstring curl standing, pulley, right	20	1	Hamstrings	0
+Leg pull in lying, pulley, left	20	1	Quads	0
+Leg pull in lying, pulley, right	20	1	Quads	0
+Reverse fly high, pulley, left	20	1	Shoulders	0
+Reverse fly high, pulley, right	20	1	Shoulders	0
+Wood chop horizontal, pulley, left	20	1	Obliques, Lats, Abs, Shoulders	0
+Wood chop horizontal, pulley, right	20	1	Obliques, Lats, Abs, Shoulders	0
+Crunch diagonal leaning, pulley, left	20	1	Obliques, Abs	0
+Crunch diagonal leaning, pulley, right	20	1	Obliques, Abs	0
+Hip flexion standing, pulley, left	20	1	Quads	0
+Hip flexion standing, pulley, right	20	1	Quads	0
+Glute kickback, pulley, left	20	1	Glutes	0
+Glute kickback, pulley, right	20	1	Glutes	0
+Pallof pull, pulley, left	20	1	Obliques, Lower Back, Shoulders	0
+Pallof pull, pulley, right	20	1	Obliques, Lower Back, Shoulders	0
+Chest fly, pulley, left	20	11	Chest	0
+Chest fly, pulley, right	20	11	Chest	0
+Hip flexion knee up, pulley, left	20	1	Quads	0
+Hip flexion knee up, pulley, right	20	1	Quads	0
+Straight arm pull down, pulley	20	1	 Lats	0
+Crossed triceps extension, pulley	20	1	Triceps	0
+High row, pulley	20	1	Upper Back, Lats, Biceps, Back Shoulders	0
+Leg extension standing, pulley, left	20	1	Quads	0
+Leg extension standing, pulley, right	20	1	Quads	0
+Face pull, pulley	20	1	Upper Back, Shoulders, Lats	0
+Split squat row, pulley, left	20	1	Quads, Glutes, Upper Back, Biceps	0
+Split squat row, pulley, right	20	1	Quads, Glutes, Upper Back, Biceps	0
+Pallof press rotation, pulley, left	20	1	Obliques, Front Shoulders, Triceps	0
+Pallof press rotation, pulley, right	20	1	Obliques, Front Shoulders, Triceps	0
+Lateral ali shuffle, speed ladder, left	21	1	Quads, Legs	0
+Lateral ali shuffle, speed ladder, right	21	1	Quads, Legs	0
+Forward two-one bounce, speed ladder	21	1	Quads, Legs	0
+Lateral high knees, speed ladder, left	21	1	Quads, Legs	0
+Lateral high knees, speed ladder, right	21	1	Quads, Legs	0
+Forward in-in, out, speed ladder	21	1	Quads, Legs	0
+Forward hip switch, speed ladder	21	1	Quads, Legs, Calves	0
+Forward one feet bounce, speed ladder, left	21	1	Calves	0
+Forward one feet bounce, speed ladder, right	21	1	Calves	0
+Forward in-in, out-out, speed ladder	21	1	Quads, Legs	0
+Forward bunny hop, speed ladder	21	1	Calves	0
+Trippling high knees, speed ladder	21	1	Quads, Legs, Calves	0
+Crunch extension, plate	22	1	Abs, Lats	0
+Crunch weight behind head	22	1	Abs	0
+Bent-over row, plates	22	1	Upper Back, Shoulders	0
+Front raise, plate	22	1	Shoulders	0
+Triceps extension seated, plate	22	1	Triceps	0
+Overhead lunge walk, plate	22	1	Quads, Glutes	0
+Sit-up, plate	22	1	Abs, Shoulders	0
+Straight arm pullover, weight	22	10	Chest, Lats	0
+Sumo squat jumps, plate	22	1	Quads, Glutes, Lower Back, Legs	0
+Sicilian crunch, plate	22	1	Abs	0
+Bend over single arm row, xco, left	23	1	Upper Back	0
+Bend over single arm row, xco, right	23	1	Upper Back	0
+Shoulder exorotation, xco, left	23	1	Shoulders	0
+Shoulder exorotation, xco, right	23	1	Shoulders	0
+Kayak, xco	23	1	Obliques, Abs, Front Shoulders	0
+Cross punch, xco, left	23	1	Upper Chest	0
+Cross punch, xco, right	23	1	Upper Chest	0
+Diagonal shake, xco, left	23	1	Obliques, Abs, Lats, Shoulders	0
+Diagonal shake, xco, right	23	1	Obliques, Abs, Lats, Shoulders	0
+Side bend, xco, left	23	1	Obliques	0
+Side bend, xco, right	23	1	Obliques	0
+Diagonal shake sit, xco, left	23	1	Obliques, Abs, Front Shoulders	0
+Diagonal shake sit, xco, right	23	1	Obliques, Abs, Front Shoulders	0
+Side bend, xco, alternated	23	1	Obliques	0
+Lunge one handed swing, xco, left	23	1	Quads, Glutes, Shoulders, Lats	0
+Lunge one handed swing, xco, right	23	1	Quads, Glutes, Shoulders, Lats	0
+Diagonal shake knee raise, xco, left	23	1	Obliques, Abs, Front Shoulders	0
+Diagonal shake knee raise, xco, right	23	1	Obliques, Abs, Front Shoulders	0
+Diagonal shake sit leg raise, xco, left	23	1	Obliques, Abs, Front Shoulders	0
+Diagonal shake sit leg raise, xco, right	23	1	Obliques, Abs, Front Shoulders	0
+Crunch two handed punch, xco	23	1	Abs, Shoulders	0
+Hip extension, multi-hip machine, left	25	1	Glutes, Hamstrings, Legs	0
+Hip extension, multi-hip machine, right	25	1	Glutes, Hamstrings, Legs	0
+Lat pulldown wide grip front	25	1	Lats, Biceps, Back	0
+Horizontal row machine	25	1	Upper Back, Biceps, Back Shoulders	0
+Assisted kneeling pull up reverse grip	25	1	Lats, Back, Biceps	0
+Seated chest press	25	1	Chest, Triceps, Front Shoulders	0
+Shoulder press machine	25	1	Shoulders	0
+Leg abduction machine	25	1	Abductor	0
+Leg curl seated	25	1	Hamstrings	0
+Leg adduction machine	25	1	Adductor	0
+Standing calf raise machine	25	1	Calves	0
+Seated leg extension	25	1	Quads	0
+Leg press machine lying	25	1	Quads, Glutes, Legs	0
+Abdominal crunch machine	25	1	Abs	0
+Hack squat machine	25	1	Quads, Glutes, Legs	0
+Butterfly machine	25	1	Chest	0
+Abdominal machine lying	25	1	Abs	0
+Leg press, 45 degree	25	1	Quads, Glutes, Legs	0
+Horizontal row seated	25	1	Upper Back, Biceps, Front Shoulders	0
+Back extension machine	25	1	Lower Back	0
+Pectoral fly machine	25	1	Chest	0
+Gluteus raise machine, left	25	1	Glutes	0
+Gluteus raise machine, right	25	1	Glutes	0
+Preacher curl machine	25	1	Biceps	0
+Lying leg curl machine	25	1	Hamstrings	0
+Calf raise incline leg press machine	25	1	Calves	0
+Pullover machine	25	1	Chest, Lats, Triceps	0
+Calf raise machine seated	25	1	Calves	0
+Triceps dip machine	25	1	Triceps	0
+Gluteus kick machine, left	25	1	Glutes, Legs	0
+Gluteus kick machine, right	25	1	Glutes, Legs	0
+Dorsi pectoral machine	25	1	Lats	0
+Calf machine	25	1	Calves	0
+Standing leg curl machine, left	25	1	Hamstrings	0
+Standing leg curl machine, right	25	1	Hamstrings	0
+Vertical traction	25	1	Lats, Biceps, Back	0
+Assisted standing pull up wide grip	25	1	Lats, Biceps	0
+Triceps extension machine	25	1	Triceps	0
+Hip flexion, multi-hip machine, left	25	1	Legs	0
+Hip flexion, multi-hip machine, right	25	1	Legs	0
+Reverse pectoral fly machine	25	1	Upper Back	0
+Vertical traction machine	25	1	Lats, Biceps, Back	0
+Lateral raise machine	25	1	Shoulders	0
+Chest press incline	25	1	Chest, Triceps	0
+Hip abduction, multi-hip machine, left	25	1	Abductor	0
+Hip abduction, multi-hip machine, right	25	1	Abductor	0
+Assisted standing pull up neutral grip	25	1	Lats, Biceps	0
+Hip adduction, multi-hip machine, left	25	1	Adduction	0
+Hip adduction - Multi-hip machine, right	25	1	Adduction	0
+Assisted standing pull up reverse grip	25	1	Lats, Biceps	0
+Bicep curl machine	25	1	Biceps	0
+Bicep curl machine, alternated	25	1	Biceps	0
+Leg extension machine, left	25	1	Quads	0
+Leg extension machine, right	25	1	Quads	0
+Split squat, switching machine, left	25	1	Quads, Glutes, Legs	0
+Split squat, switching machine, right	25	1	Quads, Glutes, Legs	0
+Assisted kneeling pull up neutral grip	25	1	Lats, Biceps	0
+Assisted kneeling pull up wide grip	25	1	Lats	0
+Lat pulldown narrow grip	25	1	Lats, Biceps	0
+Lat pulldown wide grip back	25	1	Lats, Biceps, Back	0
+Lat pulldown supinated grip	25	1	Lats, Biceps	0
+Forward fly machine	25	1	Chest	0
+Horizontal row narrow grip	25	1	Upper Back, Biceps, Lats, Shoulders	0
+Pulldown machine	25	1	Lats, Biceps, Back	0
+Seated leg press machine, left	25	1	Quads, Glutes, Legs	0
+Seated leg press machine, right	25	1	Quads, Glutes, Legs	0
+Leg press machine seated feet high	25	1	Quads, Glutes, Hamstrings	0
+Shoulder press standing, switching machine	25	1	Shoulders, Triceps	0
+Tricep dip standing, switching machine	25	1	Triceps	0
+Leg curl seated machine, left	25	1	Hamstrings	0
+Leg curl seated machine, right	25	1	Hamstrings	0
 Air squat sumo	1	1	Quads, Glutes	0
 Leg cross lying, alternated	1	1	Straight Abs	0
 Crunch	1	1	All Abs	0
@@ -667,4 +1043,5 @@ Bird dog cross reps, left	1	1	Abs, Lower Back, Glutes	0
 Bird dog cross reps, right	1	1	Abs, Lower Back, Glutes	0
 Air lunge, left	1	1	Quads, Glutes	0
 Air lunge, right	1	1	Quads, Glutes	0
-Elliptical trainer	25	0	Cardiovascular System	1Running	1	1	Cardiovascular System	1	Stationary bike	25	1	Cardiovascular System	1Step machine	25	1	Cardiovascular System	1Treadmill	25	1	Cardiovascular System	1
+Elliptical trainer	25	0	Cardiovascular System	1Running	1	1	Cardiovascular System	1	
+Rope jumping	24	1	Cardiovascular System	1Stationary bike	25	1	Cardiovascular System	1Step machine	25	1	Cardiovascular System	1Treadmill	25	1	Cardiovascular System	1
