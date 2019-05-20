@@ -242,7 +242,7 @@ public class SettingsActivity extends NavigationActivity {
         int day = datePicker.getDayOfMonth();
         editor.putInt("Day", day);
 
-        editor.putBoolean("Notifications on", true);
+        //editor.putBoolean("Notifications on", true);
 
         editor.apply();
     }
