@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class NavigationActivity extends AppCompatActivity {
 
 
@@ -89,6 +91,13 @@ public class NavigationActivity extends AppCompatActivity {
                             case R.id.nav_settings: {
                                 Intent userIntent = new Intent(NavigationActivity.this, SettingsActivity.class);
                                 startActivity(userIntent);
+                                break;
+                            }
+                            case R.id.nav_logout: {
+                                FirebaseAuth.getInstance().signOut();
+                                Intent intent= new Intent(NavigationActivity.this, LoginActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
                                 break;
                             }
                         }

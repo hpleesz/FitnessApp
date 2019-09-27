@@ -23,12 +23,19 @@
         </receiver>
         <receiver android:name=".broadcast_receiver.NotificationReceiver" />
         <receiver android:name=".broadcast_receiver.ResetWaterReceiver" />
-
+        
+        <activity
+            android:name=".GymMainActivity"
+            android:label="@string/title_activity_gym_main"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UserActivity"
             android:label="@string/title_activity_user"
@@ -78,10 +85,15 @@
             android:label="@string/title_activity_stretch"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

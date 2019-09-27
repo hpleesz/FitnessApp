@@ -24,6 +24,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,6 +41,7 @@ import hu.bme.aut.fitnessapp.broadcast_receiver.NotificationReceiver;
 import hu.bme.aut.fitnessapp.broadcast_receiver.ResetWaterReceiver;
 import hu.bme.aut.fitnessapp.data.exercise.ExerciseItem;
 import hu.bme.aut.fitnessapp.data.exercise.ExerciseListDatabase;
+import hu.bme.aut.fitnessapp.models.User;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -60,7 +65,9 @@ public class UserActivity extends AppCompatActivity {
     //2 hours + 45 minutes
     public static final int INTERVAL = 2 * 60 * 60 * 1000 + 45 * 60 * 1000;
 
-    private ExerciseListDatabase database;
+    //private ExerciseListDatabase database;
+    private DatabaseReference database;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +76,9 @@ public class UserActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        database = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
 
         assignLayoutElements();
         setFloatingActionButton();
@@ -94,14 +104,22 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (checkDataValidity()) {
-                    saveUserData();
+                    //saveUserData();
+                    SharedPreferences user_settings = getSharedPreferences(USER, MODE_PRIVATE);
+                    SharedPreferences.Editor editor = user_settings.edit();
+                    editor.putBoolean("Notifications on", true);
+
+                    editor.apply();
+
+                    setFirstLoginFalse();
+                    writeNewUser();
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.login_positive, Toast.LENGTH_LONG);
                     toast.show();
                     startNotifications();
                     startResetWater();
-                    //fillEquipments();
-                    loadExercises();
-                    finish();
+                    //loadExercises();
+                    //finish();
+                    startActivity(new Intent(UserActivity.this, MainActivity.class));
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.login_negative, Toast.LENGTH_LONG);
                     toast.show();
@@ -185,6 +203,7 @@ public class UserActivity extends AppCompatActivity {
     }
 
 
+    /*
     private void saveUserData() {
         SharedPreferences user_settings = getSharedPreferences(USER, MODE_PRIVATE);
         SharedPreferences.Editor editor = user_settings.edit();
@@ -239,6 +258,7 @@ public class UserActivity extends AppCompatActivity {
 
         setFirstLoginFalse();
     }
+     */
 
     public boolean checkDataValidity() {
         int name_length = nameEditText.getText().toString().length();
@@ -305,6 +325,7 @@ public class UserActivity extends AppCompatActivity {
         pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
     }
 
+    /*
     public void loadExercises() {
 
         database = Room.databaseBuilder(
@@ -361,6 +382,29 @@ public class UserActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return exerciseItems;
+    }
+
+     */
+
+    private void writeNewUser() {
+        String userId = mAuth.getCurrentUser().getUid();
+        int gender;
+        if(male) gender = 0;
+        else gender = 1;
+        User user = new User(
+                nameEditText.getText().toString(),
+                datePicker.getYear(),
+                datePicker.getMonth(),
+                datePicker.getDayOfMonth(),
+                gain_muscle,
+                lose_weight,
+                gender,
+                Double.parseDouble(weightEditText.getText().toString()),
+                Double.parseDouble(goalWeightEditText.getText().toString()),
+                Double.parseDouble(heightEditText.getText().toString())
+                );
+        database.child("Profiles").child(userId).setValue(true);
+        database.child("Users").child(userId).setValue(user);
     }
 
 }
