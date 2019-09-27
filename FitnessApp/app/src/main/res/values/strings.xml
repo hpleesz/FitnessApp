@@ -23,7 +23,8 @@
     <string name="title_activity_exercise_info">Exercises</string>
     <string name="title_activity_stretch">Stretching</string>
     <string name="title_activity_main">Workout</string>
-
+    <string name="title_activity_login">Register</string>
+    <string name="title_activity_register">Register</string>
 
 
     <string name="name">Name:</string>
@@ -87,6 +88,12 @@
     <string name="no_values_entered">No values entered.</string>
     <string name="measurements_for">Measurements for</string>
     <string name="already_entered">already entered for this date.</string>
+
+    <string name="title_activity_gym_main">GymMainActivity</string>
+    <string-array name="user_types_array">
+        <item>User</item>
+        <item>Gym</item>
+    </string-array>
 
 
 </resources>
