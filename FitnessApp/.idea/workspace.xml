@@ -9,7 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54841a40-7a28-4d0b-9e13-8361b7fba470" name="Default Changelist" comment="" />
+    <list default="true" id="54841a40-7a28-4d0b-9e13-8361b7fba470" name="Default Changelist" comment="water + weight" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,8 +113,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="68">
+              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
               <folding>
                 <element signature="class#Period#0;class#WeightActivity#0" />
                 <element signature="method#setFloatingActionButton#0;class#WeightActivity#0" />
@@ -952,8 +952,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+        <state relative-caret-position="68">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
           <folding>
             <element signature="class#Period#0;class#WeightActivity#0" />
             <element signature="method#setFloatingActionButton#0;class#WeightActivity#0" />
