@@ -37,8 +37,10 @@ import hu.bme.aut.fitnessapp.fragments.NewWeightItemDialogFragment;
 import hu.bme.aut.fitnessapp.fragments.PeriodSelectDialogFragment;
 import hu.bme.aut.fitnessapp.tools.DateFormatter;
 
-public class WeightActivity extends NavigationActivity implements NewWeightItemDialogFragment.NewWeightDialogListener, WeightAdapter.WeightItemDeletedListener, PeriodSelectDialogFragment.PeriodSelectDialogListener, com.github.mikephil.charting.listener.OnChartValueSelectedListener {
 
+public class WeightActivity extends NavigationActivity {
+        //implements NewWeightItemDialogFragment.NewWeightDialogListener, WeightAdapter.WeightItemDeletedListener, PeriodSelectDialogFragment.PeriodSelectDialogListener, com.github.mikephil.charting.listener.OnChartValueSelectedListener {
+/*
     @Override
     public void onValueSelected(Entry e, Highlight h) {
         updatechart(true);
@@ -390,4 +392,6 @@ public class WeightActivity extends NavigationActivity implements NewWeightItemD
         item.setVisible(true);
         return true;
     }
-}
+ */}
+
+

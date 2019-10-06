@@ -20,9 +20,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.UserActivity;
@@ -31,21 +39,18 @@ import hu.bme.aut.fitnessapp.data.location.LocationItem;
 import hu.bme.aut.fitnessapp.data.weight.WeightAdapter;
 import hu.bme.aut.fitnessapp.data.weight.WeightItem;
 import hu.bme.aut.fitnessapp.data.weight.WeightListDatabase;
+import hu.bme.aut.fitnessapp.models.Weight;
 
 public class NewWeightItemDialogFragment extends DialogFragment {
 
     private EditText valueEditText;
     private DatePicker datePicker;
-    private WeightListDatabase database;
-    private List<WeightItem> list;
-    private int reg_day;
-    private int reg_month;
-    private int reg_year;
+    private List<Weight> list;
 
     public static final String TAG = "NewWeightDialogFragment";
 
     public interface NewWeightDialogListener {
-        void onWeightItemCreated(WeightItem item);
+        void onWeightItemCreated(Weight item);
     }
 
     private NewWeightItemDialogFragment.NewWeightDialogListener listener;
@@ -61,11 +66,6 @@ public class NewWeightItemDialogFragment extends DialogFragment {
             throw new RuntimeException("Activity must implement the NewWeightItemDialogListener interface!");
         }
 
-        database = Room.databaseBuilder(
-                getActivity().getApplicationContext(),
-                WeightListDatabase.class,
-                "weights"
-        ).build();
 
         loadDatabase();
     }
@@ -80,11 +80,11 @@ public class NewWeightItemDialogFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Calendar c = Calendar.getInstance();
-                        if (getWeightItem().weight_value == -1) {
+                        if (getWeightItem().value == -1) {
                             dismiss();
                             Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), R.string.no_weight_entered, Toast.LENGTH_LONG);
                             toast.show();
-                        } else if (alreadyExists(getWeightItem()) || (c.get(Calendar.YEAR) == reg_year && c.get(Calendar.MONTH) == reg_month && c.get(Calendar.DATE) == reg_day)) {
+                        } else if (alreadyExists(getWeightItem())) {
                             dismiss();
                             Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), R.string.already_entered_weight, Toast.LENGTH_LONG);
                             toast.show();
@@ -103,53 +103,69 @@ public class NewWeightItemDialogFragment extends DialogFragment {
         valueEditText = contentView.findViewById(R.id.weightValueEditText);
         datePicker = contentView.findViewById(R.id.datePicker);
         datePicker.setMaxDate(System.currentTimeMillis());
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(UserActivity.USER, Context.MODE_PRIVATE);
-        reg_day = sharedPreferences.getInt("Registration day", 0);
-        reg_month = sharedPreferences.getInt("Registration month", 0);
-        reg_year = sharedPreferences.getInt("Registration year", 0);
-        Calendar c = Calendar.getInstance();
-        c.set(reg_year, reg_month, reg_day);
-        datePicker.setMinDate(c.getTimeInMillis());
-
 
         return contentView;
     }
 
-    private WeightItem getWeightItem() {
-        WeightItem weightItem = new WeightItem();
+    private Weight getWeightItem() {
+        Weight weightItem = new Weight();
         try {
-            weightItem.weight_value = Double.parseDouble(valueEditText.getText().toString());
+            weightItem.value = Double.parseDouble(valueEditText.getText().toString());
         } catch (NumberFormatException f) {
-            weightItem.weight_value = -1;
+            weightItem.value = -1;
         }
 
-        weightItem.weight_day = datePicker.getDayOfMonth();
-        weightItem.weight_month = datePicker.getMonth();
-        weightItem.weight_year = datePicker.getYear();
-        weightItem.weight_calculated = makeCalculatedWeight(weightItem.weight_year, weightItem.weight_month, weightItem.weight_day);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(), 0, 0, 0);
+        weightItem.date = Long.toString(calendar.getTimeInMillis() / 1000);
         return weightItem;
     }
 
-    private void loadDatabase() {
-        new AsyncTask<Void, Void, List<WeightItem>>() {
-
-            @Override
-            protected List<WeightItem> doInBackground(Void... voids) {
-                list = database.weightItemDao().getAll();
-                return list;
-            }
-        }.execute();
-    }
-
-    public boolean alreadyExists(WeightItem item) {
+    public boolean alreadyExists(Weight item) {
         for (int i = 0; i < list.size(); i++) {
-            if (item.weight_calculated == list.get(i).weight_calculated)
+            if (item.date.equals(list.get(i).date))
                 return true;
         }
         return false;
     }
 
-    public int makeCalculatedWeight(int year, int fixedmonth, int day) {
-        return year * 10000 + fixedmonth * 100 + day;
+    private void loadDatabase() {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        String userId = firebaseAuth.getCurrentUser().getUid();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Weight").child(userId);
+
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                list = new ArrayList<>();
+                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                {
+                    try {
+                        Map<String, Double> water_entries = (Map) dataSnapshot.getValue();
+
+                        String key = dataSnapshot1.getKey();
+                        double weight_value = water_entries.get(key);
+                        Weight weight = new Weight(key, weight_value);
+                        list.add(weight);
+                    }
+                    catch (Exception e) {
+                        Map<String, Long> water_entries = (Map) dataSnapshot.getValue();
+
+                        String key = dataSnapshot1.getKey();
+                        double weight_value = (double)water_entries.get(key);
+                        Weight weight = new Weight(key, weight_value);
+                        list.add(weight);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors.
+            }
+
+        };
+        databaseReference.addValueEventListener(eventListener);
+
     }
 }

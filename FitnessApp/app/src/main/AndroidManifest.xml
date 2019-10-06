@@ -14,6 +14,10 @@
         android:roundIcon="@drawable/logo2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".WeightActivity2"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
         <receiver
             android:name=".broadcast_receiver.BootReceiver"
             android:enabled="false">
@@ -23,11 +27,11 @@
         </receiver>
         <receiver android:name=".broadcast_receiver.NotificationReceiver" />
         <receiver android:name=".broadcast_receiver.ResetWaterReceiver" />
-        
+
         <activity
             android:name=".GymMainActivity"
             android:label="@string/title_activity_gym_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"

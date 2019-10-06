@@ -21,19 +21,21 @@ import java.util.List;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.UserActivity;
 import hu.bme.aut.fitnessapp.WeightActivity;
+import hu.bme.aut.fitnessapp.WeightActivity2;
 import hu.bme.aut.fitnessapp.fragments.NewWeightItemDialogFragment;
+import hu.bme.aut.fitnessapp.models.Weight;
 
 
 public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.WeightViewHolder> {
 
 
-    private final ArrayList<WeightItem> items;
+    private final ArrayList<Weight> items;
 
     private WeightAdapter.WeightItemDeletedListener del_listener;
 
-    public WeightAdapter(WeightAdapter.WeightItemDeletedListener del_listener) {
+    public WeightAdapter(WeightAdapter.WeightItemDeletedListener del_listener,ArrayList<Weight> list) {
         this.del_listener = del_listener;
-        items = new ArrayList<>();
+        items = list;
     }
 
     @NonNull
@@ -45,7 +47,7 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.WeightView
         return new WeightAdapter.WeightViewHolder(itemView);
     }
 
-    public void addItem(WeightItem item) {
+    public void addItem(Weight item) {
         int pos = insertItem(item);
         notifyItemInserted(pos);
     }
@@ -55,7 +57,7 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.WeightView
         notifyDataSetChanged();
     }
 
-    public void update(List<WeightItem> weightItems) {
+    public void update(List<Weight> weightItems) {
         items.clear();
         for(int i = 0; i < weightItems.size(); i++){
             addItem(weightItems.get(i));
@@ -66,14 +68,16 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.WeightView
 
     @Override
     public void onBindViewHolder(@NonNull WeightAdapter.WeightViewHolder holder, int position) {
-        WeightItem item = items.get(position);
+        Weight item = items.get(position);
         Calendar c = Calendar.getInstance();
         //c.set(item.weight_year, item.weight_month-1, item.weight_day);
-        c.set(item.weight_year, item.weight_month, item.weight_day);
+
+        //c.set(item.weight_year, item.weight_month, item.weight_day);
+        c.setTimeInMillis(Long.parseLong(item.date) * 1000);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY.MM.dd");
         holder.dateTextView.setText(dateFormat.format(c.getTimeInMillis()));
-        String text = Double.toString(item.weight_value) + " kg";
+        String text = Double.toString(item.value) + " kg";
         holder.valueTextView.setText(text);
         holder.item = item;
     }
@@ -85,7 +89,7 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.WeightView
 
 
     public interface WeightItemDeletedListener{
-        void onItemDeleted(WeightItem item);
+        void onItemDeleted(Weight item);
     }
 
     class WeightViewHolder extends RecyclerView.ViewHolder {
@@ -95,29 +99,19 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.WeightView
         ImageButton removeButton;
 
 
-        transient WeightItem item;
+        transient Weight item;
 
         WeightViewHolder(final View itemView) {
             super(itemView);
             dateTextView = itemView.findViewById(R.id.WeightItemDateTextView);
             valueTextView = itemView.findViewById(R.id.WeightItemValueTextView);
-            //removeButton = itemView.findViewById(R.id.WeightItemRemoveButton);
-
-            /*
-            removeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    del_listener.onItemDeleted(item);
-                }
-            });
-            */
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
 
                 @Override
                 public boolean onLongClick(View v) {
                     //new DeleteDialogFragment().show(getSupportFragmentManager(), DeleteDialogFragment.TAG);
-                    final AlertDialog alertDialog = new AlertDialog.Builder((WeightActivity)del_listener).create();
+                    final AlertDialog alertDialog = new AlertDialog.Builder((WeightActivity2)del_listener).create();
                     alertDialog.setTitle("Delete item?");
                     alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
                         @Override
@@ -140,19 +134,19 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.WeightView
         }
     }
 
-    public int insertItem(WeightItem item) {
+    public int insertItem(Weight item) {
 
-        if (items.isEmpty() || items.get(items.size() - 1).weight_calculated < item.weight_calculated) {
+        if (items.isEmpty() || Long.parseLong(items.get(items.size() - 1).date) < Long.parseLong(item.date)) {
             items.add(item);
             return items.size()-1;
         }
-        else if (items.get(0).weight_calculated > item.weight_calculated){
+        else if (Long.parseLong(items.get(0).date) > Long.parseLong(item.date)){
             items.add(0, item);
             return 0;
         }
         else {
             for (int i = 1; i < items.size(); i++) {
-                if (items.get(i - 1).weight_calculated < item.weight_calculated && item.weight_calculated < items.get(i).weight_calculated) {
+                if ( Long.parseLong(items.get(i - 1).date) < Long.parseLong(item.date) && Long.parseLong(item.date) < Long.parseLong(items.get(i).date)) {
                     items.add(i, item);
                     return i;
                 }
@@ -165,10 +159,10 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.WeightView
 
     public double getLastItemWeight() {
         if(items.isEmpty()) return -1;
-        else return items.get(items.size()-1).weight_value;
+        else return items.get(items.size()-1).value;
     }
 
-    public ArrayList<WeightItem> getItems() {
+    public ArrayList<Weight> getItems() {
         return items;
     }
 

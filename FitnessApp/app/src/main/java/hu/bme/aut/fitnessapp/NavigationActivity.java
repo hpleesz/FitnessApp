@@ -74,7 +74,7 @@ public class NavigationActivity extends AppCompatActivity {
                                 break;
                             }
                             case R.id.nav_weight: {
-                                Intent userIntent = new Intent(NavigationActivity.this, WeightActivity.class);
+                                Intent userIntent = new Intent(NavigationActivity.this, WeightActivity2.class);
                                 startActivity(userIntent);
                                 break;
                             }

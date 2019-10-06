@@ -17,7 +17,17 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.Calendar;
+import java.util.List;
+
+import hu.bme.aut.fitnessapp.models.User;
 
 public class SettingsActivity extends NavigationActivity {
 
@@ -39,6 +49,12 @@ public class SettingsActivity extends NavigationActivity {
     private EditText goalWeightEditText;
     private DatePicker datePicker;
 
+    private DatabaseReference databaseReference;
+    private FirebaseAuth mAuth;
+    private ValueEventListener eventListener;
+
+    public static final String NOTIFICATIONS = "Notifications";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +63,11 @@ public class SettingsActivity extends NavigationActivity {
         mDrawerLayout.addView(contentView, 0);
         navigationView.getMenu().getItem(5).setChecked(true);
 
+        mAuth = FirebaseAuth.getInstance();
+        String userID = mAuth.getCurrentUser().getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
 
-        sharedPreferences = getSharedPreferences(UserActivity.USER, MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(SettingsActivity.NOTIFICATIONS, MODE_PRIVATE);
 
 
         notificationSwitch = (Switch) findViewById(R.id.notificationSwitch);
@@ -57,15 +76,15 @@ public class SettingsActivity extends NavigationActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 if (isChecked) {
-                    editor.putBoolean("Notifications on", true);
+                    editor.putBoolean("Send Notifications", true);
                 } else {
-                    editor.putBoolean("Notifications on", false);
+                    editor.putBoolean("Send Notifications", false);
                 }
                 editor.apply();
             }
         });
 
-        notificationSwitch.setChecked(sharedPreferences.getBoolean("Notifications on", true));
+        notificationSwitch.setChecked(sharedPreferences.getBoolean("Send Notifications", true));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setImageDrawable(getDrawable(R.drawable.ic_check));
@@ -91,40 +110,40 @@ public class SettingsActivity extends NavigationActivity {
 
     public void assignLayoutElements() {
         nameEditText = findViewById(R.id.nameEditText);
-        String name = sharedPreferences.getString("Name", "");
-        nameEditText.setText(name);
+        //String name = sharedPreferences.getString("Name", "");
+        //nameEditText.setText(name);
 
-        weightEditText = findViewById(R.id.weightEditText);
-        float starting_weight = sharedPreferences.getFloat("Starting weight", 0);
-        weightEditText.setText(Float.toString(starting_weight));
+        //weightEditText = findViewById(R.id.weightEditText);
+        //float starting_weight = sharedPreferences.getFloat("Starting weight", 0);
+        //weightEditText.setText(Float.toString(starting_weight));
 
         heightEditText = findViewById(R.id.heightEditText);
-        float height = sharedPreferences.getFloat("Height", 0);
-        heightEditText.setText(Float.toString(height));
+        //float height = sharedPreferences.getFloat("Height", 0);
+        //heightEditText.setText(Float.toString(height));
 
         goalWeightEditText = findViewById(R.id.goalWeightEditText);
-        float goal_weight = sharedPreferences.getFloat("Goal weight", 0);
-        goalWeightEditText.setText(Float.toString(goal_weight));
+        //float goal_weight = sharedPreferences.getFloat("Goal weight", 0);
+        //goalWeightEditText.setText(Float.toString(goal_weight));
 
         maleButton = findViewById(R.id.buttonMale);
         femaleButton = findViewById(R.id.buttonFemale);
         loseWeightButton = findViewById(R.id.buttonLoseWeight);
         gainMuscleButton = findViewById(R.id.buttonGainMuscle);
 
-        male = sharedPreferences.getBoolean("Male", true);
-        female = !male;
-        lose_weight = sharedPreferences.getBoolean("Lose weight", true);
-        gain_muscle = sharedPreferences.getBoolean("Gain muscle", true);
-        setGenderButtons();
-        setLoseWeightButton();
-        setMuscleButton();
+        //male = sharedPreferences.getBoolean("Male", true);
+        //female = !male;
+        //lose_weight = sharedPreferences.getBoolean("Lose weight", true);
+        //gain_muscle = sharedPreferences.getBoolean("Gain muscle", true);
+        //setGenderButtons();
+        //setLoseWeightButton();
+        //setMuscleButton();
 
         datePicker = findViewById(R.id.dateOfBirthPicker);
-        int year = sharedPreferences.getInt("Year", 2019);
-        int month = sharedPreferences.getInt("Month", 1);
-        int day = sharedPreferences.getInt("Day", 1);
-        datePicker.updateDate(year, month, day);
-        datePicker.setMaxDate(System.currentTimeMillis());
+        //int year = sharedPreferences.getInt("Year", 2019);
+        //int month = sharedPreferences.getInt("Month", 1);
+        //int day = sharedPreferences.getInt("Day", 1);
+        //datePicker.updateDate(year, month, day);
+        //datePicker.setMaxDate(System.currentTimeMillis());
     }
 
     private void setGenderOnClickListeners() {
@@ -199,8 +218,28 @@ public class SettingsActivity extends NavigationActivity {
 
 
     private void saveUserData() {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
 
+            String userId = mAuth.getCurrentUser().getUid();
+            int gender;
+            if(male) gender = 0;
+            else gender = 1;
+            User user = new User(
+                    nameEditText.getText().toString(),
+                    datePicker.getYear(),
+                    datePicker.getMonth(),
+                    datePicker.getDayOfMonth(),
+                    gain_muscle,
+                    lose_weight,
+                    gender,
+                    //Double.parseDouble(weightEditText.getText().toString()),
+                    Double.parseDouble(goalWeightEditText.getText().toString()),
+                    Double.parseDouble(heightEditText.getText().toString())
+            );
+            databaseReference.setValue(user);
+
+        //SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        /*
         //name
         String name = nameEditText.getText().toString();
         editor.putString("Name", name);
@@ -243,20 +282,70 @@ public class SettingsActivity extends NavigationActivity {
         editor.putInt("Day", day);
 
         //editor.putBoolean("Notifications on", true);
-
-        editor.apply();
+*/
+        //editor.apply();
     }
 
     public boolean checkDataValidity() {
         int name_length = nameEditText.getText().toString().length();
-        int weight_length = weightEditText.getText().toString().length();
+        //int weight_length = weightEditText.getText().toString().length();
         int height_length = heightEditText.getText().toString().length();
         int goal_length = goalWeightEditText.getText().toString().length();
 
-        if (name_length == 0 || weight_length == 0 || height_length == 0 || goal_length == 0 || (!female && !male) || (!lose_weight && !gain_muscle)) {
+        if (name_length == 0 || height_length == 0 || goal_length == 0 || (!female && !male) || (!lose_weight && !gain_muscle)) {
             return false;
         } else
             return true;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                User user = dataSnapshot.getValue(User.class);
+                // [START_EXCLUDE]
+                nameEditText.setText(user.name);
+                //weightEditText.setText(Double.toString(user.starting_weight));
+                heightEditText.setText(Double.toString(user.height));
+                goalWeightEditText.setText(Double.toString(user.goal_weight));
+
+                male = user.gender != 1;
+                female = !male;
+
+                lose_weight = user.lose_weight;
+                gain_muscle = user.gain_muscle;
+                setGenderButtons();
+                setLoseWeightButton();
+                setMuscleButton();
+
+                datePicker.updateDate(user.year, user.month, user.day);
+                datePicker.setMaxDate(System.currentTimeMillis());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        };
+        databaseReference.addValueEventListener(eventListener);
+        // [END post_value_event_listener]
+
+        // Keep copy of post listener so we can remove it when app stops
+        this.eventListener = eventListener;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // Remove post value event listener
+        if (eventListener != null) {
+            databaseReference.removeEventListener(eventListener);
+        }
+    }
+
 
 }

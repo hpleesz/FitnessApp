@@ -27,7 +27,7 @@
             android:title="@string/nav_settings" />
         <item
             android:id="@+id/nav_logout"
-            android:icon="@drawable/settings"
+            android:icon="@drawable/power_thin"
             android:title="Logout" />
     </group>
 </menu>

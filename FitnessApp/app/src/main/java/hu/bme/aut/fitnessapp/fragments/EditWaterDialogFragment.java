@@ -14,6 +14,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Calendar;
+import java.util.Map;
+
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.UserActivity;
 import hu.bme.aut.fitnessapp.WaterActivity;
@@ -25,10 +36,15 @@ public class EditWaterDialogFragment extends DialogFragment {
     private EditText amountEditText;
     private SharedPreferences water_consumed;
 
+    private long today;
+    private DatabaseReference databaseReference;
+    private String userId;
+    private double water_saved;
+
     public static final String TAG = "EditWaterDialogFragment";
 
     public interface EditWaterDialogListener {
-        void onWaterEdited(float newItem);
+        void onWaterEdited(double newItem);
     }
 
     private EditWaterDialogFragment.EditWaterDialogListener listener;
@@ -68,19 +84,51 @@ public class EditWaterDialogFragment extends DialogFragment {
         TextView title = (TextView) contentView.findViewById(R.id.waterFragmentTitle);
         title.setText(R.string.edit);
         amountEditText = contentView.findViewById(R.id.waterAmountEditText);
-        water_consumed = getActivity().getSharedPreferences(WaterActivity.WATER, MODE_PRIVATE);
-        float water = water_consumed.getFloat("Consumed", 0);
-        amountEditText.setText(Float.toString(water));
+        //water_consumed = getActivity().getSharedPreferences(WaterActivity.WATER, MODE_PRIVATE);
+        //float water = water_consumed.getFloat("Consumed", 0);
+
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Water").child(userId);
+
+        Query lastWaterQuery = databaseReference.orderByKey().limitToLast(1);
+        lastWaterQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String key = "";
+                for(DataSnapshot item: dataSnapshot.getChildren()) {
+                    key = item.getKey();
+                }
+
+                //////////////////////////////
+
+                try {
+                    Map<String, Double> water_entries = (Map) dataSnapshot.getValue();
+                    water_saved = water_entries.get(key);
+
+                }
+                catch(Exception e) {
+                    Map<String, Long> water_entries = (Map) dataSnapshot.getValue();
+                    water_saved = (double)water_entries.get(key);
+                }
+
+                amountEditText.setText(Double.toString(water_saved));
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
         return contentView;
     }
 
 
-    private float getWater() {
-        float water = 0;
+    private double getWater() {
+        double water = 0;
         try {
-            water = Float.parseFloat(amountEditText.getText().toString());
+            water = Double.parseDouble(amountEditText.getText().toString());
         } catch (NumberFormatException f) {
-            water = water_consumed.getFloat("Consumed", 0);
+            water = water_saved;
         }
         return water;
     }

@@ -109,7 +109,7 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
         setLocationText();
         setButtonsOnClickListeners();
         setChooseLocationOnClickListener();
-        checkFirstSignIn();
+        //checkFirstSignIn();
         continueWorkout();
     }
 

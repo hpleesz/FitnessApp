@@ -32,8 +32,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import hu.bme.aut.fitnessapp.broadcast_receiver.BootReceiver;
@@ -105,13 +108,13 @@ public class UserActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (checkDataValidity()) {
                     //saveUserData();
-                    SharedPreferences user_settings = getSharedPreferences(USER, MODE_PRIVATE);
-                    SharedPreferences.Editor editor = user_settings.edit();
-                    editor.putBoolean("Notifications on", true);
+                    SharedPreferences sharedPreferences = getSharedPreferences(SettingsActivity.NOTIFICATIONS, MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("Send Notifications", true);
 
                     editor.apply();
 
-                    setFirstLoginFalse();
+                    //setFirstLoginFalse();
                     writeNewUser();
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.login_positive, Toast.LENGTH_LONG);
                     toast.show();
@@ -203,63 +206,6 @@ public class UserActivity extends AppCompatActivity {
     }
 
 
-    /*
-    private void saveUserData() {
-        SharedPreferences user_settings = getSharedPreferences(USER, MODE_PRIVATE);
-        SharedPreferences.Editor editor = user_settings.edit();
-
-        //name
-        String name = nameEditText.getText().toString();
-        editor.putString("Name", name);
-
-        //gender
-        editor.putBoolean("Male", male);
-
-        //weight
-        float weight = Float.parseFloat(weightEditText.getText().toString());
-        editor.putFloat("Starting weight", weight);
-        editor.putFloat("Current weight", weight);
-
-        //height
-        float height = Float.parseFloat(heightEditText.getText().toString());
-        editor.putFloat("Height", height);
-
-        //goal
-        editor.putBoolean("Lose weight", lose_weight);
-        editor.putBoolean("Gain muscle", gain_muscle);
-
-        //goal weight
-        float goal_weight = Float.parseFloat(goalWeightEditText.getText().toString());
-        editor.putFloat("Goal weight", goal_weight);
-
-        //date of birth
-        int year = datePicker.getYear();
-        editor.putInt("Year", year);
-        //int month = datePicker.getMonth() + 1;
-        int month = datePicker.getMonth();
-        editor.putInt("Month", month);
-        int day = datePicker.getDayOfMonth();
-        editor.putInt("Day", day);
-
-        Calendar c = Calendar.getInstance();
-        int reg_year = c.get(Calendar.YEAR);
-        //int reg_month = c.get(Calendar.MONTH) + 1;
-        int reg_month = c.get(Calendar.MONTH);
-
-        int reg_day = c.get(Calendar.DAY_OF_MONTH);
-
-        editor.putInt("Registration year", reg_year);
-        editor.putInt("Registration month", reg_month);
-        editor.putInt("Registration day", reg_day);
-
-        editor.putBoolean("Notifications on", true);
-
-        editor.apply();
-
-        setFirstLoginFalse();
-    }
-     */
-
     public boolean checkDataValidity() {
         int name_length = nameEditText.getText().toString().length();
         int weight_length = weightEditText.getText().toString().length();
@@ -325,66 +271,6 @@ public class UserActivity extends AppCompatActivity {
         pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
     }
 
-    /*
-    public void loadExercises() {
-
-        database = Room.databaseBuilder(
-                getApplicationContext(),
-                ExerciseListDatabase.class,
-                "exercises"
-        ).build();
-
-        final ArrayList<ExerciseItem> list = fillExerciseList();
-
-        new AsyncTask<Void, Void, List<ExerciseItem>>() {
-
-            @Override
-            protected List<ExerciseItem> doInBackground(Void... voids) {
-                for (int i = 0; i < list.size(); i++) {
-                    database.exerciseItemDao().insert(list.get(i));
-                }
-                return list;
-            }
-        }.execute();
-
-    }
-
-
-    public ArrayList<ExerciseItem> fillExerciseList() {
-        Resources resources = getResources();
-        String str;
-        ArrayList<ExerciseItem> exerciseItems = new ArrayList<>();
-
-        int resID = resources.getIdentifier("hu.bme.aut.fitnessapp:raw/" + "exercises", null, null);
-        InputStream is = resources.openRawResource(resID);
-        try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            while ((str = br.readLine()) != null) {
-                String[] line = str.split("\t");
-                ExerciseItem newItem = new ExerciseItem();
-
-                newItem.exercise_name = line[0];
-
-                newItem.equipment1 = Integer.parseInt(line[1]);
-                newItem.equipment2 = Integer.parseInt(line[2]);
-                String[] muscles = line[3].split(", ");
-                ArrayList<String> musclesList = new ArrayList<>();
-                for (int i = 0; i < muscles.length; i++) {
-                    musclesList.add(muscles[i]);
-                }
-                newItem.exercise_muscles = musclesList;
-                newItem.reps_time = Integer.parseInt(line[4]);
-
-                exerciseItems.add(newItem);
-            }
-            is.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return exerciseItems;
-    }
-
-     */
 
     private void writeNewUser() {
         String userId = mAuth.getCurrentUser().getUid();
@@ -399,12 +285,19 @@ public class UserActivity extends AppCompatActivity {
                 gain_muscle,
                 lose_weight,
                 gender,
-                Double.parseDouble(weightEditText.getText().toString()),
+                //Double.parseDouble(weightEditText.getText().toString()),
                 Double.parseDouble(goalWeightEditText.getText().toString()),
                 Double.parseDouble(heightEditText.getText().toString())
                 );
         database.child("Profiles").child(userId).setValue(true);
         database.child("Users").child(userId).setValue(user);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+
+        long date = calendar.getTimeInMillis() / 1000;
+
+        database.child("Weight").child(userId).child(Long.toString(date)).setValue(Double.parseDouble(weightEditText.getText().toString()));
     }
 
 }

@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.WeightActivity;
+import hu.bme.aut.fitnessapp.WeightActivity2;
 
 public class PeriodSelectDialogFragment extends DialogFragment {
 
@@ -93,7 +94,7 @@ public class PeriodSelectDialogFragment extends DialogFragment {
 
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(WeightActivity.PERIOD, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(WeightActivity2.PERIOD, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         switch (view.getId()) {
             case R.id.allRadioButton:
@@ -113,7 +114,7 @@ public class PeriodSelectDialogFragment extends DialogFragment {
     }
 
     public void setCurrentlyChecked() {
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(WeightActivity.PERIOD, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(WeightActivity2.PERIOD, Context.MODE_PRIVATE);
         String settings = sharedPreferences.getString("Period", "all");
         switch (settings) {
             case "all":

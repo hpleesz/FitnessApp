@@ -22,7 +22,7 @@ public class NewWaterDialogFragment extends DialogFragment {
     public static final String TAG = "NewWaterDialogFragment";
 
     public interface NewWaterDialogListener {
-        void onWaterAdded(float newItem);
+        void onWaterAdded(double newItem);
     }
 
     private NewWaterDialogFragment.NewWaterDialogListener listener;
@@ -67,12 +67,12 @@ public class NewWaterDialogFragment extends DialogFragment {
     }
 
 
-    private float getWater() {
-        float water = 0;
+    private double getWater() {
+        double water = 0.0;
         try {
-            water = Float.parseFloat(amountEditText.getText().toString());
+            water = Double.parseDouble(amountEditText.getText().toString());
         } catch (NumberFormatException f) {
-            water = 0;
+            water = 0.0;
         }
         return water;
     }
