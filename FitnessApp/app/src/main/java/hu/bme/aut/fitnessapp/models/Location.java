@@ -2,16 +2,20 @@ package hu.bme.aut.fitnessapp.models;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @IgnoreExtraProperties
-public class Location {
+public class Location implements Serializable {
+    public int id;
     public String name;
-    public List<Integer> equipment;
+    public ArrayList<Integer> equipment;
 
     public Location() {}
 
-    public Location(String name, List<Integer> equipment) {
+    public Location(int id, String name, ArrayList<Integer> equipment) {
+        this.id = id;
         this.name = name;
         this.equipment = equipment;
     }

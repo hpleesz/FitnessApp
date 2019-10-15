@@ -15,6 +15,7 @@ public class User {
     //public Double starting_weight;
     public Double goal_weight;
     public Double height;
+    public Boolean goal_reached;
 
     public User(){}
 
@@ -29,6 +30,7 @@ public class User {
         //this.starting_weight = starting_weight;
         this.goal_weight = goal_weight;
         this.height = height;
+        this.goal_reached = false;
     }
 
 }

@@ -75,6 +75,10 @@ public class WeightActivity2 extends NavigationActivity implements NewWeightItem
     private long starting_date;
     private double starting_weight;
 
+    private double goal_weight;
+
+    private User user;
+
     private SharedPreferences sharedPreferences;
     private SharedPreferences periodSharedPreferences;
 
@@ -89,11 +93,12 @@ public class WeightActivity2 extends NavigationActivity implements NewWeightItem
         mDrawerLayout.addView(contentView, 0);
 
         initializeValues();
-        //setPeriod();
+        setPeriod();
 
         navigationView.getMenu().getItem(2).setChecked(true);
 
         loadList();
+        loadProgressInfo();
         setFloatingActionButton();
     }
 
@@ -103,8 +108,7 @@ public class WeightActivity2 extends NavigationActivity implements NewWeightItem
 
         firebaseAuth = FirebaseAuth.getInstance();
         userId = firebaseAuth.getCurrentUser().getUid();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Weight").child(userId);
-
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
     }
 
@@ -182,19 +186,19 @@ public class WeightActivity2 extends NavigationActivity implements NewWeightItem
             for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
             {
                 try {
-                    Map<String, Double> water_entries = (Map) dataSnapshot.getValue();
+                    Map<String, Double> entries = (Map) dataSnapshot.getValue();
 
                     //double weight_value = (double)dataSnapshot1.getValue();
                     String key = dataSnapshot1.getKey();
-                    double weight_value = water_entries.get(key);
+                    double weight_value = entries.get(key);
                     Weight weight = new Weight(key, weight_value);
                     itemlist.add(weight);
                 }
                 catch (Exception e) {
-                    Map<String, Long> water_entries = (Map) dataSnapshot.getValue();
+                    Map<String, Long> entries = (Map) dataSnapshot.getValue();
 
                     String key = dataSnapshot1.getKey();
-                    double weight_value = (double)water_entries.get(key);
+                    double weight_value = (double)entries.get(key);
                     Weight weight = new Weight(key, weight_value);
                     itemlist.add(weight);
                 }
@@ -218,7 +222,7 @@ public class WeightActivity2 extends NavigationActivity implements NewWeightItem
             }
 
         };
-        databaseReference.addValueEventListener(eventListener);
+        databaseReference.child("Weight").child(userId).addValueEventListener(eventListener);
 
 
         // [END post_value_event_listener]
@@ -285,46 +289,28 @@ public class WeightActivity2 extends NavigationActivity implements NewWeightItem
 
     @Override
     public void onWeightItemCreated(final Weight newItem) {
-        databaseReference.child(newItem.date).setValue(newItem.value);
+        databaseReference.child("Weight").child(userId).child(newItem.date).setValue(newItem.value);
+        checkProgress();
     }
 
-
-
-    /*
-    public void setMostRecentWeightAsCurrent() {
-        double weight = adapter.getLastItemWeight();
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        if (weight == -1) {
-            weight = sharedPreferences.getFloat("Starting weight", 0);
-            editor.putFloat("Current weight", (float) weight);
-        } else {
-            editor.putFloat("Current weight", (float) weight);
-        }
-        editor.apply();
-    }
-*/
     public void checkProgress() {
-        SharedPreferences progressSharedPreferences = getSharedPreferences(PROGRESS, MODE_PRIVATE);
-        SharedPreferences.Editor editor = progressSharedPreferences.edit();
-        boolean reached_goal_already = progressSharedPreferences.getBoolean("Reached goal already", false);
+
         if (isGoalReached()) {
-            if (!reached_goal_already) {
-                new NewGoalReachedDialogFragment().show(getSupportFragmentManager(), NewGoalReachedDialogFragment.TAG);
-                editor.putBoolean("Reached goal already", true);
+            if (!user.goal_reached) {
+                user.goal_reached = true;
+
             }
         } else {
-            if (reached_goal_already)
-                editor.putBoolean("Reached goal already", false);
+            if (user.goal_reached)
+                user.goal_reached = false;
         }
-        editor.apply();
+        databaseReference.child("Users").child(userId).child("goal_reached").setValue(user.goal_reached);
+
     }
 
     public boolean isGoalReached() {
-        float goal_weight = sharedPreferences.getFloat("Goal weight", 0);
-        float starting_weight = sharedPreferences.getFloat("Starting weight", 0);
-        float current_weight = sharedPreferences.getFloat("Current weight", 0);
+
+        double current_weight = itemlist.get(itemlist.size()-1).value;
 
         if (goal_weight > starting_weight) return (current_weight / goal_weight) >= 1;
         else if (goal_weight < starting_weight) return (current_weight / goal_weight) <= 1;
@@ -379,7 +365,36 @@ public class WeightActivity2 extends NavigationActivity implements NewWeightItem
 
     @Override
     public void onItemDeleted(final Weight item) {
-        databaseReference.child(item.date).removeValue();
+        databaseReference.child("Weight").child(userId).child(item.date).removeValue();
     }
 
+
+    public void loadProgressInfo() {
+
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                user = dataSnapshot.getValue(User.class);
+                try {
+                    goal_weight = user.goal_weight;
+                }
+                catch (Exception e) {
+                    goal_weight = user.goal_weight.doubleValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors.
+            }
+
+        };
+        databaseReference.child("Users").child(userId).addValueEventListener(eventListener);
+
+
+        // [END post_value_event_listener]
+
+        // Keep copy of post listener so we can remove it when app stops
+        //this.eventListener = eventListener;
+    }
 }

@@ -22,20 +22,24 @@ import hu.bme.aut.fitnessapp.MeasurementsGraphActivity;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.UserActivity;
 import hu.bme.aut.fitnessapp.WeightActivity;
-import hu.bme.aut.fitnessapp.fragments.MeasurementsGraphFragment;
+import hu.bme.aut.fitnessapp.WeightActivity2;
 import hu.bme.aut.fitnessapp.fragments.NewWeightItemDialogFragment;
+import hu.bme.aut.fitnessapp.models.Measurement;
+import hu.bme.aut.fitnessapp.models.Weight;
 
 
 public class MeasurementAdapter extends RecyclerView.Adapter<MeasurementAdapter.MeasurementViewHolder> {
 
 
-    private final ArrayList<MeasurementItem> items;
+    private final ArrayList<Weight> items;
+    private String body_part;
 
     private MeasurementAdapter.MeasurementItemDeletedListener del_listener;
 
-    public MeasurementAdapter(MeasurementAdapter.MeasurementItemDeletedListener del_listener) {
+    public MeasurementAdapter(MeasurementAdapter.MeasurementItemDeletedListener del_listener,ArrayList<Weight> list, String body_part) {
         this.del_listener = del_listener;
-        items = new ArrayList<>();
+        items = list;
+        this.body_part = body_part;
     }
 
     @NonNull
@@ -47,34 +51,37 @@ public class MeasurementAdapter extends RecyclerView.Adapter<MeasurementAdapter.
         return new MeasurementAdapter.MeasurementViewHolder(itemView);
     }
 
-    public void addItem(MeasurementItem item) {
+    public void addItem(Weight item) {
         int pos = insertItem(item);
         notifyItemInserted(pos);
     }
 
-    public void deleteItem(MeasurementItem item){
+    public void deleteItem(Weight item){
         items.remove(item);
         notifyDataSetChanged();
     }
 
-    public void update(List<MeasurementItem> measurementItems) {
+    public void update(List<Weight> measurementItems) {
         items.clear();
-        for(int i = 0; i < measurementItems.size(); i++) {
+        for(int i = 0; i < measurementItems.size(); i++){
             addItem(measurementItems.get(i));
         }
-        //items.addAll(measurementItems);
+        //items.addAll(weightItems);
         notifyDataSetChanged();
     }
 
     @Override
     public void onBindViewHolder(@NonNull MeasurementAdapter.MeasurementViewHolder holder, int position) {
-        MeasurementItem item = items.get(position);
+        Weight item = items.get(position);
         Calendar c = Calendar.getInstance();
-        c.set(item.measurement_year, item.measurement_month, item.measurement_day);
+        //c.set(item.weight_year, item.weight_month-1, item.weight_day);
+
+        //c.set(item.weight_year, item.weight_month, item.weight_day);
+        c.setTimeInMillis(Long.parseLong(item.date) * 1000);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY.MM.dd");
         holder.dateTextView.setText(dateFormat.format(c.getTimeInMillis()));
-        String text = Double.toString(item.measurement_value) + " cm";
+        String text = Double.toString(item.value) + " cm";
         holder.valueTextView.setText(text);
         holder.item = item;
     }
@@ -86,15 +93,17 @@ public class MeasurementAdapter extends RecyclerView.Adapter<MeasurementAdapter.
 
 
     public interface MeasurementItemDeletedListener{
-        void onItemDeleted(MeasurementItem item);
+        void onItemDeleted(Weight item, String bodyPart);
     }
 
     class MeasurementViewHolder extends RecyclerView.ViewHolder {
 
         TextView dateTextView;
         TextView valueTextView;
+        ImageButton removeButton;
 
-        transient MeasurementItem item;
+
+        transient Weight item;
 
         MeasurementViewHolder(final View itemView) {
             super(itemView);
@@ -105,12 +114,13 @@ public class MeasurementAdapter extends RecyclerView.Adapter<MeasurementAdapter.
 
                 @Override
                 public boolean onLongClick(View v) {
+                    //new DeleteDialogFragment().show(getSupportFragmentManager(), DeleteDialogFragment.TAG);
                     final AlertDialog alertDialog = new AlertDialog.Builder((MeasurementsGraphActivity)del_listener).create();
                     alertDialog.setTitle("Delete item?");
                     alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            del_listener.onItemDeleted(item);
+                            del_listener.onItemDeleted(item, body_part);
                             alertDialog.dismiss();
                         }
                     });
@@ -128,19 +138,19 @@ public class MeasurementAdapter extends RecyclerView.Adapter<MeasurementAdapter.
         }
     }
 
-    public int insertItem(MeasurementItem item) {
+    public int insertItem(Weight item) {
 
-        if (items.isEmpty() || items.get(items.size() - 1).measurement_calculated <= item.measurement_calculated) {
+        if (items.isEmpty() || Long.parseLong(items.get(items.size() - 1).date) < Long.parseLong(item.date)) {
             items.add(item);
             return items.size()-1;
         }
-        else if (items.get(0).measurement_calculated >= item.measurement_calculated){
+        else if (Long.parseLong(items.get(0).date) > Long.parseLong(item.date)){
             items.add(0, item);
             return 0;
         }
         else {
             for (int i = 1; i < items.size(); i++) {
-                if (items.get(i - 1).measurement_calculated <= item.measurement_calculated && item.measurement_calculated <= items.get(i).measurement_calculated) {
+                if ( Long.parseLong(items.get(i - 1).date) < Long.parseLong(item.date) && Long.parseLong(item.date) < Long.parseLong(items.get(i).date)) {
                     items.add(i, item);
                     return i;
                 }
@@ -153,15 +163,11 @@ public class MeasurementAdapter extends RecyclerView.Adapter<MeasurementAdapter.
 
     public double getLastItemWeight() {
         if(items.isEmpty()) return -1;
-        else return items.get(items.size()-1).measurement_value;
+        else return items.get(items.size()-1).value;
     }
 
-    public ArrayList<MeasurementItem> getItems(String bodypart) {
-        ArrayList<MeasurementItem> list = new ArrayList<>();
-        for(int i = 0; i < items.size(); i++)
-            if(items.get(i).body_part.equals(bodypart))
-                list.add(items.get(i));
-        return list;
+    public ArrayList<Weight> getItems() {
+        return items;
     }
 
 }

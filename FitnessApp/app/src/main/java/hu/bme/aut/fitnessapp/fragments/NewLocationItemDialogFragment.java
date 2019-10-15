@@ -20,6 +20,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,6 +41,8 @@ import hu.bme.aut.fitnessapp.data.equipment.EquipmentListDatabase;
 import hu.bme.aut.fitnessapp.data.exercise.ExerciseItem;
 import hu.bme.aut.fitnessapp.data.exercise.ExerciseListDatabase;
 import hu.bme.aut.fitnessapp.data.location.LocationItem;
+import hu.bme.aut.fitnessapp.models.Equipment;
+import hu.bme.aut.fitnessapp.models.Location;
 
 public class NewLocationItemDialogFragment extends DialogFragment implements EquipmentAdapter.OnCheckBoxClicked {
 
@@ -41,6 +50,13 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
     private EquipmentListDatabase database;
 
     private EditText nameEditText;
+
+
+    private DatabaseReference databaseReference;
+    private FirebaseAuth firebaseAuth;
+    private String userId;
+
+    private ArrayList<Equipment> equipmentList;
 
     public static final String TAG = "NewLocationItemDialogFragment";
     private NewLocationItemDialogListener listener;
@@ -57,7 +73,7 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
 
 
     public interface NewLocationItemDialogListener {
-        void onLocationItemCreated(LocationItem newItem);
+        void onLocationItemCreated(Location newItem);
     }
 
     @Override
@@ -70,6 +86,10 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
         } else {
             throw new RuntimeException("Activity must implement the NewLocationItemDialogListener interface!");
         }
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        userId = firebaseAuth.getCurrentUser().getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
     }
 
@@ -85,7 +105,7 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
                             dismiss();
                             Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), R.string.no_name_entered, Toast.LENGTH_LONG);
                             toast.show();
-                        } else if (getLocationItem().location_equipmentItems.isEmpty()) {
+                        } else if (getLocationItem().equipment.isEmpty()) {
                             dismiss();
                             Toast toast = Toast.makeText(getActivity().getApplication().getApplicationContext(), R.string.no_equipment_selected, Toast.LENGTH_LONG);
                             toast.show();
@@ -101,8 +121,8 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
 
     private void initRecyclerView(View rootView) {
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.EquipmentRecyclerView);
-        adapter = new EquipmentAdapter(this);
-        loadItemsInBackground();
+        adapter = new EquipmentAdapter(this, equipmentList);
+        //loadItemsInBackground();
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
     }
@@ -120,8 +140,7 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
             throw new RuntimeException("Activity must implement the NewLocationItemDialogListener interface!");
         }
 
-        initializeDatabase();
-        initRecyclerView(contentView);
+        loadEquipment(contentView);
 
 
         return contentView;
@@ -132,85 +151,47 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
         return nameEditText.getText().length() > 0;
     }
 
-    private void loadItemsInBackground() {
-        new AsyncTask<Void, Void, List<EquipmentItem>>() {
+    private void loadEquipment(final View contentview) {
+
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                equipmentList = new ArrayList<>();
+
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    int id = Integer.parseInt(dataSnapshot1.getKey());
+                    String name = (String) dataSnapshot1.getValue();
+                    Equipment equipment = new Equipment(id, name);
+                    equipmentList.add(equipment);
+                }
+                initRecyclerView(contentview);
+            }
 
             @Override
-            protected List<EquipmentItem> doInBackground(Void... voids) {
-                return database.equipmentItemDao().getAll();
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors.
             }
 
-            @Override
-            protected void onPostExecute(List<EquipmentItem> equipmentItemList) {
-                adapter.update(equipmentItemList);
-            }
-        }.execute();
-    }
-
-    private LocationItem getLocationItem() {
-        LocationItem locationItem = new LocationItem();
-        locationItem.location_name = nameEditText.getText().toString();
-        locationItem.location_equipmentItems = adapter.getCheckedEquipmentList();
-
-        return locationItem;
-    }
-
-    public void initializeDatabase() {
-        RoomDatabase.Callback rdc = new RoomDatabase.Callback() {
-            public void onCreate(SupportSQLiteDatabase db) {
-                final ArrayList<EquipmentItem> list = fillEquipmentList();
-
-                new AsyncTask<Void, Void, List<EquipmentItem>>() {
-
-                    @Override
-                    protected List<EquipmentItem> doInBackground(Void... voids) {
-                        for (int i = 0; i < list.size(); i++) {
-                            database.equipmentItemDao().insert(list.get(i));
-                        }
-                        return database.equipmentItemDao().getAll();
-                    }
-
-                    @Override
-                    protected void onPostExecute(List<EquipmentItem> equipmentItems) {
-                        adapter.update(equipmentItems);
-                    }
-                }.execute();
-            }
         };
+        databaseReference.child("Equipment").addValueEventListener(eventListener);
 
-        database = Room.databaseBuilder(
-                getActivity().getApplicationContext(),
-                EquipmentListDatabase.class,
-                "equipments"
-        ).addCallback(rdc).build();
 
+        // [END post_value_event_listener]
+
+        // Keep copy of post listener so we can remove it when app stops
+        //this.eventListener = eventListener
 
     }
 
-    private ArrayList<EquipmentItem> fillEquipmentList() {
+    private Location getLocationItem() {
+        Location location = new Location();
+        location.id = 0;
+        location.name = nameEditText.getText().toString();
+        location.equipment = adapter.getCheckedEquipmentList();
 
-        Resources resources = getResources();
-        String str;
-        ArrayList<EquipmentItem> equipmentItems = new ArrayList<>();
-
-        int resID = resources.getIdentifier("hu.bme.aut.fitnessapp:raw/" + "equipments", null, null);
-        InputStream is = resources.openRawResource(resID);
-        try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            //int id = 1;
-            while ((str = br.readLine()) != null) {
-                EquipmentItem newItem = new EquipmentItem();
-                newItem.equipment_name = str;
-                //newItem.equipment_id = id;
-                equipmentItems.add(newItem);
-                //id++;
-            }
-            is.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return equipmentItems;
+        return location;
     }
+
 
 
 }

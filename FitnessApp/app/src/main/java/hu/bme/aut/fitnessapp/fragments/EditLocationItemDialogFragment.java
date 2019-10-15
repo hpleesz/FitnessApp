@@ -17,6 +17,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import hu.bme.aut.fitnessapp.R;
@@ -25,15 +33,21 @@ import hu.bme.aut.fitnessapp.data.equipment.EquipmentItem;
 import hu.bme.aut.fitnessapp.data.equipment.EquipmentListDatabase;
 import hu.bme.aut.fitnessapp.data.location.LocationAdapter;
 import hu.bme.aut.fitnessapp.data.location.LocationItem;
+import hu.bme.aut.fitnessapp.models.Equipment;
+import hu.bme.aut.fitnessapp.models.Location;
 
 public class EditLocationItemDialogFragment extends DialogFragment implements EquipmentAdapter.OnCheckBoxClicked {
 
-    private LocationItem item;
+    private Location item;
 
     private EquipmentAdapter adapter;
     private LocationAdapter adapter_location;
-    private EquipmentListDatabase database;
 
+    private DatabaseReference databaseReference;
+    private FirebaseAuth firebaseAuth;
+    private String userId;
+
+    private ArrayList<Equipment> equipmentList;
     private EditText nameEditText;
 
     public static final String TAG = "EditLocationItemDialogFragment";
@@ -51,7 +65,7 @@ public class EditLocationItemDialogFragment extends DialogFragment implements Eq
 
 
     public interface EditLocationItemDialogListener {
-        void onLocationItemUpdated(LocationItem newItem);
+        void onLocationItemUpdated(Location newItem);
     }
 
     @Override
@@ -65,7 +79,12 @@ public class EditLocationItemDialogFragment extends DialogFragment implements Eq
             throw new RuntimeException("Activity must implement the EditLocationItemDialogListener interface!");
         }
         int position = getArguments().getInt("Position");
-        item = (LocationItem) getArguments().getSerializable("Item");
+        item = (Location) getArguments().getSerializable("Item");
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        userId = firebaseAuth.getCurrentUser().getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
     }
 
     @NonNull
@@ -88,8 +107,8 @@ public class EditLocationItemDialogFragment extends DialogFragment implements Eq
 
     private void initRecyclerView(View rootView) {
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.EquipmentRecyclerView);
-        adapter = new EquipmentAdapter(this);
-        loadItemsInBackground();
+        adapter = new EquipmentAdapter(this, equipmentList);
+        //loadItemsInBackground();
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
     }
@@ -99,7 +118,7 @@ public class EditLocationItemDialogFragment extends DialogFragment implements Eq
         TextView title = (TextView) contentView.findViewById(R.id.locationFragmentTitle);
         title.setText(R.string.edit_location);
         nameEditText = contentView.findViewById(R.id.LocationNameEditText);
-        nameEditText.setText(item.location_name);
+        nameEditText.setText(item.name);
 
         final FragmentActivity activity = getActivity();
         if (activity instanceof EditLocationItemDialogListener) {
@@ -107,15 +126,8 @@ public class EditLocationItemDialogFragment extends DialogFragment implements Eq
         } else {
             throw new RuntimeException("Activity must implement the NewProductsItemDialogListener interface!");
         }
-
-
-        database = Room.databaseBuilder(
-                getActivity().getApplicationContext(),
-                EquipmentListDatabase.class,
-                "equipments"
-        ).build();
-
-        initRecyclerView(contentView);
+        loadEquipment(contentView);
+        //initRecyclerView(contentView);
 
 
         return contentView;
@@ -126,30 +138,46 @@ public class EditLocationItemDialogFragment extends DialogFragment implements Eq
         return nameEditText.getText().length() > 0;
     }
 
-    private void loadItemsInBackground() {
-        new AsyncTask<Void, Void, List<EquipmentItem>>() {
+    private void loadEquipment(final View contentview) {
 
-            @Override
-            protected List<EquipmentItem> doInBackground(Void... voids) {
-                return database.equipmentItemDao().getAll();
-            }
+            ValueEventListener eventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    equipmentList = new ArrayList<>();
 
-            @Override
-            protected void onPostExecute(List<EquipmentItem> equipmentItemList) {
-                adapter.update(equipmentItemList);
-                adapter.setCheckedEquipmentList(item.location_equipmentItems);
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                        int id = Integer.parseInt(dataSnapshot1.getKey());
+                        String name = (String) dataSnapshot1.getValue();
+                        Equipment equipment = new Equipment(id, name);
+                        equipmentList.add(equipment);
+                    }
+                    initRecyclerView(contentview);
+                    adapter.setCheckedEquipmentList(item.equipment);
+                }
 
-            }
-        }.execute();
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Handle possible errors.
+                }
+
+            };
+            databaseReference.child("Equipment").addValueEventListener(eventListener);
+
+
+            // [END post_value_event_listener]
+
+            // Keep copy of post listener so we can remove it when app stops
+            //this.eventListener = eventListener
+
     }
 
-    private LocationItem getLocationItem() {
-        LocationItem locationItem = new LocationItem();
-        locationItem.location_name = nameEditText.getText().toString();
-        locationItem.location_id = item.location_id;
-        locationItem.location_equipmentItems = adapter.getCheckedEquipmentList();
+    private Location getLocationItem() {
+        Location location = new Location();
+        location.id = item.id;
+        location.name = nameEditText.getText().toString();
+        location.equipment = adapter.getCheckedEquipmentList();
 
-        return locationItem;
+        return location;
     }
 
 

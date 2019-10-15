@@ -14,11 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hu.bme.aut.fitnessapp.R;
+import hu.bme.aut.fitnessapp.models.Equipment;
 
 
 public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.EquipmentListViewHolder>{
 
-    private final ArrayList<EquipmentItem> items;
+    private final ArrayList<Equipment> items;
     private EquipmentAdapter.OnCheckBoxClicked onCheckBoxClicked;
     private ArrayList<Integer> clicked;
 
@@ -27,10 +28,13 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.Equi
         void onUnchecked(int pos);
     }
 
-    public EquipmentAdapter(EquipmentAdapter.OnCheckBoxClicked onCheckBoxClicked) {
-        items = new ArrayList<>();
+    public EquipmentAdapter(EquipmentAdapter.OnCheckBoxClicked onCheckBoxClicked, ArrayList<Equipment> list) {
+        items = list;
         clicked = new ArrayList<>();
         this.onCheckBoxClicked = onCheckBoxClicked;
+        for(int i = 0; i < items.size(); i++) {
+            clicked.add(0);
+        }
 
     }
 
@@ -47,8 +51,8 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.Equi
 
     @Override
     public void onBindViewHolder(@NonNull EquipmentAdapter.EquipmentListViewHolder holder, final int position) {
-        EquipmentItem item = items.get(position);
-        holder.nameTextView.setText(item.equipment_name);
+        Equipment item = items.get(position);
+        holder.nameTextView.setText(item.name);
         holder.item = item;
 
         //for(int j = 0; j < selected.size(); j++) {
@@ -62,7 +66,7 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.Equi
 
     }
 
-    public void update(List<EquipmentItem> equipmentItemList) {
+    public void update(List<Equipment> equipmentItemList) {
         items.clear();
         items.addAll(equipmentItemList);
         for(int i = 0; i < items.size(); i++) {
@@ -80,7 +84,7 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.Equi
 
         TextView nameTextView;
         CheckBox checkBox;
-        EquipmentItem item;
+        Equipment item;
 
         EquipmentListViewHolder(final View itemView) {
             super(itemView);
@@ -104,11 +108,11 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.Equi
         }
     }
 
-    public ArrayList<EquipmentItem> getCheckedEquipmentList() {
-        ArrayList<EquipmentItem> selected = new ArrayList<>();
+    public ArrayList<Integer> getCheckedEquipmentList() {
+        ArrayList<Integer> selected = new ArrayList<>();
         for(int i = 0; i < clicked.size(); i++){
             if(clicked.get(i) == 1){
-                selected.add(items.get(i));
+                selected.add(items.get(i).id);
             }
         }
         return selected;
@@ -122,10 +126,10 @@ public class EquipmentAdapter extends RecyclerView.Adapter<EquipmentAdapter.Equi
         clicked.set(pos, 0);
     }
 
-    public void setCheckedEquipmentList(ArrayList<EquipmentItem> equipments) {
+    public void setCheckedEquipmentList(ArrayList<Integer> equipments) {
         for(int i = 0; i < items.size(); i++){
             for(int j = 0; j < equipments.size(); j++) {
-                if (items.get(i).equipment_name.equals(equipments.get(j).equipment_name))
+                if (items.get(i).id == (equipments.get(j)))
                     onChecked(i);
             }
         }

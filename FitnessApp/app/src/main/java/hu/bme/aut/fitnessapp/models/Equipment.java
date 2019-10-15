@@ -1,12 +1,14 @@
 package hu.bme.aut.fitnessapp.models;
 
-public class Equipment {
-    public String id;
+import java.io.Serializable;
+
+public class Equipment implements Serializable {
+    public int id;
     public String name;
 
     public Equipment(){}
 
-    public Equipment(String id, String name) {
+    public Equipment(int id, String name) {
         this.id = id;
         this.name = name;
     }

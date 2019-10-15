@@ -17,19 +17,20 @@ import java.util.List;
 import hu.bme.aut.fitnessapp.LocationActivity;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.WeightActivity;
+import hu.bme.aut.fitnessapp.models.Location;
 
 public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> {
 
-    private final List<LocationItem> items;
+    private final List<Location> items;
 
     private LocationAdapter.LocationItemDeletedListener del_listener;
     private LocationAdapter.LocationItemSelectedListener select_listener;
 
 
-    public LocationAdapter(LocationAdapter.LocationItemDeletedListener del_listener, LocationAdapter.LocationItemSelectedListener select_listener) {
+    public LocationAdapter(LocationAdapter.LocationItemDeletedListener del_listener, LocationAdapter.LocationItemSelectedListener select_listener, ArrayList<Location> list) {
         this.select_listener = select_listener;
         this.del_listener = del_listener;
-        items = new ArrayList<>();
+        items = list;
 
     }
 
@@ -44,25 +45,25 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
     }
 
 
-    public void addItem(LocationItem item) {
+    public void addItem(Location item) {
         items.add(item);
         notifyItemInserted(items.size() - 1);
     }
 
-    public void deleteItem(LocationItem item){
+    public void deleteItem(Location item){
         items.remove(item);
         notifyDataSetChanged();
     }
 
-    public void update(List<LocationItem> locationItems) {
+    public void update(List<Location> locationItems) {
         items.clear();
         items.addAll(locationItems);
         notifyDataSetChanged();
     }
 
-    public void update(LocationItem locationItem) {
+    public void update(Location locationItem) {
         for(int i = 0; i < items.size(); i++){
-            if(items.get(i).location_id == locationItem.location_id)
+            //if(items.get(i).location_id == Location.location_id)
                 items.set(i, locationItem);
         }
         notifyDataSetChanged();
@@ -72,8 +73,8 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
 
     @Override
     public void onBindViewHolder(@NonNull LocationViewHolder holder, int position) {
-        LocationItem item = items.get(position);
-        holder.nameTextView.setText(item.location_name);
+        Location item = items.get(position);
+        holder.nameTextView.setText(item.name);
         holder.item = item;
     }
 
@@ -84,11 +85,11 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
 
 
     public interface LocationItemDeletedListener{
-        void onItemDeleted(LocationItem item);
+        void onItemDeleted(Location item);
     }
 
     public interface LocationItemSelectedListener{
-        void onItemSelected(LocationItem item, int position);
+        void onItemSelected(Location item, int position);
     }
 
     class LocationViewHolder extends RecyclerView.ViewHolder {
@@ -96,7 +97,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
         TextView nameTextView;
         ImageButton removeButton;
 
-        transient LocationItem item;
+        transient Location item;
 
         LocationViewHolder(final View itemView) {
             super(itemView);

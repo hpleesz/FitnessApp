@@ -31,10 +31,17 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.highlight.Highlight;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import hu.bme.aut.fitnessapp.MeasurementsActivity;
 import hu.bme.aut.fitnessapp.MeasurementsGraphActivity;
@@ -43,7 +50,10 @@ import hu.bme.aut.fitnessapp.WeightActivity;
 import hu.bme.aut.fitnessapp.data.measurement.MeasurementAdapter;
 import hu.bme.aut.fitnessapp.data.measurement.MeasurementDatabase;
 import hu.bme.aut.fitnessapp.data.measurement.MeasurementItem;
+import hu.bme.aut.fitnessapp.data.weight.WeightAdapter;
 import hu.bme.aut.fitnessapp.data.weight.WeightItem;
+import hu.bme.aut.fitnessapp.models.Measurement;
+import hu.bme.aut.fitnessapp.models.Weight;
 import hu.bme.aut.fitnessapp.tools.DateFormatter;
 
 
@@ -55,7 +65,13 @@ public class MeasurementsGraphFragment extends Fragment implements com.github.mi
     private String bodyPart;
     private LineChart chart;
 
-    private List<MeasurementItem> itemlist;
+    private DatabaseReference databaseReference;
+    private FirebaseAuth firebaseAuth;
+    private String userId;
+
+    private RecyclerView recyclerView;
+
+    private ArrayList<Weight> itemlist;
 
     @Nullable
     @Override
@@ -66,7 +82,7 @@ public class MeasurementsGraphFragment extends Fragment implements com.github.mi
         rootView.getViewTreeObserver().addOnWindowFocusChangeListener(new ViewTreeObserver.OnWindowFocusChangeListener() {
             @Override
             public void onWindowFocusChanged(boolean hasFocus) {
-                loadItemsInBackground();
+                loadList();
             }
         });
 
@@ -75,11 +91,9 @@ public class MeasurementsGraphFragment extends Fragment implements com.github.mi
             bodyPart = bundle.getString("body part", "Shoulders");
         }
 
-        database = Room.databaseBuilder(
-                getActivity().getApplicationContext(),
-                MeasurementDatabase.class,
-                "measurements"
-        ).build();
+        firebaseAuth = FirebaseAuth.getInstance();
+        userId = firebaseAuth.getCurrentUser().getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         TextView title = (TextView) rootView.findViewById(R.id.measurementsEntries);
         String text = bodyPart + " " + getString(R.string.entries);
@@ -87,18 +101,19 @@ public class MeasurementsGraphFragment extends Fragment implements com.github.mi
 
         chart = (LineChart) rootView.findViewById(R.id.chartMeasurement);
 
-        initRecyclerView(rootView);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.MeasurementRecyclerView);
+
         drawChart();
         return rootView;
     }
 
-    private void initRecyclerView(View rootView) {
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.MeasurementRecyclerView);
-        adapter = new MeasurementAdapter((MeasurementsGraphActivity) getActivity());
-        loadItemsInBackground();
+    private void initRecyclerView() {
+        adapter = new MeasurementAdapter((MeasurementsGraphActivity) getActivity(), itemlist, bodyPart);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
     }
+
+
 
     private void drawChart() {
         chart.setOnChartValueSelectedListener(this);
@@ -143,8 +158,7 @@ public class MeasurementsGraphFragment extends Fragment implements com.github.mi
 
         if (itemlist.size() > 0) {
             for (int i = 0; i < itemlist.size(); i++) {
-                long itemdate = makeLongDate(itemlist.get(i).measurement_year, itemlist.get(i).measurement_month, itemlist.get(i).measurement_day);
-                entries.add(new Entry((float) itemdate, (float) itemlist.get(i).measurement_value));
+                    entries.add(new Entry((float) (Long.parseLong(itemlist.get(i).date) * 1000), (float) itemlist.get(i).value));
             }
         } else return null;
 
@@ -163,27 +177,55 @@ public class MeasurementsGraphFragment extends Fragment implements com.github.mi
         return new LineData(dataSet);
     }
 
-    public long makeLongDate(int year, int month, int day) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, day);
-        return calendar.getTimeInMillis();
-    }
-
-    public void loadItemsInBackground() {
-        new AsyncTask<Void, Void, List<MeasurementItem>>() {
-
+    public void loadList() {
+        ValueEventListener eventListener = new ValueEventListener() {
             @Override
-            protected List<MeasurementItem> doInBackground(Void... voids) {
-                return database.measurementItemDao().getMeasurementsWithBodyPart(bodyPart);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                itemlist = new ArrayList<>();
+                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                {
+                    try {
+                        Map<String, Double> entries = (Map) dataSnapshot.getValue();
+
+                        //double weight_value = (double)dataSnapshot1.getValue();
+                        String key = dataSnapshot1.getKey();
+                        double weight_value = entries.get(key);
+                        Weight weight = new Weight(key, weight_value);
+                        itemlist.add(weight);
+                    }
+                    catch (Exception e) {
+                        Map<String, Long> entries = (Map) dataSnapshot.getValue();
+
+                        String key = dataSnapshot1.getKey();
+                        double weight_value = (double)entries.get(key);
+                        Weight weight = new Weight(key, weight_value);
+                        itemlist.add(weight);
+                    }
+
+                }
+                initRecyclerView();
+
+                drawChart();
+
+                if(itemlist.size() > 0) {
+                    updatechart(false);
+
+                }
             }
 
             @Override
-            protected void onPostExecute(List<MeasurementItem> measurementItems) {
-                adapter.update(measurementItems);
-                itemlist = adapter.getItems(bodyPart);
-                updatechart(false);
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors.
             }
-        }.execute();
+
+        };
+        databaseReference.child("Measurements").child(userId).child(bodyPart).addValueEventListener(eventListener);
+
+
+        // [END post_value_event_listener]
+
+        // Keep copy of post listener so we can remove it when app stops
+        //this.eventListener = eventListener;
     }
 
 
@@ -191,14 +233,14 @@ public class MeasurementsGraphFragment extends Fragment implements com.github.mi
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && (adapter != null)) {
-            loadItemsInBackground();
+            loadList();
         }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        loadItemsInBackground();
+        loadList();
     }
 
 

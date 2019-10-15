@@ -15,27 +15,51 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import hu.bme.aut.fitnessapp.data.measurement.MeasurementDatabase;
 import hu.bme.aut.fitnessapp.data.measurement.MeasurementItem;
 import hu.bme.aut.fitnessapp.fragments.NewMeasurementItemDialogFragment;
+import hu.bme.aut.fitnessapp.models.User;
+import hu.bme.aut.fitnessapp.models.Weight;
 
 public class MeasurementsActivity extends NavigationActivity {
 
     private ImageView measurementsMale;
     private MeasurementDatabase database;
-    private List<MeasurementItem> list;
+    private Map<String, Double> list;
+    private List<String> body_parts;
+
+    private DatabaseReference databaseReference;
+    private FirebaseAuth firebaseAuth;
+    private String userId;
+
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        userId = firebaseAuth.getCurrentUser().getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        loadUser();
+
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        SharedPreferences sharedPreferences = getSharedPreferences(UserActivity.USER, MODE_PRIVATE);
         View contentView;
-        if (sharedPreferences.getBoolean("Male", true)) {
+        boolean gender = true;
+        if (gender) {
             contentView = inflater.inflate(R.layout.activity_measurements_male, null, false);
 
         } else {
@@ -46,6 +70,8 @@ public class MeasurementsActivity extends NavigationActivity {
         mDrawerLayout.addView(contentView, 0);
         navigationView.getMenu().getItem(1).setChecked(true);
 
+        loadBodyPartsDatabase();
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setImageDrawable(getDrawable(R.drawable.graph_white));
         fab.setOnClickListener(new View.OnClickListener() {
@@ -55,26 +81,95 @@ public class MeasurementsActivity extends NavigationActivity {
                 startActivity(intent);
             }
         });
-        database = Room.databaseBuilder(
-                getApplicationContext(),
-                MeasurementDatabase.class,
-                "measurements"
-        ).build();
 
-        loadDatabase();
-        setCurrentMeasurements();
+        //loadDatabase();
+        //setCurrentMeasurements();
 
     }
 
-    private void loadDatabase() {
-        new AsyncTask<Void, Void, List<MeasurementItem>>() {
+    public void loadBodyPartsDatabase() {
+
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                body_parts = new ArrayList<>();
+
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    String body_part = (String) dataSnapshot1.getValue();
+                    body_parts.add(body_part);
+                }
+                loadData();
+            }
 
             @Override
-            protected List<MeasurementItem> doInBackground(Void... voids) {
-                list = database.measurementItemDao().getAll();
-                return list;
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors.
             }
-        }.execute();
+
+        };
+        databaseReference.child("Body_Parts").addValueEventListener(eventListener);
+
+
+        // [END post_value_event_listener]
+
+        // Keep copy of post listener so we can remove it when app stops
+        //this.eventListener = eventListener;
+    }
+
+    public void loadData() {
+        ValueEventListener eventListener2 = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                list = new HashMap<>();
+
+                for (String body_part : body_parts) {
+                    DataSnapshot dataSnapshot1 = dataSnapshot.child(body_part);
+                    for (DataSnapshot dataSnapshot2 : dataSnapshot1.getChildren()) {
+                        try {
+                            Map<String, Double> entries = (Map) dataSnapshot1.getValue();
+
+                            //double weight_value = (double)dataSnapshot1.getValue();
+                            String key = dataSnapshot2.getKey();
+                            double weight_value = entries.get(key);
+                            list.put(body_part, weight_value);
+                        }
+                        catch (Exception e) {
+                            Map<String, Long> entries = (Map) dataSnapshot1.getValue();
+
+                            String key = dataSnapshot2.getKey();
+                            double weight_value = (double)entries.get(key);
+                            list.put(body_part, weight_value);
+                        }
+                    }
+                }
+
+                setCurrentMeasurements();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors.
+            }
+
+        };
+        databaseReference.child("Measurements").child(userId).addValueEventListener(eventListener2);
+    }
+
+    public void loadUser() {
+        ValueEventListener eventListener3 = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                user = dataSnapshot.getValue(User.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors.
+            }
+
+        };
+        databaseReference.child("Users").child(userId).addValueEventListener(eventListener3);
+
     }
 
     public void setCurrentMeasurements() {
@@ -104,11 +199,16 @@ public class MeasurementsActivity extends NavigationActivity {
         TextView leftCalfTextView = (TextView) findViewById(R.id.leftCalfTextView);
         textViews.add(leftCalfTextView);
 
-        SharedPreferences sharedPreferences = getSharedPreferences(MeasurementsGraphActivity.MEASUREMENTS, MODE_PRIVATE);
-        for (int i = 0; i < NewMeasurementItemDialogFragment.body_parts.length; i++) {
-            String text = sharedPreferences.getString(NewMeasurementItemDialogFragment.body_parts[i], "--");
-            textViews.get(i).setText(text + " " + getString(R.string.cm));
+        for(int i = 0; i < body_parts.size(); i++) {
+           Double text = list.get(body_parts.get(i));
+           if(text != null) {
+               textViews.get(i).setText(text + " " + "cm");
+           }
+           else {
+               textViews.get(i).setText("-- cm");
+           }
         }
+
     }
 
 }

@@ -17,23 +17,35 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import hu.bme.aut.fitnessapp.data.measurement.GraphPagerAdapter;
 import hu.bme.aut.fitnessapp.data.measurement.MeasurementAdapter;
 import hu.bme.aut.fitnessapp.data.measurement.MeasurementDatabase;
 import hu.bme.aut.fitnessapp.data.measurement.MeasurementItem;
+import hu.bme.aut.fitnessapp.data.weight.WeightAdapter;
 import hu.bme.aut.fitnessapp.fragments.MeasurementsGraphFragment;
 import hu.bme.aut.fitnessapp.fragments.NewLocationItemDialogFragment;
 import hu.bme.aut.fitnessapp.fragments.NewMeasurementItemDialogFragment;
 import hu.bme.aut.fitnessapp.fragments.PeriodSelectDialogFragment;
+import hu.bme.aut.fitnessapp.models.Weight;
 
 public class MeasurementsGraphActivity extends NavigationActivity implements NewMeasurementItemDialogFragment.NewMeasurementDialogListener, MeasurementAdapter.MeasurementItemDeletedListener {
 
     private MeasurementDatabase database;
     private ViewPager viewPager;
     public static final String MEASUREMENTS = "Measurements";
+
+    private DatabaseReference databaseReference;
+    private FirebaseAuth firebaseAuth;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +59,6 @@ public class MeasurementsGraphActivity extends NavigationActivity implements New
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(new GraphPagerAdapter(getSupportFragmentManager()));
 
-        database = Room.databaseBuilder(
-                getApplicationContext(),
-                MeasurementDatabase.class,
-                "measurements"
-        ).build();
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,73 +66,22 @@ public class MeasurementsGraphActivity extends NavigationActivity implements New
                 new NewMeasurementItemDialogFragment().show(getSupportFragmentManager(), NewMeasurementItemDialogFragment.TAG);
             }
         });
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        userId = firebaseAuth.getCurrentUser().getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Measurements").child(userId);
     }
 
     @Override
-    public void onMeasurementItemsCreated(final ArrayList<MeasurementItem> newItems) {
-        new AsyncTask<Void, Void, ArrayList<MeasurementItem>>() {
-
-            @Override
-            protected ArrayList<MeasurementItem> doInBackground(Void... voids) {
-                for (int i = 0; i < newItems.size(); i++) {
-                    newItems.get(i).measurement_id = database.measurementItemDao().insert(newItems.get(i));
-                }
-                return newItems;
-            }
-
-            @Override
-            protected void onPostExecute(ArrayList<MeasurementItem> measurementItems) {
-                setCurrentValues();
-            }
-
-        }.execute();
+    public void onMeasurementItemsCreated(HashMap<String, Double> new_entries, String date) {
+        for(Map.Entry<String, Double> entry : new_entries.entrySet()) {
+            databaseReference.child(entry.getKey()).child(date).setValue(entry.getValue());
+        }
     }
+
 
     @Override
-    public void onItemDeleted(final MeasurementItem item) {
-        new AsyncTask<Void, Void, MeasurementItem>() {
-
-            @Override
-            protected MeasurementItem doInBackground(Void... voids) {
-                database.measurementItemDao().deleteItem(item);
-                return item;
-            }
-
-            @Override
-            protected void onPostExecute(MeasurementItem measurementItems) {
-                setCurrentValues();
-            }
-
-        }.execute();
+    public void onItemDeleted(Weight item, String body_part) {
+        databaseReference.child(body_part).child(item.date).removeValue();
     }
-
-    public void setCurrentValues() {
-
-        new AsyncTask<Void, Void, Boolean>() {
-
-            @Override
-            protected Boolean doInBackground(Void... voids) {
-                SharedPreferences sharedPreferences = getSharedPreferences(MEASUREMENTS, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                for (int i = 0; i < NewMeasurementItemDialogFragment.body_parts.length; i++) {
-                    List<MeasurementItem> items = database.measurementItemDao().getMeasurementsWithBodyPart(NewMeasurementItemDialogFragment.body_parts[i]);
-                    String value = "--";
-                    if (items.size() != 0) {
-                        int max = 0;
-                        for (int j = 1; j < items.size(); j++) {
-                            if (items.get(j).measurement_calculated > items.get(max).measurement_calculated)
-                                max = j;
-                        }
-                        value = Double.toString(items.get(max).measurement_value);
-                    }
-                    editor.putString(NewMeasurementItemDialogFragment.body_parts[i], value);
-                }
-                editor.apply();
-                return true;
-            }
-
-        }.execute();
-
-    }
-
 }

@@ -11,7 +11,17 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import hu.bme.aut.fitnessapp.fragments.EditLocationItemDialogFragment;
 import hu.bme.aut.fitnessapp.fragments.NewLocationItemDialogFragment;
@@ -19,11 +29,19 @@ import hu.bme.aut.fitnessapp.data.location.LocationAdapter;
 import hu.bme.aut.fitnessapp.data.location.LocationItem;
 import hu.bme.aut.fitnessapp.data.location.LocationListDatabase;
 import hu.bme.aut.fitnessapp.fragments.NewWaterDialogFragment;
+import hu.bme.aut.fitnessapp.models.Equipment;
+import hu.bme.aut.fitnessapp.models.Location;
+import hu.bme.aut.fitnessapp.models.Weight;
 
 public class LocationActivity extends NavigationActivity implements NewLocationItemDialogFragment.NewLocationItemDialogListener, LocationAdapter.LocationItemDeletedListener, LocationAdapter.LocationItemSelectedListener, EditLocationItemDialogFragment.EditLocationItemDialogListener {
 
     private LocationAdapter adapter;
-    private LocationListDatabase database;
+
+    private DatabaseReference databaseReference;
+    private FirebaseAuth firebaseAuth;
+    private String userId;
+
+    private ArrayList<Location> itemlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +52,11 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
 
         navigationView.getMenu().getItem(3).setChecked(true);
 
-        database = Room.databaseBuilder(
-                getApplicationContext(),
-                LocationListDatabase.class,
-                "locations"
-        ).build();
+        firebaseAuth = FirebaseAuth.getInstance();
+        userId = firebaseAuth.getCurrentUser().getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Locations").child(userId);
 
-        initRecyclerView();
+        loadList();
         setFloatingActionButton();
 
     }
@@ -57,80 +73,79 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.LocationRecyclerView);
-        adapter = new LocationAdapter(this, this);
-        loadItemsInBackground();
+        adapter = new LocationAdapter(this, this, itemlist);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
 
-    private void loadItemsInBackground() {
-        new AsyncTask<Void, Void, List<LocationItem>>() {
-
+    private void loadList() {
+        ValueEventListener eventListener = new ValueEventListener() {
             @Override
-            protected List<LocationItem> doInBackground(Void... voids) {
-                return database.locationItemDao().getAll();
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                itemlist = new ArrayList<>();
+                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                {
+                        int id = Integer.parseInt(dataSnapshot1.getKey());
+                        String name = dataSnapshot1.child("Name").getValue(String.class);
+                        ArrayList<Integer> equipment = new ArrayList<>();
+
+                        for(DataSnapshot dataSnapshot2: dataSnapshot1.child("Equipment").getChildren()) {
+                            int idx = dataSnapshot2.getValue(Integer.class);
+                            equipment.add(idx);
+                        }
+
+                        Location location = new Location(id, name, equipment);
+
+                        itemlist.add(location);
+
+
+                }
+                initRecyclerView();
             }
 
             @Override
-            protected void onPostExecute(List<LocationItem> locationItems) {
-                adapter.update(locationItems);
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors.
             }
-        }.execute();
+
+        };
+        databaseReference.addValueEventListener(eventListener);
+
+
+        // [END post_value_event_listener]
+
+        // Keep copy of post listener so we can remove it when app stops
+        //this.eventListener = eventListener;
     }
 
     @Override
-    public void onLocationItemCreated(final LocationItem newItem) {
-        new AsyncTask<Void, Void, LocationItem>() {
+    public void onLocationItemCreated(final Location newItem) {
+        int id = 0;
+        if(!itemlist.isEmpty()) id = itemlist.get(itemlist.size()-1).id +1;
+        databaseReference.child(Integer.toString(id)).child("Name").setValue(newItem.name);
+        for(int i = 0; i < newItem.equipment.size(); i++) {
+            databaseReference.child(Integer.toString(id)).child("Equipment").child(Integer.toString(i)).setValue(newItem.equipment.get(i));
+        }
 
-            @Override
-            protected LocationItem doInBackground(Void... voids) {
-                newItem.location_id = (int) database.locationItemDao().insert(newItem);
-                return newItem;
-            }
-
-            @Override
-            protected void onPostExecute(LocationItem locationItem) {
-                adapter.addItem(locationItem);
-            }
-        }.execute();
     }
 
     @Override
-    public void onLocationItemUpdated(final LocationItem newItem) {
-        new AsyncTask<Void, Void, LocationItem>() {
+    public void onLocationItemUpdated(final Location newItem) {
+        databaseReference.child(Integer.toString(newItem.id)).child("Name").setValue(newItem.name);
+        databaseReference.child(Integer.toString(newItem.id)).child("Equipment").removeValue();
+        for(int i = 0; i < newItem.equipment.size(); i++) {
+            databaseReference.child(Integer.toString(newItem.id)).child("Equipment").child(Integer.toString(i)).setValue(newItem.equipment.get(i));
+        }
 
-            @Override
-            protected LocationItem doInBackground(Void... voids) {
-                database.locationItemDao().update(newItem);
-                return newItem;
-            }
-
-            @Override
-            protected void onPostExecute(LocationItem locationItem) {
-                adapter.update(locationItem);
-            }
-        }.execute();
     }
 
     @Override
-    public void onItemDeleted(final LocationItem item) {
-        new AsyncTask<Void, Void, LocationItem>() {
-
-            @Override
-            protected LocationItem doInBackground(Void... voids) {
-                database.locationItemDao().deleteItem(item);
-                return item;
-            }
-
-            @Override
-            protected void onPostExecute(LocationItem locationItem) {
-                adapter.deleteItem(locationItem);
-            }
-        }.execute();
+    public void onItemDeleted(final Location item) {
+        databaseReference.child(Integer.toString(item.id)).removeValue();
     }
 
     @Override
-    public void onItemSelected(final LocationItem item, int position) {
+    public void onItemSelected(final Location item, int position) {
         Bundle bundle = new Bundle();
         bundle.putInt("Position", position);
         bundle.putSerializable("Item", item);
@@ -142,4 +157,3 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
 
 
 }
-

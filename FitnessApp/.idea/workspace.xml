@@ -9,7 +9,33 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54841a40-7a28-4d0b-9e13-8361b7fba470" name="Default Changelist" comment="water + weight" />
+    <list default="true" id="54841a40-7a28-4d0b-9e13-8361b7fba470" name="Default Changelist" comment="water + weight">
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/LocationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/LocationActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/MeasurementsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/MeasurementsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/MeasurementsGraphActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/MeasurementsGraphActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/equipment/EquipmentAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/equipment/EquipmentAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/location/LocationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/location/LocationAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/measurement/MeasurementAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/measurement/MeasurementAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/EditLocationItemDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/EditLocationItemDialogFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/MeasurementsGraphFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/MeasurementsGraphFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewLocationItemDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewLocationItemDialogFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewMeasurementItemDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewMeasurementItemDialogFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/Equipment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/User.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +45,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="98899542515741425a" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_28" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -30,119 +56,69 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WaterActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="228" column="40" lean-forward="true" selection-start-line="228" selection-start-column="40" selection-end-line="228" selection-end-column="40" />
-              <folding>
-                <element signature="method#setFloatingActionButton#0;class#WaterActivity#0" />
-                <element signature="method#setConsumedWaterClick#0;class#WaterActivity#0" />
-              </folding>
+            <state relative-caret-position="153">
+              <caret line="75" column="85" selection-start-line="75" selection-start-column="73" selection-end-line="75" selection-end-column="85" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/UserActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/MeasurementsGraphActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2499">
-              <caret line="206" selection-start-line="206" selection-end-line="206" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3213">
-              <caret line="199" column="17" lean-forward="true" selection-start-line="183" selection-start-column="15" selection-end-line="199" selection-end-column="17" />
+            <state relative-caret-position="285">
+              <caret line="77" column="37" selection-start-line="77" selection-end-line="78" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2293#2294#0" expanded="true" />
-                <element signature="e#2334#2335#0" expanded="true" />
-                <element signature="e#2399#2400#0" expanded="true" />
-                <element signature="e#2441#2442#0" expanded="true" />
-                <element signature="class#Period#0;class#WeightActivity#0" />
-                <element signature="method#setFloatingActionButton#0;class#WeightActivity#0" />
-                <element signature="e#4252#4489#0" expanded="true" />
-                <element signature="e#4488#4489#0" expanded="true" />
-                <element signature="method#setMostRecentWeightAsCurrent#0;class#WeightActivity#0" />
-                <element signature="method#checkProgress#0;class#WeightActivity#0" />
-                <element signature="method#isGoalReached#0;class#WeightActivity#0" />
+                <element signature="e#2652#2899#0" expanded="true" />
+                <element signature="e#2898#2899#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-28/android.jar!/android/os/Looper.class">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/LocationActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
-              <folding>
-                <element signature="e#669#670#0" expanded="true" />
-                <element signature="e#720#721#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1751">
+              <caret line="137" column="9" lean-forward="true" selection-start-line="137" selection-start-column="9" selection-end-line="137" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewWeightItemDialogFragment.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/Measurement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/weight/WeightAdapter.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/EditLocationItemDialogFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-250">
-              <caret line="106" column="80" selection-start-line="106" selection-start-column="80" selection-end-line="106" selection-end-column="80" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2678#2679#0" expanded="true" />
-                <element signature="e#2713#2714#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="238">
+              <caret line="170" selection-start-line="170" selection-end-line="170" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewLocationItemDialogFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/Equipment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-              <folding>
-                <element signature="class#Period#0;class#WeightActivity#0" />
-                <element signature="method#setFloatingActionButton#0;class#WeightActivity#0" />
-                <element signature="method#setMostRecentWeightAsCurrent#0;class#WeightActivity#0" />
-                <element signature="method#isGoalReached#0;class#WeightActivity#0" />
-                <element signature="method#onPeriodSelected#0;class#WeightActivity#0" />
-                <element signature="method#setPeriod#0;class#WeightActivity#0" />
-                <element signature="method#onOptionsItemSelected#0;class#WeightActivity#0" />
-                <element signature="method#onPrepareOptionsMenu#0;class#WeightActivity#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/PeriodSelectDialogFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/location/ChooseLocationAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+              <caret line="4" column="46" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -158,9 +134,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>notificationSwitch</find>
-      <find>databaseR</find>
-      <find>recom</find>
       <find>findview</find>
       <find>recommendedWa</find>
       <find>first</find>
@@ -182,6 +155,15 @@
       <find>cale</find>
       <find>calendar</find>
       <find>WeightItem</find>
+      <find>databaserefe</find>
+      <find>start</find>
+      <find>user</find>
+      <find>doub</find>
+      <find>bodyPa</find>
+      <find>adap</find>
+      <find>measurementada</find>
+      <find>equipmentit</find>
+      <find>LocationItem</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -192,8 +174,6 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/FirebaseDatabaseHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/User.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/SettingsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/EditWaterDialogFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewWaterDialogFragment.java" />
@@ -202,14 +182,27 @@
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/NavigationActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/Weight.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/location/LocationAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/location/ChooseLocationAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/PeriodSelectDialogFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity2.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/UserActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewWeightItemDialogFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/weight/WeightAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/SettingsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/User.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity2.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/MeasurementsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/MeasurementsGraphFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/measurement/MeasurementAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewMeasurementItemDialogFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/MeasurementsGraphActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/location/LocationAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/Equipment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/equipment/EquipmentAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/Location.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewLocationItemDialogFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/LocationActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/EditLocationItemDialogFragment.java" />
       </list>
     </option>
   </component>
@@ -300,8 +293,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
-    <option name="y" value="20" />
+    <option name="x" value="31" />
     <option name="width" value="1346" />
     <option name="height" value="688" />
   </component>
@@ -311,8 +303,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -364,6 +355,39 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="fitnessapp" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessApp" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fitnessapp" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="equipment" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessApp" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fitnessapp" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="location" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessApp" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fitnessapp" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="measurement" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FitnessApp" type="b2602c69:ProjectViewProjectNode" />
@@ -426,7 +450,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -539,6 +564,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" />
       <window_info id="Image Layers" order="1" />
@@ -547,19 +573,19 @@
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Resources Explorer" order="6" weight="0.32980332" />
-      <window_info content_ui="combo" id="Project" order="7" visible="true" weight="0.24281392" />
+      <window_info content_ui="combo" id="Project" order="7" weight="0.23676248" />
       <window_info id="Captures" order="8" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" weight="0.3289689" />
       <window_info anchor="bottom" id="Find" order="0" weight="0.33878887" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="1" visible="true" weight="0.2667758" />
+      <window_info anchor="bottom" id="Version Control" order="1" weight="0.12765957" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Terminal" order="3" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="5" weight="0.06710311" />
+      <window_info anchor="bottom" id="Build" order="5" weight="0.36824876" />
       <window_info anchor="bottom" id="Android Profiler" order="6" />
-      <window_info anchor="bottom" id="Logcat" order="7" weight="0.3633388" />
+      <window_info anchor="bottom" id="Logcat" order="7" weight="0.14729951" />
       <window_info anchor="bottom" id="Run" order="8" weight="0.35679215" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.19967267" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.3747954" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3289689" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Gradle" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
@@ -567,6 +593,34 @@
       <window_info anchor="right" id="Device File Explorer" order="4" side_tool="true" />
       <window_info anchor="right" id="Preview" order="5" weight="0.32980332" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Structure" order="0" side_tool="true" />
+      <window_info id="Image Layers" order="1" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Designer" order="3" />
+      <window_info id="Build Variants" order="4" side_tool="true" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Resources Explorer" order="6" weight="0.32980332" />
+      <window_info content_ui="combo" id="Project" order="7" visible="true" weight="0.23676248" />
+      <window_info id="Captures" order="8" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="0" weight="0.33878887" />
+      <window_info anchor="bottom" id="Version Control" order="1" weight="0.12765957" />
+      <window_info anchor="bottom" id="TODO" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="5" weight="0.36824876" />
+      <window_info anchor="bottom" id="Android Profiler" order="6" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="7" visible="true" weight="0.14729951" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.35679215" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.3747954" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3289689" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Gradle" order="1" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Device File Explorer" order="4" side_tool="true" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.32980332" />
+    </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="water + weight" />
@@ -613,7 +667,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity2.java</url>
-          <line>181</line>
+          <line>185</line>
           <properties />
           <option name="timeStamp" value="27" />
         </line-breakpoint>
@@ -625,9 +679,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity2.java</url>
-          <line>241</line>
+          <line>245</line>
           <properties />
           <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/MeasurementsActivity.java</url>
+          <line>127</line>
+          <properties />
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewMeasurementItemDialogFragment.java</url>
+          <line>218</line>
+          <properties />
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewMeasurementItemDialogFragment.java</url>
+          <line>97</line>
+          <properties />
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/EditLocationItemDialogFragment.java</url>
+          <line>145</line>
+          <properties />
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WaterActivity.java</url>
@@ -635,53 +713,16 @@
           <properties method="onDataChange" />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity2.java</url>
+          <line>179</line>
+          <properties class="hu.bme.aut.fitnessapp.WeightActivity2" method="loadList" />
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/FirebaseDatabaseHelper.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="75" column="85" selection-start-line="75" selection-start-column="73" selection-end-line="75" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-28/android.jar!/android/content/ContextWrapper.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1130">
-          <caret line="99" column="40" selection-start-line="99" selection-start-column="40" selection-end-line="99" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eff66e54c7677f0c361bb206da7ce18e/firebase-auth-17.0.0/jars/classes.jar!/com/google/firebase/auth/FirebaseAuth.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="105" selection-start-line="105" selection-end-line="105" />
-          <folding>
-            <element signature="e#4194#4195#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-28/android.jar!/android/widget/EditText.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
-          <folding>
-            <element signature="e#1321#1322#0" expanded="true" />
-            <element signature="e#1372#1373#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/64b0ce25622b4ea581c92bae169e27cb/appcompat-v7-28.0.0/jars/classes.jar!/android/support/v7/widget/AppCompatEditText.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
@@ -689,20 +730,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="29" column="39" lean-forward="true" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="127" column="11" selection-start-line="127" selection-start-column="11" selection-end-line="127" selection-end-column="11" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/RegisterActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -737,20 +771,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_gym.xml">
-      <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
-      <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/drawer_view.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/GymMainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -759,46 +793,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_weight2.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/SettingsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="67" column="102" selection-start-line="67" selection-start-column="73" selection-end-line="67" selection-end-column="102" />
-          <folding>
-            <element signature="method#setGenderOnClickListeners#0;class#SettingsActivity#0" />
-            <element signature="method#setGenderButtons#0;class#SettingsActivity#0" />
-            <element signature="method#setGoalOnClickListeners#0;class#SettingsActivity#0" />
-            <element signature="method#setLoseWeightButton#0;class#SettingsActivity#0" />
-            <element signature="method#setMuscleButton#0;class#SettingsActivity#0" />
-            <element signature="method#checkDataValidity#0;class#SettingsActivity#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/Measurement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/weight/WeightItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/Location.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_weight2.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/NavigationActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -807,17 +802,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="16" column="49" lean-forward="true" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a06888b7203f187e2050e7755d02a7db/firebase-database-17.0.0/jars/classes.jar!/com/google/firebase/database/core/ValueEventRegistration.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
         </state>
       </provider>
     </entry>
@@ -825,27 +813,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/location/LocationAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/location/ChooseLocationAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/PeriodSelectDialogFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -881,9 +848,183 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WaterActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3145">
+          <caret line="228" column="40" selection-start-line="228" selection-start-column="40" selection-end-line="228" selection-end-column="40" />
+          <folding>
+            <element signature="method#setFloatingActionButton#0;class#WaterActivity#0" />
+            <element signature="method#setConsumedWaterClick#0;class#WaterActivity#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/location/ChooseLocationAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/PeriodSelectDialogFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-642">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/UserActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4165">
+          <caret line="289" column="33" selection-start-line="289" selection-start-column="33" selection-end-line="289" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/weight/WeightItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewWeightItemDialogFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="117" selection-start-line="117" selection-end-line="119" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_measurements_graph.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/recyclerview_measurement.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_weight_list.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/weight/WeightAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="133" column="9" lean-forward="true" selection-end-line="169" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/MeasurementsGraphFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="110" column="73" selection-start-line="110" selection-start-column="73" selection-end-line="110" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewMeasurementItemDialogFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="107" column="90" selection-start-line="107" selection-start-column="90" selection-end-line="107" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/measurement/MeasurementAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="66" column="12" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/location/LocationItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a06888b7203f187e2050e7755d02a7db/firebase-database-17.0.0/jars/classes.jar!/com/google/firebase/database/core/ValueEventRegistration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a06888b7203f187e2050e7755d02a7db/firebase-database-17.0.0/jars/classes.jar!/com/google/firebase/database/core/view/DataEvent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+          <folding>
+            <element signature="e#1289#1290#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a06888b7203f187e2050e7755d02a7db/firebase-database-17.0.0/jars/classes.jar!/com/google/firebase/database/core/view/EventRaiser.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#1406#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3825">
+          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/SettingsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1224">
+          <caret line="218" lean-forward="true" selection-start-line="218" selection-end-line="218" />
+          <folding>
+            <element signature="method#setGenderOnClickListeners#0;class#SettingsActivity#0" />
+            <element signature="method#setGenderButtons#0;class#SettingsActivity#0" />
+            <element signature="method#setGoalOnClickListeners#0;class#SettingsActivity#0" />
+            <element signature="method#setLoseWeightButton#0;class#SettingsActivity#0" />
+            <element signature="method#setMuscleButton#0;class#SettingsActivity#0" />
+            <element signature="method#checkDataValidity#0;class#SettingsActivity#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="749">
+          <caret line="189" selection-start-line="189" selection-end-line="189" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setFloatingActionButton#0;class#WeightActivity2#0" />
+            <element signature="method#drawChart#0;class#WeightActivity2#0" />
+            <element signature="method#initRecyclerView#0;class#WeightActivity2#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="75" column="85" selection-start-line="75" selection-start-column="73" selection-end-line="75" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-28/android.jar!/android/os/Looper.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="83">
           <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
           <folding>
             <element signature="e#669#670#0" expanded="true" />
@@ -892,78 +1033,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WaterActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/equipment/EquipmentAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="228" column="40" lean-forward="true" selection-start-line="228" selection-start-column="40" selection-end-line="228" selection-end-column="40" />
+        <state relative-caret-position="92">
+          <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
           <folding>
-            <element signature="method#setFloatingActionButton#0;class#WaterActivity#0" />
-            <element signature="method#setConsumedWaterClick#0;class#WaterActivity#0" />
+            <element signature="e#3617#3618#0" expanded="true" />
+            <element signature="e#3652#3653#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/UserActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/location/LocationAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2499">
-          <caret line="206" selection-start-line="206" selection-end-line="206" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3213">
-          <caret line="199" column="17" lean-forward="true" selection-start-line="183" selection-start-column="15" selection-end-line="199" selection-end-column="17" />
+        <state relative-caret-position="-41">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2293#2294#0" expanded="true" />
-            <element signature="e#2334#2335#0" expanded="true" />
-            <element signature="e#2399#2400#0" expanded="true" />
-            <element signature="e#2441#2442#0" expanded="true" />
-            <element signature="class#Period#0;class#WeightActivity#0" />
-            <element signature="method#setFloatingActionButton#0;class#WeightActivity#0" />
-            <element signature="e#4252#4489#0" expanded="true" />
-            <element signature="e#4488#4489#0" expanded="true" />
-            <element signature="method#setMostRecentWeightAsCurrent#0;class#WeightActivity#0" />
-            <element signature="method#checkProgress#0;class#WeightActivity#0" />
-            <element signature="method#isGoalReached#0;class#WeightActivity#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewWeightItemDialogFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/data/weight/WeightAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-250">
-          <caret line="106" column="80" selection-start-line="106" selection-start-column="80" selection-end-line="106" selection-end-column="80" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2678#2679#0" expanded="true" />
-            <element signature="e#2713#2714#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/WeightActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/Equipment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+          <caret line="4" column="46" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/Measurement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/MeasurementsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="116" column="5" selection-start-line="89" selection-start-column="4" selection-end-line="116" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/MeasurementsGraphActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="77" column="37" selection-start-line="77" selection-end-line="78" />
           <folding>
-            <element signature="class#Period#0;class#WeightActivity#0" />
-            <element signature="method#setFloatingActionButton#0;class#WeightActivity#0" />
-            <element signature="method#setMostRecentWeightAsCurrent#0;class#WeightActivity#0" />
-            <element signature="method#isGoalReached#0;class#WeightActivity#0" />
-            <element signature="method#onPeriodSelected#0;class#WeightActivity#0" />
-            <element signature="method#setPeriod#0;class#WeightActivity#0" />
-            <element signature="method#onOptionsItemSelected#0;class#WeightActivity#0" />
-            <element signature="method#onPrepareOptionsMenu#0;class#WeightActivity#0" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2652#2899#0" expanded="true" />
+            <element signature="e#2898#2899#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/models/Location.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" column="10" lean-forward="true" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/LocationActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1751">
+          <caret line="137" column="9" lean-forward="true" selection-start-line="137" selection-start-column="9" selection-end-line="137" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/EditLocationItemDialogFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="170" selection-start-line="170" selection-end-line="170" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/fragments/NewLocationItemDialogFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
         </state>
       </provider>
     </entry>
