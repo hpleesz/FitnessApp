@@ -12,4 +12,6 @@
     android:paddingTop="64dp"
     tools:context=".GymMainActivity">
 
+    <include layout="@layout/recyclerview_location_public" />
+
 </LinearLayout>

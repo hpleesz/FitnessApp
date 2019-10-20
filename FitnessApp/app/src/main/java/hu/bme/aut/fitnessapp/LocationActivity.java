@@ -1,13 +1,11 @@
 package hu.bme.aut.fitnessapp;
 
-import android.arch.persistence.room.Room;
 import android.content.Context;
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -19,29 +17,26 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
+import hu.bme.aut.fitnessapp.data.location.PublicLocationAdapter;
+import hu.bme.aut.fitnessapp.data.warmup.WarmUpItem;
 import hu.bme.aut.fitnessapp.fragments.EditLocationItemDialogFragment;
 import hu.bme.aut.fitnessapp.fragments.NewLocationItemDialogFragment;
 import hu.bme.aut.fitnessapp.data.location.LocationAdapter;
-import hu.bme.aut.fitnessapp.data.location.LocationItem;
-import hu.bme.aut.fitnessapp.data.location.LocationListDatabase;
-import hu.bme.aut.fitnessapp.fragments.NewWaterDialogFragment;
-import hu.bme.aut.fitnessapp.models.Equipment;
 import hu.bme.aut.fitnessapp.models.Location;
-import hu.bme.aut.fitnessapp.models.Weight;
+import hu.bme.aut.fitnessapp.models.PublicLocation;
 
-public class LocationActivity extends NavigationActivity implements NewLocationItemDialogFragment.NewLocationItemDialogListener, LocationAdapter.LocationItemDeletedListener, LocationAdapter.LocationItemSelectedListener, EditLocationItemDialogFragment.EditLocationItemDialogListener {
+public class LocationActivity extends NavigationActivity implements NewLocationItemDialogFragment.NewLocationItemDialogListener, LocationAdapter.LocationItemDeletedListener, LocationAdapter.LocationItemSelectedListener, EditLocationItemDialogFragment.EditLocationItemDialogListener, PublicLocationAdapter.LocationItemDeletedListener, PublicLocationAdapter.LocationItemSelectedListener {
 
     private LocationAdapter adapter;
+    private PublicLocationAdapter publicAdapter;
 
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
     private String userId;
 
     private ArrayList<Location> itemlist;
+    private ArrayList<PublicLocation> public_itemlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +57,20 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
     }
 
     public void setFloatingActionButton() {
+        FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new NewLocationItemDialogFragment().show(getSupportFragmentManager(), NewLocationItemDialogFragment.TAG);
+            }
+        });
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new NewLocationItemDialogFragment().show(getSupportFragmentManager(), NewLocationItemDialogFragment.TAG);
+                Intent intent = new Intent(LocationActivity.this, SavePublicLocationActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -76,6 +80,12 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
         adapter = new LocationAdapter(this, this, itemlist);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+
+        public_itemlist = new ArrayList<>();
+        RecyclerView recyclerViewPublic = findViewById(R.id.PublicLocationRecyclerView);
+        publicAdapter = new PublicLocationAdapter(this, this, public_itemlist);
+        recyclerViewPublic.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewPublic.setAdapter(publicAdapter);
     }
 
     private void loadList() {
@@ -156,4 +166,13 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
     }
 
 
+    @Override
+    public void onItemDeleted(PublicLocation item) {
+
+    }
+
+    @Override
+    public void onItemSelected(PublicLocation item, int position) {
+
+    }
 }

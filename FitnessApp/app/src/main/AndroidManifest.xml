@@ -14,9 +14,17 @@
         android:roundIcon="@drawable/logo2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WeightActivity2"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+        <activity
+            android:name=".SavePublicLocationActivity"
+            android:label="@string/title_activity_save_public_location"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".NewPublicLocationActivity"
+            android:label="@string/title_activity_new_public_location"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".WeightActivity2"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver
             android:name=".broadcast_receiver.BootReceiver"
