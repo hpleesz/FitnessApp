@@ -7,10 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @IgnoreExtraProperties
-public class Location implements Serializable {
+public class Location extends Place implements Serializable {
     public int id;
     public String name;
-    public ArrayList<Integer> equipment;
 
     public Location() {}
 

@@ -21,6 +21,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,10 +47,13 @@ import hu.bme.aut.fitnessapp.fragments.NewLocationItemDialogFragment;
 public class WarmUpActivity extends NavigationActivity {
 
     private ArrayList<WarmUpItem> warmUpItems;
-    private ArrayList<WarmUpItem> items;
+    private ArrayList<String> items;
     private VideoView videoView;
     private TextView titleTextView;
     private SharedPreferences sharedPreferences;
+    private String type;
+    private boolean lower = true;
+    private int idx = 0;
 
 
     @Override
@@ -53,13 +65,18 @@ public class WarmUpActivity extends NavigationActivity {
         navigationView.getMenu().getItem(0).setChecked(true);
 
         Intent i = getIntent();
-        items = (ArrayList<WarmUpItem>) i.getSerializableExtra("list");
+        type = (String) i.getSerializableExtra("type");
+        //items = (ArrayList<WarmUpItem>) i.getSerializableExtra("list");
 
         warmUpItems = new ArrayList<>();
+        loadItems();
+        /*
         setLayoutElements();
         chooseExercises();
         setExercise();
         setFloatingActionButtons();
+
+         */
 
     }
 
@@ -81,15 +98,16 @@ public class WarmUpActivity extends NavigationActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int idx = sharedPreferences.getInt("Warm up number", 0);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                if (warmUpItems.size() > idx + 1) {
-                    editor.putInt("Warm up number", idx + 1);
-                    editor.apply();
+                //int idx = sharedPreferences.getInt("Warm up number", 0);
+                //SharedPreferences.Editor editor = sharedPreferences.edit();
+                if (items.size() > idx + 1) {
+                    //editor.putInt("Warm up number", idx + 1);
+                    //editor.apply();
+                    idx = idx + 1;
                     setExercise();
                 } else {
-                    editor.putInt("Warm up number", 0);
-                    editor.apply();
+                    //editor.putInt("Warm up number", 0);
+                    //editor.apply();
                     Intent warmupIntent = new Intent(WarmUpActivity.this, MainActivity.class);
                     startActivity(warmupIntent);
                 }
@@ -102,11 +120,12 @@ public class WarmUpActivity extends NavigationActivity {
         fabLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int idx = sharedPreferences.getInt("Warm up number", 0);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
+                //int idx = sharedPreferences.getInt("Warm up number", 0);
+                //SharedPreferences.Editor editor = sharedPreferences.edit();
                 if (idx > 0) {
-                    editor.putInt("Warm up number", idx - 1);
-                    editor.apply();
+                    //editor.putInt("Warm up number", idx - 1);
+                    //editor.apply();
+                    idx = idx -1;
                     setExercise();
                 } else {
                     Intent mainIntent = new Intent(WarmUpActivity.this, MainActivity.class);
@@ -118,12 +137,11 @@ public class WarmUpActivity extends NavigationActivity {
     }
 
     public void setExercise() {
-        int idx = sharedPreferences.getInt("Warm up number", 0);
-        WarmUpItem item = warmUpItems.get(idx);
-        titleTextView.setText(item.warmup_name);
+        //int idx = sharedPreferences.getInt("Warm up number", 0);
+        String item = items.get(idx);
+        titleTextView.setText(item);
 
-        String name = item.warmup_name;
-        setVideo(name);
+        setVideo(item);
         //this.getActionBar().setTitle(getString(R.string.exercise_number) + idx);
 
     }
@@ -134,40 +152,93 @@ public class WarmUpActivity extends NavigationActivity {
         name = name.replace(",", "");
         name = name.replace("-", "_");
         name = name.replace("_/_", "_");
-        int id = getApplicationContext().getResources().getIdentifier(name, "raw", getPackageName());
+        FirebaseStorage storage = FirebaseStorage.getInstance();
 
-        String videoPath = "android.resource://" + getPackageName() + "/" + id;
-        Uri uri = Uri.parse(videoPath);
-        videoView.setVideoURI(uri);
+        StorageReference storageRef = storage.getReference();
+
+        StorageReference pathReference = storageRef.child(name + ".mp4");
+        pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                videoView.setVideoURI(uri);
+
+            }
+        });
+
         videoView.start();
     }
+    /*
+        public void chooseExercises() {
+            //String type = sharedPreferences.getString("Workout type", "Lower body");
+            switch (type) {
+                case "Cardio 1":
+                case "Cardio 2":
+                case "Lower body":
+                    getLowerBodyWarmUp();
+                    break;
+                case "Upper body":
+                    getUpperBodyWarmUp();                   break;
+            }
+        }
+    /*
+        public void getLowerBodyWarmUp() {
+            for (int i = 0; i < items.size(); i++) {
+                if (items.get(i).warmup_lower)
+                    warmUpItems.add(items.get(i));
+            }
+        }
 
-    public void chooseExercises() {
-        String type = sharedPreferences.getString("Workout type", "Lower body");
+        public void getUpperBodyWarmUp() {
+            for (int i = 0; i < items.size(); i++) {
+                if (items.get(i).warmup_upper)
+                    warmUpItems.add(items.get(i));
+            }
+        }
+
+     */
+    public void loadItems() {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
         switch (type) {
             case "Cardio 1":
             case "Cardio 2":
             case "Lower body":
-                getLowerBodyWarmUp();
+                //getLowerBodyWarmUp();
                 break;
             case "Upper body":
-                getUpperBodyWarmUp();
+                lower = false;
+                //getUpperBodyWarmUp();
                 break;
         }
-    }
 
-    public void getLowerBodyWarmUp() {
-        for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).warmup_lower)
-                warmUpItems.add(items.get(i));
-        }
-    }
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                items = new ArrayList<>();
+                for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
 
-    public void getUpperBodyWarmUp() {
-        for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).warmup_upper)
-                warmUpItems.add(items.get(i));
-        }
+                    String item = dataSnapshot1.child("Name").getValue(String.class);
+                    if(lower) {
+                        if(dataSnapshot1.child("Lower").getValue(Boolean.class)) {
+                            items.add(item);
+                        }
+                    }
+                    else {
+                        if(dataSnapshot1.child("Upper").getValue(Boolean.class)) {
+                            items.add(item);
+                        }
+                    }
+                }
+                setLayoutElements();
+                //chooseExercises();
+                setExercise();
+                setFloatingActionButtons();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        };
+        databaseReference.child("Warmup").addValueEventListener(eventListener);
     }
 
 

@@ -92,10 +92,14 @@ public class LoginActivity extends AppCompatActivity {
                                     user = (boolean)dataSnapshot.getValue();
 
                                     if(user) {
-                                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                        Intent intent= new Intent(LoginActivity.this, MainActivity.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
                                     }
                                     else {
-                                        startActivity(new Intent(LoginActivity.this, GymMainActivity.class));
+                                        Intent intent= new Intent(LoginActivity.this, GymMainActivity.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
                                     }
                                 }
 

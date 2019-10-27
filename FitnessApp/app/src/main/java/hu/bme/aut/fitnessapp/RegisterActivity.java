@@ -51,6 +51,14 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance().getReference();
@@ -79,11 +87,14 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                                 if(task.isSuccessful()) {
                                     Toast.makeText(RegisterActivity.this, "Registered!", Toast.LENGTH_LONG).show();
                                     if(type_user) {
-                                        startActivity(new Intent(RegisterActivity.this, UserActivity.class));
-                                    }
+                                        Intent intent= new Intent(RegisterActivity.this, UserActivity.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);                                    }
                                     else {
                                         writeNewGym();
-                                        startActivity(new Intent(RegisterActivity.this, GymMainActivity.class));
+                                        Intent intent= new Intent(RegisterActivity.this, GymMainActivity.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
                                     }
                                 }
                                 else {

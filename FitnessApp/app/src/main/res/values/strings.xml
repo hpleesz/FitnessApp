@@ -96,6 +96,10 @@
     </string-array>
     <string name="title_activity_new_public_location">NewPublicLocationActivity</string>
     <string name="title_activity_save_public_location">SavePublicLocationActivity</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_edit_public_location">EditPublicLocationActivity</string>
+    <string name="title_activity_view_public_location_details">ViewPublicLocationDetails</string>
+    <string name="title_activity_main2">MainActivity2</string>
 
 
 </resources>

@@ -3,10 +3,9 @@ package hu.bme.aut.fitnessapp.models;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PublicLocation implements Serializable {
+public class PublicLocation extends Place implements Serializable {
     public long id;
     public String name;
-    public ArrayList<Integer> equipment;
     public ArrayList<String[]> open_hours;
     public String description;
     public String zip;

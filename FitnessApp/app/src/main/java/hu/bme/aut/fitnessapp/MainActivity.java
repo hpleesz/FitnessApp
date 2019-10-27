@@ -29,6 +29,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
@@ -58,16 +65,17 @@ import hu.bme.aut.fitnessapp.data.weight.WeightItem;
 import hu.bme.aut.fitnessapp.data.weight.WeightListDatabase;
 import hu.bme.aut.fitnessapp.fragments.ChooseLocationItemDialogFragment;
 import hu.bme.aut.fitnessapp.fragments.NewLocationItemDialogFragment;
+import hu.bme.aut.fitnessapp.models.Equipment;
+import hu.bme.aut.fitnessapp.models.Exercise;
+import hu.bme.aut.fitnessapp.models.Location;
+import hu.bme.aut.fitnessapp.models.Place;
+import hu.bme.aut.fitnessapp.models.PublicLocation;
+import hu.bme.aut.fitnessapp.models.WorkoutDetails;
 
-public class MainActivity extends NavigationActivity implements ChooseLocationItemDialogFragment.ChooseLocationItemDialogListener {
+public class MainActivity extends NavigationActivity implements ChooseLocationItemDialogFragment.ChooseLocationItemDialogListener, ChooseLocationItemDialogFragment.ChooseOwnLocationItemDialogListener {
 
     public static final String FIRST = "first sign in";
 
-    private ExerciseListDatabase database;
-    private LocationListDatabase locationdatabase;
-    private EquipmentListDatabase equipmentdatabase;
-    private WarmUpListDatabase warmupdatabase;
-    private StretchListDatabase stretchdatabase;
     private ProgressBar progressBar;
     private TextView location;
     private Button workoutButton;
@@ -75,15 +83,20 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
     public static final String WORKOUT = "workout settings";
     private SharedPreferences sharedPreferences;
     int location_id;
-    private ArrayList<ExerciseItem> chosenExercises;
-    private ArrayList<ExerciseItem> exercisesForLocation;
+    private ArrayList<Exercise> chosenExercises;
+    private ArrayList<Exercise> exercisesForLocation;
     private ArrayList<Integer> equipment_ids;
-    private List<LocationItem> locations;
-    private ArrayList<EquipmentItem> equipmentArrayList;
-    private List<WarmUpItem> warmUpList;
-    private List<StretchItem> stretchList;
+    private ArrayList<Equipment> equipmentList;
     public static String[] lower_body_parts = {"Quads", "Glutes", "Legs", "Adductor", "Abductor", "Hamstrings", "Calves"};
     public static String[] upper_body_parts = {"Abs", "Back", "Shoulders", "Chest", "Triceps", "Obliques", "Arms", "Biceps", "Lats", "Forearms"};
+
+    private DatabaseReference databaseReference;
+    private FirebaseAuth mAuth;
+    private String userId;
+
+    private PublicLocation publicLocation;
+    private ArrayList<Exercise> exerciseList;
+    private WorkoutDetails workoutDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,42 +113,142 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
         fab.hide();
 
         chosenExercises = new ArrayList<>();
-        equipmentArrayList = new ArrayList<>();
         sharedPreferences = getSharedPreferences(WORKOUT, MODE_PRIVATE);
         location = findViewById(R.id.chooseLocationTextView);
         workoutButton = (Button) findViewById(R.id.workoutButton);
 
-        loadDatabases();
-        setLocationText();
-        setButtonsOnClickListeners();
-        setChooseLocationOnClickListener();
-        //checkFirstSignIn();
-        continueWorkout();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+        userId = mAuth.getCurrentUser().getUid();
+
+        loadEquipment();
+        loadExercises();
+        loadWorkoutDetails();
+
+        //TODO: setLocationText();
+
     }
 
-    public void loadDatabases() {
-        //loadExercises();
-        loadLocations();
-        loadWarmUpDatabase();
-        getWarmUpList();
-        loadStretchDatabase();
-        getStretchList();
+    private void loadEquipment() {
+
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                equipmentList = new ArrayList<>();
+
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    int id = Integer.parseInt(dataSnapshot1.getKey());
+                    String name = (String) dataSnapshot1.getValue();
+                    Equipment equipment = new Equipment(id, name);
+                    equipmentList.add(equipment);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors.
+            }
+
+        };
+        databaseReference.child("Equipment").addValueEventListener(eventListener);
+
+
+        // [END post_value_event_listener]
+
+        // Keep copy of post listener so we can remove it when app stops
+        //this.eventListener = eventListener
+
+    }
+
+    private void loadExercises() {
+
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                exerciseList = new ArrayList<>();
+
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    String id = dataSnapshot1.getKey();
+                    int equipment1 = dataSnapshot1.child("Equipment1").getValue(Integer.class);
+                    int equipment2 = dataSnapshot1.child("Equipment2").getValue(Integer.class);
+                    String muscles = dataSnapshot1.child("Muscles").getValue(String.class);
+                    String name = dataSnapshot1.child("Name").getValue(String.class);
+                    int reps_time = dataSnapshot1.child("Rep_Time").getValue(Integer.class);
+
+                    String[] muscleArray = muscles.split(", ");
+
+                    Exercise exercise = new Exercise(Integer.parseInt(id), equipment1,equipment2, muscleArray, name, reps_time);
+                    exerciseList.add(exercise);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors.
+            }
+
+        };
+        databaseReference.child("Exercises").addValueEventListener(eventListener);
+
+
+        // [END post_value_event_listener]
+
+        // Keep copy of post listener so we can remove it when app stops
+        //this.eventListener = eventListener
+
+    }
+
+    private void loadWorkoutDetails() {
+
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String type = dataSnapshot.child("Type").getValue(String.class);
+                boolean in_progress = dataSnapshot.child("In_Progress").getValue(Boolean.class);
+
+                ArrayList<Integer> exercises = new ArrayList<>();
+                for(DataSnapshot dataSnapshot1 : dataSnapshot.child("Exercises").getChildren()) {
+                    int exercise_id = dataSnapshot1.getValue(Integer.class);
+                    exercises.add(exercise_id);
+                }
+                workoutDetails = new WorkoutDetails(type, exercises, in_progress);
+                //continueWorkout();
+                setButtonsOnClickListeners();
+                setChooseLocationOnClickListener();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors.
+            }
+
+        };
+        databaseReference.child("Workout_Details").child(userId).addValueEventListener(eventListener);
+
+
+        // [END post_value_event_listener]
+
+        // Keep copy of post listener so we can remove it when app stops
+        //this.eventListener = eventListener
+
     }
 
     public void setButtonsOnClickListeners() {
         workoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                location_id = sharedPreferences.getInt("Location", 0);
-                if (location_id > 0) {
+                //TODO
+                //location_id = sharedPreferences.getInt("Location", 0);
+                //if (location_id > 0) {
                     Intent exercisesIntent = new Intent(MainActivity.this, ExerciseListActivity.class);
                     exercisesIntent.putExtra("list", chosenExercises);
-                    exercisesIntent.putExtra("equipment", equipmentArrayList);
+                    exercisesIntent.putExtra("equipment", equipmentList);
                     startActivity(exercisesIntent);
-                } else {
-                    Toast toast = Toast.makeText(getApplication().getApplicationContext(), R.string.choose_location_toast, Toast.LENGTH_LONG);
-                    toast.show();
-                }
+                //} else {
+                //    Toast toast = Toast.makeText(getApplication().getApplicationContext(), R.string.choose_location_toast, Toast.LENGTH_LONG);
+                //    toast.show();
+                //}
             }
         });
 
@@ -144,7 +257,7 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
             @Override
             public void onClick(View v) {
                 Intent warmupIntent = new Intent(MainActivity.this, WarmUpActivity.class);
-                warmupIntent.putExtra("list", (ArrayList<WarmUpItem>) warmUpList);
+                warmupIntent.putExtra("type", (String) workoutDetails.type);
                 startActivity(warmupIntent);
             }
         });
@@ -154,7 +267,7 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
             @Override
             public void onClick(View v) {
                 Intent stretchIntent = new Intent(MainActivity.this, StretchActivity.class);
-                stretchIntent.putExtra("list", (ArrayList<StretchItem>) stretchList);
+                //stretchIntent.putExtra("list", (ArrayList<StretchItem>) stretchList);
                 startActivity(stretchIntent);
             }
         });
@@ -170,42 +283,69 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
         });
     }
 
-    public void checkFirstSignIn() {
-        SharedPreferences first = getSharedPreferences(FIRST, MODE_PRIVATE);
-        boolean isFirst = first.getBoolean("First", true);
-        if (isFirst) {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean("Completed workout", true);
-            editor.apply();
-            Intent userIntent = new Intent(MainActivity.this, UserActivity.class);
-            startActivity(userIntent);
-        } else {
-            loadExercises();
-        }
-    }
 
     @Override
-    public void onLocationItemChosen() {
-        String locationName = sharedPreferences.getString("Location Name", getString(R.string.choose_location));
-        location.setText(locationName);
+    public void onLocationItemChosen(PublicLocation loc) {
+        setLocationListener(loc);
+
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(ProgressBar.VISIBLE);
         workoutButton.setEnabled(false);
         workoutButton.setBackground(getResources().getDrawable(R.drawable.button_round_disabled));
-
-        new AsyncTask<Void, Void, List<ExerciseItem>>() {
-
-            @Override
-            protected List<ExerciseItem> doInBackground(Void... voids) {
-                loadEquipments();
-                getAvailableEquipment();
-                getExercisesForLocation();
-                //makeWorkoutFromSelectedExercises();
-                return exercisesForLocation;
-            }
-        }.execute();
     }
 
+    public void setLocationListener(PublicLocation loc) {
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long id = Long.parseLong(dataSnapshot.getKey());
+                String name = dataSnapshot.child("Name").getValue(String.class);
+                String description = dataSnapshot.child("Description").getValue(String.class);
+                String zip = dataSnapshot.child("Zip").getValue(String.class);
+                String country = dataSnapshot.child("Country").getValue(String.class);
+                String city = dataSnapshot.child("City").getValue(String.class);
+                String address = dataSnapshot.child("Address").getValue(String.class);
+
+                ArrayList<Integer> equipment = new ArrayList<>();
+
+                for(DataSnapshot dataSnapshot2: dataSnapshot.child("Equipment").getChildren()) {
+                    int idx = dataSnapshot2.getValue(Integer.class);
+                    equipment.add(idx);
+                }
+
+                ArrayList<String[]> hours = new ArrayList<>();
+
+                for(DataSnapshot dataSnapshot2: dataSnapshot.child("Open_Hours").getChildren()) {
+                    String[] open_close = new String[2];
+
+                    for (DataSnapshot dataSnapshot3: dataSnapshot2.getChildren()) {
+                        int idx = Integer.parseInt(dataSnapshot3.getKey());
+                        String hour = dataSnapshot3.getValue(String.class);
+
+                        open_close[idx] = hour;
+                    }
+                    hours.add(open_close);
+                }
+
+                publicLocation = new PublicLocation(id, name, equipment, hours, description, zip, country, city, address, userId);
+                String locationName = publicLocation.name;
+                location.setText(locationName);
+                getAvailableEquipment(publicLocation);
+                getExercisesForLocation();
+                makeWorkoutFromSelectedExercises();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors.
+            }
+
+        };
+        databaseReference.child("Public_Locations").child(Long.toString(loc.id)).addValueEventListener(eventListener);
+
+    }
+
+    /*
     public void setLocationText() {
         String locationName = sharedPreferences.getString("Location Name", getString(R.string.choose_location));
         location.setText(locationName);
@@ -213,6 +353,7 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
             getSavedExercises();
         }
     }
+
 
     public void getSavedExercises() {
         new AsyncTask<Void, Void, List<ExerciseItem>>() {
@@ -229,72 +370,36 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
         }.execute();
     }
 
-
-    public void getAvailableEquipment() {
-        new AsyncTask<Void, Void, List<EquipmentItem>>() {
-
-            @Override
-            protected List<EquipmentItem> doInBackground(Void... voids) {
-                location_id = sharedPreferences.getInt("Location", 1);
-                LocationItem location = locationdatabase.locationItemDao().getLocationWithID(location_id);
-                ArrayList<EquipmentItem> equipments = location.location_equipmentItems;
-                equipment_ids = new ArrayList<>();
-                for (EquipmentItem item : equipments) {
-                    equipment_ids.add(item.equipment_id);
-                }
-                if (equipment_ids.contains(5) && !equipment_ids.contains(4)) equipment_ids.add(4);
-                if (equipment_ids.contains(7) && !equipment_ids.contains(6)) equipment_ids.add(6);
-                if (!equipment_ids.contains(1)) equipment_ids.add(1);
-                //getExercisesForLocation();
-                return equipments;
-            }
+     */
 
 
-            //@Override
-            //protected void onPostExecute(List<EquipmentItem> equipmentItems) {
-            //    getExercisesForLocation();
-            //Toast toast = Toast.makeText(getApplication().getApplicationContext(), "kesz 0", Toast.LENGTH_LONG);
-            //toast.show();
-            //}
+    public void getAvailableEquipment(Place loc) {
+        equipment_ids = loc.equipment;
 
+        if (equipment_ids.contains(5) && !equipment_ids.contains(4))
+            equipment_ids.add(4);
+        if (equipment_ids.contains(7) && !equipment_ids.contains(6))
+            equipment_ids.add(6);
+        if (!equipment_ids.contains(1)) equipment_ids.add(1);
 
-        }.execute();
     }
 
     public void getExercisesForLocation() {
-        new AsyncTask<Void, Void, List<ExerciseItem>>() {
-            @Override
-            protected List<ExerciseItem> doInBackground(Void... voids) {
-                exercisesForLocation = new ArrayList<>();
-                for (int i = 0; i < equipment_ids.size(); i++) {
-                    for (int j = 0; j < equipment_ids.size(); j++) {
-                        List<ExerciseItem> list = database.exerciseItemDao().getExercisesWithEquipments(equipment_ids.get(i), equipment_ids.get(j));
-                        exercisesForLocation.addAll(list);
-                    }
-
-                }
-                makeWorkoutFromSelectedExercises();
-                return exercisesForLocation;
-            }
-
-            @Override
-            protected void onPostExecute(List<ExerciseItem> exerciseItemList) {
-                progressBar.setVisibility(View.GONE);
-                workoutButton.setEnabled(true);
-                workoutButton.setBackground(getResources().getDrawable(R.drawable.button_round));
-
-
-            }
-        }.execute();
+        exercisesForLocation = new ArrayList<>();
+        for(Exercise exercise : exerciseList) {
+            if(equipment_ids.contains(exercise.equipment1) && equipment_ids.contains(exercise.equipment2))
+                exercisesForLocation.add(exercise);
+        }
     }
 
     public void makeWorkoutFromSelectedExercises() {
         chosenExercises = new ArrayList<>();
-        String workout_type = sharedPreferences.getString("Workout type", "Lower body");
         ArrayList<String> body_parts = new ArrayList<>();
-        switch (workout_type) {
+
+        switch (workoutDetails.type) {
             case "Upper body":
                 while (body_parts.size() < 10) {
+                    //TODO get body parts
                     body_parts.add(upper_body_parts[getRandomNumber(upper_body_parts.length)]);
                 }
                 selectExercises(body_parts, 10);
@@ -319,12 +424,15 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
                 selectCardio();
                 break;
         }
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("Number of exercises", chosenExercises.size());
+
+        databaseReference.child("Workout_Details").child(userId).child("Exercises").removeValue();
         for (int j = 0; j < chosenExercises.size(); j++) {
-            editor.putLong("Exercise " + j, chosenExercises.get(j).exercise_id);
+            databaseReference.child("Workout_Details").child(userId).child("Exercises").child(Integer.toString(j)).setValue(chosenExercises.get(j).id);
         }
-        editor.apply();
+        progressBar.setVisibility(View.GONE);
+        workoutButton.setEnabled(true);
+        workoutButton.setBackground(getResources().getDrawable(R.drawable.button_round));
+
     }
 
     public int getRandomNumber(int max) {
@@ -334,33 +442,33 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
 
     public void selectExercises(ArrayList<String> body_parts, int limit) {
         for (int i = 0; i < limit; i++) {
-            ArrayList<ExerciseItem> exerciseItems = new ArrayList<>();
+            ArrayList<Exercise> exerciseItems = new ArrayList<>();
             String body_part = body_parts.get(i);
             for (int j = 0; j < exercisesForLocation.size(); j++) {
-                for (int k = 0; k < exercisesForLocation.get(j).exercise_muscles.size(); k++) {
-                    String s = exercisesForLocation.get(j).exercise_muscles.get(k);
-                    if (exercisesForLocation.get(j).exercise_muscles.get(k).contains(body_part))
+                for (int k = 0; k < exercisesForLocation.get(j).muscles.length; k++) {
+                    String s = exercisesForLocation.get(j).muscles[k];
+                    if (exercisesForLocation.get(j).muscles[k].contains(body_part))
                         exerciseItems.add(exercisesForLocation.get(j));
                 }
             }
             if (exerciseItems.size() > 0) {
                 int random = getRandomNumber(exerciseItems.size());
-                ExerciseItem exercise = exerciseItems.get(random);
+                Exercise exercise = exerciseItems.get(random);
                 if (!chosenExercises.contains(exercise)) {
                     chosenExercises.add(exercise);
-                    if (exercise.exercise_name.contains("left")) {
-                        ExerciseItem exerciseItem = exerciseItems.get(random + 1);
+                    if (exercise.name.contains("left")) {
+                        Exercise exerciseItem = exerciseItems.get(random + 1);
                         chosenExercises.add(exerciseItem);
                         i++;
                     }
-                    if (exercise.exercise_name.contains("right")) {
-                        ExerciseItem exerciseItem = exerciseItems.get(random - 1);
+                    if (exercise.name.contains("right")) {
+                        Exercise exerciseItem = exerciseItems.get(random - 1);
                         chosenExercises.add(exerciseItem);
                         i++;
                     }
                 } else i--;
             } else {
-                if (sharedPreferences.getString("Workout type", "").equals("Upper body")) {
+                if (workoutDetails.type.equals("Upper body")) {
                     body_parts.set(i, upper_body_parts[getRandomNumber(upper_body_parts.length)]);
                     i--;
                 } else {
@@ -372,285 +480,42 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
     }
 
     public void selectCardio() {
-        ArrayList<ExerciseItem> cardio = new ArrayList<>();
+        ArrayList<Exercise> cardio = new ArrayList<>();
         for (int i = exercisesForLocation.size() - 1; i >= 0; i--) {
-            if (exercisesForLocation.get(i).exercise_muscles.get(0).contains("Cardiovascular System"))
+            if (exercisesForLocation.get(i).muscles[0].contains("Cardiovascular System"))
                 cardio.add(exercisesForLocation.get(i));
         }
         int random = getRandomNumber(cardio.size());
         chosenExercises.add(cardio.get(random));
     }
 
+    @Override
+    public void onLocationItemChosen(Location item) {
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(ProgressBar.VISIBLE);
+        workoutButton.setEnabled(false);
+        workoutButton.setBackground(getResources().getDrawable(R.drawable.button_round_disabled));
 
+        String locationName = item.name;
+        location.setText(locationName);
+        getAvailableEquipment(item);
+        getExercisesForLocation();
+        makeWorkoutFromSelectedExercises();
+    }
+
+
+/*
     public void continueWorkout() {
-        boolean completed = sharedPreferences.getBoolean("Completed workout", false);
-        if (!completed) {
-            new AsyncTask<Void, Void, List<ExerciseItem>>() {
+        //boolean completed = sharedPreferences.getBoolean("Completed workout", false);
+        if (workoutDetails.in_progress) {
 
-                @Override
-                protected List<ExerciseItem> doInBackground(Void... voids) {
-                    /*int numberOfExercises = sharedPreferences.getInt("Number of exercises", 6);
-                    for (int i = 0; i < numberOfExercises; i++) {
-                        ExerciseItem item = database.exerciseItemDao().getExerciseWithID(sharedPreferences.getLong("Exercise " + i, 1));
-                        chosenExercises.add(item);
-                    }*/
                     Intent exercisesIntent = new Intent(MainActivity.this, ExerciseInfoActivity.class);
                     exercisesIntent.putExtra("exercises", chosenExercises);
-                    exercisesIntent.putExtra("equipment", equipmentArrayList);
+                    exercisesIntent.putExtra("equipment", equipmentList);
                     startActivity(exercisesIntent);
-                    return chosenExercises;
-                }
-
-                /*
-                @Override
-                protected void onPostExecute(List<ExerciseItem> exerciseItems) {
-                    Intent exercisesIntent = new Intent(MainActivity.this, ExerciseInfoActivity.class);
-                    exercisesIntent.putExtra("exercises", chosenExercises);
-                    exercisesIntent.putExtra("equipment", equipmentArrayList);
-                    startActivity(exercisesIntent);
-                }
-                */
-
-            }.execute();
 
         }
     }
 
-    private void loadEquipments() {
-        equipmentdatabase = Room.databaseBuilder(
-                getApplicationContext(),
-                EquipmentListDatabase.class,
-                "equipments"
-        ).build();
-
-        new AsyncTask<Void, Void, List<EquipmentItem>>() {
-
-            @Override
-            protected List<EquipmentItem> doInBackground(Void... voids) {
-                List<EquipmentItem> equipmentItemList = equipmentdatabase.equipmentItemDao().getAll();
-                equipmentArrayList.addAll(equipmentItemList);
-                //getAvailableEquipment();
-                return equipmentItemList;
-            }
-
-        }.execute();
-    }
-
-    public void loadExercises() {
-        /*
-        RoomDatabase.Callback rdc = new RoomDatabase.Callback() {
-            @Override
-            public void onCreate(@NonNull SupportSQLiteDatabase db) {
-                final ArrayList<ExerciseItem> list = fillExerciseList();
-
-                new AsyncTask<Void, Void, List<ExerciseItem>>() {
-
-                    @Override
-                    protected List<ExerciseItem> doInBackground(Void... voids) {
-                        for (int i = 0; i < list.size(); i++) {
-                            database.exerciseItemDao().insert(list.get(i));
-                        }
-                        return list;
-                    }
-                }.execute();
-
-            }
-        };
-        */
-
-
-        database = Room.databaseBuilder(
-                getApplicationContext(),
-                ExerciseListDatabase.class,
-                "exercises"
-        )
-                //.addCallback(rdc)
-                .build();
-
-    }
-
-    public ArrayList<ExerciseItem> fillExerciseList() {
-        Resources resources = getResources();
-        String str;
-        ArrayList<ExerciseItem> exerciseItems = new ArrayList<>();
-
-        int resID = resources.getIdentifier("hu.bme.aut.fitnessapp:raw/" + "exercises", null, null);
-        InputStream is = resources.openRawResource(resID);
-        try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            while ((str = br.readLine()) != null) {
-                String[] line = str.split("\t");
-                ExerciseItem newItem = new ExerciseItem();
-
-                newItem.exercise_name = line[0];
-
-                newItem.equipment1 = Integer.parseInt(line[1]);
-                newItem.equipment2 = Integer.parseInt(line[2]);
-                String[] muscles = line[3].split(", ");
-                ArrayList<String> musclesList = new ArrayList<>();
-                for (int i = 0; i < muscles.length; i++) {
-                    musclesList.add(muscles[i]);
-                }
-                newItem.exercise_muscles = musclesList;
-                newItem.reps_time = Integer.parseInt(line[4]);
-
-                exerciseItems.add(newItem);
-            }
-            is.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return exerciseItems;
-    }
-
-    public void loadLocations() {
-        locationdatabase = Room.databaseBuilder(
-                getApplicationContext(),
-                LocationListDatabase.class,
-                "locations"
-        ).build();
-
-        new AsyncTask<Void, Void, List<LocationItem>>() {
-
-            @Override
-            protected List<LocationItem> doInBackground(Void... voids) {
-                locations = locationdatabase.locationItemDao().getAll();
-                return locations;
-            }
-        }.execute();
-    }
-
-    private void loadWarmUpDatabase() {
-        RoomDatabase.Callback rdc = new RoomDatabase.Callback() {
-            public void onCreate(SupportSQLiteDatabase db) {
-                final ArrayList<WarmUpItem> list = fillWarmUpList();
-
-                new AsyncTask<Void, Void, List<WarmUpItem>>() {
-
-                    @Override
-                    protected List<WarmUpItem> doInBackground(Void... voids) {
-                        for (int i = 0; i < list.size(); i++) {
-                            warmupdatabase.warmUpItemDao().insert(list.get(i));
-                        }
-                        return list;
-                    }
-
-                }.execute();
-            }
-        };
-
-        warmupdatabase = Room.databaseBuilder(
-                getApplicationContext(),
-                WarmUpListDatabase.class,
-                "warm up"
-        ).addCallback(rdc).build();
-    }
-
-    public ArrayList<WarmUpItem> fillWarmUpList() {
-        Resources resources = getResources();
-        String str;
-        ArrayList<WarmUpItem> warmupItems = new ArrayList<>();
-
-        int resID = resources.getIdentifier("hu.bme.aut.fitnessapp:raw/" + "warmup", null, null);
-        InputStream is = resources.openRawResource(resID);
-        try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            boolean upper = true;
-            boolean lower = true;
-            while ((str = br.readLine()) != null) {
-
-                if (str.equals("//lower")) {
-                    upper = false;
-                    lower = true;
-                } else if (str.equals("//upper")) {
-                    upper = true;
-                    lower = false;
-                } else {
-                    WarmUpItem newItem = new WarmUpItem();
-                    newItem.warmup_name = str;
-                    newItem.warmup_lower = lower;
-                    newItem.warmup_upper = upper;
-                    warmupItems.add(newItem);
-                }
-            }
-            is.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return warmupItems;
-    }
-
-    public void getWarmUpList() {
-        new AsyncTask<Void, Void, List<WarmUpItem>>() {
-
-            @Override
-            protected List<WarmUpItem> doInBackground(Void... voids) {
-                warmUpList = warmupdatabase.warmUpItemDao().getAll();
-                return warmUpList;
-            }
-        }.execute();
-
-
-    }
-
-    private void loadStretchDatabase() {
-        RoomDatabase.Callback rdc = new RoomDatabase.Callback() {
-            public void onCreate(SupportSQLiteDatabase db) {
-                final ArrayList<StretchItem> list = fillStretchList();
-
-                new AsyncTask<Void, Void, List<StretchItem>>() {
-
-                    @Override
-                    protected List<StretchItem> doInBackground(Void... voids) {
-                        for (int i = 0; i < list.size(); i++) {
-                            stretchdatabase.stretchItemDao().insert(list.get(i));
-                        }
-                        return list;
-                    }
-
-                }.execute();
-            }
-        };
-
-        stretchdatabase = Room.databaseBuilder(
-                getApplicationContext(),
-                StretchListDatabase.class,
-                "stretch"
-        ).addCallback(rdc).build();
-    }
-
-    public ArrayList<StretchItem> fillStretchList() {
-        Resources resources = getResources();
-        String str;
-        ArrayList<StretchItem> stretchItems = new ArrayList<>();
-
-        int resID = resources.getIdentifier("hu.bme.aut.fitnessapp:raw/" + "stretch", null, null);
-        InputStream is = resources.openRawResource(resID);
-        try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            while ((str = br.readLine()) != null) {
-
-                    StretchItem newItem = new StretchItem();
-                    newItem.stretch_name = str;
-                    stretchItems.add(newItem);
-            }
-            is.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return stretchItems;
-    }
-
-    public void getStretchList() {
-        new AsyncTask<Void, Void, List<StretchItem>>() {
-
-            @Override
-            protected List<StretchItem> doInBackground(Void... voids) {
-                stretchList = stretchdatabase.stretchItemDao().getAll();
-                return stretchList;
-            }
-        }.execute();
-
-
-    }
+*/
 }

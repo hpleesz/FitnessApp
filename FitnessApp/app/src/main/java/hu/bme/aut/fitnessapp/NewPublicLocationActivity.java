@@ -69,8 +69,17 @@ public class NewPublicLocationActivity extends AppCompatActivity implements Equi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_public_location);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar_back);
         setSupportActionBar(toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
@@ -83,6 +92,7 @@ public class NewPublicLocationActivity extends AppCompatActivity implements Equi
         //setFloatingActionButton();
 
         FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setImageResource(R.drawable.ic_check);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -220,7 +230,8 @@ public void setDatePickers() {
 }
 
     private boolean isValid() {
-        return true;
+        return name.getText().length() > 0 && description.getText().length() > 0 && country.getText().length() > 0 &&
+                city.getText().length() > 0 && address.getText().length() > 0 && zip.getText().length() > 0;
     }
 
 

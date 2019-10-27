@@ -37,7 +37,7 @@ import hu.bme.aut.fitnessapp.fragments.NewMeasurementItemDialogFragment;
 import hu.bme.aut.fitnessapp.fragments.PeriodSelectDialogFragment;
 import hu.bme.aut.fitnessapp.models.Weight;
 
-public class MeasurementsGraphActivity extends NavigationActivity implements NewMeasurementItemDialogFragment.NewMeasurementDialogListener, MeasurementAdapter.MeasurementItemDeletedListener {
+public class MeasurementsGraphActivity extends AppCompatActivity implements NewMeasurementItemDialogFragment.NewMeasurementDialogListener, MeasurementAdapter.MeasurementItemDeletedListener {
 
     private MeasurementDatabase database;
     private ViewPager viewPager;
@@ -50,12 +50,18 @@ public class MeasurementsGraphActivity extends NavigationActivity implements New
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View contentView = inflater.inflate(R.layout.activity_measurements_graph, null, false);
+        setContentView(R.layout.activity_measurements_graph);
 
-        mDrawerLayout.addView(contentView, 0);
-        navigationView.getMenu().getItem(1).setChecked(true);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_back);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(new GraphPagerAdapter(getSupportFragmentManager()));
 

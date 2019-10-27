@@ -37,6 +37,9 @@ public class SplashActivity extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     // Get Post object and use the values to update the UI
 
+                    //TODO datasnapshot.get value null mert nem adta hozzá az adatbázishoz.
+                    //TODO maybe ha már a regisztrációnál mentek egy user tábla dolgot csak üresen akkor jobb lenne
+                    //TODO arra lehet szurni
                     user = (boolean)dataSnapshot.getValue();
 
                     if(user) {

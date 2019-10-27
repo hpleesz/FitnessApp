@@ -35,7 +35,7 @@ import hu.bme.aut.fitnessapp.models.Equipment;
 import hu.bme.aut.fitnessapp.models.Location;
 import hu.bme.aut.fitnessapp.models.PublicLocation;
 
-public class SavePublicLocationActivity extends NavigationActivity implements EquipmentAdapter.OnCheckBoxClicked, PublicLocationSearchMatchDialogFragment.ChooseLocationItemDialogListener {
+public class SavePublicLocationActivity extends AppCompatActivity implements EquipmentAdapter.OnCheckBoxClicked, PublicLocationSearchMatchDialogFragment.ChooseLocationItemDialogListener {
 
     private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
@@ -72,12 +72,19 @@ public class SavePublicLocationActivity extends NavigationActivity implements Eq
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View contentView = inflater.inflate(R.layout.content_new_public_location, null, false);
-        mDrawerLayout.addView(contentView, 0);
+        // load the layout
+        setContentView(R.layout.activity_new_public_location);
 
-        navigationView.getMenu().getItem(3).setChecked(true);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_back);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
@@ -237,7 +244,9 @@ public class SavePublicLocationActivity extends NavigationActivity implements Eq
     }
 
     @Override
-    public void onLocationItemChosen() {
-        
+    public void onLocationItemChosen(PublicLocation location) {
+        Intent intent = new Intent(SavePublicLocationActivity.this, LocationActivity.class);
+        intent.putExtra("Location", location);
+        startActivity(intent);
     }
 }

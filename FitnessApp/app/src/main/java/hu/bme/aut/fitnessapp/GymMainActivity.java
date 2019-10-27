@@ -1,18 +1,12 @@
 package hu.bme.aut.fitnessapp;
 
-import android.arch.persistence.room.Room;
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,25 +19,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import hu.bme.aut.fitnessapp.data.location.PublicLocationAdapter;
-import hu.bme.aut.fitnessapp.data.warmup.WarmUpItem;
 import hu.bme.aut.fitnessapp.fragments.EditLocationItemDialogFragment;
-import hu.bme.aut.fitnessapp.fragments.NewLocationItemDialogFragment;
-import hu.bme.aut.fitnessapp.data.location.LocationAdapter;
-import hu.bme.aut.fitnessapp.data.location.LocationItem;
-import hu.bme.aut.fitnessapp.data.location.LocationListDatabase;
-import hu.bme.aut.fitnessapp.fragments.NewPublicLocationItemDialogFragment;
-import hu.bme.aut.fitnessapp.fragments.NewWaterDialogFragment;
-import hu.bme.aut.fitnessapp.models.Equipment;
 import hu.bme.aut.fitnessapp.models.Location;
 import hu.bme.aut.fitnessapp.models.PublicLocation;
-import hu.bme.aut.fitnessapp.models.Weight;
 
-public class GymMainActivity extends AppCompatActivity implements NewPublicLocationItemDialogFragment.NewPublicLocationItemDialogListener, PublicLocationAdapter.LocationItemDeletedListener, PublicLocationAdapter.LocationItemSelectedListener, EditLocationItemDialogFragment.EditLocationItemDialogListener {
+public class GymMainActivity extends AppCompatActivity implements PublicLocationAdapter.LocationItemDeletedListener, PublicLocationAdapter.LocationItemSelectedListener {
 
     private PublicLocationAdapter adapter;
 
@@ -83,7 +65,6 @@ public class GymMainActivity extends AppCompatActivity implements NewPublicLocat
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //new NewPublicLocationItemDialogFragment().show(getSupportFragmentManager(), NewPublicLocationItemDialogFragment.TAG);
                 startActivity(new Intent(GymMainActivity.this, NewPublicLocationActivity.class));
 
             }
@@ -157,59 +138,54 @@ public class GymMainActivity extends AppCompatActivity implements NewPublicLocat
         //this.eventListener = eventListener;
     }
 
-    //TODO
-    @Override
-    public void onPublicLocationItemCreated(final PublicLocation newItem) {
 
-        databaseReference.child(Long.toString(publicLocation.id)).child("Name").setValue(newItem.name);
-        databaseReference.child(Long.toString(publicLocation.id)).child("Description").setValue(newItem.description);
-        databaseReference.child(Long.toString(publicLocation.id)).child("Zip").setValue(newItem.zip);
-        databaseReference.child(Long.toString(publicLocation.id)).child("Country").setValue(newItem.country);
-        databaseReference.child(Long.toString(publicLocation.id)).child("City").setValue(newItem.city);
-        databaseReference.child(Long.toString(publicLocation.id)).child("Address").setValue(newItem.address);
-        databaseReference.child(Long.toString(publicLocation.id)).child("Creator").setValue(newItem.creator);
-
-        for(int i = 0; i < newItem.equipment.size(); i++) {
-            databaseReference.child(Long.toString(publicLocation.id)).child("Equipment").child(Integer.toString(i)).setValue(newItem.equipment.get(i));
-        }
-
-        for(int i = 0; i < newItem.open_hours.size(); i++) {
-            databaseReference.child(Long.toString(publicLocation.id)).child("Equipment").child(Integer.toString(i)).child("0").setValue(newItem.open_hours.get(i)[0]);
-            databaseReference.child(Long.toString(publicLocation.id)).child("Equipment").child(Integer.toString(i)).child("1").setValue(newItem.open_hours.get(i)[1]);
-        }
-
-
-    }
-
-    //TODO
-    @Override
-    public void onLocationItemUpdated(final Location newItem) {
-        databaseReference.child(Long.toString(newItem.id)).child("Name").setValue(newItem.name);
-        databaseReference.child(Long.toString(newItem.id)).child("Equipment").removeValue();
-        for(int i = 0; i < newItem.equipment.size(); i++) {
-            databaseReference.child(Long.toString(newItem.id)).child("Equipment").child(Integer.toString(i)).setValue(newItem.equipment.get(i));
-        }
-
-    }
-
-    //TODO
     @Override
     public void onItemDeleted(final PublicLocation item) {
         databaseReference.child(Long.toString(item.id)).removeValue();
+        final DatabaseReference databaseReferenceUser = FirebaseDatabase.getInstance().getReference().child("User_Public_Locations");
+
+        databaseReferenceUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                {
+                    String user = dataSnapshot1.getKey();
+                    for(DataSnapshot dataSnapshot2: dataSnapshot1.getChildren()) {
+                        String val = (String) dataSnapshot2.getValue();
+                        String id = Long.toString(item.id);
+
+                        if(val.equals(id)){
+                            String key = dataSnapshot2.getKey();
+                            databaseReferenceUser.child(user).child(key).removeValue();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors.
+            }
+
+        });
+
     }
 
-    //TODO
     @Override
     public void onItemSelected(final PublicLocation item, int position) {
+        Intent intent = new Intent(GymMainActivity.this, EditPublicLocationActivity.class);
+        intent.putExtra("edit", item);
+        startActivity(intent);
     }
 
     public void addNewItem() {
             databaseReference.child(Long.toString(publicLocation.id)).child("Name").setValue(publicLocation.name);
             databaseReference.child(Long.toString(publicLocation.id)).child("Description").setValue(publicLocation.description);
-            databaseReference.child(Long.toString(publicLocation.id)).child("Country").setValue(publicLocation.name);
-            databaseReference.child(Long.toString(publicLocation.id)).child("City").setValue(publicLocation.name);
-            databaseReference.child(Long.toString(publicLocation.id)).child("Address").setValue(publicLocation.name);
-            databaseReference.child(Long.toString(publicLocation.id)).child("Zip").setValue(publicLocation.name);
+            databaseReference.child(Long.toString(publicLocation.id)).child("Country").setValue(publicLocation.country);
+            databaseReference.child(Long.toString(publicLocation.id)).child("City").setValue(publicLocation.city);
+            databaseReference.child(Long.toString(publicLocation.id)).child("Address").setValue(publicLocation.address);
+            databaseReference.child(Long.toString(publicLocation.id)).child("Zip").setValue(publicLocation.zip);
             databaseReference.child(Long.toString(publicLocation.id)).child("Creator").setValue(userId);
 
             for(int i = 0; i < publicLocation.equipment.size(); i++) {
@@ -252,6 +228,11 @@ public class GymMainActivity extends AppCompatActivity implements NewPublicLocat
         MenuItem item = menu.findItem(R.id.action_logout);
         item.setVisible(true);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }
 

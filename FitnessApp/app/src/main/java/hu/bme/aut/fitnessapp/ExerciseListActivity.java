@@ -13,11 +13,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +35,13 @@ import hu.bme.aut.fitnessapp.data.exercise.ExerciseListDatabase;
 import hu.bme.aut.fitnessapp.data.location.LocationAdapter;
 import hu.bme.aut.fitnessapp.data.location.LocationListDatabase;
 import hu.bme.aut.fitnessapp.fragments.ChooseLocationItemDialogFragment;
+import hu.bme.aut.fitnessapp.models.Equipment;
+import hu.bme.aut.fitnessapp.models.Exercise;
 
 public class ExerciseListActivity extends NavigationActivity {
 
-    private ArrayList<ExerciseItem> exerciseItems;
-    private ArrayList<EquipmentItem> equipmentItemList;
-    private SharedPreferences sharedPreferences;
+    private ArrayList<Exercise> exerciseItems;
+    private ArrayList<Equipment> equipmentItemList;
 
     public static String PACKAGE_NAME;
 
@@ -49,7 +55,6 @@ public class ExerciseListActivity extends NavigationActivity {
         navigationView.getMenu().getItem(0).setChecked(true);
 
         PACKAGE_NAME = getApplicationContext().getPackageName();
-        sharedPreferences = getSharedPreferences(MainActivity.WORKOUT, MODE_PRIVATE);
 
         getExtraFromIntent();
         setFloatingActionButton();
@@ -58,8 +63,11 @@ public class ExerciseListActivity extends NavigationActivity {
 
     public void getExtraFromIntent() {
         Intent i = getIntent();
-        exerciseItems = (ArrayList<ExerciseItem>) i.getSerializableExtra("list");
-        equipmentItemList = (ArrayList<EquipmentItem>) i.getSerializableExtra("equipment");
+        exerciseItems = (ArrayList<Exercise>) i.getSerializableExtra("list");
+        Log.d("exercise", Integer.toString(exerciseItems.size()));
+        equipmentItemList = (ArrayList<Equipment>) i.getSerializableExtra("equipment");
+        Log.d("equipment", Integer.toString(equipmentItemList.size()));
+
     }
 
     public void setFloatingActionButton() {
@@ -69,10 +77,9 @@ public class ExerciseListActivity extends NavigationActivity {
             @Override
             public void onClick(View view) {
                 //Workout started -> not completed
-                SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.WORKOUT, MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean("Completed workout", false);
-                editor.apply();
+                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Workout_Details").child(userId).child("In_Progress");
+                databaseReference.setValue(true);
 
                 Intent intent = new Intent(ExerciseListActivity.this, ExerciseInfoActivity.class);
                 intent.putExtra("exercises", exerciseItems);

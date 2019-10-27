@@ -17,17 +17,18 @@ import java.util.List;
 import hu.bme.aut.fitnessapp.LocationActivity;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.WeightActivity;
+import hu.bme.aut.fitnessapp.models.Location;
 
 public class ChooseLocationAdapter extends RecyclerView.Adapter<ChooseLocationAdapter.LocationViewHolder> {
 
-    private final List<LocationItem> items;
+    private final List<Location> items;
 
     private ChooseLocationAdapter.LocationItemSelectedListener select_listener;
 
 
-    public ChooseLocationAdapter(ChooseLocationAdapter.LocationItemSelectedListener select_listener) {
+    public ChooseLocationAdapter(ChooseLocationAdapter.LocationItemSelectedListener select_listener, ArrayList<Location> items) {
         this.select_listener = select_listener;
-        items = new ArrayList<>();
+        this.items = items;
 
     }
 
@@ -40,15 +41,15 @@ public class ChooseLocationAdapter extends RecyclerView.Adapter<ChooseLocationAd
         return new ChooseLocationAdapter.LocationViewHolder(itemView);
     }
 
-    public void update(List<LocationItem> locationItems) {
+    public void update(List<Location> locationItems) {
         items.clear();
         items.addAll(locationItems);
         notifyDataSetChanged();
     }
 
-    public void update(LocationItem locationItem) {
+    public void update(Location locationItem) {
         for(int i = 0; i < items.size(); i++){
-            if(items.get(i).location_id == locationItem.location_id)
+            if(items.get(i).id == locationItem.id)
                 items.set(i, locationItem);
         }
         notifyDataSetChanged();
@@ -58,8 +59,8 @@ public class ChooseLocationAdapter extends RecyclerView.Adapter<ChooseLocationAd
 
     @Override
     public void onBindViewHolder(@NonNull LocationViewHolder holder, int position) {
-        LocationItem item = items.get(position);
-        holder.nameTextView.setText(item.location_name);
+        Location item = items.get(position);
+        holder.nameTextView.setText(item.name);
         holder.item = item;
     }
 
@@ -70,14 +71,14 @@ public class ChooseLocationAdapter extends RecyclerView.Adapter<ChooseLocationAd
 
 
     public interface LocationItemSelectedListener{
-        void onItemSelected(LocationItem item, int position);
+        void onItemSelected(Location item, int position);
     }
 
     class LocationViewHolder extends RecyclerView.ViewHolder {
 
         TextView nameTextView;
 
-        transient LocationItem item;
+        transient Location item;
 
         LocationViewHolder(final View itemView) {
             super(itemView);

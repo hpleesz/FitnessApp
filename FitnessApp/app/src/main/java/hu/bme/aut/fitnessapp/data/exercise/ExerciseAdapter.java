@@ -20,6 +20,13 @@ import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+
+
+import com.google.android.gms.tasks.OnSuccessListener;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -28,17 +35,20 @@ import hu.bme.aut.fitnessapp.ExerciseListActivity;
 import hu.bme.aut.fitnessapp.MainActivity;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.data.equipment.EquipmentItem;
+import hu.bme.aut.fitnessapp.models.Equipment;
+import hu.bme.aut.fitnessapp.models.Exercise;
 
 
 public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ExerciseListViewHolder> {
 
-    private final ArrayList<ExerciseItem> items;
+    private final ArrayList<Exercise> items;
     private Context context;
-    private List<EquipmentItem> equipmentItemList;
+    private List<Equipment> equipmentItemList;
     private SharedPreferences sharedPreferences;
+    private Uri link;
 
 
-    public ExerciseAdapter(ArrayList<ExerciseItem> items, List<EquipmentItem> equipmentItems) {
+    public ExerciseAdapter(ArrayList<Exercise> items, List<Equipment> equipmentItems) {
         this.items = items;
         equipmentItemList = equipmentItems;
 
@@ -58,20 +68,20 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
 
 
     @Override
-    public void onBindViewHolder(@NonNull ExerciseAdapter.ExerciseListViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ExerciseAdapter.ExerciseListViewHolder holder, final int position) {
 
-        ExerciseItem item = items.get(position);
-        holder.nameTextView.setText(item.exercise_name);
+        Exercise item = items.get(position);
+        holder.nameTextView.setText(item.name);
         holder.videoView.setVisibility(View.GONE);
         holder.placeHolder.setVisibility(View.VISIBLE);
 
-        if (item.reps_time == 0) holder.repsTextView.setText(R.string.reps);
+        if (item.rep_time == 0) holder.repsTextView.setText(R.string.reps);
         else holder.repsTextView.setText(R.string.time);
 
-        String muscles = item.exercise_muscles.get(0);
-        if (item.exercise_muscles.size() > 1) {
-            for (int i = 1; i < item.exercise_muscles.size(); i++) {
-                muscles = muscles + ", " + item.exercise_muscles.get(i);
+        String muscles = item.muscles[0];
+        if (item.muscles.length > 1) {
+            for (int i = 1; i < item.muscles.length; i++) {
+                muscles = muscles + ", " + item.muscles[i];
             }
         }
         holder.musclesTextView.setText(muscles);
@@ -80,11 +90,11 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
 
         for (int i = 0; i < equipmentItemList.size(); i++) {
             for (int j = 0; j < equipmentItemList.size(); j++) {
-                if (item.equipment1 == equipmentItemList.get(i).equipment_id && item.equipment2 == equipmentItemList.get(j).equipment_id) {
-                    if (i == 0) equipments = equipmentItemList.get(j).equipment_name;
-                    else if (j == 0) equipments = equipmentItemList.get(i).equipment_name;
+                if (item.equipment1 == equipmentItemList.get(i).id && item.equipment2 == equipmentItemList.get(j).id) {
+                    if (i == 0) equipments = equipmentItemList.get(j).name;
+                    else if (j == 0) equipments = equipmentItemList.get(i).name;
                     else
-                        equipments = equipmentItemList.get(i).equipment_name + ", " + equipmentItemList.get(j).equipment_name;
+                        equipments = equipmentItemList.get(i).name + ", " + equipmentItemList.get(j).name;
 
                 }
             }
@@ -93,22 +103,41 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
 
         holder.item = item;
 
-        String name = item.exercise_name;
+
+        /*
+        int id = context.getResources().getIdentifier(name, "raw", ExerciseListActivity.PACKAGE_NAME);
+
+        String videoPath = "android.resource://" + ExerciseListActivity.PACKAGE_NAME + "/" + id;
+        Uri uri = Uri.parse(videoPath);
+         */
+
+
+        //holder.videoView.setVideoURI(uri);
+
+        String name = item.name;
         name = name.toLowerCase();
         name = name.replace(" ", "_");
         name = name.replace(",", "");
         name = name.replace("-", "_");
         name = name.replace("_/_", "_");
-        int id = context.getResources().getIdentifier(name, "raw", ExerciseListActivity.PACKAGE_NAME);
 
-        String videoPath = "android.resource://" + ExerciseListActivity.PACKAGE_NAME + "/" + id;
-        Uri uri = Uri.parse(videoPath);
-        holder.videoView.setVideoURI(uri);
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+
+        StorageReference storageRef = storage.getReference();
+
+        StorageReference pathReference = storageRef.child(name + ".mp4");
+        pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                holder.videoView.setVideoURI(uri);
+
+            }
+        });
 
 
     }
 
-    public void update(List<ExerciseItem> exerciseItemList) {
+    public void update(List<Exercise> exerciseItemList) {
         items.clear();
         items.addAll(exerciseItemList);
         notifyDataSetChanged();
@@ -125,7 +154,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
         TextView repsTextView;
         TextView musclesTextView;
         TextView equipmentTextView;
-        ExerciseItem item;
+        Exercise item;
         VideoView videoView;
         TextureView textureView;
         View placeHolder;
@@ -153,7 +182,6 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
                     }
                 }
             });
-
 
 
             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {

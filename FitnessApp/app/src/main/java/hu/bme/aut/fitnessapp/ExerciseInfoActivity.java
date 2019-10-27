@@ -14,17 +14,31 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.util.ArrayList;
 
 import hu.bme.aut.fitnessapp.data.equipment.EquipmentItem;
 import hu.bme.aut.fitnessapp.data.exercise.ExerciseItem;
 import hu.bme.aut.fitnessapp.fragments.ExerciseCompletedDialogFragment;
 import hu.bme.aut.fitnessapp.fragments.NewLocationItemDialogFragment;
+import hu.bme.aut.fitnessapp.models.Equipment;
+import hu.bme.aut.fitnessapp.models.Exercise;
+import hu.bme.aut.fitnessapp.models.User;
+import hu.bme.aut.fitnessapp.models.WorkoutDetails;
 
 public class ExerciseInfoActivity extends NavigationActivity implements ExerciseCompletedDialogFragment.ExerciseCompletedListener {
 
-    private ArrayList<ExerciseItem> exerciseItems;
-    private ArrayList<EquipmentItem> equipmentItems;
+    private ArrayList<Exercise> exerciseItems;
+    private ArrayList<Equipment> equipmentItems;
     private VideoView videoView;
     private TextView titleTextView;
     private TextView detailsTextView;
@@ -32,6 +46,14 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
     private TextView timerTextView;
     private SharedPreferences sharedPreferences;
     private static CountDownTimer countdown;
+
+    private String userId;
+    private DatabaseReference databaseReference;
+    private WorkoutDetails workoutDetails;
+    private User user;
+
+    public String EXERCISE_NUMBER = "Exercise Number";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,26 +64,30 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
 
         navigationView.getMenu().getItem(0).setChecked(true);
 
-        setLayoutElements();
-        setFloatingActionButtons();
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        sharedPreferences = getSharedPreferences(EXERCISE_NUMBER, MODE_PRIVATE);
+
         getExtraFromIntent();
+        loadWorkoutDetails();
+        loadUserDetails();
 
         if (countdown != null)
             countdown.cancel();
         //setTimer(30000);
-        setExercise();
     }
 
     public void getExtraFromIntent() {
         Intent i = getIntent();
-        exerciseItems = (ArrayList<ExerciseItem>) i.getSerializableExtra("exercises");
-        equipmentItems = (ArrayList<EquipmentItem>) i.getSerializableExtra("equipment");
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        exerciseItems = (ArrayList<Exercise>) i.getSerializableExtra("exercises");
+        equipmentItems = (ArrayList<Equipment>) i.getSerializableExtra("equipment");
+
+        /*SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("Number of exercises", exerciseItems.size());
         for (int j = 0; j < exerciseItems.size(); j++) {
-            editor.putLong("Exercise " + j, exerciseItems.get(j).exercise_id);
+            editor.putLong("Exercise " + j, exerciseItems.get(j).id);
         }
-        editor.apply();
+        editor.apply();*/
     }
 
     public void setLayoutElements() {
@@ -82,7 +108,6 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
                 countdown.start();
             }
         });
-        sharedPreferences = getSharedPreferences(MainActivity.WORKOUT, MODE_PRIVATE);
     }
 
     public void setFloatingActionButtons() {
@@ -90,11 +115,14 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int idx = sharedPreferences.getInt("Exercise number", 0);
+
+                int idx = sharedPreferences.getInt(userId, 0);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 if (exerciseItems.size() > idx + 1) {
-                    editor.putInt("Exercise number", idx + 1);
+                    editor.putInt(userId, idx + 1);
                     editor.apply();
+
+
                 } else {
                     new ExerciseCompletedDialogFragment().show(getSupportFragmentManager(), ExerciseCompletedDialogFragment.TAG);
 
@@ -108,10 +136,12 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
         fabLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int idx = sharedPreferences.getInt("Exercise number", 0);
+
+                //TODO
+                int idx = sharedPreferences.getInt(userId, 0);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 if (idx > 0) {
-                    editor.putInt("Exercise number", idx - 1);
+                    editor.putInt(userId, idx - 1);
                     editor.apply();
                     setExercise();
                 }
@@ -122,7 +152,7 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
 
 
     public void setExercise() {
-        int idx = sharedPreferences.getInt("Exercise number", 0);
+        int idx = sharedPreferences.getInt(userId, 0);
         if (countdown != null)
             countdown.cancel();
         if (idx == exerciseItems.size() - 1)
@@ -131,11 +161,11 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
             setTimer(60 * 1000);
 
         //setTimer(60000);
-        ExerciseItem item = exerciseItems.get(idx);
-        titleTextView.setText(item.exercise_name);
+        Exercise item = exerciseItems.get(idx);
+        titleTextView.setText(item.name);
 
 
-        String name = item.exercise_name;
+        String name = item.name;
         setVideo(name);
 
         setEquipments(item);
@@ -148,37 +178,47 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
         name = name.replace(",", "");
         name = name.replace("-", "_");
         name = name.replace("_/_", "_");
-        int id = getApplicationContext().getResources().getIdentifier(name, "raw", getPackageName());
+        //int id = getApplicationContext().getResources().getIdentifier(name, "raw", getPackageName());
 
-        String videoPath = "android.resource://" + getPackageName() + "/" + id;
-        Uri uri = Uri.parse(videoPath);
-        videoView.setVideoURI(uri);
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+
+        StorageReference storageRef = storage.getReference();
+
+        StorageReference pathReference = storageRef.child(name + ".mp4");
+        pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                videoView.setVideoURI(uri);
+
+            }
+        });
+
         videoView.start();
     }
 
-    public void setEquipments(ExerciseItem item) {
+    public void setEquipments(Exercise item) {
         String equipments = "";
 
 
         for (int i = 0; i < equipmentItems.size(); i++) {
             for (int j = 0; j < equipmentItems.size(); j++) {
-                if (item.equipment1 == equipmentItems.get(i).equipment_id && item.equipment2 == equipmentItems.get(j).equipment_id)
-                    if (i == 0) equipments = equipmentItems.get(j).equipment_name;
-                    else if (j == 0) equipments = equipmentItems.get(i).equipment_name;
+                if (item.equipment1 == equipmentItems.get(i).id && item.equipment2 == equipmentItems.get(j).id)
+                    if (i == 0) equipments = equipmentItems.get(j).name;
+                    else if (j == 0) equipments = equipmentItems.get(i).name;
                     else
-                        equipments = equipmentItems.get(i).equipment_name + ", " + equipmentItems.get(j).equipment_name;
+                        equipments = equipmentItems.get(i).name + ", " + equipmentItems.get(j).name;
             }
         }
         equipmentTextView.setText(equipments);
     }
 
-    public void setDetailsAndTimer(ExerciseItem item) {
-        String type = sharedPreferences.getString("Workout type", "Lower body");
+    public void setDetailsAndTimer(Exercise item) {
+        //String type = sharedPreferences.getString("Workout type", "Lower body");
         String details = "";
-        switch (type) {
+        switch (workoutDetails.type) {
             case "Lower body":
             case "Upper body":
-                if (item.reps_time == 0) {
+                if (item.rep_time == 0) {
                     if (itemUsesWeight(item)) {
                         details = details + getString(R.string.weight_max) + ", ";
                         details = details + getString(R.string.reps_weight);
@@ -197,7 +237,7 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
                 break;
             case "Cardio 1":
             case "Cardio 2":
-                if (item.reps_time == 0) {
+                if (item.rep_time == 0) {
                     if (itemUsesWeight(item)) {
                         details = details + getString(R.string.weight_70) + ", ";
                         details = details + getString(R.string.reps_cardio);
@@ -210,7 +250,7 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
                         countdown.cancel();
 
                 } else {
-                    if (item.exercise_id == exerciseItems.get(exerciseItems.size() - 1).exercise_id)
+                    if (item.id == exerciseItems.get(exerciseItems.size() - 1).id)
                         detailsTextView.setText(R.string.timer_long);
                     else
                         detailsTextView.setText(R.string.timer_short);
@@ -246,7 +286,7 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
         };
     }
 
-    public boolean itemUsesWeight(ExerciseItem item) {
+    public boolean itemUsesWeight(Exercise item) {
         if ((2 < item.equipment1 && item.equipment1 < 8) || item.equipment1 == 20 || item.equipment1 == 22 || item.equipment1 == 25)
             return true;
         if ((2 < item.equipment2 && item.equipment2 < 8) || item.equipment2 == 20 || item.equipment2 == 22 || item.equipment2 == 25)
@@ -258,11 +298,12 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
 
     @Override
     public void onExerciseCompleted() {
+        databaseReference.child("Workout_Details").child(userId).child("In_Progress").setValue(false);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("Completed workout", true);
+        //editor.putBoolean("Completed workout", true);
         editor.putInt("Exercise number", 0);
-        editor.putString("Location Name", getString(R.string.choose_location));
-        editor.putInt("Location", 0);
+        //editor.putString("Location Name", getString(R.string.choose_location));
+        //editor.putInt("Location", 0);
         editor.apply();
         setWorkoutType();
         Intent intent = new Intent(ExerciseInfoActivity.this, MainActivity.class);
@@ -270,39 +311,92 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
     }
 
     public void setWorkoutType() {
-        SharedPreferences user_shared_preferences = getSharedPreferences(UserActivity.USER, MODE_PRIVATE);
-        boolean muscle = user_shared_preferences.getBoolean("Gain muscle", true);
-        boolean weight = user_shared_preferences.getBoolean("Lose weight", true);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        //SharedPreferences user_shared_preferences = getSharedPreferences(UserActivity.USER, MODE_PRIVATE);
+        boolean muscle = user.gain_muscle; //user_shared_preferences.getBoolean("Gain muscle", true);
+        boolean weight = user.lose_weight; //user_shared_preferences.getBoolean("Lose weight", true);
+        //SharedPreferences.Editor editor = sharedPreferences.edit();
         if (muscle) {
-            String type = sharedPreferences.getString("Workout type", "Lower body");
+            //String type = sharedPreferences.getString("Workout type", "Lower body");
             if (weight) {
-                switch (type) {
+                switch (workoutDetails.type) {
                     case "Lower body":
-                        editor.putString("Workout type", "Cardio 1");
+                        databaseReference.child("Workout_Details").child(userId).child("Type").setValue("Cardio 1");
+                        //editor.putString("Workout type", "Cardio 1");
                         break;
                     case "Cardio 1":
-                        editor.putString("Workout type", "Upper body");
+                        databaseReference.child("Workout_Details").child(userId).child("Type").setValue("Upper body");
+                        //editor.putString("Workout type", "Upper body");
                         break;
                     case "Upper body":
-                        editor.putString("Workout type", "Cardio 2");
+                        databaseReference.child("Workout_Details").child(userId).child("Type").setValue("Cardio 2");
+                        //editor.putString("Workout type", "Cardio 2");
                         break;
                     case "Cardio 2":
-                        editor.putString("Workout type", "Lower body");
+                        databaseReference.child("Workout_Details").child(userId).child("Type").setValue("Lower body");
+                        //editor.putString("Workout type", "Lower body");
                 }
             } else {
-                switch (type) {
+                switch (workoutDetails.type) {
                     case "Lower body":
-                        editor.putString("Workout type", "Upper body");
+                        databaseReference.child("Workout_Details").child(userId).child("Type").setValue("Upper body");
+                        //editor.putString("Workout type", "Upper body");
                         break;
                     case "Upper body":
-                        editor.putString("Workout type", "Lower body");
+                        databaseReference.child("Workout_Details").child(userId).child("Type").setValue("Lower body");
+                        //editor.putString("Workout type", "Lower body");
                         break;
                 }
             }
         } else {
-            editor.putString("Workout type", "Cardio 1");
+            //editor.putString("Workout type", "Cardio 1");
+            databaseReference.child("Workout_Details").child(userId).child("Type").setValue("Cardio 1");
+
         }
-        editor.apply();
+        //editor.apply();
+    }
+
+    public void loadWorkoutDetails() {
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String type = dataSnapshot.child("Type").getValue(String.class);
+                boolean in_progress = dataSnapshot.child("In_Progress").getValue(Boolean.class);
+
+                ArrayList<Integer> exercises = new ArrayList<>();
+                for(DataSnapshot dataSnapshot1 : dataSnapshot.child("Exercises").getChildren()) {
+                    int exercise_id = dataSnapshot1.getValue(Integer.class);
+                    exercises.add(exercise_id);
+                }
+                workoutDetails = new WorkoutDetails(type, exercises, in_progress);
+
+                setLayoutElements();
+                setFloatingActionButtons();
+                setExercise();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle possible errors.
+            }
+
+        };
+        databaseReference.child("Workout_Details").child(userId).addValueEventListener(eventListener);
+
+    }
+
+    public void loadUserDetails() {
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                user = dataSnapshot.getValue(User.class);
+                // [START_EXCLUDE]
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        };
+        databaseReference.child("Users").child(userId).addValueEventListener(eventListener);
     }
 }
