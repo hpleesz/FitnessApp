@@ -10,7 +10,7 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingTop="8dp"
-    tools:context=".LocationActivity">
+    tools:context=".User.Locations.LocationActivity">
 
     <ImageView
         android:layout_width="30dp"

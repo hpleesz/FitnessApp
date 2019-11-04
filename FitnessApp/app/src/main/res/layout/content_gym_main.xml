@@ -10,7 +10,7 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingTop="64dp"
-    tools:context=".GymMainActivity">
+    tools:context=".Gym.GymMainActivity">
 
     <include layout="@layout/recyclerview_location_public" />
 

@@ -28,8 +28,8 @@
 
 
     <string name="name">Name:</string>
-    <string name="weight">Weight:</string>
-    <string name="goal_weight">Goal weight:</string>
+    <string name="measurement">Weight:</string>
+    <string name="goal_weight">Goal measurement:</string>
     <string name="date_of_birth">Date of birth:</string>
     <string name="goal">Goal:</string>
     <string name="kg">kg</string>
@@ -51,14 +51,14 @@
     <string name="no_name_entered">No name entered.</string>
     <string name="no_equipment_selected">Please select available equipment. If you don\'t have any equipment, select \'No equipment\'.</string>
 
-    <string name="goal_reached">Goal weight reached!</string>
+    <string name="goal_reached">Goal measurement reached!</string>
     <string name="period_select">Select period</string>
     <string name="last_30_days">Last 30 days</string>
     <string name="last_7_days">Last 7 days</string>
     <string name="all">All</string>
     <string name="entries">Entries:</string>
-    <string name="no_weight_entered">No weight entered.</string>
-    <string name="already_entered_weight">Already entered weight for selected day!</string>
+    <string name="no_weight_entered">No measurement entered.</string>
+    <string name="already_entered_weight">Already entered measurement for selected day!</string>
 
     <string name="choose_location_toast">Please choose a location.</string>
     <string name="choose_location">Choose location</string>
@@ -79,9 +79,9 @@
     <string name="timer_long">20 minutes</string>
     <string name="reps_no_weight">4x20 reps</string>
     <string name="reps_cardio">4x15 reps</string>
-    <string name="weight_70">70% weight</string>
+    <string name="weight_70">70% measurement</string>
     <string name="reps_weight">4x8 reps</string>
-    <string name="weight_max">max weight</string>
+    <string name="weight_max">max measurement</string>
     <string name="workout_completed">Workout completed!</string>
 
     <string name="measurements_filler">-- cm</string>
@@ -89,17 +89,16 @@
     <string name="measurements_for">Measurements for</string>
     <string name="already_entered">already entered for this date.</string>
 
-    <string name="title_activity_gym_main">GymMainActivity</string>
+    <string name="title_activity_gym_main">Locations</string>
     <string-array name="user_types_array">
         <item>User</item>
         <item>Gym</item>
     </string-array>
-    <string name="title_activity_new_public_location">NewPublicLocationActivity</string>
-    <string name="title_activity_save_public_location">SavePublicLocationActivity</string>
+    <string name="title_activity_new_public_location">New Gym</string>
+    <string name="title_activity_save_public_location">Search for Gym</string>
     <string name="title_activity_map">MapActivity</string>
-    <string name="title_activity_edit_public_location">EditPublicLocationActivity</string>
+    <string name="title_activity_edit_public_location">Edit Gym</string>
     <string name="title_activity_view_public_location_details">ViewPublicLocationDetails</string>
-    <string name="title_activity_main2">MainActivity2</string>
 
 
 </resources>

@@ -16,109 +16,106 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity2"
-            android:label="@string/title_activity_main2"
+            android:name=".User.Water.WaterActivity"
+            android:label="@string/title_activity_water"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <service
+            android:name=".BroadcastReceivers.ResetWaterService"
+            android:exported="false" />
+
         <activity
-            android:name=".ViewPublicLocationDetails"
+            android:name=".User.Locations.ViewPublicLocationDetailsActivity"
             android:label="@string/title_activity_view_public_location_details"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".EditPublicLocationActivity"
+            android:name=".Gym.EditPublicLocationActivity"
             android:label="@string/title_activity_edit_public_location"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MapActivity"
+            android:name=".User.Locations.MapActivity"
             android:label="@string/title_activity_map"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SavePublicLocationActivity"
+            android:name=".User.Locations.SavePublicLocationActivity"
             android:label="@string/title_activity_save_public_location"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".NewPublicLocationActivity"
+            android:name=".Gym.NewPublicLocationActivity"
             android:label="@string/title_activity_new_public_location"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".WeightActivity2"
+            android:name=".User.Weight.WeightActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver
-            android:name=".broadcast_receiver.BootReceiver"
+            android:name=".BroadcastReceivers.BootReceiver"
             android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".broadcast_receiver.NotificationReceiver" />
-        <receiver android:name=".broadcast_receiver.ResetWaterReceiver" />
+        <receiver android:name=".BroadcastReceivers.NotificationReceiver" />
+        <receiver android:name=".BroadcastReceivers.ResetWaterReceiver" />
 
         <activity
-            android:name=".GymMainActivity"
+            android:name=".Gym.GymMainActivity"
             android:label="@string/title_activity_gym_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Startup.RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".User.Workout.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".UserActivity"
+            android:name=".User.Settings.UserActivity"
             android:label="@string/title_activity_user"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".NavigationActivity"
+            android:name=".User.NavigationActivity"
             android:label="@string/title_activity_navigation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".WaterActivity"
-            android:label="@string/title_activity_water"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".LocationActivity"
+            android:name=".User.Locations.LocationActivity"
             android:label="@string/title_activity_location"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".WeightActivity"
-            android:label="@string/title_activity_weight"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ExerciseListActivity"
+            android:name=".User.Workout.ExerciseListActivity"
             android:label="@string/title_activity_exercise_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ExerciseInfoActivity"
+            android:name=".User.Workout.ExerciseInfoActivity"
             android:label="@string/title_activity_exercise_info"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MeasurementsActivity"
+            android:name=".User.Measurements.MeasurementsActivity"
             android:label="@string/title_activity_measurements"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".User.Settings.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MeasurementsGraphActivity"
+            android:name=".User.Measurements.MeasurementsGraphActivity"
             android:label="@string/title_activity_measurements_graph"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".WarmUpActivity"
+            android:name=".User.Workout.WarmUpActivity"
             android:label="@string/title_activity_warm_up"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".StretchActivity"
+            android:name=".User.Workout.StretchActivity"
             android:label="@string/title_activity_stretch"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Startup.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".Startup.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

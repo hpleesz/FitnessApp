@@ -10,21 +10,21 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingTop="64dp"
-    tools:context=".LoginActivity">
+    tools:context=".Startup.LoginActivity">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:src="@drawable/splash"
-        android:layout_marginTop="60dp"
+        android:src="@drawable/splash_login"
+        android:layout_marginTop="40dp"
         />
 
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="email"
-        android:autofillHints="email"
+        android:hint="Email"
+        android:autofillHints="Email"
         android:inputType="textEmailAddress"
         android:layout_marginTop="60dp"
         />
@@ -33,16 +33,24 @@
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="password"
-        android:autofillHints="password"
+        android:hint="Password"
+        android:autofillHints="Password"
         android:inputType="textPassword"
         />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/button_round"
         android:text="Login"
         android:textColor="@android:color/white"

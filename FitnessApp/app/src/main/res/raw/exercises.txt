@@ -281,7 +281,7 @@ Calf raise	2	1	Calves, Legs	0
 Step up knee arm raise, left	2	1	Quads, Glutes, Legs	0
 Step up knee arm raise, right	2	1	Quads, Glutes, Legs	0
 Triceps dip legs extended	2	1	Triceps	0
-Calf raise weight	2	4	Calves	0
+Calf raise measurement	2	4	Calves	0
 Triceps dip horizontal	2	1	Triceps	0
 Spiderman push-up incline, alternated	2	1	Chest, Triceps, All Abs	0
 Jumps	2	1	Quads, Glutes, Cardiovascular System	0
@@ -821,13 +821,13 @@ Forward in-in, out-out, speed ladder	21	1	Quads, Legs	0
 Forward bunny hop, speed ladder	21	1	Calves	0
 Trippling high knees, speed ladder	21	1	Quads, Legs, Calves	0
 Crunch extension, plate	22	1	Abs, Lats	0
-Crunch weight behind head	22	1	Abs	0
+Crunch measurement behind head	22	1	Abs	0
 Bent-over row, plates	22	1	Upper Back, Shoulders	0
 Front raise, plate	22	1	Shoulders	0
 Triceps extension seated, plate	22	1	Triceps	0
 Overhead lunge walk, plate	22	1	Quads, Glutes	0
 Sit-up, plate	22	1	Abs, Shoulders	0
-Straight arm pullover, weight	22	10	Chest, Lats	0
+Straight arm pullover, measurement	22	10	Chest, Lats	0
 Sumo squat jumps, plate	22	1	Quads, Glutes, Lower Back, Legs	0
 Sicilian crunch, plate	22	1	Abs	0
 Bend over single arm row, xco, left	23	1	Upper Back	0
@@ -1043,5 +1043,9 @@ Bird dog cross reps, left	1	1	Abs, Lower Back, Glutes	0
 Bird dog cross reps, right	1	1	Abs, Lower Back, Glutes	0
 Air lunge, left	1	1	Quads, Glutes	0
 Air lunge, right	1	1	Quads, Glutes	0
-Elliptical trainer	25	0	Cardiovascular System	1Running	1	1	Cardiovascular System	1	
-Rope jumping	24	1	Cardiovascular System	1Stationary bike	25	1	Cardiovascular System	1Step machine	25	1	Cardiovascular System	1Treadmill	25	1	Cardiovascular System	1
+Elliptical trainer	25	0	Cardiovascular System	1
+Running	1	1	Cardiovascular System	1	
+Rope jumping	24	1	Cardiovascular System	1
+Stationary bike	25	1	Cardiovascular System	1
+Step machine	25	1	Cardiovascular System	1
+Treadmill	25	1	Cardiovascular System	1
