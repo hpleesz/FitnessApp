@@ -80,7 +80,7 @@ public class MainActivity extends NavigationActivity implements ChooseLocationIt
         databaseReference = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
-
+        
         loadWorkoutDetails();
         loadEquipment();
         loadLowerBodyParts();

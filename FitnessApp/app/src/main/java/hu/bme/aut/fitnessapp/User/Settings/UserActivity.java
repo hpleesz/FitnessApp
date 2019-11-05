@@ -246,7 +246,7 @@ public class UserActivity extends InternetCheckActivity {
         database.child("Workout_Details").child(userId).child("In_Progress").setValue(false);
 
         String type = "";
-        if(gain_muscle) type = "Lower Body";
+        if(gain_muscle) type = "Lower body";
         else type = "Cardio 1";
 
         database.child("Workout_Details").child(userId).child("Type").setValue(type);
@@ -255,7 +255,8 @@ public class UserActivity extends InternetCheckActivity {
 
         long date = calendar.getTimeInMillis() / 1000;
 
-        database.child("Measurement").child(userId).child(Long.toString(date)).setValue(Double.parseDouble(weightEditText.getText().toString()));
+        database.child("Water").child(userId).child(Long.toString(date)).setValue(0);
+        database.child("Weight").child(userId).child(Long.toString(date)).setValue(Double.parseDouble(weightEditText.getText().toString()));
     }
 
 }
