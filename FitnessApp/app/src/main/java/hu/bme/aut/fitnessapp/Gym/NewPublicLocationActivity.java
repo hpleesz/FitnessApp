@@ -24,12 +24,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import hu.bme.aut.fitnessapp.InternetCheckActivity;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Adapters.EquipmentAdapter;
 import hu.bme.aut.fitnessapp.Models.Equipment;
 import hu.bme.aut.fitnessapp.Models.PublicLocation;
 
-public class NewPublicLocationActivity extends AppCompatActivity implements EquipmentAdapter.OnCheckBoxClicked{
+public class NewPublicLocationActivity extends InternetCheckActivity implements EquipmentAdapter.OnCheckBoxClicked{
 
     private DatabaseReference databaseReference;
 
@@ -79,6 +80,7 @@ public class NewPublicLocationActivity extends AppCompatActivity implements Equi
             }
         });
     }
+
     public void setFloatingActionButton() {
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setImageResource(R.drawable.ic_check);
@@ -244,7 +246,6 @@ public void setDatePickers() {
 
 public void setCheckBoxes() {
         for(final CheckBox checkBox : checkBoxes) {
-            checkBox.setChecked(true);
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -262,6 +263,7 @@ public void setCheckBoxes() {
                 }
 
             });
+            checkBox.setChecked(false);
         }
 }
     private boolean editTextsValid() {
@@ -299,8 +301,10 @@ public void setCheckBoxes() {
     }
 
     private boolean checkBoxCheckedValid() {
-        for(String[] day : getLocationItem().open_hours) {
-            if(day[0].equals("") && day[1].equals("") && checkBoxes.get(getLocationItem().open_hours.indexOf(day)).isChecked()) {
+        for(int i = 0; i < getLocationItem().open_hours.size(); i++) {
+            String[] day = getLocationItem().open_hours.get(i);
+
+            if(day[0].equals("") && day[1].equals("") && checkBoxes.get(i).isChecked()) {
                 return false;
             }
         }

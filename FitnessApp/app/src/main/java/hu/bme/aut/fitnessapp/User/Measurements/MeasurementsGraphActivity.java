@@ -29,6 +29,7 @@ public class MeasurementsGraphActivity extends InternetCheckActivity implements 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measurements_graph);
 
+        setToolbar();
         ViewPager viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(new GraphPagerAdapter(getSupportFragmentManager()));
 

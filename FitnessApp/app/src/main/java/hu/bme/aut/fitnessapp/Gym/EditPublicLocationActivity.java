@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Adapters.EquipmentAdapter;
 import hu.bme.aut.fitnessapp.Models.PublicLocation;
@@ -59,5 +62,23 @@ public class EditPublicLocationActivity extends NewPublicLocationActivity {
             }
         }
 
+    }
+
+    @Override
+    public PublicLocation getLocationItem() {
+        ArrayList<String[]> openClose = new ArrayList<>();
+        for(int i = 0; i < getOpenHours().size(); i = i + 2){
+            String[] hours = new String[2];
+            hours[0] = getOpenHours().get(i).getText().toString();
+            hours[1] = getOpenHours().get(i+1).getText().toString();
+            openClose.add(hours);
+        }
+        PublicLocation location = new PublicLocation(publicLocation.id,
+                getName().getText().toString(), getAdapter().getCheckedEquipmentList(), openClose,
+                getDescription().getText().toString(), getZip().getText().toString(),
+                getCountry().getText().toString(), getCity().getText().toString(),
+                getAddress().getText().toString(), "");
+
+        return location;
     }
 }

@@ -20,12 +20,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import hu.bme.aut.fitnessapp.InternetCheckActivity;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Startup.LoginActivity;
 import hu.bme.aut.fitnessapp.Adapters.PublicLocationAdapter;
 import hu.bme.aut.fitnessapp.Models.PublicLocation;
 
-public class GymMainActivity extends AppCompatActivity implements PublicLocationAdapter.LocationItemDeletedListener, PublicLocationAdapter.LocationItemSelectedListener {
+public class GymMainActivity extends InternetCheckActivity implements PublicLocationAdapter.LocationItemDeletedListener, PublicLocationAdapter.LocationItemSelectedListener {
 
     private DatabaseReference databaseReference;
     private String userId;

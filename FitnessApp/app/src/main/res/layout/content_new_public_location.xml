@@ -107,19 +107,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:inputType="textCapWords" />
+            android:inputType="textCapSentences" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:text="Hours"
+            android:text="Open days / hours:"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 
 
         <LinearLayout
+            android:paddingTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
