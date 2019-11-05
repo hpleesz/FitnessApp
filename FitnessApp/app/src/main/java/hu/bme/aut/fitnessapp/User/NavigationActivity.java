@@ -16,6 +16,7 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import hu.bme.aut.fitnessapp.InternetCheckActivity;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Startup.LoginActivity;
 import hu.bme.aut.fitnessapp.User.Locations.LocationActivity;
@@ -25,7 +26,7 @@ import hu.bme.aut.fitnessapp.User.Water.WaterActivity;
 import hu.bme.aut.fitnessapp.User.Weight.WeightActivity;
 import hu.bme.aut.fitnessapp.User.Workout.MainActivity;
 
-public class NavigationActivity extends AppCompatActivity {
+public class NavigationActivity extends InternetCheckActivity {
 
 
     protected DrawerLayout mDrawerLayout;

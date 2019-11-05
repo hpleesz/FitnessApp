@@ -14,12 +14,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
+import hu.bme.aut.fitnessapp.InternetCheckActivity;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Adapters.GraphPagerAdapter;
 import hu.bme.aut.fitnessapp.Adapters.MeasurementAdapter;
 import hu.bme.aut.fitnessapp.Models.Measurement;
 
-public class MeasurementsGraphActivity extends AppCompatActivity implements NewMeasurementItemDialogFragment.NewMeasurementDialogListener, MeasurementAdapter.MeasurementItemDeletedListener {
+public class MeasurementsGraphActivity extends InternetCheckActivity implements NewMeasurementItemDialogFragment.NewMeasurementDialogListener, MeasurementAdapter.MeasurementItemDeletedListener {
 
     private DatabaseReference databaseReference;
 

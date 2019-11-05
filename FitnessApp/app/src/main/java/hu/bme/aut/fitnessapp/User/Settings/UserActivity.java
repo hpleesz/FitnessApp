@@ -21,12 +21,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
+import hu.bme.aut.fitnessapp.InternetCheckActivity;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Startup.LoginActivity;
 import hu.bme.aut.fitnessapp.User.Workout.MainActivity;
 import hu.bme.aut.fitnessapp.Models.User;
 
-public class UserActivity extends AppCompatActivity {
+public class UserActivity extends InternetCheckActivity {
 
     private boolean male = false;
     private boolean female = false;

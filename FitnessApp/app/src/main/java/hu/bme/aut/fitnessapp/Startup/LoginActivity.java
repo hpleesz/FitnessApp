@@ -31,13 +31,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Calendar;
 
 import hu.bme.aut.fitnessapp.Gym.GymMainActivity;
+import hu.bme.aut.fitnessapp.InternetCheckActivity;
 import hu.bme.aut.fitnessapp.User.Workout.MainActivity;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.BroadcastReceivers.BootReceiver;
 import hu.bme.aut.fitnessapp.BroadcastReceivers.NotificationReceiver;
 import hu.bme.aut.fitnessapp.BroadcastReceivers.ResetWaterReceiver;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends InternetCheckActivity {
 
     private FirebaseAuth mAuth;
 

@@ -17,11 +17,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import hu.bme.aut.fitnessapp.InternetCheckActivity;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Models.Equipment;
 import hu.bme.aut.fitnessapp.Models.PublicLocation;
 
-public class ViewPublicLocationDetailsActivity extends AppCompatActivity {
+public class ViewPublicLocationDetailsActivity extends InternetCheckActivity {
 
     private PublicLocation publicLocation;
     private ArrayList<Equipment> equipmentList;

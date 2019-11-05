@@ -17,9 +17,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import hu.bme.aut.fitnessapp.Gym.GymMainActivity;
+import hu.bme.aut.fitnessapp.InternetCheckActivity;
 import hu.bme.aut.fitnessapp.User.Workout.MainActivity;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends InternetCheckActivity {
 
     private FirebaseAuth mAuth;
     private boolean user;

@@ -16,12 +16,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
+import hu.bme.aut.fitnessapp.InternetCheckActivity;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Adapters.ExerciseAdapter;
 import hu.bme.aut.fitnessapp.Models.Equipment;
 import hu.bme.aut.fitnessapp.Models.Exercise;
 
-public class ExerciseListActivity extends AppCompatActivity {
+public class ExerciseListActivity extends InternetCheckActivity {
 
     private ArrayList<Exercise> exerciseItems;
     private ArrayList<Equipment> equipmentItemList;

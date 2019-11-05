@@ -99,6 +99,7 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="title_activity_edit_public_location">Edit Gym</string>
     <string name="title_activity_view_public_location_details">ViewPublicLocationDetails</string>
+    <string name="title_activity_internet_check">InternetCheckActivity</string>
 
 
 </resources>

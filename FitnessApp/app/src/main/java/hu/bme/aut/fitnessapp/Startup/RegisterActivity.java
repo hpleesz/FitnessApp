@@ -22,10 +22,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import hu.bme.aut.fitnessapp.Gym.GymMainActivity;
+import hu.bme.aut.fitnessapp.InternetCheckActivity;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.User.Settings.UserActivity;
 
-public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class RegisterActivity extends InternetCheckActivity implements AdapterView.OnItemSelectedListener {
 
     private FirebaseAuth mAuth;
 

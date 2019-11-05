@@ -22,9 +22,10 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
+import hu.bme.aut.fitnessapp.InternetCheckActivity;
 import hu.bme.aut.fitnessapp.R;
 
-public class StretchActivity extends AppCompatActivity {
+public class StretchActivity extends InternetCheckActivity {
 
     private ArrayList<String> items;
     private VideoView videoView;

@@ -31,11 +31,12 @@ import java.util.Locale;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import hu.bme.aut.fitnessapp.InternetCheckActivity;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Models.PublicLocation;
 
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapActivity extends InternetCheckActivity implements OnMapReadyCallback {
 
     private static final String TAG = MapActivity.class.getSimpleName();
     private GoogleMap mMap;

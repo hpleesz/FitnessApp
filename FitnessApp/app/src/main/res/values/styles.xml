@@ -22,8 +22,9 @@
         <item name="android:textColorPrimary">@color/colorPrimary</item>
     </style>
 
-    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="SplashTheme" parent="AppTheme.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="alertDialogTheme">@style/addItemDialog</item>
     </style>
 
 </resources>
