@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    tools:context=".User.Locations.LocationActivity">
+    tools:context=".Controllers.User.Locations.LocationActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

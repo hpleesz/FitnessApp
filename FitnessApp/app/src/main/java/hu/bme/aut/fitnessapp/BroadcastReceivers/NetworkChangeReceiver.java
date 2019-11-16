@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import static hu.bme.aut.fitnessapp.InternetCheckActivity.dialog;
+import static hu.bme.aut.fitnessapp.Controllers.InternetCheckActivity.dialog;
 
 
 public class NetworkChangeReceiver extends BroadcastReceiver

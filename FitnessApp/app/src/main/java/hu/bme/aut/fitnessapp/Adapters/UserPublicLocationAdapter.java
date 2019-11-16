@@ -2,21 +2,24 @@ package hu.bme.aut.fitnessapp.Adapters;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+//import android.support.annotation.NonNull;
+//import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import hu.bme.aut.fitnessapp.User.Locations.LocationActivity;
+import hu.bme.aut.fitnessapp.Controllers.User.Locations.LocationActivity;
 import hu.bme.aut.fitnessapp.R;
-import hu.bme.aut.fitnessapp.Models.PublicLocation;
+import hu.bme.aut.fitnessapp.Entities.PublicLocation;
 
 public class UserPublicLocationAdapter extends RecyclerView.Adapter<UserPublicLocationAdapter.LocationViewHolder> {
 

@@ -9,7 +9,7 @@ import android.os.SystemClock;
 
 import java.util.Calendar;
 
-import hu.bme.aut.fitnessapp.Startup.LoginActivity;
+import hu.bme.aut.fitnessapp.Models.Startup.LoginModel;
 
 
 public class BootReceiver extends BroadcastReceiver {
@@ -21,7 +21,7 @@ public class BootReceiver extends BroadcastReceiver {
 
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
-            alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + LoginActivity.INTERVAL, LoginActivity.INTERVAL, pendingIntent);
+            alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + LoginModel.INTERVAL, LoginModel.INTERVAL, pendingIntent);
 
 
             PendingIntent waterPendingIntent = PendingIntent.getBroadcast(context, 101, intent, PendingIntent.FLAG_UPDATE_CURRENT);

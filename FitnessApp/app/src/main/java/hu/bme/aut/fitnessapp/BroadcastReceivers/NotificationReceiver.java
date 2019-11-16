@@ -11,8 +11,11 @@ import android.graphics.Color;
 import android.media.AudioAttributes;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.ContextCompat;
+//import android.support.v4.app.NotificationCompat;
+//import android.support.v4.content.ContextCompat;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -27,8 +30,8 @@ import java.util.Date;
 import java.util.Map;
 
 import hu.bme.aut.fitnessapp.R;
-import hu.bme.aut.fitnessapp.User.Settings.SettingsActivity;
-import hu.bme.aut.fitnessapp.User.Water.WaterActivity;
+import hu.bme.aut.fitnessapp.Controllers.User.Settings.SettingsActivity;
+import hu.bme.aut.fitnessapp.Controllers.User.Water.WaterActivity;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -113,7 +116,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         final String userId = firebaseAuth.getCurrentUser().getUid();
 
-        Query lastQuery = databaseReference.child("Measurement").child(userId).orderByKey().limitToLast(1);
+        Query lastQuery = databaseReference.child("Weight").child(userId).orderByKey().limitToLast(1);
         lastQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

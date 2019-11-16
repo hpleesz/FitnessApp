@@ -10,7 +10,7 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingTop="8dp"
-    tools:context=".User.Locations.LocationActivity">
+    tools:context=".Controllers.User.Locations.LocationActivity">
 
     <TextView
         android:id="@+id/EquipmentItemName"

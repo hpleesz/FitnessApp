@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="hu.bme.aut.fitnessapp">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -7,17 +8,23 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@drawable/logo2"
         android:label="@string/app_name"
         android:roundIcon="@drawable/logo2"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="false"
+        >
+        <activity
+            android:name=".Controllers.User.Workout.StretchWarmUpActivity"
+            android:label="@string/title_activity_stretch_warm_up"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <receiver
             android:name=".BroadcastReceivers.NetworkChangeReceiver"
             android:enabled="true"
@@ -28,11 +35,11 @@
         </receiver>
 
         <activity
-            android:name=".InternetCheckActivity"
+            android:name=".Controllers.InternetCheckActivity"
             android:label="@string/title_activity_internet_check"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".User.Water.WaterActivity"
+            android:name=".Controllers.User.Water.WaterActivity"
             android:label="@string/title_activity_water"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -41,27 +48,27 @@
             android:exported="false" />
 
         <activity
-            android:name=".User.Locations.ViewPublicLocationDetailsActivity"
+            android:name=".Controllers.User.Locations.ViewPublicLocationDetailsActivity"
             android:label="@string/title_activity_view_public_location_details"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Gym.EditPublicLocationActivity"
+            android:name=".Controllers.Gym.EditPublicLocationActivity"
             android:label="@string/title_activity_edit_public_location"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".User.Locations.MapActivity"
+            android:name=".Controllers.User.Locations.MapActivity"
             android:label="@string/title_activity_map"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".User.Locations.SavePublicLocationActivity"
+            android:name=".Controllers.User.Locations.SavePublicLocationActivity"
             android:label="@string/title_activity_save_public_location"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Gym.NewPublicLocationActivity"
+            android:name=".Controllers.Gym.NewPublicLocationActivity"
             android:label="@string/title_activity_new_public_location"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".User.Weight.WeightActivity"
+            android:name=".Controllers.User.Weight.WeightActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver
@@ -75,63 +82,63 @@
         <receiver android:name=".BroadcastReceivers.ResetWaterReceiver" />
 
         <activity
-            android:name=".Gym.GymMainActivity"
+            android:name=".Controllers.Gym.GymMainActivity"
             android:label="@string/title_activity_gym_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Startup.RegisterActivity"
+            android:name=".Controllers.Startup.RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".User.Workout.MainActivity"
+            android:name=".Controllers.User.Workout.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".User.Settings.UserActivity"
+            android:name=".Controllers.User.Settings.UserActivity"
             android:label="@string/title_activity_user"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".User.NavigationActivity"
+            android:name=".Controllers.User.NavigationActivity"
             android:label="@string/title_activity_navigation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".User.Locations.LocationActivity"
+            android:name=".Controllers.User.Locations.LocationActivity"
             android:label="@string/title_activity_location"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".User.Workout.ExerciseListActivity"
+            android:name=".Controllers.User.Workout.ExerciseListActivity"
             android:label="@string/title_activity_exercise_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".User.Workout.ExerciseInfoActivity"
+            android:name=".Controllers.User.Workout.ExerciseInfoActivity"
             android:label="@string/title_activity_exercise_info"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".User.Measurements.MeasurementsActivity"
+            android:name=".Controllers.User.Measurements.MeasurementsActivity"
             android:label="@string/title_activity_measurements"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".User.Settings.SettingsActivity"
+            android:name=".Controllers.User.Settings.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".User.Measurements.MeasurementsGraphActivity"
+            android:name=".Controllers.User.Measurements.MeasurementsGraphActivity"
             android:label="@string/title_activity_measurements_graph"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".User.Workout.WarmUpActivity"
+            android:name=".Controllers.User.Workout.WarmUpActivity"
             android:label="@string/title_activity_warm_up"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".User.Workout.StretchActivity"
+            android:name=".Controllers.User.Workout.StretchActivity"
             android:label="@string/title_activity_stretch"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Startup.LoginActivity"
+            android:name=".Controllers.Startup.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Startup.SplashActivity"
+            android:name=".Controllers.Startup.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -10,7 +10,7 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingTop="64dp"
-    tools:context=".Startup.LoginActivity">
+    tools:context=".Controllers.Startup.LoginActivity">
 
     <ImageView
         android:layout_width="wrap_content"

@@ -96,10 +96,11 @@
     </string-array>
     <string name="title_activity_new_public_location">New Gym</string>
     <string name="title_activity_save_public_location">Search for Gym</string>
-    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_map">Map</string>
     <string name="title_activity_edit_public_location">Edit Gym</string>
     <string name="title_activity_view_public_location_details">ViewPublicLocationDetails</string>
     <string name="title_activity_internet_check">InternetCheckActivity</string>
+    <string name="title_activity_stretch_warm_up">StretchWarmUpActivity</string>
 
 
 </resources>

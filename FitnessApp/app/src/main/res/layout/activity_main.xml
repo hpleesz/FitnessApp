@@ -10,7 +10,7 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingTop="64dp"
-    tools:context=".User.Workout.MainActivity">
+    tools:context=".Controllers.User.Workout.MainActivity">
 
 
     <LinearLayout

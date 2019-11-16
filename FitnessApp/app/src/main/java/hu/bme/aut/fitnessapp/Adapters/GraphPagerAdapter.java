@@ -1,11 +1,15 @@
 package hu.bme.aut.fitnessapp.Adapters;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+//import android.support.v4.app.Fragment;
+//import android.support.v4.app.FragmentManager;
+//import android.support.v4.app.FragmentPagerAdapter;
 
-import hu.bme.aut.fitnessapp.User.Measurements.MeasurementsGraphFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+
+import hu.bme.aut.fitnessapp.Controllers.User.Measurements.MeasurementsGraphFragment;
 
 public class GraphPagerAdapter extends FragmentPagerAdapter {
     private static final int NUM_PAGES = 12;
@@ -37,35 +41,35 @@ public class GraphPagerAdapter extends FragmentPagerAdapter {
                 fragment.setArguments(bundle);
                 return fragment;
             case 4:
-                bundle.putString("body part", "Right Upper Arm");
+                bundle.putString("body part", "Right_Upper_Arm");
                 fragment.setArguments(bundle);
                 return fragment;
             case 5:
-                bundle.putString("body part", "Left Upper Arm");
+                bundle.putString("body part", "Left_Upper_Arm");
                 fragment.setArguments(bundle);
                 return fragment;
             case 6:
-                bundle.putString("body part", "Right Forearm");
+                bundle.putString("body part", "Right_Forearm");
                 fragment.setArguments(bundle);
                 return fragment;
             case 7:
-                bundle.putString("body part", "Left Forearm");
+                bundle.putString("body part", "Left_Forearm");
                 fragment.setArguments(bundle);
                 return fragment;
             case 8:
-                bundle.putString("body part", "Right Thigh");
+                bundle.putString("body part", "Right_Thigh");
                 fragment.setArguments(bundle);
                 return fragment;
             case 9:
-                bundle.putString("body part", "Left Thigh");
+                bundle.putString("body part", "Left_Thigh");
                 fragment.setArguments(bundle);
                 return fragment;
             case 10:
-                bundle.putString("body part", "Right Calf");
+                bundle.putString("body part", "Right_Calf");
                 fragment.setArguments(bundle);
                 return fragment;
             case 11:
-                bundle.putString("body part", "Left Calf");
+                bundle.putString("body part", "Left_Calf");
                 fragment.setArguments(bundle);
                 return fragment;
             default:
