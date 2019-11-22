@@ -2,8 +2,7 @@ package hu.bme.aut.fitnessapp.Controllers.User.Settings;
 
 import android.content.Intent;
 import android.os.Bundle;
-//import android.support.design.widget.FloatingActionButton;
-//import android.support.v7.widget.Toolbar;
+
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -13,21 +12,14 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 
 import hu.bme.aut.fitnessapp.Controllers.InternetCheckActivity;
-import hu.bme.aut.fitnessapp.Models.User.Settings.UserModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.SettingsModels.UserModel;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Controllers.Startup.LoginActivity;
 import hu.bme.aut.fitnessapp.Controllers.User.Workout.MainActivity;
 
 public class UserActivity extends InternetCheckActivity implements UserModel.RegisterCanceledListener{
-
-    private boolean male = false;
-    private boolean female = false;
-    private boolean lose_weight = false;
-    private boolean gain_muscle = false;
 
     private ImageButton maleButton;
     private ImageButton femaleButton;
@@ -38,10 +30,6 @@ public class UserActivity extends InternetCheckActivity implements UserModel.Reg
     private EditText heightEditText;
     private EditText goalWeightEditText;
     private DatePicker datePicker;
-
-    private DatabaseReference database;
-    private FirebaseAuth mAuth;
-    private String userId;
 
     private UserModel userModel;
 
@@ -55,7 +43,6 @@ public class UserActivity extends InternetCheckActivity implements UserModel.Reg
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
 
         userModel = new UserModel(this);
-        userModel.initFirebase();
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,7 +175,6 @@ public class UserActivity extends InternetCheckActivity implements UserModel.Reg
         int goal_length = goalWeightEditText.getText().toString().length();
 
         return userModel.isValid(name_length, height_length, goal_length, weight_length);
-        //(name_length == 0 || weight_length == 0 || height_length == 0 || goal_length == 0 || (!female && !male) || (!lose_weight && !gain_muscle))
     }
 
     @Override

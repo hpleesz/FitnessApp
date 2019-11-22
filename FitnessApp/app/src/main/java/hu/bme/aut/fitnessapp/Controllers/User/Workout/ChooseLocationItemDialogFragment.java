@@ -24,10 +24,10 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import hu.bme.aut.fitnessapp.Models.User.Workout.ChooseLocationItemModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.ChooseLocationItemModel;
 import hu.bme.aut.fitnessapp.R;
-import hu.bme.aut.fitnessapp.Adapters.ChooseLocationAdapter;
-import hu.bme.aut.fitnessapp.Adapters.ChoosePublicLocationAdapter;
+import hu.bme.aut.fitnessapp.Controllers.Adapters.ChooseLocationAdapter;
+import hu.bme.aut.fitnessapp.Controllers.Adapters.ChoosePublicLocationAdapter;
 import hu.bme.aut.fitnessapp.Entities.Location;
 import hu.bme.aut.fitnessapp.Entities.PublicLocation;
 
@@ -109,7 +109,7 @@ public class ChooseLocationItemDialogFragment extends DialogFragment implements 
         contentView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_choose_location_item, null);
         noLocationTV = (TextView) contentView.findViewById(R.id.noLocationTextView);
 
-        chooseLocationItemModel = new ChooseLocationItemModel(this, this.getActivity());
+        chooseLocationItemModel = new ChooseLocationItemModel(this);
         chooseLocationItemModel.loadLocations();
         chooseLocationItemModel.loadPublicLocations();
 

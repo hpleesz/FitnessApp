@@ -3,12 +3,8 @@ package hu.bme.aut.fitnessapp.Controllers.User.Workout;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.VideoView;
 
-import java.util.ArrayList;
-
-import hu.bme.aut.fitnessapp.Models.User.Workout.WarmUpModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.WarmUpModel;
 
 
 public class WarmUpActivity extends StretchWarmUpActivity {
@@ -16,10 +12,6 @@ public class WarmUpActivity extends StretchWarmUpActivity {
     private String type;
 
     private boolean lower = true;
-    private ArrayList<String> items;
-    private VideoView videoView;
-    private TextView titleTextView;
-    private int idx = 0;
 
 
     @Override

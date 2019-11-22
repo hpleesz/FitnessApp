@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import hu.bme.aut.fitnessapp.Controllers.Gym.NewPublicLocationActivity;
-import hu.bme.aut.fitnessapp.Models.Gym.NewPublicLocationModel;
+import hu.bme.aut.fitnessapp.Models.GymModels.NewPublicLocationModel;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

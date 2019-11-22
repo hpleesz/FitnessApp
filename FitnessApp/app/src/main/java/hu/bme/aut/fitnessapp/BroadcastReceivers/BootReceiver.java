@@ -7,9 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
 
-import java.util.Calendar;
-
-import hu.bme.aut.fitnessapp.Models.Startup.LoginModel;
+import hu.bme.aut.fitnessapp.Models.StartupModels.LoginModel;
 
 
 public class BootReceiver extends BroadcastReceiver {
@@ -24,9 +22,10 @@ public class BootReceiver extends BroadcastReceiver {
             alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + LoginModel.INTERVAL, LoginModel.INTERVAL, pendingIntent);
 
 
-            PendingIntent waterPendingIntent = PendingIntent.getBroadcast(context, 101, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            //PendingIntent waterPendingIntent = PendingIntent.getBroadcast(context, 101, intent, PendingIntent.FLAG_UPDATE_CURRENT);
             AlarmManager waterAlarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
+            /*
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
             calendar.set(Calendar.HOUR_OF_DAY, 0);
@@ -39,7 +38,7 @@ public class BootReceiver extends BroadcastReceiver {
 
             waterAlarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, waterPendingIntent);
 
-
+             */
         }
     }
 

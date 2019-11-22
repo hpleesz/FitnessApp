@@ -28,8 +28,8 @@
 
 
     <string name="name">Name:</string>
-    <string name="measurement">Weight:</string>
-    <string name="goal_weight">Goal measurement:</string>
+    <string name="weight">Weight:</string>
+    <string name="goal_weight">Goal weight:</string>
     <string name="date_of_birth">Date of birth:</string>
     <string name="goal">Goal:</string>
     <string name="kg">kg</string>

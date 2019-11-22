@@ -6,7 +6,7 @@ import android.os.Bundle;
 import hu.bme.aut.fitnessapp.Controllers.Gym.GymMainActivity;
 import hu.bme.aut.fitnessapp.Controllers.InternetCheckActivity;
 import hu.bme.aut.fitnessapp.Controllers.User.Workout.MainActivity;
-import hu.bme.aut.fitnessapp.Models.Startup.SplashModel;
+import hu.bme.aut.fitnessapp.Models.StartupModels.SplashModel;
 
 public class SplashActivity extends InternetCheckActivity implements SplashModel.ActiveUserListener {
 

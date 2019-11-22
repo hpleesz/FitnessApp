@@ -2,8 +2,6 @@ package hu.bme.aut.fitnessapp.Controllers.User.Locations;
 
 import android.content.Intent;
 import android.os.Bundle;
-//import android.support.design.widget.FloatingActionButton;
-//import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,15 +12,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 import hu.bme.aut.fitnessapp.Controllers.InternetCheckActivity;
-import hu.bme.aut.fitnessapp.Models.User.Locations.ViewPublicLocationDetailsModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.LocationModels.ViewPublicLocationDetailsModel;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Entities.Equipment;
 import hu.bme.aut.fitnessapp.Entities.PublicLocation;
 
 public class ViewPublicLocationDetailsActivity extends InternetCheckActivity implements ViewPublicLocationDetailsModel.DisplayReadyListener{
 
-    private PublicLocation publicLocation;
-    private ArrayList<Equipment> equipmentList;
     private ArrayList<TextView> textViews;
     private TextView equipmentTV;
     private TextView descriptionTV;
@@ -42,7 +38,6 @@ public class ViewPublicLocationDetailsActivity extends InternetCheckActivity imp
         Intent i = getIntent();
         PublicLocation publicLocation = (PublicLocation) i.getSerializableExtra("location");
         viewPublicLocationDetailsModel = new ViewPublicLocationDetailsModel(this, publicLocation);
-        viewPublicLocationDetailsModel.initFirebase();
         viewPublicLocationDetailsModel.loadEquipment();
 
 

@@ -15,7 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-import hu.bme.aut.fitnessapp.Models.User.Workout.MainModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.MainModel;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Controllers.User.NavigationActivity;
 import hu.bme.aut.fitnessapp.Entities.Equipment;
@@ -62,7 +62,7 @@ MainModel.DataReadyListener, MainModel.LocationChosenListener, MainModel.Continu
         navigationView.getMenu().getItem(0).setChecked(true);
 
         mainModel = new MainModel(this);
-        mainModel.initFirebase();
+        //mainModel.initFirebase();
         mainModel.loadEquipment();
         mainModel.loadLowerBodyParts();
         mainModel.loadUpperBodyParts();
@@ -83,13 +83,12 @@ MainModel.DataReadyListener, MainModel.LocationChosenListener, MainModel.Continu
                 //location_id = sharedPreferences.getInt("Location", 0);
                 //if (location_id > 0) {
                 if(mainModel.isChosen()) {
-                    showWorkout();
-                    /*
+
                     Intent exercisesIntent = new Intent(MainActivity.this, ExerciseListActivity.class);
                     exercisesIntent.putExtra("list", mainModel.getChosenExercises());
                     //exercisesIntent.putExtra("equipment", mainModel.getEquipmentList());
                     startActivity(exercisesIntent);
-                     */
+                    
                 }
 
                 else {
@@ -250,6 +249,11 @@ MainModel.DataReadyListener, MainModel.LocationChosenListener, MainModel.Continu
     @Override
     public void onLocationChosen(String name) {
         setLocationName(name);
+    }
+
+    @Override
+    public void workoutSelected() {
+        hideProgressBar();
     }
 
     @Override

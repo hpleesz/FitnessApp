@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 import hu.bme.aut.fitnessapp.Entities.Measurement;
 import hu.bme.aut.fitnessapp.Controllers.User.Measurements.NewMeasurementItemDialogFragment;
-import hu.bme.aut.fitnessapp.Models.User.Measurements.NewMeasurementItemModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.MeasurementModels.NewMeasurementItemModel;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

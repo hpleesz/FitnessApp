@@ -31,33 +31,19 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
-import hu.bme.aut.fitnessapp.Models.User.Measurements.NewMeasurementItemModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.MeasurementModels.NewMeasurementItemModel;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Entities.Measurement;
 
 public class NewMeasurementItemDialogFragment extends DialogFragment {
 
     private DatePicker datePicker;
-    private String alreadyExists;
-
-    public ArrayList<String> body_parts;
-
-    private ArrayList<ArrayList<Measurement>> entries;
-
-    private DatabaseReference databaseReference;
-    private FirebaseAuth firebaseAuth;
-    private String userId;
 
     private String date;
 
-    private HashMap<String, Double> new_entries;
-
     private NewMeasurementItemModel newMeasurementItemModel;
 
-
     private ArrayList<EditText> editTexts;
-    //public static final String[] body_parts = {"Shoulders", "Chest", "Waist", "Hips", "Right Upper Arm", "Left Upper Arm", "Right Forearm", "Left Forearm", "Right Thigh", "Left Thigh", "Right Calf", "Left Calf"};
-
 
     public static final String TAG = "NewMeasurementDialogFragment";
 
@@ -77,8 +63,6 @@ public class NewMeasurementItemDialogFragment extends DialogFragment {
         } else {
             throw new RuntimeException("Activity must implement the NewMeasurementItemDialogListener interface!");
         }
-
-        //loadDatabase();
     }
 
     @NonNull
@@ -119,16 +103,6 @@ public class NewMeasurementItemDialogFragment extends DialogFragment {
         datePicker = contentView.findViewById(R.id.datePicker);
         datePicker.setMaxDate(System.currentTimeMillis());
 
-        /*
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(UserActivity.USER, Context.MODE_PRIVATE);
-        int reg_day = sharedPreferences.getInt("Registration day", 0);
-        int reg_month = sharedPreferences.getInt("Registration month", 0);
-        int reg_year = sharedPreferences.getInt("Registration year", 0);
-        Calendar c = Calendar.getInstance();
-        c.set(reg_year, reg_month, reg_day);
-        datePicker.setMinDate(c.getTimeInMillis());
-        */
-
         editTexts = new ArrayList<>();
         EditText shouldersEditText = (EditText) contentView.findViewById(R.id.ShouldersEditText);
         editTexts.add(shouldersEditText);
@@ -160,8 +134,7 @@ public class NewMeasurementItemDialogFragment extends DialogFragment {
     }
 
     private HashMap<String, Double> getMeasurementItems() {
-        //ArrayList<MeasurementItem> newItems = new ArrayList<>();
-        new_entries = new HashMap<>();
+        HashMap<String, Double> new_entries;
         ArrayList<String> measurements = new ArrayList<>();
 
         for(int i = 0; i < editTexts.size(); i++) {
@@ -175,26 +148,4 @@ public class NewMeasurementItemDialogFragment extends DialogFragment {
 
         return new_entries;
     }
-
-
-    public void setBody_parts(ArrayList<String> body_parts) {
-        this.body_parts = body_parts;
-    }
-
-    public void setEntries(ArrayList<ArrayList<Measurement>> entries) {
-        this.entries = entries;
-    }
-
-    public String getAlreadyExists() {
-        return alreadyExists;
-    }
-
-    public void setAlreadyExists(String alreadyExists) {
-        this.alreadyExists = alreadyExists;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
 }

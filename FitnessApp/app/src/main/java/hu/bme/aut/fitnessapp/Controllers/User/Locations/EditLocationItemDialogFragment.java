@@ -3,10 +3,6 @@ package hu.bme.aut.fitnessapp.Controllers.User.Locations;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-//import android.support.annotation.NonNull;
-//import android.support.annotation.Nullable;
-//import android.support.v4.app.FragmentActivity;
-//import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,14 +15,11 @@ import androidx.fragment.app.FragmentActivity;
 import java.util.ArrayList;
 
 import hu.bme.aut.fitnessapp.R;
-import hu.bme.aut.fitnessapp.Adapters.EquipmentAdapter;
+import hu.bme.aut.fitnessapp.Controllers.Adapters.EquipmentAdapter;
 import hu.bme.aut.fitnessapp.Entities.Equipment;
 import hu.bme.aut.fitnessapp.Entities.Location;
 
 public class EditLocationItemDialogFragment extends NewLocationItemDialogFragment implements EquipmentAdapter.OnCheckBoxClicked {
-
-
-    private ArrayList<Equipment> equipmentList;
 
     public static final String TAG = "EditLocationItemDialogFragment";
     private EditLocationItemDialogListener listener;

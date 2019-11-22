@@ -1,39 +1,22 @@
 package hu.bme.aut.fitnessapp.Controllers.User.Water;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-//import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-
-import hu.bme.aut.fitnessapp.Models.User.Water.WaterModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WaterModels.WaterModel;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Controllers.User.NavigationActivity;
 
 public class WaterActivity extends NavigationActivity implements NewWaterDialogFragment.NewWaterDialogListener, EditWaterDialogFragment.EditWaterDialogListener, WaterModel.WaterListener {
 
-    private float recommended;
     private double display;
-    private double water2;
-    private Double current_weight;
 
     TextView consumedWaterTV;
-
-    private DatabaseReference databaseReference;
-    private FirebaseAuth firebaseAuth;
-    private String userId;
-    private long today;
-
-    private SharedPreferences water_consumption;
-
-    public static final String WATER = "water consumption";
 
     private WaterModel waterModel;
 
@@ -47,7 +30,6 @@ public class WaterActivity extends NavigationActivity implements NewWaterDialogF
         navigationView.getMenu().getItem(4).setChecked(true);
 
         waterModel = new WaterModel(this);
-        waterModel.initFirebase();
         waterModel.loadWeight();
 
         setFloatingActionButton();
@@ -136,7 +118,6 @@ public class WaterActivity extends NavigationActivity implements NewWaterDialogF
 
     //TEST
     public void setCurrent_weight(Double current_weight) {
-        this.current_weight = current_weight;
     }
 
     public double getDisplay() {
@@ -149,7 +130,6 @@ public class WaterActivity extends NavigationActivity implements NewWaterDialogF
     }
 
     public void setWater2(double water2) {
-        this.water2 = water2;
     }
 
 

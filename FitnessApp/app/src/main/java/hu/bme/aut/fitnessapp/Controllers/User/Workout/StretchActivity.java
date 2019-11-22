@@ -1,18 +1,14 @@
 package hu.bme.aut.fitnessapp.Controllers.User.Workout;
 
 import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.VideoView;
 
 import java.util.ArrayList;
 
-import hu.bme.aut.fitnessapp.Models.User.Workout.StretchModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.StretchModel;
 
 public class StretchActivity extends StretchWarmUpActivity {
 
     private ArrayList<String> items;
-    private VideoView videoView;
-    private TextView titleTextView;
     private int idx = 0;
 
     private StretchModel stretchModel;
@@ -20,11 +16,6 @@ public class StretchActivity extends StretchWarmUpActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //setLayoutElements();
-        //setFloatingActionButtons();
-
-        //loadItems();
 
         setModel(new StretchModel(this));
 

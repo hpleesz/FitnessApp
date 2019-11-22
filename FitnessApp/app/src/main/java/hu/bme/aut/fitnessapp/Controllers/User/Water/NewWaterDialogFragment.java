@@ -3,14 +3,7 @@ package hu.bme.aut.fitnessapp.Controllers.User.Water;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-/*
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AlertDialog;
 
- */
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -22,7 +15,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 
-import hu.bme.aut.fitnessapp.Models.User.Water.NewWaterModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WaterModels.NewWaterModel;
 import hu.bme.aut.fitnessapp.R;
 
 public class NewWaterDialogFragment extends DialogFragment {

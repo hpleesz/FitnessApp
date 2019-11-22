@@ -2,7 +2,6 @@ package hu.bme.aut.fitnessapp.Controllers.Startup;
 
 import android.content.Intent;
 import android.os.Bundle;
-//import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,18 +13,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
 import hu.bme.aut.fitnessapp.Controllers.Gym.GymMainActivity;
 import hu.bme.aut.fitnessapp.Controllers.InternetCheckActivity;
-import hu.bme.aut.fitnessapp.Models.Startup.RegisterModel;
+import hu.bme.aut.fitnessapp.Models.StartupModels.RegisterModel;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Controllers.User.Settings.UserActivity;
 
 public class RegisterActivity extends InternetCheckActivity implements AdapterView.OnItemSelectedListener, RegisterModel.RegisterListener {
-
-    private FirebaseAuth mAuth;
 
     private EditText email;
     private EditText password;
@@ -50,7 +46,6 @@ public class RegisterActivity extends InternetCheckActivity implements AdapterVi
 
         registerModel = new RegisterModel(this);
         registerModel.initFirebase();
-
         setRegisterClickListener();
     }
 

@@ -18,24 +18,23 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Map;
 
+import hu.bme.aut.fitnessapp.Entities.User;
+import hu.bme.aut.fitnessapp.Models.DatabaseModels.LoadUser;
+import hu.bme.aut.fitnessapp.Models.DatabaseModels.LoadWater;
+import hu.bme.aut.fitnessapp.Models.DatabaseModels.LoadWeight;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Controllers.User.Settings.SettingsActivity;
 import hu.bme.aut.fitnessapp.Controllers.User.Water.WaterActivity;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class NotificationReceiver extends BroadcastReceiver {
+public class NotificationReceiver extends BroadcastReceiver implements LoadWeight.CurrentWeightLoadedListener, LoadWater.WaterLoadedListener, LoadUser.UserLoadedListener {
 
     private double current_weight;
     private double water2;
@@ -46,6 +45,7 @@ public class NotificationReceiver extends BroadcastReceiver {
     private NotificationCompat.Builder builder;
     private NotificationManager notificationManager;
     private boolean isUser = true;
+    private Context context;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -57,10 +57,13 @@ public class NotificationReceiver extends BroadcastReceiver {
 
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 100, repeating_intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        AudioAttributes audioAttributes = new AudioAttributes.Builder()
-                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                .setUsage(AudioAttributes.USAGE_NOTIFICATION)
-                .build();
+        AudioAttributes audioAttributes = null;
+        //if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            audioAttributes = new AudioAttributes.Builder()
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                    .build();
+        //}
 
         if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             CharSequence name = "Channel name";
@@ -76,6 +79,7 @@ public class NotificationReceiver extends BroadcastReceiver {
             notificationManager = context.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
+
         builder = new NotificationCompat.Builder(context, "default")
                 .setContentIntent(pendingIntent)
                 .setSmallIcon(R.drawable.glass)
@@ -88,7 +92,8 @@ public class NotificationReceiver extends BroadcastReceiver {
         mAuth = FirebaseAuth.getInstance();
         if(userLoggedIn()) {
             userId = mAuth.getCurrentUser().getUid();
-            getUser(context);
+            this.context = context;
+            getUser();
         }
 
 
@@ -112,6 +117,10 @@ public class NotificationReceiver extends BroadcastReceiver {
 
 
     public void getData() {
+        LoadWeight loadWeight = new LoadWeight();
+        loadWeight.setCurrentWeightLoadedListener(this);
+        loadWeight.loadCurrentWeight();
+        /*
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         final String userId = firebaseAuth.getCurrentUser().getUid();
@@ -144,9 +153,15 @@ public class NotificationReceiver extends BroadcastReceiver {
             }
         });
 
+         */
+
     }
 
     public void getWater() {
+        LoadWater loadWater = new LoadWater();
+        loadWater.setListLoadedListener(this);
+        loadWater.loadWaterToday();
+        /*
         Query lastWaterQuery = databaseReference.child("Water").child(userId).orderByKey().limitToLast(1);
         lastWaterQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -188,6 +203,8 @@ public class NotificationReceiver extends BroadcastReceiver {
 
                 Date currentTime = Calendar.getInstance().getTime();
 
+                notificationManager.notify(100, builder.build());
+
                 if (isWithinRange(currentTime, 800, 2000)) {
                     if ((isWithinRange(currentTime, 800, 1100) && (percent < 25))
                             || (isWithinRange(currentTime, 1100, 1400) && (percent < 50))
@@ -203,10 +220,16 @@ public class NotificationReceiver extends BroadcastReceiver {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+
+         */
     }
 
-    public void getUser(final Context context) {
+    public void getUser() {
+        LoadUser loadUser = new LoadUser();
+        loadUser.setListLoadedListener(this);
+        loadUser.loadUser();
 
+        /*
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -228,8 +251,46 @@ public class NotificationReceiver extends BroadcastReceiver {
 
         };
         databaseReference.child("Profiles").addValueEventListener(eventListener);
+         */
 
 
     }
 
+    @Override
+    public void onCurrentWeightLoaded(double weight) {
+        current_weight = weight;
+        getWater();
+    }
+
+    @Override
+    public void onWaterLoaded(double water) {
+        water2 = water;
+
+        float recommended = (float) (current_weight * 0.033 + 1);
+        double display = Math.round(recommended * 10d) / 10d;
+        percent = (int) ((water2 / display) * 100);
+
+        builder.setContentText("You are at " + percent + "% of your recommended water intake.");
+
+        Date currentTime = Calendar.getInstance().getTime();
+
+        notificationManager.notify(100, builder.build());
+
+        if (isWithinRange(currentTime, 800, 2000)) {
+            if ((isWithinRange(currentTime, 800, 1100) && (percent < 25))
+                    || (isWithinRange(currentTime, 1100, 1400) && (percent < 50))
+                    || (isWithinRange(currentTime, 1400, 1700) && (percent < 75))
+                    || (isWithinRange(currentTime, 1700, 2000) && (percent < 100)))
+
+                notificationManager.notify(100, builder.build());
+
+        }
+    }
+
+    @Override
+    public void onUserLoaded(User user) {
+        if(isUser && notificationsTurnedOn(context)) {
+            getData();
+        }
+    }
 }

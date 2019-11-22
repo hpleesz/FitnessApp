@@ -17,7 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 
-import hu.bme.aut.fitnessapp.Models.User.Workout.ExerciseInfoModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.ExerciseInfoModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.VideoModel;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Controllers.User.NavigationActivity;
 import hu.bme.aut.fitnessapp.Entities.Equipment;
@@ -25,7 +26,7 @@ import hu.bme.aut.fitnessapp.Entities.Exercise;
 import hu.bme.aut.fitnessapp.Entities.User;
 import hu.bme.aut.fitnessapp.Entities.WorkoutDetails;
 
-public class ExerciseInfoActivity extends NavigationActivity implements ExerciseCompletedDialogFragment.ExerciseCompletedListener, ExerciseInfoModel.LayoutReadyListener, ExerciseInfoModel.ExercisesEndListener, ExerciseInfoModel.DataReadyListener, ExerciseInfoModel.TimerListener {
+public class ExerciseInfoActivity extends NavigationActivity implements ExerciseCompletedDialogFragment.ExerciseCompletedListener, ExerciseInfoModel.LayoutReadyListener, ExerciseInfoModel.ExercisesEndListener, ExerciseInfoModel.DataReadyListener, ExerciseInfoModel.TimerListener, VideoModel.VideoLoadedListener {
 
 
     private ArrayList<Exercise> exerciseItems;
@@ -67,7 +68,6 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
         ArrayList<Exercise> exerciseItems = (ArrayList<Exercise>) i.getSerializableExtra("exercises");
         //ArrayList<Equipment> equipmentItems = (ArrayList<Equipment>) i.getSerializableExtra("equipment");
         exerciseInfoModel = new ExerciseInfoModel(this, exerciseItems);
-        exerciseInfoModel.initFirebase();
         exerciseInfoModel.loadWorkoutDetails();
         exerciseInfoModel.loadUserDetails();
     }

@@ -7,14 +7,6 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
-/*
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.Toolbar;
-
- */
 import android.util.Log;
 import android.view.View;
 
@@ -37,7 +29,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import hu.bme.aut.fitnessapp.Controllers.InternetCheckActivity;
-import hu.bme.aut.fitnessapp.Models.User.Locations.MapModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.LocationModels.MapModel;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Entities.PublicLocation;
 

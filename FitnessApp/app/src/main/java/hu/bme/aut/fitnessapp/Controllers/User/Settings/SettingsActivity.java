@@ -1,9 +1,7 @@
 package hu.bme.aut.fitnessapp.Controllers.User.Settings;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-//import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -15,19 +13,11 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import hu.bme.aut.fitnessapp.Models.User.Settings.SettingsModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.SettingsModels.SettingsModel;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Controllers.User.NavigationActivity;
 
 public class SettingsActivity extends NavigationActivity implements SettingsModel.SettingsListener{
-
-    private Switch notificationSwitch;
-    private SharedPreferences sharedPreferences;
-
-    private boolean male = false;
-    private boolean female = false;
-    private boolean lose_weight = false;
-    private boolean gain_muscle = false;
 
     private ImageButton maleButton;
     private ImageButton femaleButton;
@@ -51,10 +41,9 @@ public class SettingsActivity extends NavigationActivity implements SettingsMode
         navigationView.getMenu().getItem(5).setChecked(true);
 
         settingsModel = new SettingsModel(this);
-        settingsModel.initFirebase();
         settingsModel.loadUserdata();
 
-        notificationSwitch = (Switch) findViewById(R.id.notificationSwitch);
+        Switch notificationSwitch = (Switch) findViewById(R.id.notificationSwitch);
         notificationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -186,23 +175,6 @@ public class SettingsActivity extends NavigationActivity implements SettingsMode
         int goal_length = goalWeightEditText.getText().toString().length();
 
         return settingsModel.isValid(name_length, height_length, goal_length);
-    }
-
-
-    public void setMale(boolean male) {
-        this.male = male;
-    }
-
-    public void setFemale(boolean female) {
-        this.female = female;
-    }
-
-    public void setLose_weight(boolean lose_weight) {
-        this.lose_weight = lose_weight;
-    }
-
-    public void setGain_muscle(boolean gain_muscle) {
-        this.gain_muscle = gain_muscle;
     }
 
     @Override

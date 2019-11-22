@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import hu.bme.aut.fitnessapp.Entities.Measurement;
 import hu.bme.aut.fitnessapp.Controllers.User.Weight.WeightActivity;
-import hu.bme.aut.fitnessapp.Models.User.Weight.WeightModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WeightModels.WeightModel;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

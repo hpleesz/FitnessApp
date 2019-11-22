@@ -7,11 +7,10 @@ import java.util.ArrayList;
 
 import hu.bme.aut.fitnessapp.Entities.Equipment;
 import hu.bme.aut.fitnessapp.Entities.PublicLocation;
-import hu.bme.aut.fitnessapp.Models.Gym.EditPublicLocationModel;
+import hu.bme.aut.fitnessapp.Models.GymModels.EditPublicLocationModel;
 
 public class EditPublicLocationActivity extends NewPublicLocationActivity {
 
-    private PublicLocation publicLocation;
     private EditPublicLocationModel publicLocationModel;
 
     @Override

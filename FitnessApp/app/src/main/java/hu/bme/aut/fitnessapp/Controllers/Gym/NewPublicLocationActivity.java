@@ -3,13 +3,7 @@ package hu.bme.aut.fitnessapp.Controllers.Gym;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-/*
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 
- */
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -28,17 +22,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import hu.bme.aut.fitnessapp.Controllers.InternetCheckActivity;
-import hu.bme.aut.fitnessapp.Models.Gym.NewPublicLocationModel;
+import hu.bme.aut.fitnessapp.Models.GymModels.NewPublicLocationModel;
 import hu.bme.aut.fitnessapp.R;
-import hu.bme.aut.fitnessapp.Adapters.EquipmentAdapter;
+import hu.bme.aut.fitnessapp.Controllers.Adapters.EquipmentAdapter;
 import hu.bme.aut.fitnessapp.Entities.Equipment;
 import hu.bme.aut.fitnessapp.Entities.PublicLocation;
 
 public class NewPublicLocationActivity extends InternetCheckActivity implements EquipmentAdapter.OnCheckBoxClicked, NewPublicLocationModel.ListLoaded{
-
-    private DatabaseReference databaseReference;
-
-    private ArrayList<Equipment> equipmentList;
 
     private EquipmentAdapter adapter;
 
@@ -120,7 +110,6 @@ public class NewPublicLocationActivity extends InternetCheckActivity implements 
     public void initRecyclerView(ArrayList<Equipment> equipmentList) {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.EquipmentRecyclerView);
         adapter = new EquipmentAdapter(this, equipmentList);
-        //loadItemsInBackground();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
@@ -267,18 +256,6 @@ public class NewPublicLocationActivity extends InternetCheckActivity implements 
         return location;
     }
 
-
-
-
-
-
-
-
-
-
-    public ArrayList<Equipment> getEquipmentList() {
-        return equipmentList;
-    }
 
     public EquipmentAdapter getAdapter() {
         return adapter;

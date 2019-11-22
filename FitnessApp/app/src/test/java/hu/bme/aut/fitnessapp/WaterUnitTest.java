@@ -6,9 +6,9 @@ import org.junit.Test;
 import hu.bme.aut.fitnessapp.Controllers.User.Water.EditWaterDialogFragment;
 import hu.bme.aut.fitnessapp.Controllers.User.Water.NewWaterDialogFragment;
 import hu.bme.aut.fitnessapp.Controllers.User.Water.WaterActivity;
-import hu.bme.aut.fitnessapp.Models.User.Water.EditWaterModel;
-import hu.bme.aut.fitnessapp.Models.User.Water.NewWaterModel;
-import hu.bme.aut.fitnessapp.Models.User.Water.WaterModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WaterModels.EditWaterModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WaterModels.NewWaterModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WaterModels.WaterModel;
 
 import static org.junit.Assert.assertEquals;
 

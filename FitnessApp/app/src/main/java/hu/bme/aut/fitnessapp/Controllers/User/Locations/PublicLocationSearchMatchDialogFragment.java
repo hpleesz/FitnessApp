@@ -2,15 +2,6 @@ package hu.bme.aut.fitnessapp.Controllers.User.Locations;
 
 import android.app.Dialog;
 import android.os.Bundle;
-/*
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-*/
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -25,14 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import hu.bme.aut.fitnessapp.Models.User.Locations.PublicSearchMatchModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.LocationModels.PublicSearchMatchModel;
 import hu.bme.aut.fitnessapp.R;
-import hu.bme.aut.fitnessapp.Adapters.ChoosePublicLocationAdapter;
+import hu.bme.aut.fitnessapp.Controllers.Adapters.ChoosePublicLocationAdapter;
 import hu.bme.aut.fitnessapp.Entities.PublicLocation;
 
 public class PublicLocationSearchMatchDialogFragment extends DialogFragment implements ChoosePublicLocationAdapter.LocationItemSelectedListener, PublicSearchMatchModel.ListLoadedListener, PublicSearchMatchModel.NoMatchListener {
-
-    private ChoosePublicLocationAdapter adapter;
 
     private PublicLocationSearchMatchDialogFragment.ChooseLocationItemDialogListener listener;
 
@@ -62,13 +51,6 @@ public class PublicLocationSearchMatchDialogFragment extends DialogFragment impl
 
     public static final String TAG = "PublicLocationSearchMatchDialogFragment";
 
-    private PublicLocation item;
-
-    private ArrayList<PublicLocation> itemList;
-    private ArrayList<PublicLocation> matchList;
-
-    private ArrayList<Boolean> openDays;
-
     private PublicSearchMatchModel publichSearchMatchModel;
 
     @Override
@@ -82,11 +64,10 @@ public class PublicLocationSearchMatchDialogFragment extends DialogFragment impl
             throw new RuntimeException("Activity must implement the PublicLocationSearchMatchDialogFragment interface!");
         }
 
-        item = (PublicLocation) getArguments().getSerializable("Location");
-        openDays = (ArrayList<Boolean>) getArguments().getSerializable("Checkboxes");
+        PublicLocation item = (PublicLocation) getArguments().getSerializable("Location");
+        ArrayList<Boolean> openDays = (ArrayList<Boolean>) getArguments().getSerializable("Checkboxes");
 
         publichSearchMatchModel = new PublicSearchMatchModel(this, item, openDays);
-        publichSearchMatchModel.initFirebase();
         publichSearchMatchModel.loadList();
     }
 
@@ -101,16 +82,13 @@ public class PublicLocationSearchMatchDialogFragment extends DialogFragment impl
 
     private void initRecyclerView() {
         RecyclerView recyclerView = (RecyclerView) contentView.findViewById(R.id.PublicLocationRecyclerView);
-        adapter = new ChoosePublicLocationAdapter(this, publichSearchMatchModel.getMatchList());
-        //loadItemsInBackground();
+        ChoosePublicLocationAdapter adapter = new ChoosePublicLocationAdapter(this, publichSearchMatchModel.getMatchList());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
     }
 
     private View getContentView() {
         contentView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_public_location_search_match, null);
-        //contentView.setClipToOutline(true);
-        //checkBox = contentView.findViewById(R.id.CheckBox);
 
         final FragmentActivity activity = getActivity();
         if (activity instanceof PublicLocationSearchMatchDialogFragment.ChooseLocationItemDialogListener) {
@@ -120,23 +98,6 @@ public class PublicLocationSearchMatchDialogFragment extends DialogFragment impl
         }
 
         noLocations = contentView.findViewById(R.id.noLocationTextView);
-
-        //loadList(contentView);
-
-
         return contentView;
     }
-
-
-
-    public void setItem(PublicLocation item) {
-        this.item = item;
-    }
-
-
-    public void setOpenDays(ArrayList<Boolean> openDays) {
-        this.openDays = openDays;
-    }
-
-
 }

@@ -3,12 +3,6 @@ package hu.bme.aut.fitnessapp.Controllers.User.Locations;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-/*
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-
- */
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -19,15 +13,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-import hu.bme.aut.fitnessapp.Models.User.Locations.LocationModel;
+import hu.bme.aut.fitnessapp.Controllers.Adapters.PublicLocationAdapter;
+import hu.bme.aut.fitnessapp.Models.UserModels.LocationModels.LocationModel;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Controllers.User.NavigationActivity;
-import hu.bme.aut.fitnessapp.Adapters.UserPublicLocationAdapter;
-import hu.bme.aut.fitnessapp.Adapters.LocationAdapter;
+import hu.bme.aut.fitnessapp.Controllers.Adapters.LocationAdapter;
 import hu.bme.aut.fitnessapp.Entities.Location;
 import hu.bme.aut.fitnessapp.Entities.PublicLocation;
 
-public class LocationActivity extends NavigationActivity implements NewLocationItemDialogFragment.NewLocationItemDialogListener, LocationAdapter.LocationItemDeletedListener, LocationAdapter.LocationItemSelectedListener, EditLocationItemDialogFragment.EditLocationItemDialogListener, UserPublicLocationAdapter.LocationItemDeletedListener, UserPublicLocationAdapter.LocationItemSelectedListener,
+public class LocationActivity extends NavigationActivity implements NewLocationItemDialogFragment.NewLocationItemDialogListener, LocationAdapter.LocationItemDeletedListener, LocationAdapter.LocationItemSelectedListener, EditLocationItemDialogFragment.EditLocationItemDialogListener, PublicLocationAdapter.LocationItemDeletedListener, PublicLocationAdapter.LocationItemSelectedListener,
         LocationModel.LocationsLoaded, LocationModel.PublicLocationsLoaded
 {
 
@@ -44,7 +38,6 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
 
         PublicLocation publicLocation = getLocationIntent();
         locationModel = new LocationModel(this, publicLocation);
-        locationModel.initFirebase();
         locationModel.loadLocations();
         locationModel.loadListPublic();
 
@@ -85,7 +78,7 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
 
     public void initRecyclerView2(ArrayList<PublicLocation> public_itemlist) {
         RecyclerView recyclerViewPublic = findViewById(R.id.PublicLocationRecyclerView);
-        UserPublicLocationAdapter publicAdapter = new UserPublicLocationAdapter(this, this, public_itemlist);
+        PublicLocationAdapter publicAdapter = new PublicLocationAdapter(this, this, public_itemlist);
         recyclerViewPublic.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewPublic.setAdapter(publicAdapter);
     }
@@ -126,9 +119,6 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
         Intent intent = new Intent(LocationActivity.this, ViewPublicLocationDetailsActivity.class);
         intent.putExtra("location", item);
         startActivity(intent);
-
-        //Intent exercisesIntent = new Intent(LocationActivity.this, MapActivity.class);
-        //startActivity(exercisesIntent);
     }
 
     @Override

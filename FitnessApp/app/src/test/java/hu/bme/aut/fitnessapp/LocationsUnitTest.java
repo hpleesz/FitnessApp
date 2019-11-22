@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import hu.bme.aut.fitnessapp.Entities.PublicLocation;
 import hu.bme.aut.fitnessapp.Controllers.User.Locations.PublicLocationSearchMatchDialogFragment;
-import hu.bme.aut.fitnessapp.Models.User.Locations.PublicSearchMatchModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.LocationModels.PublicSearchMatchModel;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -15,12 +15,12 @@ import static org.junit.Assert.assertTrue;
 
 public class LocationsUnitTest {
     private PublicLocationSearchMatchDialogFragment publicLocationSearchMatchDialogFragment;
-    private PublicSearchMatchModel publichSearchMatchModel;
+    private PublicSearchMatchModel publicSearchMatchModel;
 
     @Before
     public void initLocations() {
         publicLocationSearchMatchDialogFragment = new PublicLocationSearchMatchDialogFragment();
-        publichSearchMatchModel = new PublicSearchMatchModel(publicLocationSearchMatchDialogFragment, new PublicLocation(), new ArrayList<Boolean>());
+        publicSearchMatchModel = new PublicSearchMatchModel(publicLocationSearchMatchDialogFragment, new PublicLocation(), new ArrayList<Boolean>());
     }
 
     @Test
@@ -29,10 +29,10 @@ public class LocationsUnitTest {
         open_hours.add(new String[]{"08:00", "17:00"});
         open_hours.add(new String[]{"", ""});
 
-        publichSearchMatchModel.setPublicLocation(new PublicLocation(0, "Name", new ArrayList<Integer>(), open_hours,
+        publicSearchMatchModel.setPublicLocation(new PublicLocation(0, "Name", new ArrayList<Integer>(), open_hours,
                 "Description", "Zip", "Country", "City", "Address", "Creator"));
 
-        ArrayList<Integer[]> times = publichSearchMatchModel.convertTimesToInt();
+        ArrayList<Integer[]> times = publicSearchMatchModel.convertTimesToInt();
 
         ArrayList<Integer[]> converted = new ArrayList<>();
         converted.add(new Integer[]{800, 1700});
@@ -47,29 +47,29 @@ public class LocationsUnitTest {
 
     @Test
     public void locationDetailsMatchTest() {
-        publichSearchMatchModel.setPublicLocation(new PublicLocation(0, "Name", new ArrayList<Integer>(),
+        publicSearchMatchModel.setPublicLocation(new PublicLocation(0, "Name", new ArrayList<Integer>(),
                 new ArrayList<String[]>(), "Description", "Zip", "Country", "City", "Address",
                 "Creator"));
 
         PublicLocation location = new PublicLocation(0, "Name", new ArrayList<Integer>(), new ArrayList<String[]>(),
                 "Description", "Zip", "Country", "City", "Address", "Creator");
 
-        boolean val = publichSearchMatchModel.locationDetailsMatch(location);
+        boolean val = publicSearchMatchModel.locationDetailsMatch(location);
         assertTrue(val);
 
-        publichSearchMatchModel.setPublicLocation(new PublicLocation(0, "", new ArrayList<Integer>(),
+        publicSearchMatchModel.setPublicLocation(new PublicLocation(0, "", new ArrayList<Integer>(),
                 new ArrayList<String[]>(), "", "", "", "", "Address",
                 ""));
 
-        val = publichSearchMatchModel.locationDetailsMatch(location);
+        val = publicSearchMatchModel.locationDetailsMatch(location);
         assertTrue(val);
 
 
-        publichSearchMatchModel.setPublicLocation(new PublicLocation(0, "", new ArrayList<Integer>(),
+        publicSearchMatchModel.setPublicLocation(new PublicLocation(0, "", new ArrayList<Integer>(),
                 new ArrayList<String[]>(), "Description2", "Zip2", "", "City", "Address",
                 "Creator"));
 
-        val = publichSearchMatchModel.locationDetailsMatch(location);
+        val = publicSearchMatchModel.locationDetailsMatch(location);
         assertFalse(val);
     }
 
@@ -90,24 +90,24 @@ public class LocationsUnitTest {
         openDays.add(true);
         openDays.add(false);
 
-        publichSearchMatchModel.setOpenDays(openDays);
+        publicSearchMatchModel.setOpenDays(openDays);
 
-        boolean val = publichSearchMatchModel.compareTimes(converted, loc);
+        boolean val = publicSearchMatchModel.compareTimes(converted, loc);
 
         assertTrue(val);
 
         converted.set(0, new Integer[]{800, 1800});
 
-        val = publichSearchMatchModel.compareTimes(converted, loc);
+        val = publicSearchMatchModel.compareTimes(converted, loc);
 
         assertFalse(val);
 
         converted.set(0, new Integer[]{800, 1600});
         openDays.set(1, true);
 
-        publicLocationSearchMatchDialogFragment.setOpenDays(openDays);
+        publicSearchMatchModel.setOpenDays(openDays);
 
-        val = publichSearchMatchModel.compareTimes(converted, loc);
+        val = publicSearchMatchModel.compareTimes(converted, loc);
 
         assertFalse(val);
 

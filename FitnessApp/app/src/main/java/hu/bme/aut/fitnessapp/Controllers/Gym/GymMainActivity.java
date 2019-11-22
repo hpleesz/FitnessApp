@@ -2,10 +2,6 @@ package hu.bme.aut.fitnessapp.Controllers.Gym;
 
 import android.content.Intent;
 import android.os.Bundle;
-//import android.support.design.widget.FloatingActionButton;
-//import android.support.v7.widget.LinearLayoutManager;
-//import android.support.v7.widget.RecyclerView;
-//import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,10 +15,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 import hu.bme.aut.fitnessapp.Controllers.InternetCheckActivity;
-import hu.bme.aut.fitnessapp.Models.Gym.GymMainModel;
+import hu.bme.aut.fitnessapp.Models.GymModels.GymMainModel;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Controllers.Startup.LoginActivity;
-import hu.bme.aut.fitnessapp.Adapters.PublicLocationAdapter;
+import hu.bme.aut.fitnessapp.Controllers.Adapters.PublicLocationAdapter;
 import hu.bme.aut.fitnessapp.Entities.PublicLocation;
 
 public class GymMainActivity extends InternetCheckActivity implements PublicLocationAdapter.LocationItemDeletedListener, PublicLocationAdapter.LocationItemSelectedListener,
@@ -39,7 +35,6 @@ public class GymMainActivity extends InternetCheckActivity implements PublicLoca
 
         PublicLocation publicLocation = getPublicLocationIntent();
         gymMainModel = new GymMainModel(this, publicLocation);
-        gymMainModel.initFirebase();
         gymMainModel.loadList();
 
         setFloatingActionButton();
@@ -85,7 +80,6 @@ public class GymMainActivity extends InternetCheckActivity implements PublicLoca
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_gym, menu);
         return true;
     }

@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-//import android.support.design.widget.FloatingActionButton;
-//import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -17,10 +15,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 import hu.bme.aut.fitnessapp.Controllers.InternetCheckActivity;
-import hu.bme.aut.fitnessapp.Models.User.Workout.StretchWarmUpModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.StretchWarmUpModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.VideoModel;
 import hu.bme.aut.fitnessapp.R;
 
-public class StretchWarmUpActivity extends InternetCheckActivity implements StretchWarmUpModel.ExercisesEndListener, StretchWarmUpModel.ExerciseListener, StretchWarmUpModel.ExerciseListLoadedListener {
+public class StretchWarmUpActivity extends InternetCheckActivity implements StretchWarmUpModel.ExercisesEndListener, StretchWarmUpModel.ExerciseListener, StretchWarmUpModel.ExerciseListLoadedListener, VideoModel.VideoLoadedListener {
 
     private boolean lower = true;
     private ArrayList<String> items;

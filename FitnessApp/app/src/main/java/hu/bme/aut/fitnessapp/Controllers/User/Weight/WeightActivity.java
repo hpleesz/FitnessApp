@@ -34,36 +34,18 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-import hu.bme.aut.fitnessapp.Models.User.Weight.WeightModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WeightModels.WeightModel;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Controllers.User.NavigationActivity;
-import hu.bme.aut.fitnessapp.Adapters.WeightAdapter;
+import hu.bme.aut.fitnessapp.Controllers.Adapters.WeightAdapter;
 import hu.bme.aut.fitnessapp.Entities.Measurement;
 import hu.bme.aut.fitnessapp.Entities.User;
 
 public class WeightActivity extends NavigationActivity implements NewWeightItemDialogFragment.NewWeightDialogListener, WeightAdapter.WeightItemDeletedListener, PeriodSelectDialogFragment.PeriodSelectDialogListener, com.github.mikephil.charting.listener.OnChartValueSelectedListener,
 WeightModel.ChartListener, WeightModel.WeightListListener{
 
-    //private enum Period {
-    //    ALL, MONTH, WEEK
-    //}
-
-    //private DatabaseReference databaseReference;
-    //private String userId;
     private LineChart chart;
-    //private ArrayList<Measurement> itemlist;
-    private WeightModel.Period period = WeightModel.Period.ALL;
 
-    private long starting_date;
-    private double starting_weight;
-
-    private double goal_weight;
-
-    private User user;
-    private WeightAdapter adapter;
-
-
-    public static final String PROGRESS = "weight progress";
     public static final String PERIOD = "period";
 
     private WeightModel weightModel;
@@ -78,23 +60,17 @@ WeightModel.ChartListener, WeightModel.WeightListListener{
 
         initializeValues();
         weightModel.setPeriod();
-        //loadProgressInfo();
-        //loadList();
+
         setFloatingActionButton();
     }
 
     public void initializeValues() {
 
         weightModel = new WeightModel(this);
-        weightModel.initFirebase();
         weightModel.loadProgressInfo();
         weightModel.loadList();
 
         chart = (LineChart) findViewById(R.id.chartWeight);
-
-        //FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        //userId = firebaseAuth.getCurrentUser().getUid();
-        //databaseReference = FirebaseDatabase.getInstance().getReference();
 
     }
 
@@ -126,10 +102,7 @@ WeightModel.ChartListener, WeightModel.WeightListListener{
         yAxisLeft.setAxisLineWidth(3f);
         yAxisLeft.setAxisLineColor(ContextCompat.getColor(getBaseContext(), R.color.colorBlack));
 
-
-        //float goal = sharedPreferences.getFloat("Goal weight", 0);
-
-        LimitLine limitLine = new LimitLine((float) goal_weight, "Goal");
+        LimitLine limitLine = new LimitLine((float) weightModel.getGoal_weight(), "Goal");
         limitLine.setLineColor(ContextCompat.getColor(getBaseContext(), R.color.colorAccent));
         limitLine.setLineWidth(2f);
         limitLine.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorAccent));
@@ -154,7 +127,7 @@ WeightModel.ChartListener, WeightModel.WeightListListener{
 
     public void initRecyclerView(ArrayList<Measurement> itemlist) {
         RecyclerView recyclerView = findViewById(R.id.WeightRecyclerView);
-        adapter = new WeightAdapter(this, itemlist);
+        WeightAdapter adapter = new WeightAdapter(this, itemlist);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
@@ -193,37 +166,6 @@ WeightModel.ChartListener, WeightModel.WeightListListener{
         //checkProgress();
     }
 
-    /*
-    public void checkProgress() {
-
-        if(user != null) {
-            if (isGoalReached()) {
-                if (!user.goal_reached) {
-                    user.goal_reached = true;
-                    new NewGoalReachedDialogFragment().show(getSupportFragmentManager(), NewGoalReachedDialogFragment.TAG);
-
-                }
-            } else {
-                if (user.goal_reached)
-                    user.goal_reached = false;
-            }
-            databaseReference.child("Users").child(userId).child("goal_reached").setValue(user.goal_reached);
-        }
-
-    }
-
-    public boolean isGoalReached() {
-
-        double current_weight = itemlist.get(itemlist.size()-1).value;
-
-        if (goal_weight > starting_weight) return (current_weight / goal_weight) >= 1;
-        else if (goal_weight < starting_weight) return (current_weight / goal_weight) <= 1;
-        else return (current_weight / goal_weight) == 1;
-    }
-
-
-     */
-
     @Override
     public void onPeriodSelected() {
         weightModel.setPeriod();
@@ -258,39 +200,6 @@ WeightModel.ChartListener, WeightModel.WeightListListener{
         //databaseReference.child("Weight").child(userId).child(item.date).removeValue();
         //checkProgress();
     }
-
-
-    /*
-    public void loadProgressInfo() {
-
-        ValueEventListener eventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                user = dataSnapshot.getValue(User.class);
-                try {
-                    goal_weight = user.goal_weight;
-                }
-                catch (Exception e) {
-                    goal_weight = user.goal_weight.doubleValue();
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
-            }
-
-        };
-        databaseReference.child("Users").child(userId).addValueEventListener(eventListener);
-
-
-        // [END post_value_event_listener]
-
-        // Keep copy of post listener so we can remove it when app stops
-        //this.eventListener = eventListener;
-    }
-
-     */
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {

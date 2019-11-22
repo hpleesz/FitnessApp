@@ -27,9 +27,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import hu.bme.aut.fitnessapp.Models.User.Locations.LocationItemModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.LocationModels.LocationItemModel;
 import hu.bme.aut.fitnessapp.R;
-import hu.bme.aut.fitnessapp.Adapters.EquipmentAdapter;
+import hu.bme.aut.fitnessapp.Controllers.Adapters.EquipmentAdapter;
 import hu.bme.aut.fitnessapp.Entities.Equipment;
 import hu.bme.aut.fitnessapp.Entities.Location;
 
@@ -97,7 +97,6 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
         }
 
         locationItemModel = new LocationItemModel(this);
-        locationItemModel.initFirebase();
         locationItemModel.loadEquipment();
     }
 
@@ -130,7 +129,6 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
     public void initRecyclerView(ArrayList<Equipment> equipmentList) {
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.EquipmentRecyclerView);
         adapter = new EquipmentAdapter(this, equipmentList);
-        //loadItemsInBackground();
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
     }
@@ -138,10 +136,6 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
     public View getContentView() {
         view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_new_location_item, null);
         nameEditText = view.findViewById(R.id.LocationNameEditText);
-
-        //loadEquipment(view);
-
-
         return view;
     }
 

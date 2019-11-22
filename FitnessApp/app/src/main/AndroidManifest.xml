@@ -43,10 +43,6 @@
             android:label="@string/title_activity_water"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <service
-            android:name=".BroadcastReceivers.ResetWaterService"
-            android:exported="false" />
-
         <activity
             android:name=".Controllers.User.Locations.ViewPublicLocationDetailsActivity"
             android:label="@string/title_activity_view_public_location_details"
@@ -79,8 +75,6 @@
             </intent-filter>
         </receiver>
         <receiver android:name=".BroadcastReceivers.NotificationReceiver" />
-        <receiver android:name=".BroadcastReceivers.ResetWaterReceiver" />
-
         <activity
             android:name=".Controllers.Gym.GymMainActivity"
             android:label="@string/title_activity_gym_main"

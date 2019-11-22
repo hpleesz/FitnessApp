@@ -12,7 +12,7 @@ import android.widget.Toast;
 import hu.bme.aut.fitnessapp.Controllers.Gym.GymMainActivity;
 import hu.bme.aut.fitnessapp.Controllers.InternetCheckActivity;
 import hu.bme.aut.fitnessapp.Controllers.User.Workout.MainActivity;
-import hu.bme.aut.fitnessapp.Models.Startup.LoginModel;
+import hu.bme.aut.fitnessapp.Models.StartupModels.LoginModel;
 import hu.bme.aut.fitnessapp.R;
 
 public class LoginActivity extends InternetCheckActivity implements LoginModel.loginListener{
@@ -35,6 +35,7 @@ public class LoginActivity extends InternetCheckActivity implements LoginModel.l
         initializeLayoutElements();
         loginModel = new LoginModel(this);
         loginModel.initFirebase();
+
         setLoginClickListener();
         setRegisterClickListener();
     }

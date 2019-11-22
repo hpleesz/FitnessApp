@@ -2,16 +2,9 @@ package hu.bme.aut.fitnessapp.Controllers.User.Measurements;
 
 import android.content.Context;
 import android.os.Bundle;
-/*
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;*/
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -32,9 +25,9 @@ import com.github.mikephil.charting.highlight.Highlight;
 import java.util.ArrayList;
 import java.util.List;
 
-import hu.bme.aut.fitnessapp.Models.User.Measurements.MeasurementsGraphFragmentModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.MeasurementModels.MeasurementsGraphFragmentModel;
 import hu.bme.aut.fitnessapp.R;
-import hu.bme.aut.fitnessapp.Adapters.MeasurementAdapter;
+import hu.bme.aut.fitnessapp.Controllers.Adapters.MeasurementAdapter;
 import hu.bme.aut.fitnessapp.Entities.Measurement;
 import hu.bme.aut.fitnessapp.Controllers.User.Weight.DateFormatter;
 
@@ -64,13 +57,14 @@ public class MeasurementsGraphFragment extends Fragment implements com.github.mi
             bodyPart = bundle.getString("body part", "Shoulders");
         }
         newModel();
+        /*
         rootView.getViewTreeObserver().addOnWindowFocusChangeListener(new ViewTreeObserver.OnWindowFocusChangeListener() {
             @Override
             public void onWindowFocusChanged(boolean hasFocus) {
                 //newModel();
                 //measurementsGraphFragmentModel.setBodyPart(bodyPart);
             }
-        });
+        });*/
 
         TextView title = (TextView) rootView.findViewById(R.id.measurementsEntries);
         String text = bodyPart + " " + getString(R.string.entries);
@@ -88,7 +82,6 @@ public class MeasurementsGraphFragment extends Fragment implements com.github.mi
 
     private void newModel() {
         measurementsGraphFragmentModel = new MeasurementsGraphFragmentModel(this, bodyPart);
-        measurementsGraphFragmentModel.initFirebase();
         measurementsGraphFragmentModel.loadList();
     }
 
@@ -165,24 +158,25 @@ public class MeasurementsGraphFragment extends Fragment implements com.github.mi
         }
     }
 
+    /*
     @Override
     public void onResume() {
         super.onResume();
 
-        /*
+
         if(measurementsGraphFragmentModel == null) {
             //measurementsGraphFragmentModel = new MeasurementsGraphFragmentModel(this, bodyPart);
 
         }
         else
 
-         */
+
         //measurementsGraphFragmentModel.loadList();
         //newModel();
 
 
         //measurementsGraphFragmentModel.loadList();
-    }
+    }*/
 
 
     @Override

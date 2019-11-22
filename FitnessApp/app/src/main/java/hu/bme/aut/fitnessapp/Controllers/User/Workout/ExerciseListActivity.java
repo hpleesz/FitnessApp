@@ -18,10 +18,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 import hu.bme.aut.fitnessapp.Controllers.InternetCheckActivity;
-import hu.bme.aut.fitnessapp.Models.User.Workout.ExerciseListModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.ExerciseListModel;
 import hu.bme.aut.fitnessapp.R;
-import hu.bme.aut.fitnessapp.Adapters.ExerciseAdapter;
-import hu.bme.aut.fitnessapp.Entities.Equipment;
+import hu.bme.aut.fitnessapp.Controllers.Adapters.ExerciseAdapter;
 import hu.bme.aut.fitnessapp.Entities.Exercise;
 
 public class ExerciseListActivity extends InternetCheckActivity implements ExerciseListModel.EquipmentLoadedListener{

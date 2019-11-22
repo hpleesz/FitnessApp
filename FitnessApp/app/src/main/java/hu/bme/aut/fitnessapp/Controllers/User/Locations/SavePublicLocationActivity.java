@@ -2,7 +2,6 @@ package hu.bme.aut.fitnessapp.Controllers.User.Locations;
 
 import android.content.Intent;
 import android.os.Bundle;
-//import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.CheckBox;
 
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 
 import hu.bme.aut.fitnessapp.Controllers.Gym.NewPublicLocationActivity;
 import hu.bme.aut.fitnessapp.R;
-import hu.bme.aut.fitnessapp.Adapters.EquipmentAdapter;
+import hu.bme.aut.fitnessapp.Controllers.Adapters.EquipmentAdapter;
 import hu.bme.aut.fitnessapp.Entities.PublicLocation;
 
 public class SavePublicLocationActivity extends NewPublicLocationActivity implements EquipmentAdapter.OnCheckBoxClicked, PublicLocationSearchMatchDialogFragment.ChooseLocationItemDialogListener {

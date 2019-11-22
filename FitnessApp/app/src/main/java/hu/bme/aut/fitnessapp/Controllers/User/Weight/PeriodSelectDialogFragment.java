@@ -5,14 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-/*
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AlertDialog;
 
- */
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioButton;
@@ -30,9 +23,9 @@ public class PeriodSelectDialogFragment extends DialogFragment {
 
     public static final String TAG = "PeriodSelectDialogFragment";
 
-    RadioButton allButton;
-    RadioButton monthButton;
-    RadioButton weekButton;
+    private RadioButton allButton;
+    private RadioButton monthButton;
+    private RadioButton weekButton;
 
     public interface PeriodSelectDialogListener {
         void onPeriodSelected();
@@ -98,7 +91,7 @@ public class PeriodSelectDialogFragment extends DialogFragment {
         return contentView;
     }
 
-    public void onRadioButtonClicked(View view) {
+    private void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(WeightActivity.PERIOD, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -119,7 +112,7 @@ public class PeriodSelectDialogFragment extends DialogFragment {
         editor.apply();
     }
 
-    public void setCurrentlyChecked() {
+    private void setCurrentlyChecked() {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(WeightActivity.PERIOD, Context.MODE_PRIVATE);
         String settings = sharedPreferences.getString("Period", "all");
         switch (settings) {

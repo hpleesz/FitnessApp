@@ -14,11 +14,10 @@ import hu.bme.aut.fitnessapp.Controllers.User.Workout.ExerciseInfoActivity;
 import hu.bme.aut.fitnessapp.Controllers.User.Workout.MainActivity;
 import hu.bme.aut.fitnessapp.Controllers.User.Workout.StretchActivity;
 import hu.bme.aut.fitnessapp.Controllers.User.Workout.WarmUpActivity;
-import hu.bme.aut.fitnessapp.Models.User.Water.WaterModel;
-import hu.bme.aut.fitnessapp.Models.User.Workout.ExerciseInfoModel;
-import hu.bme.aut.fitnessapp.Models.User.Workout.MainModel;
-import hu.bme.aut.fitnessapp.Models.User.Workout.StretchModel;
-import hu.bme.aut.fitnessapp.Models.User.Workout.WarmUpModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.ExerciseInfoModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.MainModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.StretchModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.WarmUpModel;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

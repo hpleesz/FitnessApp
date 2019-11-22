@@ -7,7 +7,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import hu.bme.aut.fitnessapp.Controllers.User.Settings.SettingsActivity;
-import hu.bme.aut.fitnessapp.Models.User.Settings.SettingsModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.SettingsModels.SettingsModel;
 
 
 public class SettingsUnitTest {

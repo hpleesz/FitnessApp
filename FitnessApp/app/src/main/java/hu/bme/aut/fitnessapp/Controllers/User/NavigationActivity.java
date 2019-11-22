@@ -2,16 +2,7 @@ package hu.bme.aut.fitnessapp.Controllers.User;
 
 import android.content.Intent;
 import android.os.Bundle;
-/*
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 
- */
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -111,7 +102,7 @@ public class NavigationActivity extends InternetCheckActivity {
                             }
                             case R.id.nav_logout: {
                                 FirebaseAuth.getInstance().signOut();
-                                Intent intent= new Intent(NavigationActivity.this, LoginActivity.class);
+                                Intent intent = new Intent(NavigationActivity.this, LoginActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                                 break;

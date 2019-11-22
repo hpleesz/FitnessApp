@@ -3,35 +3,22 @@ package hu.bme.aut.fitnessapp.Controllers.User.Measurements;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-//import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import hu.bme.aut.fitnessapp.Models.User.Measurements.MeasurementsModel;
+import hu.bme.aut.fitnessapp.Models.UserModels.MeasurementModels.MeasurementsModel;
 import hu.bme.aut.fitnessapp.R;
 import hu.bme.aut.fitnessapp.Controllers.User.NavigationActivity;
-import hu.bme.aut.fitnessapp.Entities.User;
 
 public class MeasurementsActivity extends NavigationActivity implements MeasurementsModel.GenderListener, MeasurementsModel.CurrentMeasurementsListener{
 
-    private Map<String, Double> list;
-    private List<String> body_parts;
-
-    private DatabaseReference databaseReference;
-    private String userId;
-
-    private User user;
     private LayoutInflater inflater;
-
-    private MeasurementsModel measurementsModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +26,7 @@ public class MeasurementsActivity extends NavigationActivity implements Measurem
 
         inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        measurementsModel = new MeasurementsModel(this);
+        MeasurementsModel measurementsModel = new MeasurementsModel(this);
         measurementsModel.loadUser();
 
 
@@ -47,7 +34,6 @@ public class MeasurementsActivity extends NavigationActivity implements Measurem
 
     public void setDrawerLayout(int gender) {
         View contentView;
-        //boolean gender = true;
         if (gender == 0) {
             contentView = inflater.inflate(R.layout.activity_measurements_male_2, null, false);
 
