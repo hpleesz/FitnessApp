@@ -38,7 +38,7 @@ public class ChooseLocationItemDialogFragment extends DialogFragment implements 
 
     private TextView noLocationTV;
 
-    ChooseLocationItemModel chooseLocationItemModel;
+    private ChooseLocationItemModel chooseLocationItemModel;
 
     private View contentView;
 
@@ -109,11 +109,15 @@ public class ChooseLocationItemDialogFragment extends DialogFragment implements 
         contentView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_choose_location_item, null);
         noLocationTV = (TextView) contentView.findViewById(R.id.noLocationTextView);
 
+        return contentView;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         chooseLocationItemModel = new ChooseLocationItemModel(this);
         chooseLocationItemModel.loadLocations();
         chooseLocationItemModel.loadPublicLocations();
-
-        return contentView;
     }
 
     public void initRecyclerView2() {
@@ -141,5 +145,11 @@ public class ChooseLocationItemDialogFragment extends DialogFragment implements 
         }
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter2);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        chooseLocationItemModel.removeListeners();
     }
 }

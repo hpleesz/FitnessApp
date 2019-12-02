@@ -68,6 +68,11 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
         ArrayList<Exercise> exerciseItems = (ArrayList<Exercise>) i.getSerializableExtra("exercises");
         //ArrayList<Equipment> equipmentItems = (ArrayList<Equipment>) i.getSerializableExtra("equipment");
         exerciseInfoModel = new ExerciseInfoModel(this, exerciseItems);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         exerciseInfoModel.loadWorkoutDetails();
         exerciseInfoModel.loadUserDetails();
     }
@@ -208,5 +213,11 @@ public class ExerciseInfoActivity extends NavigationActivity implements Exercise
     public void onLayoutReady() {
         setLayoutElements();
         setFloatingActionButtons();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        exerciseInfoModel.removeListeners();
     }
 }

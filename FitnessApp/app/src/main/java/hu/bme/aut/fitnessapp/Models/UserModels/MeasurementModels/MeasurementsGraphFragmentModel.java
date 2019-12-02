@@ -23,13 +23,15 @@ public class MeasurementsGraphFragmentModel implements LoadMeasurements.Measurem
 
     private MeasurementsGraphFragmentModel.ListLoadedListener listLoadedListener;
 
+    private LoadMeasurements loadMeasurements;
+
     public MeasurementsGraphFragmentModel(Fragment fragment, String bodyPart) {
         listLoadedListener = (MeasurementsGraphFragmentModel.ListLoadedListener)fragment;
         this.bodyPart = bodyPart;
     }
 
     public void loadList() {
-        LoadMeasurements loadMeasurements = new LoadMeasurements();
+        loadMeasurements = new LoadMeasurements();
         loadMeasurements.setMeasurementsByBodyPartLoadedListener(this);
         loadMeasurements.loadMeasurementsByBodyPart(bodyPart);
     }
@@ -37,11 +39,19 @@ public class MeasurementsGraphFragmentModel implements LoadMeasurements.Measurem
     @Override
     public void onMeasurementsByBodyPartLoaded(ArrayList<Measurement> measurements) {
         itemlist = measurements;
-        listLoadedListener.onListLoaded(itemlist);
+        listLoadedListener.onListLoaded(reverseList());
 
         if(itemlist.size() > 0) {
             listLoadedListener.onChartUpdate(false);
         }
+    }
+
+    private ArrayList<Measurement> reverseList() {
+        ArrayList<Measurement> reverseList = new ArrayList<>();
+        for(int i = itemlist.size()-1; i >= 0; i--) {
+            reverseList.add(itemlist.get(i));
+        }
+        return reverseList;
     }
 
     public List<Entry> loadEntries() {
@@ -57,6 +67,10 @@ public class MeasurementsGraphFragmentModel implements LoadMeasurements.Measurem
 
     public void setBodyPart(String bodyPart) {
         this.bodyPart = bodyPart;
+    }
+
+    public void removeListeners() {
+        if(loadMeasurements != null) loadMeasurements.removeListeners();
     }
 
 }

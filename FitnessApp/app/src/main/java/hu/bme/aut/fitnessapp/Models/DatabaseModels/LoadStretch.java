@@ -19,8 +19,10 @@ public class LoadStretch extends DatabaseConnection{
         stretchLoadedListener = (LoadStretch.StretchLoadedListener)object;
     }
 
+    private ValueEventListener eventListener;
+
     public void loadStretch() {
-        ValueEventListener eventListener = new ValueEventListener() {
+        eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<String> items = new ArrayList<>();
@@ -33,8 +35,13 @@ public class LoadStretch extends DatabaseConnection{
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                databaseError.toException().printStackTrace();
             }
         };
         getDatabaseReference().child("Stretch").addValueEventListener(eventListener);
+    }
+
+    public void removeListeners() {
+        if(eventListener != null) getDatabaseReference().child("Stretch").removeEventListener(eventListener);
     }
 }

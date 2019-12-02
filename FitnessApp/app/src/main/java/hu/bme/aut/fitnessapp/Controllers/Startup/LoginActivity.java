@@ -33,6 +33,10 @@ public class LoginActivity extends InternetCheckActivity implements LoginModel.l
         setContentView(R.layout.activity_login);
 
         initializeLayoutElements();
+    }
+
+    public void onStart() {
+        super.onStart();
         loginModel = new LoginModel(this);
         loginModel.initFirebase();
 
@@ -104,5 +108,11 @@ public class LoginActivity extends InternetCheckActivity implements LoginModel.l
     @Override
     public void onLoginError(String message) {
         errorMessage(message);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        loginModel.removeListeners();
     }
 }

@@ -20,8 +20,10 @@ public class LoadProfile extends DatabaseConnection {
         listLoadedListener = (LoadProfile.ProfileLoadedListener)object;
     }
 
+    private ValueEventListener eventListener;
+
     public void loadProfile() {
-            ValueEventListener eventListener = new ValueEventListener() {
+            eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -32,6 +34,7 @@ public class LoadProfile extends DatabaseConnection {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                databaseError.toException().printStackTrace();
             }
         };
         getDatabaseReference().child("Profiles").child(getUserId()).addValueEventListener(eventListener);
@@ -43,5 +46,11 @@ public class LoadProfile extends DatabaseConnection {
 
     public void removeItem() {
         getDatabaseReference().child("Profiles").child(getUserId()).removeValue();
+    }
+
+    public void removeListeners() {
+        if(eventListener != null) {
+            getDatabaseReference().child("Profiles").child(getUserId()).removeEventListener(eventListener);
+        }
     }
 }

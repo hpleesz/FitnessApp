@@ -26,8 +26,10 @@ public class LoadUserPublicLocations extends DatabaseConnection{
 
     }
 
+    private ValueEventListener eventListener;
+
     public void loadUserPublicLocations() {
-        ValueEventListener eventListener = new ValueEventListener() {
+        eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<UserPublicLocation> publicIDs = new ArrayList<>();
@@ -44,7 +46,7 @@ public class LoadUserPublicLocations extends DatabaseConnection{
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
 
         };
@@ -78,7 +80,7 @@ public class LoadUserPublicLocations extends DatabaseConnection{
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
 
         });
@@ -91,6 +93,10 @@ public class LoadUserPublicLocations extends DatabaseConnection{
     public void addNewItem(int id, PublicLocation publicLocation) {
         getDatabaseReference().child("User_Public_Locations").child(getUserId()).child(Integer.toString(id)).setValue(Long.toString(publicLocation.id));
 
+    }
+
+    public void removeListeners() {
+        if(eventListener != null) getDatabaseReference().child("User_Public_Locations").child(getUserId()).removeEventListener(eventListener);
     }
 
 }

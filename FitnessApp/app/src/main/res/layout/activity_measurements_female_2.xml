@@ -50,33 +50,39 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:weightSum="3">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.7"
+                android:layout_weight="0.65"
                 android:gravity="end|bottom">
+
                 <TextView
                     android:id="@+id/rightUpperArmTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/measurements_filler" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.6"
+                android:layout_weight="1.7"
                 android:gravity="center">
+
                 <TextView
                     android:id="@+id/chestTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/measurements_filler" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.7"
+                android:layout_weight="0.65"
                 android:gravity="start|bottom">
+
                 <TextView
                     android:id="@+id/leftUpperArmTextView"
                     android:layout_width="wrap_content"
@@ -90,34 +96,40 @@
             android:layout_weight="1"
             android:layout_height="0dp"
             android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6"
+                android:layout_weight="0.55"
                 android:gravity="end|bottom">
+
                 <TextView
                     android:id="@+id/rightForearmTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/measurements_filler" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.7"
-                android:paddingTop="10dp"
-                android:gravity="center_horizontal|top">
+                android:layout_weight="1.8"
+                android:gravity="center_horizontal|top"
+                android:paddingTop="10dp">
+
                 <TextView
                     android:id="@+id/waistTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/measurements_filler" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6"
+                android:layout_weight="0.55"
                 android:gravity="start|bottom">
+
                 <TextView
                     android:id="@+id/leftForearmTextView"
                     android:layout_width="wrap_content"
@@ -144,26 +156,31 @@
             android:layout_height="0dp"
             android:orientation="horizontal"
             android:weightSum="2">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.8"
+                android:layout_weight="0.7"
                 android:gravity="center">
+
                 <TextView
                     android:id="@+id/rightThighTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/measurements_filler" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.4"></LinearLayout>
+                android:layout_weight="0.6"></LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.8"
+                android:layout_weight="0.7"
                 android:gravity="center">
+
                 <TextView
                     android:id="@+id/leftThighTextView"
                     android:layout_width="wrap_content"
@@ -178,27 +195,31 @@
             android:layout_height="0dp"
             android:orientation="horizontal"
             android:weightSum="2">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.8"
+                android:layout_weight="0.7"
                 android:gravity="center">
+
                 <TextView
                     android:id="@+id/rightCalfTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/measurements_filler" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.4"></LinearLayout>
+                android:layout_weight="0.6"></LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.8"
-                android:paddingStart="40dp"
-                android:gravity="center_vertical|start">
+                android:layout_weight="0.7"
+                android:gravity="center">
+
                 <TextView
                     android:id="@+id/leftCalfTextView"
                     android:layout_width="wrap_content"

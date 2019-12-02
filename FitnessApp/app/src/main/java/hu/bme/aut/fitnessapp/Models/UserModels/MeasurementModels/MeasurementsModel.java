@@ -24,13 +24,17 @@ public class MeasurementsModel implements LoadUser.UserLoadedListener, LoadBodyP
     private MeasurementsModel.CurrentMeasurementsListener measurementsListener;
     private MeasurementsModel.GenderListener genderListener;
 
+    private LoadMeasurements loadMeasurements;
+    private LoadBodyParts loadBodyParts;
+    private LoadUser loadUser;
+
     public MeasurementsModel(Object object) {
         measurementsListener = (MeasurementsModel.CurrentMeasurementsListener)object;
         genderListener = (MeasurementsModel.GenderListener)object;
     }
 
     public void loadBodyPartsDatabase() {
-        LoadBodyParts loadBodyParts = new LoadBodyParts(this);
+        loadBodyParts = new LoadBodyParts(this);
         loadBodyParts.loadBodyParts();
     }
 
@@ -42,7 +46,7 @@ public class MeasurementsModel implements LoadUser.UserLoadedListener, LoadBodyP
     }
 
     public void loadMeasurements() {
-        LoadMeasurements loadMeasurements = new LoadMeasurements();
+        loadMeasurements = new LoadMeasurements();
         loadMeasurements.setLastMeasurementsLoadedListener(this);
         loadMeasurements.loadLastMeasurements(this.body_parts);
     }
@@ -64,7 +68,7 @@ public class MeasurementsModel implements LoadUser.UserLoadedListener, LoadBodyP
     }
 
     public void loadUser() {
-        LoadUser loadUser = new LoadUser();
+        loadUser = new LoadUser();
         loadUser.setListLoadedListener(this);
         loadUser.loadUser();
     }
@@ -75,6 +79,12 @@ public class MeasurementsModel implements LoadUser.UserLoadedListener, LoadBodyP
         genderListener.onGenderLoaded(user.gender);
 
         loadBodyPartsDatabase();
+    }
+
+    public void removeListeners() {
+        if(loadMeasurements != null) loadMeasurements.removeListeners();
+        if(loadBodyParts != null) loadBodyParts.removeListeners();
+        if(loadUser != null) loadUser.removeListeners();
     }
 
 

@@ -93,12 +93,18 @@ public class NewMeasurementItemDialogFragment extends DialogFragment {
                 .create();
     }
 
+    public void onStart() {
+        super.onStart();
+        newMeasurementItemModel = new NewMeasurementItemModel();
+        newMeasurementItemModel.loadBodyParts();
+    }
+
     private View getContentView() {
         final View contentView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_new_measurement, null);
         TextView title = (TextView) contentView.findViewById(R.id.measurementFragmentTitle);
         title.setText(R.string.new_entry);
-        newMeasurementItemModel = new NewMeasurementItemModel();
-        newMeasurementItemModel.loadBodyParts();
+        //newMeasurementItemModel = new NewMeasurementItemModel();
+        //newMeasurementItemModel.loadBodyParts();
 
         datePicker = contentView.findViewById(R.id.datePicker);
         datePicker.setMaxDate(System.currentTimeMillis());
@@ -147,5 +153,11 @@ public class NewMeasurementItemDialogFragment extends DialogFragment {
         new_entries = newMeasurementItemModel.getMeasurementItems(measurements, date);
 
         return new_entries;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        newMeasurementItemModel.removeListeners();
     }
 }

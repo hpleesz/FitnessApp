@@ -51,6 +51,10 @@ public class GymMainModel implements LoadPublicLocations.PublicLocationsByCreato
         FirebaseAuth.getInstance().signOut();
     }
 
+    public void removeListeners() {
+        if(loadPublicLocations != null) loadPublicLocations.removeListeners();
+    }
+
 }
 
 

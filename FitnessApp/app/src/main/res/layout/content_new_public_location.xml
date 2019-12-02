@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:text="Description"
+            android:text="@string/description"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:text="Country"
+            android:text="@string/country"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:text="City"
+            android:text="@string/city"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -81,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:text="Zip"
+            android:text="@string/zip"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -97,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:text="Address"
+            android:text="@string/address"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -113,7 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:text="Open days / hours:"
+            android:text="@string/open_days_hours"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -143,7 +143,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Mon"/>
+                    android:text="@string/monday"/>
                 <EditText
                     android:id="@+id/MonStart"
                     android:layout_width="match_parent"
@@ -184,7 +184,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Tues"/>
+                    android:text="@string/tuesday"/>
                 <EditText
                     android:id="@+id/TuesStart"
                     android:layout_width="match_parent"
@@ -225,7 +225,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Wed"/>
+                    android:text="@string/wednesday"/>
                 <EditText
                     android:id="@+id/WedStart"
                     android:layout_width="match_parent"
@@ -266,7 +266,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Thurs"/>
+                    android:text="@string/thursday"/>
                 <EditText
                     android:id="@+id/ThursStart"
                     android:layout_width="match_parent"
@@ -307,7 +307,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Fri"/>
+                    android:text="@string/friday"/>
                 <EditText
                     android:id="@+id/FriStart"
                     android:layout_width="match_parent"
@@ -348,7 +348,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Sat"/>
+                    android:text="@string/saturday"/>
                 <EditText
                     android:id="@+id/SatStart"
                     android:layout_width="match_parent"
@@ -389,7 +389,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Sun"/>
+                    android:text="@string/sunday"/>
                 <EditText
                     android:id="@+id/SunStart"
                     android:layout_width="match_parent"

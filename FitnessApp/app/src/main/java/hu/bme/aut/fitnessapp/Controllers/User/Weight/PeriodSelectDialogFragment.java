@@ -17,6 +17,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import hu.bme.aut.fitnessapp.R;
 
 public class PeriodSelectDialogFragment extends DialogFragment {
@@ -95,18 +97,19 @@ public class PeriodSelectDialogFragment extends DialogFragment {
         boolean checked = ((RadioButton) view).isChecked();
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(WeightActivity.PERIOD, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         switch (view.getId()) {
             case R.id.allRadioButton:
                 if (checked)
-                    editor.putString("Period", "all");
+                    editor.putString(userID, "all");
                 break;
             case R.id.monthRadioButton:
                 if (checked)
-                    editor.putString("Period", "month");
+                    editor.putString(userID, "month");
                 break;
             case R.id.weekRadioButton:
                 if (checked)
-                    editor.putString("Period", "week");
+                    editor.putString(userID, "week");
                 break;
         }
         editor.apply();
@@ -114,7 +117,8 @@ public class PeriodSelectDialogFragment extends DialogFragment {
 
     private void setCurrentlyChecked() {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(WeightActivity.PERIOD, Context.MODE_PRIVATE);
-        String settings = sharedPreferences.getString("Period", "all");
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String settings = sharedPreferences.getString(userID, "all");
         switch (settings) {
             case "all":
                 allButton.setChecked(true);

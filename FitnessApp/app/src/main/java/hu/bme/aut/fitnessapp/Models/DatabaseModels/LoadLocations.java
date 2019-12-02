@@ -25,8 +25,10 @@ public class LoadLocations extends DatabaseConnection{
 
     }
 
+    private ValueEventListener eventListener;
+
     public void loadLocations() {
-        ValueEventListener eventListener = new ValueEventListener() {
+        eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Location> itemlist = new ArrayList<>();
@@ -52,7 +54,7 @@ public class LoadLocations extends DatabaseConnection{
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
 
         };
@@ -85,4 +87,7 @@ public class LoadLocations extends DatabaseConnection{
 
     }
 
+    public void removeListeners() {
+        if(eventListener != null)getDatabaseReference().child("Locations").child(getUserId()).removeEventListener(eventListener);
+    }
 }

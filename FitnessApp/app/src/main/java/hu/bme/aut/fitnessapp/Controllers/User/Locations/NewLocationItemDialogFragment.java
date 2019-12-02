@@ -95,6 +95,10 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
         } else {
             throw new RuntimeException("Activity must implement the NewLocationItemDialogListener interface!");
         }
+    }
+
+    public void onStart() {
+        super.onStart();
 
         locationItemModel = new LocationItemModel(this);
         locationItemModel.loadEquipment();
@@ -153,6 +157,11 @@ public class NewLocationItemDialogFragment extends DialogFragment implements Equ
         return location;
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        locationItemModel.removeListeners();
+    }
 
 
 }

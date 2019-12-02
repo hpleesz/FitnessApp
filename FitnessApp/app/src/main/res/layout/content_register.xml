@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose account type:"
+        android:text="@string/choose_account_type"
         android:textSize="18sp"
         android:layout_marginTop="30dp"
         android:textStyle="bold"
@@ -38,7 +38,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login details:"
+        android:text="@string/login_details"
         android:textSize="18sp"
         android:layout_marginTop="50dp"
         android:textStyle="bold"
@@ -49,8 +49,7 @@
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="email"
-        android:autofillHints="email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:layout_marginTop="30dp"
         />
@@ -59,8 +58,7 @@
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:autofillHints="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:layout_marginTop="20dp"
         />
@@ -69,8 +67,7 @@
         android:id="@+id/password2EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Confirm password"
-        android:autofillHints="Confirm password"
+        android:hint="@string/confirm_password"
         android:inputType="textPassword"
         />
 
@@ -88,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="@drawable/button_round"
-        android:text="Register"
+        android:text="@string/register"
         android:textColor="@android:color/white" />
 
 

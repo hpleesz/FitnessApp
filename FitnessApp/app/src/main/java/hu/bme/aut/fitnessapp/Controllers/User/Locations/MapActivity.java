@@ -123,7 +123,7 @@ public class MapActivity extends InternetCheckActivity implements OnMapReadyCall
         }
         else {
             final AlertDialog alertDialog = new AlertDialog.Builder(MapActivity.this).create();
-            alertDialog.setTitle("Location could not be found!");
+            alertDialog.setTitle(R.string.location_not_found_dialog);
             alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -214,4 +214,5 @@ public class MapActivity extends InternetCheckActivity implements OnMapReadyCall
             Log.e("Exception: %s", e.getMessage());
         }
     }
+
 }

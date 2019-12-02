@@ -64,9 +64,15 @@ public class PublicLocationSearchMatchDialogFragment extends DialogFragment impl
             throw new RuntimeException("Activity must implement the PublicLocationSearchMatchDialogFragment interface!");
         }
 
-        PublicLocation item = (PublicLocation) getArguments().getSerializable("Location");
-        ArrayList<Boolean> openDays = (ArrayList<Boolean>) getArguments().getSerializable("Checkboxes");
+        item = (PublicLocation) getArguments().getSerializable("Location");
+        openDays = (ArrayList<Boolean>) getArguments().getSerializable("Checkboxes");
+    }
 
+    private PublicLocation item;
+    private ArrayList<Boolean> openDays;
+
+    public void onStart() {
+        super.onStart();
         publichSearchMatchModel = new PublicSearchMatchModel(this, item, openDays);
         publichSearchMatchModel.loadList();
     }
@@ -99,5 +105,11 @@ public class PublicLocationSearchMatchDialogFragment extends DialogFragment impl
 
         noLocations = contentView.findViewById(R.id.noLocationTextView);
         return contentView;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        publichSearchMatchModel.removeListeners();
     }
 }

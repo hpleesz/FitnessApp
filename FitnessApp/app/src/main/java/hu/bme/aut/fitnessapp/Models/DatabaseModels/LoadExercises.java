@@ -21,9 +21,11 @@ public class LoadExercises extends DatabaseConnection{
         listLoadedListener = (LoadExercises.ExercisesLoadedListener)object;
     }
 
+    private ValueEventListener eventListener;
+
     public void loadExercises() {
 
-        ValueEventListener eventListener = new ValueEventListener() {
+        eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Exercise> exerciseList = new ArrayList<>();
@@ -49,7 +51,7 @@ public class LoadExercises extends DatabaseConnection{
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
 
         };
@@ -61,6 +63,10 @@ public class LoadExercises extends DatabaseConnection{
         // Keep copy of post listener so we can remove it when app stops
         //this.eventListener = eventListener
 
+    }
+
+    public void removeListeners() {
+        if(eventListener != null)getDatabaseReference().child("Exercises").removeEventListener(eventListener);
     }
 
 }

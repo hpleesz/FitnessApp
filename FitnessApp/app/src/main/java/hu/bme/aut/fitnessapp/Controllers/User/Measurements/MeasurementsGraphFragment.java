@@ -56,16 +56,20 @@ public class MeasurementsGraphFragment extends Fragment implements com.github.mi
         if (bundle != null) {
             bodyPart = bundle.getString("body part", "Shoulders");
         }
-        newModel();
-        /*
-        rootView.getViewTreeObserver().addOnWindowFocusChangeListener(new ViewTreeObserver.OnWindowFocusChangeListener() {
-            @Override
-            public void onWindowFocusChanged(boolean hasFocus) {
-                //newModel();
-                //measurementsGraphFragmentModel.setBodyPart(bodyPart);
-            }
-        });*/
 
+        initializeLayout(rootView);
+
+        return rootView;
+    }
+
+    public void onStart() {
+        super.onStart();
+        measurementsGraphFragmentModel = new MeasurementsGraphFragmentModel(this, bodyPart);
+        measurementsGraphFragmentModel.loadList();
+        drawChart();
+    }
+
+    public void initializeLayout(View rootView) {
         TextView title = (TextView) rootView.findViewById(R.id.measurementsEntries);
         String text = bodyPart + " " + getString(R.string.entries);
         title.setText(text.replace('_', ' '));
@@ -76,13 +80,6 @@ public class MeasurementsGraphFragment extends Fragment implements com.github.mi
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.MeasurementRecyclerView);
 
-        drawChart();
-        return rootView;
-    }
-
-    private void newModel() {
-        measurementsGraphFragmentModel = new MeasurementsGraphFragmentModel(this, bodyPart);
-        measurementsGraphFragmentModel.loadList();
     }
 
     private void initRecyclerView(ArrayList<Measurement> measurements) {
@@ -199,5 +196,11 @@ public class MeasurementsGraphFragment extends Fragment implements com.github.mi
     @Override
     public void onChartUpdate(boolean drawValues) {
         updatechart(drawValues);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        measurementsGraphFragmentModel.removeListeners();
     }
 }

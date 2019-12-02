@@ -30,8 +30,11 @@ public class MeasurementsGraphActivity extends InternetCheckActivity implements 
         viewPager.setAdapter(new GraphPagerAdapter(getSupportFragmentManager()));
 
         setFloatingActionButton();
-        measurementsGraphModel = new MeasurementsGraphModel();
+    }
 
+    public void onStart() {
+        super.onStart();
+        measurementsGraphModel = new MeasurementsGraphModel();
     }
 
     public void setToolbar() {
@@ -65,5 +68,11 @@ public class MeasurementsGraphActivity extends InternetCheckActivity implements 
     @Override
     public void onItemDeleted(Measurement item, String body_part) {
         measurementsGraphModel.deleteItem(item, body_part);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        measurementsGraphModel.removeListeners();
     }
 }

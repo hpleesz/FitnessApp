@@ -29,6 +29,12 @@ public class MainModel implements LoadEquipment.EquipmentLoadedListener, LoadMus
 
     private boolean chosen;
 
+    private LoadEquipment loadEquipment;
+    private LoadWorkoutDetails loadWorkoutDetails;
+    private LoadMuscles loadMuscles;
+    private LoadExercises loadExercises;
+    private LoadPublicLocations loadPublicLocations;
+
     public interface DataReadyListener {
         void onButtonsReady();
     }
@@ -55,7 +61,7 @@ public class MainModel implements LoadEquipment.EquipmentLoadedListener, LoadMus
     }
 
     public void loadEquipment() {
-        LoadEquipment loadEquipment = new LoadEquipment(this);
+        loadEquipment = new LoadEquipment(this);
         loadEquipment.loadEquipment();
     }
 
@@ -64,12 +70,12 @@ public class MainModel implements LoadEquipment.EquipmentLoadedListener, LoadMus
     }
 
     public void loadLowerBodyParts() {
-        LoadMuscles loadMuscles = new LoadMuscles(this);
+        loadMuscles = new LoadMuscles(this);
         loadMuscles.loadLowerBodyParts();
     }
 
     public void loadUpperBodyParts() {
-        LoadMuscles loadMuscles = new LoadMuscles(this);
+        loadMuscles = new LoadMuscles(this);
         loadMuscles.loadUpperBodyParts();
 
     }
@@ -85,7 +91,7 @@ public class MainModel implements LoadEquipment.EquipmentLoadedListener, LoadMus
     }
 
     public void loadExercises() {
-        LoadExercises loadExercises = new LoadExercises(this);
+        loadExercises = new LoadExercises(this);
         loadExercises.loadExercises();
     }
 
@@ -97,7 +103,7 @@ public class MainModel implements LoadEquipment.EquipmentLoadedListener, LoadMus
 
 
     private void loadWorkoutDetails() {
-        LoadWorkoutDetails loadWorkoutDetails = new LoadWorkoutDetails();
+        loadWorkoutDetails = new LoadWorkoutDetails();
         loadWorkoutDetails.setListLoadedListener(this);
         loadWorkoutDetails.loadWorkoutDetails();
     }
@@ -132,7 +138,7 @@ public class MainModel implements LoadEquipment.EquipmentLoadedListener, LoadMus
 
     public void setLocationListener(PublicLocation loc) {
         chosen = true;
-        LoadPublicLocations loadPublicLocations = new LoadPublicLocations();
+        loadPublicLocations = new LoadPublicLocations();
         loadPublicLocations.setListLoadedByIDListener(this);
         loadPublicLocations.loadPublicLocationByID(Long.toString(loc.id));
     }
@@ -298,5 +304,12 @@ public class MainModel implements LoadEquipment.EquipmentLoadedListener, LoadMus
         return workoutDetails;
     }
 
+    public void removeListeners() {
+        if(loadEquipment != null) loadEquipment.removeListeners();
+        if(loadExercises != null) loadExercises.removeListeners();
+        if(loadMuscles != null) loadMuscles.removeListeners();
+        if(loadWorkoutDetails != null) loadWorkoutDetails.removeListeners();
+        if(loadPublicLocations != null) loadPublicLocations.removeListeners();
+    }
 
 }

@@ -61,12 +61,6 @@ MainModel.DataReadyListener, MainModel.LocationChosenListener, MainModel.Continu
 
         navigationView.getMenu().getItem(0).setChecked(true);
 
-        mainModel = new MainModel(this);
-        //mainModel.initFirebase();
-        mainModel.loadEquipment();
-        mainModel.loadLowerBodyParts();
-        mainModel.loadUpperBodyParts();
-        mainModel.loadExercises();
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.hide();
 
@@ -74,6 +68,16 @@ MainModel.DataReadyListener, MainModel.LocationChosenListener, MainModel.Continu
         workoutButton = (Button) findViewById(R.id.workoutButton);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mainModel = new MainModel(this);
+        //mainModel.initFirebase();
+        mainModel.loadEquipment();
+        mainModel.loadLowerBodyParts();
+        mainModel.loadUpperBodyParts();
+        mainModel.loadExercises();
+    }
 
     public void setButtonsOnClickListeners() {
         workoutButton.setOnClickListener(new View.OnClickListener() {
@@ -261,4 +265,9 @@ MainModel.DataReadyListener, MainModel.LocationChosenListener, MainModel.Continu
         showWorkout();
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        mainModel.removeListeners();
+    }
 }

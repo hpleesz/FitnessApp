@@ -17,6 +17,8 @@ public class NewMeasurementItemModel implements LoadBodyParts.BodyPartsLoadedLis
     private String alreadyExists;
     private String date;
 
+    private LoadBodyParts loadBodyParts;
+    private LoadMeasurements loadMeasurements;
 
     public NewMeasurementItemModel() {
         alreadyExists = "";
@@ -24,7 +26,7 @@ public class NewMeasurementItemModel implements LoadBodyParts.BodyPartsLoadedLis
     }
 
     public void loadBodyParts() {
-        LoadBodyParts loadBodyParts = new LoadBodyParts(this);
+        loadBodyParts = new LoadBodyParts(this);
         loadBodyParts.loadBodyParts();
     }
 
@@ -38,7 +40,7 @@ public class NewMeasurementItemModel implements LoadBodyParts.BodyPartsLoadedLis
     }
 
     private void loadData() {
-        LoadMeasurements loadMeasurements = new LoadMeasurements();
+        loadMeasurements = new LoadMeasurements();
         loadMeasurements.setNewMeasurementsLoadedListener(this);
         loadMeasurements.loadNewMeasurements(body_parts, entries);
 
@@ -85,7 +87,6 @@ public class NewMeasurementItemModel implements LoadBodyParts.BodyPartsLoadedLis
             }
 
         }
-
         return exists;
     }
 
@@ -109,4 +110,8 @@ public class NewMeasurementItemModel implements LoadBodyParts.BodyPartsLoadedLis
         return alreadyExists;
     }
 
+    public void removeListeners() {
+        if(loadBodyParts != null) loadBodyParts.removeListeners();
+        if(loadMeasurements != null) loadMeasurements.removeListeners();
+    }
 }

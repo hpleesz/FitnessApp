@@ -11,6 +11,7 @@ import hu.bme.aut.fitnessapp.Models.DatabaseModels.LoadWeight;
 public class WaterModel implements LoadWeight.CurrentWeightLoadedListener, LoadWater.WaterLoadedListener {
 
     private LoadWater loadWater;
+    private LoadWeight loadWeight;
 
     private double display;
     private double water2;
@@ -73,7 +74,7 @@ public class WaterModel implements LoadWeight.CurrentWeightLoadedListener, LoadW
 
     public void loadWeight() {
         calculateToday();
-        LoadWeight loadWeight = new LoadWeight();
+        loadWeight = new LoadWeight();
         loadWeight.setCurrentWeightLoadedListener(this);
         loadWeight.loadCurrentWeight();
     }
@@ -115,5 +116,7 @@ public class WaterModel implements LoadWeight.CurrentWeightLoadedListener, LoadW
         this.current_weight = current_weight;
     }
 
-
+    public void removeListeners() {
+        if(loadWeight != null) loadWeight.removeListeners();
+    }
 }

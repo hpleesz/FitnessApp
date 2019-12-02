@@ -21,10 +21,12 @@ public class WarmUpActivity extends StretchWarmUpActivity {
 
         Intent i = getIntent();
         type = (String) i.getSerializableExtra("type");
+    }
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
         setModel(new WarmUpModel(this, type));
-
     }
 
     public String getIntentType() {

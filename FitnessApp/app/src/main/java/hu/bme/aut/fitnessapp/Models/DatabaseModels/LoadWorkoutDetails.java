@@ -25,9 +25,11 @@ public class LoadWorkoutDetails extends DatabaseConnection {
 
     }
 
+    private ValueEventListener eventListener;
+
     public void loadWorkoutDetails() {
 
-        ValueEventListener eventListener = new ValueEventListener() {
+        eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String type = dataSnapshot.child("Type").getValue(String.class);
@@ -46,7 +48,7 @@ public class LoadWorkoutDetails extends DatabaseConnection {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
 
         };
@@ -74,5 +76,9 @@ public class LoadWorkoutDetails extends DatabaseConnection {
 
     public void removeExercises() {
         getDatabaseReference().child("Workout_Details").child(getUserId()).child("Exercises").removeValue();
+    }
+
+    public void removeListeners() {
+        if(eventListener != null) getDatabaseReference().child("Workout_Details").child(getUserId()).addValueEventListener(eventListener);
     }
 }

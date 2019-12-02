@@ -16,12 +16,14 @@ public class NewPublicLocationModel implements LoadEquipment.EquipmentLoadedList
 
     private NewPublicLocationModel.ListLoaded listener;
 
+    private LoadEquipment loadEquipment;
+
     public NewPublicLocationModel(Context activity) {
         listener = (NewPublicLocationModel.ListLoaded)activity;
     }
 
     public void loadEquipment() {
-        LoadEquipment loadEquipment = new LoadEquipment(this);
+        loadEquipment = new LoadEquipment(this);
         loadEquipment.loadEquipment();
     }
 
@@ -68,6 +70,10 @@ public class NewPublicLocationModel implements LoadEquipment.EquipmentLoadedList
             }
         }
         return true;
+    }
+
+    public void removeListeners() {
+        if(loadEquipment != null) loadEquipment.removeListeners();
     }
 
 

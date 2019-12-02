@@ -274,8 +274,6 @@ public class NotificationReceiver extends BroadcastReceiver implements LoadWeigh
 
         Date currentTime = Calendar.getInstance().getTime();
 
-        notificationManager.notify(100, builder.build());
-
         if (isWithinRange(currentTime, 800, 2000)) {
             if ((isWithinRange(currentTime, 800, 1100) && (percent < 25))
                     || (isWithinRange(currentTime, 1100, 1400) && (percent < 50))

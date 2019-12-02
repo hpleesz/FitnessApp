@@ -30,6 +30,10 @@ public class ExerciseInfoModel extends VideoModel implements LoadWorkoutDetails.
     private User user;
     private WorkoutDetails workoutDetails;
 
+    private LoadWorkoutDetails loadWorkoutDetails;
+    private LoadEquipment loadEquipment;
+    private LoadUser loadUser;
+
     private Context activity;
 
     private static String EXERCISE_NUMBER = "Exercise Number";
@@ -71,13 +75,13 @@ public class ExerciseInfoModel extends VideoModel implements LoadWorkoutDetails.
     }
 
     public void loadWorkoutDetails() {
-        LoadWorkoutDetails loadWorkoutDetails = new LoadWorkoutDetails();
+        loadWorkoutDetails = new LoadWorkoutDetails();
         loadWorkoutDetails.setListLoadedListener(this);
         loadWorkoutDetails.loadWorkoutDetails();
     }
 
     public void loadEquipment() {
-        LoadEquipment loadEquipment = new LoadEquipment(this);
+        loadEquipment = new LoadEquipment(this);
         loadEquipment.loadEquipment();
     }
 
@@ -97,7 +101,7 @@ public class ExerciseInfoModel extends VideoModel implements LoadWorkoutDetails.
     }
 
     public void loadUserDetails() {
-        LoadUser loadUser = new LoadUser();
+        loadUser = new LoadUser();
         loadUser.setListLoadedListener(this);
         loadUser.loadUser();
     }
@@ -232,7 +236,7 @@ public class ExerciseInfoModel extends VideoModel implements LoadWorkoutDetails.
     }
 
     public void completeExercise() {
-        LoadWorkoutDetails loadWorkoutDetails = new LoadWorkoutDetails();
+        loadWorkoutDetails = new LoadWorkoutDetails();
         loadWorkoutDetails.setProgress(false);
         loadWorkoutDetails.removeExercises();
 
@@ -289,6 +293,12 @@ public class ExerciseInfoModel extends VideoModel implements LoadWorkoutDetails.
 
     public void setWorkoutDetails(WorkoutDetails workoutDetails) {
         this.workoutDetails = workoutDetails;
+    }
+
+    public void removeListeners() {
+        if(loadEquipment != null) loadEquipment.removeListeners();
+        if(loadWorkoutDetails != null) loadWorkoutDetails.removeListeners();
+        if(loadUser != null) loadUser.removeListeners();
     }
 
 }

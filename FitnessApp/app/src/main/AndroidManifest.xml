@@ -65,6 +65,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Controllers.User.Weight.WeightActivity"
+            android:label="@string/title_activity_weight"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver

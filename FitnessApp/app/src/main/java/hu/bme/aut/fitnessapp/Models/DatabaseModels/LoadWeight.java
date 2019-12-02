@@ -35,9 +35,10 @@ public class LoadWeight extends DatabaseConnection {
         currentWeightLoadedListener = (LoadWeight.CurrentWeightLoadedListener)object;
     }
 
-    public void loadWeight() {
+    private ValueEventListener eventListener;
 
-        ValueEventListener eventListener = new ValueEventListener() {
+    public void loadWeight() {
+        eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Measurement> itemlist = new ArrayList<>();
@@ -55,11 +56,10 @@ public class LoadWeight extends DatabaseConnection {
                         Map<String, Long> entries = (Map) dataSnapshot.getValue();
 
                         String key = dataSnapshot1.getKey();
-                        double weight_value = (double)entries.get(key);
+                        double weight_value = (double) entries.get(key);
                         Measurement measurement = new Measurement(key, weight_value);
                         itemlist.add(measurement);
                     }
-                    //checkProgress();
 
                 }
 
@@ -68,7 +68,7 @@ public class LoadWeight extends DatabaseConnection {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
 
         };
@@ -85,8 +85,7 @@ public class LoadWeight extends DatabaseConnection {
                 for(DataSnapshot item: dataSnapshot.getChildren()) {
                     key = item.getKey();
                 }
-                //Map<String, Double> weight = (Map) dataSnapshot.getValue();
-                //current_weight = weight.get(key);
+
                 double current_weight;
 
                 try {
@@ -105,7 +104,7 @@ public class LoadWeight extends DatabaseConnection {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
         });
     }
@@ -118,4 +117,7 @@ public class LoadWeight extends DatabaseConnection {
         getDatabaseReference().child("Weight").child(getUserId()).child(Long.toString(date)).removeValue();
     }
 
+    public void removeListeners() {
+        if(eventListener != null) getDatabaseReference().child("Weight").child(getUserId()).removeEventListener(eventListener);
+    }
 }

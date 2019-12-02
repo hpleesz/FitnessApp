@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -107,7 +108,7 @@ public class PublicLocationAdapter extends RecyclerView.Adapter<PublicLocationAd
 
                 @Override
                 public boolean onLongClick(View v) {
-                    final AlertDialog alertDialog = new AlertDialog.Builder((GymMainActivity) del_listener).create();
+                    final AlertDialog alertDialog = new AlertDialog.Builder((AppCompatActivity) del_listener).create();
                     alertDialog.setTitle("Delete item?");
                     alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
                         @Override

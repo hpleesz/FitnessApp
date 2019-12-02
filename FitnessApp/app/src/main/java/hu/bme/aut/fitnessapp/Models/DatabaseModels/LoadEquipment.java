@@ -22,9 +22,11 @@ public class LoadEquipment extends DatabaseConnection {
         listLoadedListener = (LoadEquipment.EquipmentLoadedListener)object;
     }
 
+    private ValueEventListener eventListener;
+
     public void loadEquipment() {
 
-        ValueEventListener eventListener = new ValueEventListener() {
+        eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Equipment> equipmentList = new ArrayList<>();
@@ -40,7 +42,7 @@ public class LoadEquipment extends DatabaseConnection {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
 
         };
@@ -52,5 +54,9 @@ public class LoadEquipment extends DatabaseConnection {
         // Keep copy of post listener so we can remove it when app stops
         //this.eventListener = eventListener
 
+    }
+
+    public void removeListeners() {
+        if(eventListener != null)getDatabaseReference().child("Equipment").removeEventListener(eventListener);
     }
 }

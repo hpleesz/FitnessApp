@@ -69,7 +69,10 @@ public class SettingsModel extends UserSettingsModel implements LoadUser.UserLoa
         setGain_muscle(user.gain_muscle);
 
         settingsListener.onSettingsLoaded(user.name, Double.toString(user.height), Double.toString(user.goal_weight), user.year, user.month, user.day);
+    }
 
+    public void removeListeners() {
+        if(loadUser != null) loadUser.removeListeners();
     }
 
 }

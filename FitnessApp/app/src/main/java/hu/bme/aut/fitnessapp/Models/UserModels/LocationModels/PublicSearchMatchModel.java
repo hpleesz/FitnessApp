@@ -26,6 +26,8 @@ public class PublicSearchMatchModel implements LoadPublicLocations.PublicLocatio
     private PublicSearchMatchModel.ListLoadedListener listLoadedListener;
     private PublicSearchMatchModel.NoMatchListener noMatchListener;
 
+    private LoadPublicLocations loadPublicLocations;
+
     public PublicSearchMatchModel(DialogFragment fragment, PublicLocation publicLocation, ArrayList<Boolean> openDays) {
         listLoadedListener = (PublicSearchMatchModel.ListLoadedListener)fragment;
         noMatchListener = (PublicSearchMatchModel.NoMatchListener) fragment;
@@ -36,7 +38,7 @@ public class PublicSearchMatchModel implements LoadPublicLocations.PublicLocatio
 
 
     public void loadList() {
-        LoadPublicLocations loadPublicLocations = new LoadPublicLocations();
+        loadPublicLocations = new LoadPublicLocations();
         loadPublicLocations.setListLoadedListener(this);
         loadPublicLocations.loadPublicLocations();
     }
@@ -161,6 +163,10 @@ public class PublicSearchMatchModel implements LoadPublicLocations.PublicLocatio
 
     public void setOpenDays(ArrayList<Boolean> openDays) {
         this.openDays = openDays;
+    }
+
+    public void removeListeners() {
+        if(loadPublicLocations != null) loadPublicLocations.removeListeners();
     }
 
 

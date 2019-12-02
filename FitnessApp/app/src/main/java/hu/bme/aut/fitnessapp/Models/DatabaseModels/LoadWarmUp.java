@@ -19,8 +19,10 @@ public class LoadWarmUp extends DatabaseConnection{
         warmUpLoadedListener = (LoadWarmUp.WarmUpLoadedListener)object;
     }
 
+    private ValueEventListener eventListener;
+
     public void loadWarmUp(final boolean lower) {
-        ValueEventListener eventListener = new ValueEventListener() {
+        eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<String> items = new ArrayList<String>();
@@ -43,8 +45,13 @@ public class LoadWarmUp extends DatabaseConnection{
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                databaseError.toException().printStackTrace();
             }
         };
         getDatabaseReference().child("Warmup").addValueEventListener(eventListener);
+    }
+
+    public void removeListeners() {
+        if(eventListener != null) getDatabaseReference().child("Warmup").removeEventListener(eventListener);
     }
 }

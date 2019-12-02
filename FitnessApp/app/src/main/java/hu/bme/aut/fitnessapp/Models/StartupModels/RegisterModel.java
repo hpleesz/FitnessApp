@@ -17,6 +17,8 @@ public class RegisterModel {
 
     private RegisterModel.RegisterListener listener;
 
+    private LoadProfile loadProfile;
+
     public interface RegisterListener {
         void onRegisterSuccess();
         void onUserRegister();
@@ -65,13 +67,13 @@ public class RegisterModel {
     }
 
     private void writeNewGym() {
-        LoadProfile loadProfile = new LoadProfile();
+        loadProfile = new LoadProfile();
         loadProfile.addNewItem(false);
     }
 
     private void writeNewUser() {
-        LoadProfile loadProfile = new LoadProfile();
-        loadProfile.addNewItem(false);
+        loadProfile = new LoadProfile();
+        loadProfile.addNewItem(true);
     }
 
 }

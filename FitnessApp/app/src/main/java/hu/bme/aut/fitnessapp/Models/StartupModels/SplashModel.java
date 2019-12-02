@@ -21,6 +21,7 @@ public class SplashModel implements LoadProfile.ProfileLoadedListener, LoadUser.
 
     private FirebaseAuth mAuth;
     private LoadProfile loadProfile;
+    private LoadUser loadUser;
 
     private Context activity;
 
@@ -71,7 +72,7 @@ public class SplashModel implements LoadProfile.ProfileLoadedListener, LoadUser.
     }
 
     private void getDetails() {
-        LoadUser loadUser = new LoadUser();
+        loadUser = new LoadUser();
         loadUser.setListLoadedListener(this);
         loadUser.loadUser();
     }
@@ -93,5 +94,10 @@ public class SplashModel implements LoadProfile.ProfileLoadedListener, LoadUser.
         else {
             listener.onUserActive();
         }
+    }
+
+    public void removeListeners() {
+        if(loadProfile != null) loadProfile.removeListeners();
+        if(loadUser != null) loadUser.removeListeners();
     }
 }

@@ -18,6 +18,7 @@ public class LocationModel implements LoadLocations.LocationsLoadedListener, Loa
 
     private LoadLocations loadLocations;
     private LoadUserPublicLocations loadUserPublicLocations;
+    private LoadPublicLocations loadPublicLocations;
 
     public interface LocationsLoaded {
         void onLocationsLoaded(ArrayList<Location> locations);
@@ -72,11 +73,10 @@ public class LocationModel implements LoadLocations.LocationsLoadedListener, Loa
             }
             listener2.onPublicLocationsLoaded(public_itemlist);
         }
-        LoadPublicLocations loadPublicLocations = new LoadPublicLocations();
+        loadPublicLocations = new LoadPublicLocations();
         loadPublicLocations.setListLoadedByIDListener(this);
         for(UserPublicLocation loc: publicIDs) {
             loadPublicLocations.loadPublicLocationByID(loc.gym_id);
-
         }
 
     }
@@ -150,4 +150,11 @@ public class LocationModel implements LoadLocations.LocationsLoadedListener, Loa
     public ArrayList<PublicLocation> getPublic_itemlist() {
         return public_itemlist;
     }
+
+    public void removeListeners() {
+        if(loadLocations != null) loadLocations.removeListeners();
+        if(loadUserPublicLocations != null)loadUserPublicLocations.removeListeners();
+        if(loadPublicLocations != null) loadPublicLocations.removeListeners();
+    }
+
 }

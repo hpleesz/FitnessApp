@@ -42,8 +42,14 @@ public class LoadMeasurements extends DatabaseConnection {
         newMeasurementsLoadedListener = (LoadMeasurements.NewMeasurementsLoadedListener)object;
     }
 
+    private ValueEventListener loadEventListener;
+    private ValueEventListener loadByBodyPartEventListener;
+    private ValueEventListener newEventListener;
+
+    private String bodyPart;
+
     public void loadLastMeasurements(final ArrayList<String> body_parts) {
-        ValueEventListener eventListener = new ValueEventListener() {
+        loadEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 HashMap<String, Double> measurements = new HashMap<>();
@@ -74,15 +80,16 @@ public class LoadMeasurements extends DatabaseConnection {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
 
         };
-        getDatabaseReference().child("Measurements").child(getUserId()).addValueEventListener(eventListener);
+        getDatabaseReference().child("Measurements").child(getUserId()).addValueEventListener(loadEventListener);
     }
 
     public void loadMeasurementsByBodyPart(String bodyPart) {
-        ValueEventListener eventListener = new ValueEventListener() {
+        this.bodyPart = bodyPart;
+        loadByBodyPartEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Measurement> itemlist = new ArrayList<>();
@@ -114,21 +121,15 @@ public class LoadMeasurements extends DatabaseConnection {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
 
         };
-        getDatabaseReference().child("Measurements").child(getUserId()).child(bodyPart).addValueEventListener(eventListener);
-
-
-        // [END post_value_event_listener]
-
-        // Keep copy of post listener so we can remove it when app stops
-        //this.eventListener = eventListener;
+        getDatabaseReference().child("Measurements").child(getUserId()).child(bodyPart).addValueEventListener(loadByBodyPartEventListener);
     }
 
     public void loadNewMeasurements(final ArrayList<String> body_parts, final ArrayList<ArrayList<Measurement>> entries) {
-        ValueEventListener eventListener = new ValueEventListener() {
+        newEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -164,12 +165,11 @@ public class LoadMeasurements extends DatabaseConnection {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
 
         };
-        getDatabaseReference().child("Measurements").child(getUserId()).addValueEventListener(eventListener);
-
+        getDatabaseReference().child("Measurements").child(getUserId()).addValueEventListener(newEventListener);
     }
 
     public void addNewItem(String key, String date, double value) {
@@ -177,7 +177,14 @@ public class LoadMeasurements extends DatabaseConnection {
     }
 
     public void removeItem(String body_part, Measurement item) {
-        getDatabaseReference().child("Meausruements").child(getUserId()).child(body_part).child(item.date).removeValue();
+        getDatabaseReference().child("Measurements").child(getUserId()).child(body_part).child(item.date).removeValue();
+
+    }
+
+    public void removeListeners() {
+        if(loadByBodyPartEventListener != null)getDatabaseReference().child("Measurements").child(getUserId()).child(bodyPart).removeEventListener(loadByBodyPartEventListener);
+        if(newEventListener != null)getDatabaseReference().child("Measurements").child(getUserId()).removeEventListener(newEventListener);
+        if(loadEventListener != null)getDatabaseReference().child("Measurements").child(getUserId()).removeEventListener(loadEventListener);
 
     }
 }

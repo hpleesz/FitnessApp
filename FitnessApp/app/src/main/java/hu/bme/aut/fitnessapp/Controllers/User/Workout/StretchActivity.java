@@ -11,38 +11,17 @@ public class StretchActivity extends StretchWarmUpActivity {
     private ArrayList<String> items;
     private int idx = 0;
 
-    private StretchModel stretchModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
         setModel(new StretchModel(this));
 
     }
-
-    public StretchModel getStretchModel() {
-        return stretchModel;
-    }
-
-    public void setStretchModel(StretchModel stretchModel) {
-        this.stretchModel = stretchModel;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public ArrayList<String> getItems() {
         return items;

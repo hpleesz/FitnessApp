@@ -19,9 +19,11 @@ public class LoadBodyParts extends DatabaseConnection{
         listLoadedListener = (LoadBodyParts.BodyPartsLoadedListener)object;
     }
 
+    private ValueEventListener eventListener;
+
     public void loadBodyParts() {
 
-        ValueEventListener eventListener = new ValueEventListener() {
+        eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<String> body_parts = new ArrayList<>();
@@ -36,7 +38,7 @@ public class LoadBodyParts extends DatabaseConnection{
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
 
         };
@@ -47,6 +49,11 @@ public class LoadBodyParts extends DatabaseConnection{
 
         // Keep copy of post listener so we can remove it when app stops
         //this.eventListener = eventListener;
+    }
+
+    public void removeListeners() {
+        if(eventListener != null) getDatabaseReference().child("Body_Parts").removeEventListener(eventListener);
+
     }
 
 }

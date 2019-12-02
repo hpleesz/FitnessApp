@@ -10,10 +10,12 @@ public class NewWeightItemModel implements LoadWeight.WeightLoadedListener{
 
     private List<Measurement> list;
 
+    private LoadWeight loadWeight;
+
     public NewWeightItemModel() {}
 
     public void loadWeight() {
-        LoadWeight loadWeight = new LoadWeight();
+        loadWeight = new LoadWeight();
         loadWeight.setListLoadedListener(this);
         loadWeight.loadWeight();
     }
@@ -29,6 +31,10 @@ public class NewWeightItemModel implements LoadWeight.WeightLoadedListener{
                 return true;
         }
         return false;
+    }
+
+    public void removeListeners() {
+        if(loadWeight != null) loadWeight.removeListeners();
     }
 
 }

@@ -67,9 +67,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
         holder.item = item;
 
         String name = VideoModel.transformName(item.name);
-
         FirebaseStorage storage = FirebaseStorage.getInstance();
-
         StorageReference storageRef = storage.getReference();
 
         StorageReference pathReference = storageRef.child(name + ".mp4");

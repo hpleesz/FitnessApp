@@ -20,9 +20,12 @@ public class LoadMuscles extends DatabaseConnection {
         listLoadedListener = (LoadMuscles.MusclesLoadedListener)object;
     }
 
+    private ValueEventListener lowerEventListener;
+    private ValueEventListener upperEventListener;
+
     public void loadLowerBodyParts() {
 
-        ValueEventListener eventListener = new ValueEventListener() {
+        lowerEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<String> lower_body_parts = new ArrayList<>();
@@ -38,11 +41,11 @@ public class LoadMuscles extends DatabaseConnection {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
 
         };
-        getDatabaseReference().child("Muscles").child("Lower").addValueEventListener(eventListener);
+        getDatabaseReference().child("Muscles").child("Lower").addValueEventListener(lowerEventListener);
 
 
         // [END post_value_event_listener]
@@ -54,7 +57,7 @@ public class LoadMuscles extends DatabaseConnection {
 
     public void loadUpperBodyParts() {
 
-        ValueEventListener eventListener = new ValueEventListener() {
+        upperEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<String> upper_body_parts = new ArrayList<>();
@@ -70,11 +73,11 @@ public class LoadMuscles extends DatabaseConnection {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
 
         };
-        getDatabaseReference().child("Muscles").child("Upper").addValueEventListener(eventListener);
+        getDatabaseReference().child("Muscles").child("Upper").addValueEventListener(upperEventListener);
 
 
         // [END post_value_event_listener]
@@ -82,5 +85,10 @@ public class LoadMuscles extends DatabaseConnection {
         // Keep copy of post listener so we can remove it when app stops
         //this.eventListener = eventListener
 
+    }
+
+    public void removeListeners() {
+        if(lowerEventListener != null) getDatabaseReference().child("Muscles").child("Lower").addValueEventListener(lowerEventListener);
+        if(lowerEventListener != null) getDatabaseReference().child("Muscles").child("Upper").addValueEventListener(upperEventListener);
     }
 }

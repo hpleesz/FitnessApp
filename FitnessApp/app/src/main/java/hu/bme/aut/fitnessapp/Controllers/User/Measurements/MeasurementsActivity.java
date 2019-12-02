@@ -19,16 +19,20 @@ import hu.bme.aut.fitnessapp.Controllers.User.NavigationActivity;
 public class MeasurementsActivity extends NavigationActivity implements MeasurementsModel.GenderListener, MeasurementsModel.CurrentMeasurementsListener{
 
     private LayoutInflater inflater;
+    private MeasurementsModel measurementsModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        MeasurementsModel measurementsModel = new MeasurementsModel(this);
+        measurementsModel = new MeasurementsModel(this);
         measurementsModel.loadUser();
 
+    }
+
+    public void onStart() {
+        super.onStart();
 
     }
 
@@ -97,5 +101,17 @@ public class MeasurementsActivity extends NavigationActivity implements Measurem
     @Override
     public void onGenderLoaded(int gender) {
         setDrawerLayout(gender);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        //measurementsModel.removeListeners();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        measurementsModel.removeListeners();
     }
 }

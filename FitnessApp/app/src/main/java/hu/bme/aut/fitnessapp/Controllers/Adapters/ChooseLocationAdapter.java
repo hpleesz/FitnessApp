@@ -23,7 +23,6 @@ public class ChooseLocationAdapter extends RecyclerView.Adapter<ChooseLocationAd
     public ChooseLocationAdapter(ChooseLocationAdapter.LocationItemSelectedListener select_listener, ArrayList<Location> items) {
         this.select_listener = select_listener;
         this.model = new LocationAdapterModel(items);
-
     }
 
     @NonNull

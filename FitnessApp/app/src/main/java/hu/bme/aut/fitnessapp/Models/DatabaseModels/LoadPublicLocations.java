@@ -42,9 +42,14 @@ public class LoadPublicLocations extends DatabaseConnection {
         listLoadedByIDListener = (LoadPublicLocations.PublicLocationsByIDLoadedListener)object;
     }
 
+    private ValueEventListener loadEventListener;
+    private ValueEventListener loadByCreatorEventListener;
+    private ValueEventListener loadByIdEventListener;
+
+    private String id;
 
     public  void loadPublicLocations() {
-            ValueEventListener eventListener = new ValueEventListener() {
+            loadEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     ArrayList<PublicLocation> itemList = new ArrayList<>();
@@ -90,15 +95,15 @@ public class LoadPublicLocations extends DatabaseConnection {
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    // Handle possible errors.
+                    databaseError.toException().printStackTrace();
                 }
 
             };
-            getDatabaseReference().child("Public_Locations").addValueEventListener(eventListener);
+            getDatabaseReference().child("Public_Locations").addValueEventListener(loadEventListener);
     }
 
     public void loadPublicLocationsByCreator() {
-        ValueEventListener eventListener = new ValueEventListener() {
+        loadByCreatorEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<PublicLocation> itemlist = new ArrayList<>();
@@ -144,11 +149,11 @@ public class LoadPublicLocations extends DatabaseConnection {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
 
         };
-        getDatabaseReference().child("Public_Locations").orderByChild("Creator").equalTo(getUserId()).addValueEventListener(eventListener);
+        getDatabaseReference().child("Public_Locations").orderByChild("Creator").equalTo(getUserId()).addValueEventListener(loadByCreatorEventListener);
 
 
         // [END post_value_event_listener]
@@ -158,7 +163,8 @@ public class LoadPublicLocations extends DatabaseConnection {
     }
 
     public void loadPublicLocationByID(String id) {
-        ValueEventListener eventListener = new ValueEventListener() {
+        this.id = id;
+        loadByIdEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -199,11 +205,11 @@ public class LoadPublicLocations extends DatabaseConnection {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
+                databaseError.toException().printStackTrace();
             }
 
         };
-        getDatabaseReference().child("Public_Locations").child(id).addValueEventListener(eventListener);
+        getDatabaseReference().child("Public_Locations").child(id).addValueEventListener(loadByIdEventListener);
 
 
     }
@@ -231,6 +237,13 @@ public class LoadPublicLocations extends DatabaseConnection {
 
     public void removeItem(PublicLocation publicLocation) {
         getDatabaseReference().child("Public_Locations").child(Long.toString(publicLocation.id)).removeValue();
+
+    }
+
+    public void removeListeners() {
+        if(loadEventListener != null) getDatabaseReference().child("Public_Locations").orderByChild("Creator").equalTo(getUserId()).removeEventListener(loadEventListener);
+        if(loadByCreatorEventListener != null) getDatabaseReference().child("Public_Locations").orderByChild("Creator").equalTo(getUserId()).removeEventListener(loadByCreatorEventListener);
+        if(loadByIdEventListener != null) getDatabaseReference().child("Public_Locations").child(id).removeEventListener(loadByIdEventListener);
 
     }
 

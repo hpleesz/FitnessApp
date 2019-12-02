@@ -29,11 +29,15 @@ public class WaterActivity extends NavigationActivity implements NewWaterDialogF
 
         navigationView.getMenu().getItem(4).setChecked(true);
 
-        waterModel = new WaterModel(this);
-        waterModel.loadWeight();
-
         setFloatingActionButton();
         setConsumedWaterClick();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        waterModel = new WaterModel(this);
+        waterModel.loadWeight();
     }
 
     public void setFloatingActionButton() {
@@ -141,5 +145,11 @@ public class WaterActivity extends NavigationActivity implements NewWaterDialogF
     @Override
     public void onRecommendedLoaded(double water) {
         setRecommendedWaterText(water);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        waterModel.removeListeners();
     }
 }

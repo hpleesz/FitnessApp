@@ -67,6 +67,7 @@ public class LoadWater extends DatabaseConnection {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                databaseError.toException().printStackTrace();
             }
         });
     }

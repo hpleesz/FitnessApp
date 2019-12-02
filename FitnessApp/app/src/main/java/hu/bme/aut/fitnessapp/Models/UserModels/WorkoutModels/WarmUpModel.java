@@ -16,11 +16,12 @@ public class WarmUpModel extends StretchWarmUpModel implements LoadWarmUp.WarmUp
         this.type = type;
     }
 
+    private LoadWarmUp loadWarmUp;
 
     public void loadItems() {
         setType(((WarmUpActivity)getActivity()).getIntentType());
         getType();
-        LoadWarmUp loadWarmUp = new LoadWarmUp(this);
+        loadWarmUp = new LoadWarmUp(this);
         loadWarmUp.loadWarmUp(lower);
     }
 
@@ -52,4 +53,7 @@ public class WarmUpModel extends StretchWarmUpModel implements LoadWarmUp.WarmUp
         return lower;
     }
 
+    public void removeListeners() {
+        if(loadWarmUp != null) loadWarmUp.removeListeners();
+    }
 }

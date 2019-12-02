@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import hu.bme.aut.fitnessapp.Entities.Equipment;
 import hu.bme.aut.fitnessapp.Entities.Location;
 import hu.bme.aut.fitnessapp.Models.DatabaseModels.LoadEquipment;
+import hu.bme.aut.fitnessapp.Models.DatabaseModels.LoadProfile;
 
 public class LocationItemModel implements LoadEquipment.EquipmentLoadedListener{
 
@@ -16,13 +17,15 @@ public class LocationItemModel implements LoadEquipment.EquipmentLoadedListener{
 
     private LocationItemModel.ListLoadedListener listLoadedListener;
 
+    private LoadEquipment loadEquipment;
+
     public LocationItemModel(Object object) {
         listLoadedListener = (LocationItemModel.ListLoadedListener)object;
 
     }
 
     public void loadEquipment() {
-        LoadEquipment loadEquipment = new LoadEquipment(this);
+        loadEquipment = new LoadEquipment(this);
         loadEquipment.loadEquipment();
     }
 
@@ -38,6 +41,10 @@ public class LocationItemModel implements LoadEquipment.EquipmentLoadedListener{
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public void removeListeners() {
+        if(loadEquipment != null) loadEquipment.removeListeners();
     }
 
 

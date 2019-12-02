@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="No locations found!"
+        android:text="@string/no_locations_found"
         android:visibility="gone" />
 
     <include layout="@layout/recyclerview_location" />

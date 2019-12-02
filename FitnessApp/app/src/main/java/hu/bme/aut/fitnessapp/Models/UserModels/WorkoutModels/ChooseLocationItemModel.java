@@ -15,6 +15,10 @@ public class ChooseLocationItemModel implements LoadLocations.LocationsLoadedLis
     private ArrayList<Location> locations;
     private ArrayList<UserPublicLocation> publicIDs;
 
+    private LoadLocations loadLocations;
+    private LoadUserPublicLocations loadUserPublicLocations;
+    private LoadPublicLocations loadPublicLocations;
+
     public interface LocationsLoaded {
         void onLocationsLoaded();
     }
@@ -34,7 +38,7 @@ public class ChooseLocationItemModel implements LoadLocations.LocationsLoadedLis
 
 
     public void loadLocations() {
-        LoadLocations loadLocations = new LoadLocations();
+        loadLocations = new LoadLocations();
         loadLocations.setListLoadedListener(this);
         loadLocations.loadLocations();
     }
@@ -46,7 +50,7 @@ public class ChooseLocationItemModel implements LoadLocations.LocationsLoadedLis
     }
 
     public void loadPublicLocations() {
-        LoadUserPublicLocations loadUserPublicLocations = new LoadUserPublicLocations();
+        loadUserPublicLocations = new LoadUserPublicLocations();
         loadUserPublicLocations.setListLoadedListener(this);
         loadUserPublicLocations.loadUserPublicLocations();
     }
@@ -63,7 +67,7 @@ public class ChooseLocationItemModel implements LoadLocations.LocationsLoadedLis
             listener2.onPublicLocationsLoaded();
         }
         for(UserPublicLocation loc: publicIDs) {
-            LoadPublicLocations loadPublicLocations = new LoadPublicLocations();
+            loadPublicLocations = new LoadPublicLocations();
             loadPublicLocations.setListLoadedByIDListener(this);
             loadPublicLocations.loadPublicLocationByID(loc.gym_id);
         }
@@ -97,6 +101,12 @@ public class ChooseLocationItemModel implements LoadLocations.LocationsLoadedLis
 
     public ArrayList<Location> getLocations() {
         return locations;
+    }
+
+    public void removeListeners() {
+        if(loadLocations != null) loadLocations.removeListeners();
+        if(loadUserPublicLocations != null) loadUserPublicLocations.removeListeners();
+        if(loadPublicLocations != null) loadPublicLocations.removeListeners();
     }
 
 }

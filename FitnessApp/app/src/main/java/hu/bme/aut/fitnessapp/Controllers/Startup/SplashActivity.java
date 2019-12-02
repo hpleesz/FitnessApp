@@ -10,14 +10,16 @@ import hu.bme.aut.fitnessapp.Models.StartupModels.SplashModel;
 
 public class SplashActivity extends InternetCheckActivity implements SplashModel.ActiveUserListener {
 
-
-
     private SplashModel splashModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
         splashModel = new SplashModel(this);
         splashModel.checkFirstLogin();
     }
@@ -50,5 +52,11 @@ public class SplashActivity extends InternetCheckActivity implements SplashModel
     @Override
     public void onGymActive() {
         startGym();
+    }
+
+    @Override
+    public void onStop() {
+        splashModel.removeListeners();
+        super.onStop();
     }
 }

@@ -3,43 +3,26 @@
   <component name="AndroidLayouts">
     <shared>
       <config>
-        <device id="Nexus 7" />
-        <device id="pixel_3a" />
         <device id="pixel" />
+        <device id="Nexus 7 2013" />
+        <device id="Nexus 9" />
+        <device id="Nexus 7" />
+        <device id="wear_square" />
+        <device id="Nexus 5X" />
         <device id="Nexus 6" />
         <device id="pixel_c" />
-        <device id="tv_1080p" />
-        <device id="pixel_3_xl" />
-        <device id="wear_square" />
-        <device id="10.1in WXGA (Tablet)" />
-        <device id="pixel_2_xl" />
+        <device id="pixel_3a_xl" />
+        <device id="pixel_3" />
       </config>
     </shared>
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+    <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54841a40-7a28-4d0b-9e13-8361b7fba470" name="Default Changelist" comment="water + weight">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/GymModels/GymMainModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/GymModels/NewPublicLocationModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/SplashModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/LocationItemModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/LocationModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/ViewPublicLocationDetailsModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsGraphFragmentModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsGraphModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/NewMeasurementItemModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/SettingsModels/SettingsModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WaterModels/EditWaterModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WaterModels/WaterModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WeightModels/NewWeightItemModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ChooseLocationItemModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/MainModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/StretchModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/WarmUpModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -53,108 +36,24 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cardview_cardview_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cardview_cardview_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_runtime_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_runtime_2_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_sqlite_sqlite_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_sqlite_sqlite_2_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_sqlite_sqlite_framework_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_sqlite_sqlite_framework_2_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_1_0_alpha3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_1_0_alpha3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_1_0_alpha3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_1_0_alpha3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_1_0_alpha3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_1_0_alpha3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_1_0_alpha3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_1_0_alpha3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_transition_transition_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_transition_transition_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_firebaseui_firebase_ui_auth_4_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_firebaseui_firebase_ui_auth_4_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_identifier_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_identifier_17_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_auth_15_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_auth_15_0_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_auth_api_phone_15_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_auth_api_phone_15_0_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_auth_base_15_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_auth_base_15_0_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_17_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_17_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_location_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_location_17_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_maps_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_maps_17_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_17_2_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_17_2_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_api_17_2_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_api_17_2_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_base_17_2_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_base_17_2_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_impl_17_2_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_impl_17_2_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_sdk_17_2_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_sdk_17_2_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_sdk_api_17_2_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_sdk_api_17_2_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_places_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_places_17_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_places_placereport_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_places_placereport_17_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_stats_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_stats_17_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_17_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_material_material_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_material_material_1_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_analytics_17_2_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_analytics_17_2_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_auth_19_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_auth_19_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_auth_interop_18_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_auth_interop_18_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_19_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_19_2_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_core_17_2_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_core_17_2_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_database_19_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_database_19_2_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_database_collection_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_database_collection_17_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_iid_19_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_iid_19_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_iid_interop_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_iid_interop_17_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_measurement_connector_18_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_measurement_connector_18_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_storage_19_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_storage_19_1_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Adapters/ChooseLocationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/ChooseLocationAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Adapters/ChoosePublicLocationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/ChoosePublicLocationAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Adapters/EquipmentAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/EquipmentAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Adapters/ExerciseAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/ExerciseAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Adapters/GraphPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/GraphPagerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Adapters/LocationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/LocationAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Adapters/MeasurementAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/MeasurementAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Adapters/PublicLocationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/PublicLocationAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Adapters/UserPublicLocationAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Adapters/WeightAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/WeightAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/BootReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/BootReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/NetworkChangeReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/NetworkChangeReceiver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/NotificationReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/NotificationReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/ResetWaterReceiver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/ResetWaterService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/ChooseLocationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/ChooseLocationAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/ExerciseAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/ExerciseAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/MeasurementAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/MeasurementAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/PublicLocationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/PublicLocationAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/EditPublicLocationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/EditPublicLocationActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/GymMainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/GymMainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/NewPublicLocationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/NewPublicLocationActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/InternetCheckActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/InternetCheckActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Startup/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Startup/LoginActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Startup/RegisterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Startup/RegisterActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Startup/SplashActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Startup/SplashActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/EditLocationItemDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/EditLocationItemDialogFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/LocationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/LocationActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/MapActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/MapActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/NewLocationItemDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/NewLocationItemDialogFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/PublicLocationSearchMatchDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/PublicLocationSearchMatchDialogFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/SavePublicLocationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/SavePublicLocationActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/ViewPublicLocationDetailsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/ViewPublicLocationDetailsActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/MeasurementsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/MeasurementsActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/MeasurementsGraphActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/MeasurementsGraphActivity.java" afterDir="false" />
@@ -163,77 +62,83 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/NavigationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/NavigationActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Settings/SettingsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Settings/SettingsActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Settings/UserActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Settings/UserActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Water/EditWaterDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Water/EditWaterDialogFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Water/NewWaterDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Water/NewWaterDialogFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Water/WaterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Water/WaterActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/NewGoalReachedDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/NewGoalReachedDialogFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/NewWeightItemDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/NewWeightItemDialogFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/PeriodSelectDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/PeriodSelectDialogFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/WeightActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/WeightActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ChooseLocationItemDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ChooseLocationItemDialogFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ExerciseCompletedDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ExerciseCompletedDialogFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ExerciseInfoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ExerciseInfoActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ExerciseListActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ExerciseListActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/StretchActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/StretchActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/StretchWarmUpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/StretchWarmUpActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/WarmUpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/WarmUpActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/LoadBodyParts.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadBodyParts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/LoadEquipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadEquipment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/LoadExercises.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadExercises.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/LoadLocations.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadLocations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/LoadMeasurements.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadMeasurements.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/LoadMuscles.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadMuscles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/LoadProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/LoadPublicLocations.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadPublicLocations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/LoadStretch.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadStretch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/LoadUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/LoadUserPublicLocations.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadUserPublicLocations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/LoadWarmUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadWarmUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/LoadWater.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadWater.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/LoadWeight.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadWeight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseLoad/LoadWorkoutDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadWorkoutDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/Gym/EditPublicLocationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/GymModels/EditPublicLocationModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/Gym/GymMainModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/Gym/NewPublicLocationModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/Startup/LoginModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/LoginModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/Startup/RegisterModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/RegisterModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/Startup/SplashModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Locations/LocationItemModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Locations/LocationModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Locations/MapModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/MapModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Locations/PublicSearchMatchModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/PublicSearchMatchModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Locations/ViewPublicLocationDetailsModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Measurements/MeasurementsGraphFragmentModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Measurements/MeasurementsGraphModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Measurements/MeasurementsModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Measurements/NewMeasurementItemModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Settings/SettingsModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Settings/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/SettingsModels/UserModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Settings/UserSettingsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/SettingsModels/UserSettingsModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Water/EditWaterModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Water/NewWaterModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WaterModels/NewWaterModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Water/WaterModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Weight/NewWeightItemModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Weight/PeriodSelectModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Weight/WeightModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WeightModels/WeightModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Workout/ChooseLocationItemModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Workout/ExerciseInfoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ExerciseInfoModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Workout/ExerciseListModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ExerciseListModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Workout/MainModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Workout/StretchModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Workout/StretchWarmUpModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/StretchWarmUpModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/User/Workout/WarmUpModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_user.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/AdapterModels/EquipmentAdapterModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/AdapterModels/EquipmentAdapterModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/AdapterModels/PublicLocationAdapterModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/AdapterModels/PublicLocationAdapterModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadBodyParts.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadBodyParts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadEquipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadEquipment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadExercises.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadExercises.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadLocations.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadLocations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadMeasurements.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadMeasurements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadMuscles.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadMuscles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadPublicLocations.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadPublicLocations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadStretch.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadStretch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadUserPublicLocations.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadUserPublicLocations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadWarmUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadWarmUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadWater.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadWater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadWeight.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadWeight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadWorkoutDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadWorkoutDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/GymModels/GymMainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/GymModels/GymMainModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/GymModels/NewPublicLocationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/GymModels/NewPublicLocationModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/LoginModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/LoginModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/RegisterModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/RegisterModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/SplashModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/SplashModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/LocationItemModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/LocationItemModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/LocationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/LocationModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/PublicSearchMatchModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/PublicSearchMatchModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/ViewPublicLocationDetailsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/ViewPublicLocationDetailsModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsGraphFragmentModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsGraphFragmentModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsGraphModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsGraphModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/NewMeasurementItemModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/NewMeasurementItemModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/SettingsModels/SettingsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/SettingsModels/SettingsModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/SettingsModels/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/SettingsModels/UserModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WaterModels/WaterModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WaterModels/WaterModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WeightModels/NewWeightItemModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WeightModels/NewWeightItemModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WeightModels/WeightModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WeightModels/WeightModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ChooseLocationItemModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ChooseLocationItemModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ExerciseInfoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ExerciseInfoModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ExerciseListModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ExerciseListModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/MainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/MainModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/StretchModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/StretchModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/StretchWarmUpModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/StretchWarmUpModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/WarmUpModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/WarmUpModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_map.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_map.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_measurements_female_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_measurements_female_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_measurements_male_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_measurements_male_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_navigation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_water.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_water.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_internet_check.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_internet_check.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_new_public_location.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_new_public_location.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_register.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_view_public_location_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_view_public_location_details.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_choose_location_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_choose_location_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_new_measurement.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_new_measurement.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_new_public_location_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_new_public_location_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_public_location_search_match.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_public_location_search_match.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_exercise_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_exercise_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/equipments.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/exercises.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/stretch.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/warmup.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/GymUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/GymUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/LocationsUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/LocationsUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/MeasurementsUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/MeasurementsUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/SettingsUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/SettingsUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/WaterUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/WaterUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/WeightUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/WeightUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/WorkoutUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/WorkoutUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/sonar/report-task.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/sonar/report-task.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -262,101 +167,97 @@
       </state>
     </system>
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="FitnessApp" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/GymMainActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/NotificationReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="4284">
+              <caret line="286" selection-start-line="286" selection-end-line="286" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/NavigationActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/NewPublicLocationActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="108" column="29" selection-start-line="108" selection-start-column="29" selection-end-line="108" selection-end-column="29" />
+            <state relative-caret-position="3570">
+              <caret line="242" column="13" selection-start-line="242" selection-start-column="13" selection-end-line="242" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/PeriodSelectDialogFragment.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadPublicLocations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="118" column="23" selection-start-line="118" selection-start-column="23" selection-end-line="118" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="3995">
+              <caret line="243" column="156" selection-start-line="243" selection-start-column="156" selection-end-line="243" selection-end-column="156" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WeightModels/WeightModel.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ExerciseInfoModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-901">
-              <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider editor-type-id="android-manifest" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" selection-start-line="5" selection-end-line="11" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/MapActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="183" column="56" selection-start-line="183" selection-start-column="56" selection-end-line="183" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="50" column="69" selection-start-line="50" selection-start-column="69" selection-end-line="50" selection-end-column="69" />
+            <state relative-caret-position="47">
+              <caret line="73" column="70" selection-start-line="73" selection-start-column="70" selection-end-line="73" selection-end-column="70" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/GymUnitTest.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/InternetCheckActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/BootReceiver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="15" column="74" selection-start-line="15" selection-start-column="74" selection-end-line="15" selection-end-column="74" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsGraphModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsGraphFragmentModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
               <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="68">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gradle.properties">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/NewMeasurementItemModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="1360">
+              <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -374,19 +275,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>draw</find>
-      <find>drawCh</find>
-      <find>up</find>
-      <find>loaden</find>
-      <find>shared</find>
-      <find>checkDataValidity</find>
-      <find>setTim</find>
-      <find>progr</find>
-      <find>user</find>
-      <find>acti</find>
-      <find>setU</find>
-      <find>set</find>
-      <find>showw</find>
       <find>r</find>
       <find>Stretch</find>
       <find>toas</find>
@@ -404,6 +292,19 @@
       <find>publicLocation</find>
       <find>meas</find>
       <find>ro</find>
+      <find>isgo</find>
+      <find>isg</find>
+      <find>onStop</find>
+      <find>recy</find>
+      <find>user</find>
+      <find>check</find>
+      <find>loadp</find>
+      <find>loaduse</find>
+      <find>creat</find>
+      <find>setp</find>
+      <find>load</find>
+      <find>loadus</find>
+      <find>weight</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -419,57 +320,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/EditLocationItemDialogFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/LocationActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/MapActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/NewLocationItemDialogFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/LocationsUnitTest.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/PublicLocationSearchMatchDialogFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/SavePublicLocationActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/ViewPublicLocationDetailsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/MeasurementsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/MeasurementsGraphActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/MeasurementsGraphFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/NewMeasurementItemDialogFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Settings/SettingsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Settings/UserActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Water/EditWaterDialogFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Water/NewWaterDialogFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Water/WaterActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/NewGoalReachedDialogFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/NewWeightItemDialogFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/WeightActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/VideoModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ChooseLocationItemModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ExerciseInfoModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ExerciseListModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/MainModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/StretchWarmUpModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/WarmUpModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WeightModels/NewWeightItemModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WaterModels/EditWaterModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WaterModels/WaterModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/SettingsModels/SettingsModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/SettingsModels/UserSettingsModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsGraphFragmentModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/NewMeasurementItemModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/GymModels/NewPublicLocationModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/SplashModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/LocationItemModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/LocationModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/PublicSearchMatchModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/ViewPublicLocationDetailsModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/SplashModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/RegisterModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/LoginModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/GymModels/GymMainModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/GymModels/NewPublicLocationModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/AdapterModels/PublicLocationAdapterModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsGraphFragmentModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/SettingsModels/SettingsModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WaterModels/WaterModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WeightModels/NewWeightItemModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ChooseLocationItemModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ExerciseInfoModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ExerciseListModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/MainModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/StretchModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/WarmUpModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/EditPublicLocationActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/GymMainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/NewPublicLocationActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Startup/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/LocationActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/NewLocationItemDialogFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/PublicLocationSearchMatchDialogFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/ViewPublicLocationDetailsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/NewMeasurementItemDialogFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Settings/SettingsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Water/WaterActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/NewWeightItemDialogFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/WeightActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ChooseLocationItemDialogFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ExerciseInfoActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ExerciseListActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/StretchActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/WarmUpActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/NetworkChangeReceiver.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WeightModels/WeightModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/NavigationActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/PeriodSelectDialogFragment.java" />
-        <option value="$PROJECT_DIR$/gradle.properties" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_measurements_male_2.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadMeasurements.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/MeasurementsGraphFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/MeasurementsGraphActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsGraphModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/MeasurementsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_measurements_female_2.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/LoginModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadUser.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/NewMeasurementItemModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/NotificationReceiver.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadPublicLocations.java" />
       </list>
     </option>
   </component>
@@ -487,6 +388,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -548,7 +450,29 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="fitnessapp" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="Adapters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessApp" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fitnessapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
               <item name="Gym" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessApp" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fitnessapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="Startup" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FitnessApp" type="b2602c69:ProjectViewProjectNode" />
@@ -583,6 +507,42 @@
               <item name="fitnessapp" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
               <item name="User" type="462c0819:PsiDirectoryNode" />
+              <item name="Measurements" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessApp" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fitnessapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+              <item name="Settings" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessApp" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fitnessapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+              <item name="Water" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FitnessApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FitnessApp" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fitnessapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
               <item name="Weight" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -593,30 +553,9 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="fitnessapp" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FitnessApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FitnessApp" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="fitnessapp" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
-              <item name="UserModels" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FitnessApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FitnessApp" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="fitnessapp" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
-              <item name="UserModels" type="462c0819:PsiDirectoryNode" />
-              <item name="WeightModels" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+              <item name="Workout" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FitnessApp" type="b2602c69:ProjectViewProjectNode" />
@@ -647,7 +586,6 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -683,7 +621,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Android App.app">
+  <component name="RunManager" selected="Android JUnit.fitnessapp in app">
     <configuration name="GymUnitTest" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
@@ -849,9 +787,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SettingsUnitTest - 2019.11.15 at 13h 48m 59s.xml">
-      <configuration name="SettingsUnitTest" configurationId="AndroidJUnit" />
-    </history-entry>
     <history-entry file="fitnessapp_in_app - 2019.11.15 at 13h 52m 32s.xml">
       <configuration name="fitnessapp in app" configurationId="AndroidJUnit" />
     </history-entry>
@@ -879,6 +814,9 @@
     <history-entry file="fitnessapp_in_app - 2019.11.17 at 21h 18m 05s.xml">
       <configuration name="fitnessapp in app" configurationId="AndroidJUnit" />
     </history-entry>
+    <history-entry file="fitnessapp_in_app - 2019.12.01 at 13h 39m 19s.xml">
+      <configuration name="fitnessapp in app" configurationId="AndroidJUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -886,23 +824,23 @@
     <layout>
       <window_info id="Structure" order="0" sideWeight="0.15430862" side_tool="true" weight="0.3441755" />
       <window_info id="Image Layers" order="1" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Favorites" order="2" sideWeight="0.37386018" side_tool="true" weight="0.22239032" />
       <window_info id="Designer" order="3" />
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Resources Explorer" order="6" weight="0.32885087" />
-      <window_info active="true" content_ui="combo" id="Project" order="7" sideWeight="0.8456914" visible="true" weight="0.27609682" />
+      <window_info active="true" content_ui="combo" id="Project" order="7" sideWeight="0.6261398" visible="true" weight="0.22844176" />
       <window_info id="Captures" order="8" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="0" weight="0.22258593" />
+      <window_info anchor="bottom" id="Find" order="0" weight="0.31260228" />
       <window_info anchor="bottom" id="Version Control" order="1" weight="0.12765957" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="5" visible="true" weight="0.46644846" />
+      <window_info anchor="bottom" id="Build" order="5" visible="true" weight="0.28477904" />
       <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Logcat" order="7" weight="0.14566284" />
-      <window_info anchor="bottom" id="Run" order="8" weight="0.21931261" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.29787233" />
+      <window_info anchor="bottom" id="Logcat" order="7" weight="0.59738135" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.47135842" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.31260228" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3289689" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
@@ -934,7 +872,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/MeasurementsActivity.java</url>
-          <line>75</line>
+          <line>79</line>
           <properties />
           <option name="timeStamp" value="35" />
         </line-breakpoint>
@@ -952,7 +890,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ExerciseListActivity.java</url>
-          <line>71</line>
+          <line>76</line>
           <properties />
           <option name="timeStamp" value="84" />
         </line-breakpoint>
@@ -970,13 +908,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/GymMainActivity.java</url>
-          <line>90</line>
-          <properties />
-          <option name="timeStamp" value="89" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/GymMainActivity.java</url>
-          <line>111</line>
+          <line>116</line>
           <properties />
           <option name="timeStamp" value="90" />
         </line-breakpoint>
@@ -1000,13 +932,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/PublicLocationSearchMatchDialogFragment.java</url>
-          <line>78</line>
+          <line>84</line>
           <properties />
           <option name="timeStamp" value="130" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/PublicLocationSearchMatchDialogFragment.java</url>
-          <line>95</line>
+          <line>101</line>
           <properties />
           <option name="timeStamp" value="131" />
         </line-breakpoint>
@@ -1030,7 +962,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ExerciseInfoActivity.java</url>
-          <line>167</line>
+          <line>172</line>
           <properties />
           <option name="timeStamp" value="147" />
         </line-breakpoint>
@@ -1047,86 +979,74 @@
           <option name="timeStamp" value="160" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ChooseLocationItemDialogFragment.java</url>
-          <line>111</line>
-          <properties />
-          <option name="timeStamp" value="168" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ChooseLocationItemModel.java</url>
-          <line>27</line>
+          <line>31</line>
           <properties />
           <option name="timeStamp" value="169" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ChooseLocationItemDialogFragment.java</url>
-          <line>119</line>
+          <line>123</line>
           <properties />
           <option name="timeStamp" value="170" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ChooseLocationItemDialogFragment.java</url>
-          <line>133</line>
+          <line>137</line>
           <properties />
           <option name="timeStamp" value="171" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/MeasurementsGraphFragment.java</url>
-          <line>162</line>
+          <line>159</line>
           <properties />
           <option name="timeStamp" value="175" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadPublicLocations.java</url>
-          <line>161</line>
+          <line>167</line>
           <properties />
           <option name="timeStamp" value="179" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadPublicLocations.java</url>
-          <line>197</line>
+          <line>203</line>
           <properties />
           <option name="timeStamp" value="180" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/LocationModel.java</url>
-          <line>62</line>
+          <line>63</line>
           <properties />
           <option name="timeStamp" value="181" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/LocationModel.java</url>
-          <line>55</line>
+          <line>56</line>
           <properties />
           <option name="timeStamp" value="182" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/LocationActivity.java</url>
-          <line>39</line>
-          <properties />
-          <option name="timeStamp" value="184" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/LocationModel.java</url>
-          <line>27</line>
+          <line>28</line>
           <properties />
           <option name="timeStamp" value="185" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/LocationModel.java</url>
-          <line>50</line>
+          <line>51</line>
           <properties />
           <option name="timeStamp" value="186" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WaterModels/WaterModel.java</url>
-          <line>72</line>
+          <line>73</line>
           <properties />
           <option name="timeStamp" value="190" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Water/WaterActivity.java</url>
-          <line>66</line>
+          <line>70</line>
           <properties />
           <option name="timeStamp" value="191" />
         </line-breakpoint>
@@ -1138,13 +1058,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadWorkoutDetails.java</url>
-          <line>41</line>
+          <line>43</line>
           <properties />
           <option name="timeStamp" value="197" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/MainActivity.java</url>
-          <line>104</line>
+          <line>108</line>
           <properties />
           <option name="timeStamp" value="204" />
         </line-breakpoint>
@@ -1162,13 +1082,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/MainModel.java</url>
-          <line>109</line>
+          <line>115</line>
           <properties />
           <option name="timeStamp" value="216" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/MainModel.java</url>
-          <line>114</line>
+          <line>120</line>
           <properties />
           <option name="timeStamp" value="217" />
         </line-breakpoint>
@@ -1180,7 +1100,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadPublicLocations.java</url>
-          <line>142</line>
+          <line>147</line>
           <properties />
           <option name="timeStamp" value="222" />
         </line-breakpoint>
@@ -1197,32 +1117,26 @@
           <option name="timeStamp" value="225" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadUser.java</url>
-          <line>38</line>
-          <properties />
-          <option name="timeStamp" value="226" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Settings/SettingsActivity.java</url>
-          <line>181</line>
+          <line>182</line>
           <properties />
           <option name="timeStamp" value="227" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Settings/SettingsActivity.java</url>
-          <line>158</line>
+          <line>159</line>
           <properties />
           <option name="timeStamp" value="228" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Settings/SettingsActivity.java</url>
-          <line>71</line>
+          <line>72</line>
           <properties />
           <option name="timeStamp" value="229" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadPublicLocations.java</url>
-          <line>212</line>
+          <line>218</line>
           <properties />
           <option name="timeStamp" value="230" />
         </line-breakpoint>
@@ -1238,6 +1152,24 @@
           <properties />
           <option name="timeStamp" value="232" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/NewGoalReachedDialogFragment.java</url>
+          <line>16</line>
+          <properties />
+          <option name="timeStamp" value="236" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WeightModels/WeightModel.java</url>
+          <line>142</line>
+          <properties />
+          <option name="timeStamp" value="237" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Startup/SplashActivity.java</url>
+          <line>58</line>
+          <properties />
+          <option name="timeStamp" value="238" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/NotificationReceiver.java</url>
           <line>115</line>
@@ -1245,29 +1177,15 @@
           <option name="timeStamp" value="124" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ExerciseInfoActivity.java</url>
-          <line>73</line>
-          <properties class="hu.bme.aut.fitnessapp.Controllers.User.Workout.ExerciseInfoActivity" />
-          <option name="timeStamp" value="146" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/LocationActivity.java</url>
-          <line>111</line>
+          <line>115</line>
           <properties class="hu.bme.aut.fitnessapp.Controllers.User.Locations.LocationActivity" method="onItemDeleted" />
           <option name="timeStamp" value="148" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WeightModels/WeightModel.java</url>
-          <line>97</line>
-          <properties class="hu.bme.aut.fitnessapp.Models.UserModels.WeightModels.WeightModel">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="154" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ChooseLocationItemModel.java</url>
-          <line>37</line>
-          <properties class="hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.ChooseLocationItemModel.LocationsLoaded">
+          <line>41</line>
+          <properties class="hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.ChooseLocationItemModel">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="173" />
@@ -1278,6 +1196,12 @@
           <properties class="hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.StretchWarmUpModel" />
           <option name="timeStamp" value="209" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/NewGoalReachedDialogFragment.java</url>
+          <line>21</line>
+          <properties class="hu.bme.aut.fitnessapp.Controllers.User.Weight.NewGoalReachedDialogFragment" method="onCreate" />
+          <option name="timeStamp" value="235" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -1287,456 +1211,389 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Settings/UserActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="-2214">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/WeightActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Water/EditWaterDialogFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2125">
-          <caret line="167" selection-start-line="167" selection-end-line="167" />
+        <state relative-caret-position="-347">
+          <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ChooseLocationItemModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Water/NewWaterDialogFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="98" column="18" lean-forward="true" selection-start-line="98" selection-start-column="18" selection-end-line="98" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-500">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ExerciseInfoModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Water/WaterActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="292" selection-start-line="292" selection-end-line="292" />
+        <state relative-caret-position="387">
+          <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ExerciseListModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/MainModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="278" selection-start-line="278" selection-end-line="278" />
-          <folding>
-            <element signature="e#10424#10425#0" expanded="true" />
-            <element signature="e#10460#10461#0" expanded="true" />
-            <element signature="e#10508#10509#0" expanded="true" />
-            <element signature="e#10545#10546#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/StretchModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/StretchWarmUpModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1878#1879#0" expanded="true" />
-            <element signature="e#1915#1916#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/VideoModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/WarmUpModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding>
-            <element signature="e#1321#1322#0" expanded="true" />
-            <element signature="e#1349#1350#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WeightModels/NewWeightItemModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WaterModels/EditWaterModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#1196#1197#0" expanded="true" />
-            <element signature="e#1242#1243#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WaterModels/NewWaterModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WaterModels/WaterModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-141">
-          <caret line="88" column="4" selection-start-line="88" selection-start-column="4" selection-end-line="88" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1135#1136#0" expanded="true" />
-            <element signature="e#1199#1200#0" expanded="true" />
-            <element signature="e#2967#2968#0" expanded="true" />
-            <element signature="e#2997#2998#0" expanded="true" />
-            <element signature="e#3043#3044#0" expanded="true" />
-            <element signature="e#3081#3082#0" expanded="true" />
-            <element signature="e#3125#3126#0" expanded="true" />
-            <element signature="e#3161#3162#0" expanded="true" />
-            <element signature="e#3113#3114#0" expanded="true" />
-            <element signature="e#3165#3166#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/SettingsModels/SettingsModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/SettingsModels/UserModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-614">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/SettingsModels/UserSettingsModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#655#656#0" expanded="true" />
-            <element signature="e#697#698#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-            <element signature="e#845#846#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsGraphFragmentModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#1923#1924#0" expanded="true" />
-            <element signature="e#1963#1964#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsGraphModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/DateFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/NewWeightItemDialogFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-782">
-          <caret line="13" column="35" lean-forward="true" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/NewMeasurementItemModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="81" column="44" lean-forward="true" selection-start-line="81" selection-start-column="44" selection-end-line="81" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/LocationItemModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/LocationModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1447">
-          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/MapModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/PublicSearchMatchModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2198">
-          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
-          <folding>
-            <element signature="e#5248#5249#0" expanded="true" />
-            <element signature="e#5280#5281#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/ViewPublicLocationDetailsModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-954">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/SplashModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="72" column="31" lean-forward="true" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/RegisterModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-566">
-          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/LoginModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="87" column="4" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/GymModels/EditPublicLocationModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/GymModels/NewPublicLocationModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-498">
-          <caret line="23" column="62" lean-forward="true" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/GymModels/GymMainModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/AdapterModels/EquipmentAdapterModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/AdapterModels/ExerciseAdapterModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/AdapterModels/LocationAdapterModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/AdapterModels/MeasurementAdapterModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/AdapterModels/PublicLocationAdapterModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/AdapterModels/WeightAdapterModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/ChooseLocationAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/EditPublicLocationActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/NewPublicLocationActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/GymMainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/NavigationActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="108" column="29" selection-start-line="108" selection-start-column="29" selection-end-line="108" selection-end-column="29" />
+        <state relative-caret-position="268">
+          <caret line="82" column="40" selection-start-line="82" selection-start-column="40" selection-end-line="82" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/PeriodSelectDialogFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="118" column="23" selection-start-line="118" selection-start-column="23" selection-end-line="118" selection-end-column="23" />
+        <state relative-caret-position="-1214">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Weight/WeightActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="71" column="32" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ChooseLocationItemDialogFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="119" column="54" selection-start-line="119" selection-start-column="54" selection-end-line="119" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ExerciseCompletedDialogFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-296">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ExerciseInfoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="76" column="44" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/ExerciseListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="60" column="42" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="72" column="24" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/StretchWarmUpActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-408">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/StretchActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#433#434#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Workout/WarmUpActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/GymModels/NewPublicLocationModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="63" column="34" lean-forward="true" selection-start-line="63" selection-start-column="34" selection-end-line="63" selection-end-column="34" />
+          <folding>
+            <element signature="e#2320#2321#0" expanded="true" />
+            <element signature="e#2393#2394#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/PublicLocationAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/AdapterModels/PublicLocationAdapterModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="36" column="43" lean-forward="true" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/VideoModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="20" selection-start-line="20" selection-end-line="34" selection-end-column="5" />
+          <folding>
+            <element signature="e#898#1074#0" expanded="true" />
+            <element signature="e#1073#1074#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WeightModels/NewWeightItemModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
+          <folding>
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#1004#1005#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WeightModels/WeightModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-901">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        <state relative-caret-position="306">
+          <caret line="114" column="9" selection-start-line="101" selection-start-column="8" selection-end-line="114" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/LocationModels/MapModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="34" selection-start-line="34" selection-end-line="49" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/DatabaseConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="65" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_measurements_male_2.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="232" column="11" lean-forward="true" selection-end-line="232" selection-end-column="17" />
+          <folding>
+            <element signature="e#1584#1613#0" expanded="true" />
+            <element signature="e#2348#2377#0" expanded="true" />
+            <element signature="e#2841#2870#0" expanded="true" />
+            <element signature="e#3341#3370#0" expanded="true" />
+            <element signature="e#4044#4073#0" expanded="true" />
+            <element signature="e#4537#4566#0" expanded="true" />
+            <element signature="e#5036#5065#0" expanded="true" />
+            <element signature="e#5556#5585#0" expanded="true" />
+            <element signature="e#6959#6988#0" expanded="true" />
+            <element signature="e#7711#7740#0" expanded="true" />
+            <element signature="e#8389#8418#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_measurements_female_2.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="3740">
+          <caret line="220" column="39" selection-start-line="220" selection-start-column="39" selection-end-line="220" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/NetworkChangeReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="36" column="5" selection-start-line="27" selection-start-column="4" selection-end-line="36" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/MeasurementsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1666">
+          <caret line="114" column="8" selection-start-line="114" selection-start-column="8" selection-end-line="114" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/MeasurementAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="88" column="47" selection-start-line="88" selection-start-column="47" selection-end-line="88" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/MeasurementsGraphActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="75" column="8" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Measurements/MeasurementsGraphFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2856">
+          <caret line="203" column="8" selection-start-line="203" selection-start-column="8" selection-end-line="203" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadWater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="39" selection-start-line="39" selection-end-line="54" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_exercise_list.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-578" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/NavigationActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1276">
+          <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/EquipmentAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Adapters/GraphPagerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-888">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadMeasurements.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1081">
+          <caret line="182" selection-start-line="182" selection-end-line="182" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/StartupModels/LoginModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="100" selection-start-line="100" selection-end-line="100" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="70" selection-start-line="70" selection-end-line="76" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/NotificationReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4284">
+          <caret line="286" selection-start-line="286" selection-end-line="286" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/Gym/NewPublicLocationActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3570">
+          <caret line="242" column="13" selection-start-line="242" selection-start-column="13" selection-end-line="242" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/DatabaseModels/LoadPublicLocations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3995">
+          <caret line="243" column="156" selection-start-line="243" selection-start-column="156" selection-end-line="243" selection-end-column="156" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/BroadcastReceivers/BootReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="15" column="74" selection-start-line="15" selection-start-column="74" selection-end-line="15" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsGraphModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsGraphFragmentModel.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="11" selection-end-column="66" />
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/User/Locations/MapActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="183" column="56" selection-start-line="183" selection-start-column="56" selection-end-line="183" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="50" column="69" selection-start-line="50" selection-start-column="69" selection-end-line="50" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/java/hu/bme/aut/fitnessapp/GymUnitTest.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/MeasurementsModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/MeasurementModels/NewMeasurementItemModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Models/UserModels/WorkoutModels/ExerciseInfoModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="73" column="70" selection-start-line="73" selection-start-column="70" selection-end-line="73" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/hu/bme/aut/fitnessapp/Controllers/InternetCheckActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>

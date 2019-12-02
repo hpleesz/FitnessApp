@@ -39,7 +39,7 @@ public class PublicLocationAdapterModel {
 
         String textView = "";
 
-        if(time >= openTime && time <= closeTime) textView = "Open (-" + items.get(position).open_hours.get(day)[1] + ")";
+        if(time >= openTime && time <= closeTime) textView = "Open" + "(-" + items.get(position).open_hours.get(day)[1] + ")";
         else textView = "Closed";
 
         return textView;

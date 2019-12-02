@@ -36,11 +36,15 @@ public class ViewPublicLocationDetailsActivity extends InternetCheckActivity imp
         initializeTextViews();
 
         Intent i = getIntent();
-        PublicLocation publicLocation = (PublicLocation) i.getSerializableExtra("location");
+        publicLocation = (PublicLocation) i.getSerializableExtra("location");
+    }
+
+    private PublicLocation publicLocation;
+
+    public void onStart() {
+        super.onStart();
         viewPublicLocationDetailsModel = new ViewPublicLocationDetailsModel(this, publicLocation);
         viewPublicLocationDetailsModel.loadEquipment();
-
-
     }
 
     public void setToolbar() {
@@ -117,5 +121,11 @@ public class ViewPublicLocationDetailsActivity extends InternetCheckActivity imp
     @Override
     public void onDetailsReady(String desc, String address, String equipment, ArrayList<String> hours) {
         setTextViews(desc, address, equipment, hours);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        viewPublicLocationDetailsModel.removeListeners();
     }
 }

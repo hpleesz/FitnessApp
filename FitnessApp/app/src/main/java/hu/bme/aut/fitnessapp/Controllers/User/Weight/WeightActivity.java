@@ -10,16 +10,19 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
  */
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
@@ -31,6 +34,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +46,7 @@ import hu.bme.aut.fitnessapp.Entities.Measurement;
 import hu.bme.aut.fitnessapp.Entities.User;
 
 public class WeightActivity extends NavigationActivity implements NewWeightItemDialogFragment.NewWeightDialogListener, WeightAdapter.WeightItemDeletedListener, PeriodSelectDialogFragment.PeriodSelectDialogListener, com.github.mikephil.charting.listener.OnChartValueSelectedListener,
-WeightModel.ChartListener, WeightModel.WeightListListener{
+WeightModel.ChartListener, WeightModel.WeightListListener, WeightModel.GoalReachedListener{
 
     private LineChart chart;
 
@@ -58,19 +62,25 @@ WeightModel.ChartListener, WeightModel.WeightListListener{
         mDrawerLayout.addView(contentView, 0);
         navigationView.getMenu().getItem(2).setChecked(true);
 
+        setFloatingActionButton();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         initializeValues();
         weightModel.setPeriod();
-
-        setFloatingActionButton();
     }
 
     public void initializeValues() {
 
         weightModel = new WeightModel(this);
         weightModel.loadProgressInfo();
+        Log.d("load", "called");
         weightModel.loadList();
 
         chart = (LineChart) findViewById(R.id.chartWeight);
+        drawChart();
 
     }
 
@@ -102,6 +112,7 @@ WeightModel.ChartListener, WeightModel.WeightListListener{
         yAxisLeft.setAxisLineWidth(3f);
         yAxisLeft.setAxisLineColor(ContextCompat.getColor(getBaseContext(), R.color.colorBlack));
 
+        yAxisLeft.removeAllLimitLines();
         LimitLine limitLine = new LimitLine((float) weightModel.getGoal_weight(), "Goal");
         limitLine.setLineColor(ContextCompat.getColor(getBaseContext(), R.color.colorAccent));
         limitLine.setLineWidth(2f);
@@ -153,7 +164,6 @@ WeightModel.ChartListener, WeightModel.WeightListListener{
 
         chart.notifyDataSetChanged();
         chart.invalidate();
-
 
     }
 
@@ -225,4 +235,37 @@ WeightModel.ChartListener, WeightModel.WeightListListener{
     public void onChartUpdate(boolean drawValues) {
         updatechart(drawValues);
     }
+
+    @Override
+    public void onGoalReached() {
+        new NewGoalReachedDialogFragment().show(getSupportFragmentManager(), NewGoalReachedDialogFragment.TAG);
+        //weightModel.setInProgress();
+    }
+
+    public void showFragment() { //new NewGoalReachedDialogFragment().show(getSupportFragmentManager(), NewGoalReachedDialogFragment.TAG);
+       Toast.makeText(this, "hi", Toast.LENGTH_LONG).show();
+       Log.d("fragment", "called");
+    }
+
+    public void onPause() {
+
+        super.onPause();
+        Log.d("stop", "called");
+        //weightModel.setInProgress();
+    }
+
+    public void onDestroy() {
+        //Toast.makeText(this, "bye", Toast.LENGTH_LONG).show();
+        Log.d("destroy", "called");
+        //weightModel.setInProgress();
+        super.onDestroy();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        weightModel.removeListeners();
+    }
+
+
 }

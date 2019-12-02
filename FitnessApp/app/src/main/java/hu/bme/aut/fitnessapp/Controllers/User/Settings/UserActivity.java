@@ -61,7 +61,7 @@ public class UserActivity extends InternetCheckActivity implements UserModel.Reg
     }
 
     public void removedUser() {
-        Toast toast = Toast.makeText(getApplicationContext(), "Registration canceled", Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(getApplicationContext(), R.string.registtration_canceled_toast, Toast.LENGTH_LONG);
         toast.show();
         Intent intent= new Intent(UserActivity.this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -185,7 +185,7 @@ public class UserActivity extends InternetCheckActivity implements UserModel.Reg
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Registration canceled", Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(getApplicationContext(), R.string.registtration_canceled_toast, Toast.LENGTH_LONG);
         toast.show();
     }
 
@@ -194,4 +194,5 @@ public class UserActivity extends InternetCheckActivity implements UserModel.Reg
     public void onRegisterCanceled() {
         removedUser();
     }
+
 }

@@ -103,4 +103,5 @@ public class MeasurementAdapter extends RecyclerView.Adapter<MeasurementAdapter.
 
         }
     }
+
 }

@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:text="Description:"
+            android:text="@string/description"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -37,7 +37,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:text="blablabla blabla blabala ,ajsdja asjdf alaks dl afalk hd lasfdl "
             android:textSize="16sp"
             android:gravity="center"/>
 
@@ -45,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:text="Address:"
+            android:text="@string/address"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -54,7 +53,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:text="Hungary\n1126,Budapest\nDolgos u. 9"
             android:textSize="16sp"
             android:gravity="center"/>
 
@@ -62,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:text="Equipment:"
+            android:text="@string/available_equipment"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -71,7 +69,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:text="Dumbbell\nRig\nStrength Machines\nBarbell\nFoam Roller"
             android:textSize="16sp"
             android:gravity="center"/>
 
@@ -79,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:text="Open days / hours:"
+            android:text="@string/open_days_hours"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -92,7 +89,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
-                android:text="Monday:"
+                android:text="@string/monday_full"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -102,7 +99,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
                 android:gravity="center"
-                android:text="08:00 - 20:00"
                 android:textSize="16sp"/>
 
         </LinearLayout>
@@ -116,7 +112,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
-                android:text="Tuesday:"
+                android:text="@string/tuesday_full"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -126,7 +122,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
                 android:gravity="center"
-                android:text="08:00 - 20:00"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -139,7 +134,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
-                android:text="Wednesday:"
+                android:text="@string/wednesday_full"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -149,7 +144,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
                 android:gravity="center"
-                android:text="08:00 - 20:00"
                 android:textSize="16sp"/>
 
         </LinearLayout>
@@ -162,7 +156,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
-                android:text="Thursday:"
+                android:text="@string/thursday_full"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -172,7 +166,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
                 android:gravity="center"
-                android:text="Closed"
                 android:textSize="16sp"/>
 
         </LinearLayout>
@@ -185,7 +178,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
-                android:text="Friday:"
+                android:text="@string/friday_full"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -195,7 +188,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
                 android:gravity="center"
-                android:text="08:00 - 20:00"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -208,7 +200,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
-                android:text="Saturday:"
+                android:text="@string/saturday_full"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -218,7 +210,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
                 android:gravity="center"
-                android:text="08:00 - 20:00"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -232,7 +223,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
-                android:text="Sunday:"
+                android:text="@string/sunday_full"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -242,7 +233,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
                 android:gravity="center"
-                android:text="08:00 - 20:00"
                 android:textSize="16sp"/>
 
         </LinearLayout>

@@ -26,8 +26,8 @@ public class LoginModel implements LoadProfile.ProfileLoadedListener{
 
     private FirebaseAuth mAuth;
 
-    public static final int INTERVAL = 2 * 60 * 60 * 1000 + 45 * 60 * 1000;
-    //public static final int INTERVAL = 2 * 60 * 1000;
+    //public static final int INTERVAL = 2 * 60 * 60 * 1000 + 45 * 60 * 1000;
+    public static final int INTERVAL = 2 * 60 * 1000;
 
     public static final String FIRST = "first sign in";
 
@@ -41,6 +41,8 @@ public class LoginModel implements LoadProfile.ProfileLoadedListener{
     }
 
     private LoginModel.loginListener listener;
+
+    private LoadProfile loadProfile;
 
 
     public LoginModel(Context activity) {
@@ -65,7 +67,7 @@ public class LoginModel implements LoadProfile.ProfileLoadedListener{
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            LoadProfile loadProfile = new LoadProfile();
+                            loadProfile = new LoadProfile();
                             loadProfile.setListLoadedListener(object);
                             loadProfile.loadProfile();
 
@@ -107,4 +109,9 @@ public class LoginModel implements LoadProfile.ProfileLoadedListener{
         alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + INTERVAL, INTERVAL, pendingIntent);
         pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
     }
+
+    public void removeListeners() {
+        if(loadProfile != null) loadProfile.removeListeners();
+    }
+
 }

@@ -76,6 +76,13 @@ public class NewWeightItemDialogFragment extends DialogFragment {
                 .create();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        newWeightItemModel = new NewWeightItemModel();
+        newWeightItemModel.loadWeight();
+    }
+
     private View getContentView() {
         final View contentView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_new_weight, null);
         TextView title = (TextView) contentView.findViewById(R.id.weightFragmentTitle);
@@ -83,10 +90,6 @@ public class NewWeightItemDialogFragment extends DialogFragment {
         valueEditText = contentView.findViewById(R.id.weightValueEditText);
         datePicker = contentView.findViewById(R.id.datePicker);
         datePicker.setMaxDate(System.currentTimeMillis());
-
-        newWeightItemModel = new NewWeightItemModel();
-        newWeightItemModel.loadWeight();
-
 
         return contentView;
     }
@@ -105,5 +108,10 @@ public class NewWeightItemDialogFragment extends DialogFragment {
         return measurementItem;
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        newWeightItemModel.removeListeners();
+    }
 
 }

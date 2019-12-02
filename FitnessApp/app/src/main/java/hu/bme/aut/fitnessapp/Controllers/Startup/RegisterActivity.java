@@ -94,14 +94,14 @@ public class RegisterActivity extends InternetCheckActivity implements AdapterVi
                     progressBar.setVisibility(ProgressBar.INVISIBLE);
                     register.setEnabled(true);
                     register.setBackground(getResources().getDrawable(R.drawable.button_round));
-                    Toast.makeText(RegisterActivity.this, "Passwords don't match!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this, R.string.password_match_error, Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
     public void registerToast() {
-        Toast.makeText(RegisterActivity.this, "Registered!", Toast.LENGTH_LONG).show();
+        Toast.makeText(RegisterActivity.this, R.string.registered, Toast.LENGTH_LONG).show();
     }
 
     public void startUserActivity(){
@@ -127,7 +127,7 @@ public class RegisterActivity extends InternetCheckActivity implements AdapterVi
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        Toast.makeText(RegisterActivity.this, "Please choose profile type!", Toast.LENGTH_LONG).show();
+        Toast.makeText(RegisterActivity.this, R.string.no_profile_type_error, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -149,4 +149,5 @@ public class RegisterActivity extends InternetCheckActivity implements AdapterVi
     public void onRegisterError(String message) {
         errorMessage(message);
     }
+
 }

@@ -31,6 +31,8 @@ public class UserModel extends UserSettingsModel {
 
     private UserModel.RegisterCanceledListener registerCanceledListener;
 
+    private LoadUser loadUser;
+
     public UserModel(Object object) {
         registerCanceledListener = (UserModel.RegisterCanceledListener)object;
         this.activity = (AppCompatActivity)object;
@@ -57,7 +59,7 @@ public class UserModel extends UserSettingsModel {
         LoadProfile loadProfile = new LoadProfile();
         loadProfile.removeItem();
 
-        LoadUser loadUser = new LoadUser();
+        loadUser = new LoadUser();
         loadUser.removeItem();
     }
 
@@ -70,8 +72,10 @@ public class UserModel extends UserSettingsModel {
 
         User user = newUser(name, year, month, day, goal, height);
 
-        LoadUser loadUser = new LoadUser();
+        loadUser = new LoadUser();
         loadUser.updateItem(user);
+        if(goal.equals(weight))
+        loadUser.setGoalReached(true);
 
         LoadWorkoutDetails loadWorkoutDetails = new LoadWorkoutDetails();
         loadWorkoutDetails.setProgress(false);

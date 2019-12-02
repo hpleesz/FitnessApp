@@ -59,6 +59,8 @@ public abstract class StretchWarmUpModel extends VideoModel {
 
     public abstract void loadItems();
 
+    public abstract void removeListeners();
+
     public ExerciseListLoadedListener getExerciseListLoadedListener() {
         return exerciseListLoadedListener;
     }

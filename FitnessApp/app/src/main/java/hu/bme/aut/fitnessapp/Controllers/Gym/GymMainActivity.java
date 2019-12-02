@@ -33,12 +33,18 @@ public class GymMainActivity extends InternetCheckActivity implements PublicLoca
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        PublicLocation publicLocation = getPublicLocationIntent();
-        gymMainModel = new GymMainModel(this, publicLocation);
-        gymMainModel.loadList();
+        publicLocation = getPublicLocationIntent();
 
         setFloatingActionButton();
 
+    }
+
+    private PublicLocation publicLocation;
+
+    public void onStart() {
+        super.onStart();
+        gymMainModel = new GymMainModel(this, publicLocation);
+        gymMainModel.loadList();
     }
 
     public PublicLocation getPublicLocationIntent() {
@@ -86,13 +92,12 @@ public class GymMainActivity extends InternetCheckActivity implements PublicLoca
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_logout:
-                gymMainModel.signOut();
-                Intent intent= new Intent(GymMainActivity.this, LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                return true;
+        if (item.getItemId() == R.id.action_logout) {
+            gymMainModel.signOut();
+            Intent intent = new Intent(GymMainActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -113,6 +118,12 @@ public class GymMainActivity extends InternetCheckActivity implements PublicLoca
     @Override
     public void onListLoaded(ArrayList<PublicLocation> locations) {
         initRecyclerView(locations);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        gymMainModel.removeListeners();
     }
 }
 

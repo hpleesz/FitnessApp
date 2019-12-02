@@ -16,6 +16,7 @@ public class ExerciseListModel implements LoadEquipment.EquipmentLoadedListener{
         void onEquipmentLoaded();
     }
 
+    private LoadEquipment loadEquipment;
     private EquipmentLoadedListener equipmentLoadedListener;
 
     public ExerciseListModel(Object object, ArrayList<Exercise> exerciseItems) {
@@ -29,7 +30,7 @@ public class ExerciseListModel implements LoadEquipment.EquipmentLoadedListener{
     }
 
     public void loadEquipment() {
-        LoadEquipment loadEquipment = new LoadEquipment(this);
+        loadEquipment = new LoadEquipment(this);
         loadEquipment.loadEquipment();
     }
 
@@ -47,5 +48,8 @@ public class ExerciseListModel implements LoadEquipment.EquipmentLoadedListener{
         return equipmentItems;
     }
 
+    public void removeListeners() {
+        if(loadEquipment != null) loadEquipment.removeListeners();
+    }
 
 }

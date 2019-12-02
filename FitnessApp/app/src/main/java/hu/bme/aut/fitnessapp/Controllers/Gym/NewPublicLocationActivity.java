@@ -53,7 +53,10 @@ public class NewPublicLocationActivity extends InternetCheckActivity implements 
 
         initializeEditTexts();
         initializeCheckBoxes();
+    }
 
+    public void onStart() {
+        super.onStart();
         publicLocationModel = new NewPublicLocationModel(this);
         publicLocationModel.loadEquipment();
 
@@ -84,18 +87,18 @@ public class NewPublicLocationActivity extends InternetCheckActivity implements 
             @Override
             public void onClick(View view) {
                 if (!editTextsValid()) {
-                    Toast toast = Toast.makeText(getApplication().getApplicationContext(), "Please fill name, description and address out", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getApplication().getApplicationContext(), R.string.gym_details_missing, Toast.LENGTH_LONG);
                     toast.show();
                 } else if (getLocationItem().equipment.isEmpty()) {
                     Toast toast = Toast.makeText(getApplication().getApplicationContext(), R.string.no_equipment_selected, Toast.LENGTH_LONG);
                     toast.show();
                 }
                 else if (!publicLocationModel.openCloseTimesValid(getLocationItem().open_hours) || !checkBoxCheckedValid()) {
-                    Toast toast = Toast.makeText(getApplication().getApplicationContext(), "If gym is closed uncheck checkbox, otherwise fill out both times", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getApplication().getApplicationContext(), R.string.gym_time_error, Toast.LENGTH_LONG);
                     toast.show();
                 }
                 else if (!publicLocationModel.openCloseTimesDiffValid(getLocationItem().open_hours)) {
-                    Toast toast = Toast.makeText(getApplication().getApplicationContext(), "Close time must be later than open time", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getApplication().getApplicationContext(), R.string.gym_time_diff_error, Toast.LENGTH_LONG);
                     toast.show();
                 }
                 else {
@@ -250,10 +253,9 @@ public class NewPublicLocationActivity extends InternetCheckActivity implements 
             hours[1] = openHours.get(i+1).getText().toString();
             openClose.add(hours);
         }
-        PublicLocation location = new PublicLocation(Calendar.getInstance().getTimeInMillis(), name.getText().toString(), adapter.getCheckedEquipmentList(), openClose, description.getText().toString(),
-                zip.getText().toString(), country.getText().toString(), city.getText().toString(), address.getText().toString(), "");
 
-        return location;
+        return new PublicLocation(Calendar.getInstance().getTimeInMillis(), name.getText().toString(), adapter.getCheckedEquipmentList(), openClose, description.getText().toString(),
+                zip.getText().toString(), country.getText().toString(), city.getText().toString(), address.getText().toString(), "");
     }
 
 
@@ -300,5 +302,11 @@ public class NewPublicLocationActivity extends InternetCheckActivity implements 
     @Override
     public void onListLoaded(ArrayList<Equipment> equipment) {
         initRecyclerView(equipment);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        publicLocationModel.removeListeners();
     }
 }

@@ -16,12 +16,19 @@ public class EditPublicLocationActivity extends NewPublicLocationActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Intent i = getIntent();
-        PublicLocation publicLocation = (PublicLocation) i.getSerializableExtra("edit");
+        publicLocation = (PublicLocation) i.getSerializableExtra("edit");
+    }
+
+    private PublicLocation publicLocation;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
         publicLocationModel = new EditPublicLocationModel(this, publicLocation);
         publicLocationModel.loadEquipment();
-        setData();
+        setDetails();
     }
 
     @Override
@@ -30,7 +37,7 @@ public class EditPublicLocationActivity extends NewPublicLocationActivity {
         getAdapter().setCheckedEquipmentList(publicLocationModel.getPublicLocation().equipment);
     }
 
-    public void setData() {
+    public void setDetails() {
 
         getName().setText(publicLocationModel.getPublicLocation().name);
         getDescription().setText(publicLocationModel.getPublicLocation().description);
@@ -68,12 +75,20 @@ public class EditPublicLocationActivity extends NewPublicLocationActivity {
             hours[1] = getOpenHours().get(i+1).getText().toString();
             openClose.add(hours);
         }
-        PublicLocation location = new PublicLocation(publicLocationModel.getPublicLocation().id,
+
+        return new PublicLocation(publicLocationModel.getPublicLocation().id,
                 getName().getText().toString(), getAdapter().getCheckedEquipmentList(), openClose,
                 getDescription().getText().toString(), getZip().getText().toString(),
                 getCountry().getText().toString(), getCity().getText().toString(),
                 getAddress().getText().toString(), "");
+    }
 
-        return location;
+    @Override
+    public void onStop() {
+        super.onStop();
+        publicLocationModel.removeListeners();
+        //databaseReference.removeEventListener(valueEventListener);
     }
 }
+
+

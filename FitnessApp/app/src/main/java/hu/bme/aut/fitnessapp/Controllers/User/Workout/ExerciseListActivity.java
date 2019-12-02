@@ -53,6 +53,11 @@ public class ExerciseListActivity extends InternetCheckActivity implements Exerc
         ArrayList<Exercise> exerciseItems = (ArrayList<Exercise>) i.getSerializableExtra("list");
         //ArrayList<Equipment> equipmentItemList = (ArrayList<Equipment>) i.getSerializableExtra("equipment");
         exerciseListModel = new ExerciseListModel(this, exerciseItems);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         exerciseListModel.loadEquipment();
     }
 
@@ -84,5 +89,11 @@ public class ExerciseListActivity extends InternetCheckActivity implements Exerc
     @Override
     public void onEquipmentLoaded() {
         initRecyclerView();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        exerciseListModel.removeListeners();
     }
 }

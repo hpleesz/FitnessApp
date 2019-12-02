@@ -40,6 +40,16 @@ public class SettingsActivity extends NavigationActivity implements SettingsMode
         mDrawerLayout.addView(contentView, 0);
         navigationView.getMenu().getItem(5).setChecked(true);
 
+        assignLayoutElements();
+
+        setFloatingActionButton();
+        setGenderOnClickListeners();
+        setGoalOnClickListeners();
+
+    }
+
+    public void onStart() {
+        super.onStart();
         settingsModel = new SettingsModel(this);
         settingsModel.loadUserdata();
 
@@ -51,15 +61,6 @@ public class SettingsActivity extends NavigationActivity implements SettingsMode
             }
         });
         notificationSwitch.setChecked(settingsModel.isChecked());
-
-        assignLayoutElements();
-
-
-
-        setFloatingActionButton();
-        setGenderOnClickListeners();
-        setGoalOnClickListeners();
-
     }
 
     public void setFloatingActionButton() {
@@ -180,5 +181,11 @@ public class SettingsActivity extends NavigationActivity implements SettingsMode
     @Override
     public void onSettingsLoaded(String name, String height, String weight, int year, int month, int day) {
         setUserDetails(name, height, weight, year, month, day);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        settingsModel.removeListeners();
     }
 }

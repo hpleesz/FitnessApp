@@ -19,13 +19,16 @@ public class ViewPublicLocationDetailsModel implements LoadEquipment.EquipmentLo
 
     private ViewPublicLocationDetailsModel.DisplayReadyListener listener;
 
+    private LoadEquipment loadEquipment;
+    private LoadPublicLocations loadPublicLocations;
+
     public ViewPublicLocationDetailsModel(Object object, PublicLocation publicLocation) {
         listener = (ViewPublicLocationDetailsModel.DisplayReadyListener)object;
         this.publicLocation = publicLocation;
     }
 
     public void loadEquipment() {
-        LoadEquipment loadEquipment = new LoadEquipment(this);
+        loadEquipment = new LoadEquipment(this);
         loadEquipment.loadEquipment();
     }
 
@@ -37,7 +40,7 @@ public class ViewPublicLocationDetailsModel implements LoadEquipment.EquipmentLo
 
 
     private void loadPublicLocation() {
-        LoadPublicLocations loadPublicLocations = new LoadPublicLocations();
+        loadPublicLocations = new LoadPublicLocations();
         loadPublicLocations.setListLoadedByIDListener(this);
         loadPublicLocations.loadPublicLocationByID(Long.toString(publicLocation.id));
 
@@ -86,4 +89,8 @@ public class ViewPublicLocationDetailsModel implements LoadEquipment.EquipmentLo
         return publicLocation;
     }
 
+    public void removeListeners() {
+        if(loadPublicLocations != null) loadPublicLocations.removeListeners();
+        if(loadEquipment != null) loadEquipment.removeListeners();
+    }
 }

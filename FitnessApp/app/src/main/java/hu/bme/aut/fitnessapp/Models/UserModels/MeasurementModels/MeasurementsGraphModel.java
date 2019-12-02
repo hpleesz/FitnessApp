@@ -1,5 +1,7 @@
 package hu.bme.aut.fitnessapp.Models.UserModels.MeasurementModels;
 
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,5 +23,9 @@ public class MeasurementsGraphModel {
 
     public void deleteItem(Measurement item, String body_part) {
         loadMeasurements.removeItem(body_part, item);
+    }
+
+    public void removeListeners() {
+        if(loadMeasurements != null) loadMeasurements.removeListeners();
     }
 }

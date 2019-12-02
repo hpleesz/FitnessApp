@@ -8,13 +8,11 @@ import hu.bme.aut.fitnessapp.Entities.Equipment;
 public class EquipmentAdapterModel {
 
     private ArrayList<Equipment> items;
-    private EquipmentAdapter.OnCheckBoxClicked onCheckBoxClicked;
     private ArrayList<Integer> clicked;
 
     public EquipmentAdapterModel(ArrayList<Equipment> items) {
         this.items = items;
         clicked = new ArrayList<>();
-        this.onCheckBoxClicked = onCheckBoxClicked;
         for(int i = 0; i < items.size(); i++) {
             clicked.add(0);
         }

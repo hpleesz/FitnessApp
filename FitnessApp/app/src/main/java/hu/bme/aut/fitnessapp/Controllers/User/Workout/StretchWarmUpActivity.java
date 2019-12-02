@@ -123,4 +123,10 @@ public class StretchWarmUpActivity extends InternetCheckActivity implements Stre
         setExercise();
         setFloatingActionButtons();
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        model.removeListeners();
+    }
 }

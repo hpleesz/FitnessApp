@@ -35,14 +35,18 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
         mDrawerLayout.addView(contentView, 0);
         navigationView.getMenu().getItem(3).setChecked(true);
 
+        publicLocation = getLocationIntent();
+    }
 
-        PublicLocation publicLocation = getLocationIntent();
+    private PublicLocation publicLocation;
+
+    public void onStart() {
+        super.onStart();
         locationModel = new LocationModel(this, publicLocation);
         locationModel.loadLocations();
         locationModel.loadListPublic();
 
         setFloatingActionButton();
-
     }
 
     public PublicLocation getLocationIntent() {
@@ -129,6 +133,12 @@ public class LocationActivity extends NavigationActivity implements NewLocationI
     @Override
     public void onPublicLocationsLoaded(ArrayList<PublicLocation> publicLocations) {
         initRecyclerView2(publicLocations);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        locationModel.removeListeners();
     }
 
 }

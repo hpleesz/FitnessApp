@@ -11,8 +11,10 @@ public class StretchModel extends StretchWarmUpModel implements LoadStretch.Stre
         super(activity);
     }
 
+    private LoadStretch loadStretch;
+
     public void loadItems() {
-        LoadStretch loadStretch = new LoadStretch(this);
+        loadStretch = new LoadStretch(this);
         loadStretch.loadStretch();
     }
 
@@ -22,5 +24,9 @@ public class StretchModel extends StretchWarmUpModel implements LoadStretch.Stre
 
         setItems(stretchList);
         getExerciseListLoadedListener().onExerciseListLoaded();
+    }
+
+    public void removeListeners() {
+        if(loadStretch != null) loadStretch.removeListeners();
     }
 }
