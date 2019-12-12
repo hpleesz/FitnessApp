@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="80dp">
+        android:paddingTop="80dp"
+        android:paddingRight="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,8 +21,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="20dp"
-                android:text="Notifications: "
+                android:paddingEnd="20dp"
+                android:text="@string/notifications"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -44,8 +44,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="20dp"
                 android:paddingTop="10dp"
+                android:paddingEnd="20dp"
                 android:text="@string/name"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
@@ -97,36 +97,6 @@
 
         </LinearLayout>
 
-        <!--
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:paddingTop="20dp">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="20dp"
-                android:paddingTop="10dp"
-                android:text="@string/measurement"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/weightEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:hint="@string/kg"
-                android:inputType="numberDecimal" />
-
-        </LinearLayout>
-        -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,8 +107,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="20dp"
                 android:paddingTop="10dp"
+                android:paddingEnd="20dp"
                 android:text="@string/height"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
@@ -183,7 +153,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="20dp"
+                android:paddingEnd="20dp"
                 android:text="@string/goal_weight"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
@@ -213,14 +183,14 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:paddingBottom="30dp"
-            android:paddingTop="10dp">
+            android:paddingTop="10dp"
+            android:paddingBottom="30dp">
 
             <ImageButton
                 android:id="@+id/buttonLoseWeight"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
                 android:adjustViewBounds="true"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
@@ -230,7 +200,7 @@
                 android:id="@+id/buttonGainMuscle"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:adjustViewBounds="true"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"

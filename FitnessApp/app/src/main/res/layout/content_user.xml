@@ -22,8 +22,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="20dp"
                 android:paddingTop="10dp"
+                android:paddingRight="20dp"
                 android:text="@string/name"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
@@ -85,9 +85,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="20dp"
                 android:paddingTop="10dp"
-                android:text="@string/measurement"
+                android:paddingRight="20dp"
+                android:text="@string/weight"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -112,8 +112,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="20dp"
                 android:paddingTop="10dp"
+                android:paddingRight="20dp"
                 android:text="@string/height"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
@@ -188,8 +188,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:paddingBottom="30dp"
-            android:paddingTop="10dp">
+            android:paddingTop="10dp"
+            android:paddingBottom="30dp">
 
             <ImageButton
                 android:id="@+id/buttonLoseWeight"

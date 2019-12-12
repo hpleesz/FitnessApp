@@ -6,11 +6,11 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingBottom="8dp"
     android:paddingLeft="8dp"
-    android:paddingRight="8dp"
     android:paddingTop="8dp"
-    tools:context=".User.Weight.WeightActivity">
+    android:paddingRight="8dp"
+    android:paddingBottom="8dp"
+    tools:context=".controllers.user.weight.WeightActivity">
 
 
     <TextView

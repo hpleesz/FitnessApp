@@ -49,23 +49,23 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
+                    android:layout_weight="1"
                     android:paddingTop="10dp"
-                    android:text="Shoulders:"
+                    android:paddingRight="20dp"
+                    android:text="@string/shoulders"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"/>
+                    android:textStyle="bold" />
 
 
                 <EditText
                     android:id="@+id/ShouldersEditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:hint="@string/cm"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1"/>
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -78,23 +78,23 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
+                    android:layout_weight="1"
                     android:paddingTop="10dp"
-                    android:text="Chest:"
+                    android:paddingRight="20dp"
+                    android:text="@string/chest"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"/>
+                    android:textStyle="bold" />
 
 
                 <EditText
                     android:id="@+id/ChestEditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:hint="@string/cm"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1"/>
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -107,23 +107,23 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
+                    android:layout_weight="1"
                     android:paddingTop="10dp"
-                    android:text="Waist:"
+                    android:paddingRight="20dp"
+                    android:text="@string/waist"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"/>
+                    android:textStyle="bold" />
 
 
                 <EditText
                     android:id="@+id/WaistEditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:hint="@string/cm"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1"/>
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -136,23 +136,23 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
+                    android:layout_weight="1"
                     android:paddingTop="10dp"
-                    android:text="Hips:"
+                    android:paddingRight="20dp"
+                    android:text="@string/hips"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"/>
+                    android:textStyle="bold" />
 
 
                 <EditText
                     android:id="@+id/HipsEditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:hint="@string/cm"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1"/>
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -165,23 +165,23 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
+                    android:layout_weight="1"
                     android:paddingTop="10dp"
-                    android:text="Right Upper Arm:"
+                    android:paddingRight="20dp"
+                    android:text="@string/right_upper_arm"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"/>
+                    android:textStyle="bold" />
 
 
                 <EditText
                     android:id="@+id/RightUpperArmEditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:hint="@string/cm"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1"/>
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -194,23 +194,23 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
+                    android:layout_weight="1"
                     android:paddingTop="10dp"
-                    android:text="Left Upper Arms:"
+                    android:paddingRight="20dp"
+                    android:text="@string/left_upper_arms"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"/>
+                    android:textStyle="bold" />
 
 
                 <EditText
                     android:id="@+id/LeftUpperArmEditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:hint="@string/cm"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1"/>
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -223,23 +223,23 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
+                    android:layout_weight="1"
                     android:paddingTop="10dp"
-                    android:text="Right Forearm:"
+                    android:paddingRight="20dp"
+                    android:text="@string/right_forearm"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"/>
+                    android:textStyle="bold" />
 
 
                 <EditText
                     android:id="@+id/RightForearmEditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:hint="@string/cm"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1"/>
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -252,23 +252,23 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
+                    android:layout_weight="1"
                     android:paddingTop="10dp"
-                    android:text="Left Forearm:"
+                    android:paddingRight="20dp"
+                    android:text="@string/left_forearm"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"/>
+                    android:textStyle="bold" />
 
 
                 <EditText
                     android:id="@+id/LeftForearmEditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:hint="@string/cm"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1"/>
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -281,23 +281,23 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
+                    android:layout_weight="1"
                     android:paddingTop="10dp"
-                    android:text="Right Thigh:"
+                    android:paddingRight="20dp"
+                    android:text="@string/right_thigh"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"/>
+                    android:textStyle="bold" />
 
 
                 <EditText
                     android:id="@+id/RightThighEditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:hint="@string/cm"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1"/>
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -310,23 +310,23 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
+                    android:layout_weight="1"
                     android:paddingTop="10dp"
-                    android:text="Left Thigh:"
+                    android:paddingRight="20dp"
+                    android:text="@string/left_thigh"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"/>
+                    android:textStyle="bold" />
 
 
                 <EditText
                     android:id="@+id/LeftThighEditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:hint="@string/cm"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1"/>
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -339,23 +339,23 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
+                    android:layout_weight="1"
                     android:paddingTop="10dp"
-                    android:text="Right Calf:"
+                    android:paddingRight="20dp"
+                    android:text="@string/right_calf"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"/>
+                    android:textStyle="bold" />
 
 
                 <EditText
                     android:id="@+id/RightCalfEditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:hint="@string/cm"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1"/>
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -368,23 +368,23 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
+                    android:layout_weight="1"
                     android:paddingTop="10dp"
-                    android:text="Left Calf:"
+                    android:paddingRight="20dp"
+                    android:text="@string/left_calf"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"/>
+                    android:textStyle="bold" />
 
 
                 <EditText
                     android:id="@+id/LeftCalfEditText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:hint="@string/cm"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1"/>
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 

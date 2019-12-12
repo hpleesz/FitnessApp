@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="8dp"
     android:paddingLeft="8dp"
-    android:paddingRight="8dp"
     android:paddingTop="64dp"
-    tools:context=".Gym.GymMainActivity">
+    android:paddingRight="8dp"
+    android:paddingBottom="8dp"
+    tools:context=".controllers.gym.GymMainActivity">
 
     <include layout="@layout/recyclerview_location_public" />
 

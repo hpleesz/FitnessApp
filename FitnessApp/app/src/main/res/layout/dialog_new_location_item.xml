@@ -46,8 +46,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dip"
         android:layout_marginTop="16dip"
+        android:layout_marginBottom="16dip"
         android:text="@string/available_equipment"
         android:textSize="16sp"
         android:textStyle="bold" />
