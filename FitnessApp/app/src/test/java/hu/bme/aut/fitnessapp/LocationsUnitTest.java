@@ -4,10 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import hu.bme.aut.fitnessapp.Entities.PublicLocation;
-import hu.bme.aut.fitnessapp.Controllers.User.Locations.PublicLocationSearchMatchDialogFragment;
-import hu.bme.aut.fitnessapp.Models.UserModels.LocationModels.PublicSearchMatchModel;
+import hu.bme.aut.fitnessapp.entities.PublicLocation;
+import hu.bme.aut.fitnessapp.controllers.user.locations.PublicLocationSearchMatchDialogFragment;
+import hu.bme.aut.fitnessapp.models.user_models.location_models.PublicSearchMatchModel;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -32,7 +33,7 @@ public class LocationsUnitTest {
         publicSearchMatchModel.setPublicLocation(new PublicLocation(0, "Name", new ArrayList<Integer>(), open_hours,
                 "Description", "Zip", "Country", "City", "Address", "Creator"));
 
-        ArrayList<Integer[]> times = publicSearchMatchModel.convertTimesToInt();
+        List<Integer[]> times = publicSearchMatchModel.convertTimesToInt();
 
         ArrayList<Integer[]> converted = new ArrayList<>();
         converted.add(new Integer[]{800, 1700});

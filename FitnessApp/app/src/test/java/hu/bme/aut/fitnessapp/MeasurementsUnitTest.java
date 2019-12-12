@@ -6,9 +6,9 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import hu.bme.aut.fitnessapp.Entities.Measurement;
-import hu.bme.aut.fitnessapp.Controllers.User.Measurements.NewMeasurementItemDialogFragment;
-import hu.bme.aut.fitnessapp.Models.UserModels.MeasurementModels.NewMeasurementItemModel;
+import hu.bme.aut.fitnessapp.entities.Measurement;
+import hu.bme.aut.fitnessapp.controllers.user.measurements.NewMeasurementItemDialogFragment;
+import hu.bme.aut.fitnessapp.models.user_models.measurement_models.NewMeasurementItemModel;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -39,7 +39,7 @@ public class MeasurementsUnitTest {
         body_parts.add("Shoulders");
         body_parts.add("Hips");
 
-        newMeasurementItemModel.setBody_parts(body_parts);
+        newMeasurementItemModel.setBodyParts(body_parts);
 
         ArrayList<ArrayList<Measurement>> measurements = new ArrayList<>();
         for(int i = 0; i < 6; i++) {

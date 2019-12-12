@@ -5,8 +5,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import hu.bme.aut.fitnessapp.Controllers.Gym.NewPublicLocationActivity;
-import hu.bme.aut.fitnessapp.Models.GymModels.NewPublicLocationModel;
+import hu.bme.aut.fitnessapp.controllers.gym.NewPublicLocationActivity;
+import hu.bme.aut.fitnessapp.models.gym_models.NewPublicLocationModel;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

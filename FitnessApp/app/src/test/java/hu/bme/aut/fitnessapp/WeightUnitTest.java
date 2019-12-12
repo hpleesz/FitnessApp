@@ -5,9 +5,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import hu.bme.aut.fitnessapp.Entities.Measurement;
-import hu.bme.aut.fitnessapp.Controllers.User.Weight.WeightActivity;
-import hu.bme.aut.fitnessapp.Models.UserModels.WeightModels.WeightModel;
+import hu.bme.aut.fitnessapp.entities.Measurement;
+import hu.bme.aut.fitnessapp.controllers.user.weight.WeightActivity;
+import hu.bme.aut.fitnessapp.models.user_models.weight_models.WeightModel;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -31,8 +31,8 @@ public class WeightUnitTest {
         measurements.add(new Measurement("125", 40));
 
         weightModel.setItemlist(measurements);
-        weightModel.setGoal_weight(50);
-        weightModel.setStarting_weight(20);
+        weightModel.setGoalWeight(50);
+        weightModel.setStartingWeight(20);
 
         assertFalse(weightModel.isGoalReached());
 

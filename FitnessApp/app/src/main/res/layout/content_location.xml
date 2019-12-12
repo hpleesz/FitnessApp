@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="8dp"
     android:paddingLeft="8dp"
-    android:paddingRight="8dp"
     android:paddingTop="64dp"
-    tools:context=".Controllers.User.Locations.LocationActivity"
-    android:weightSum="2">
+    android:paddingRight="8dp"
+    android:paddingBottom="8dp"
+    android:weightSum="2"
+    tools:context=".controllers.user.locations.LocationActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,14 +22,15 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="Own Locations"
-            android:textSize="20sp"
             android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <include layout="@layout/recyclerview_location" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -39,11 +40,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="Gyms"
-            android:textSize="20sp"
             android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <include layout="@layout/recyclerview_location_public" />
     </LinearLayout>

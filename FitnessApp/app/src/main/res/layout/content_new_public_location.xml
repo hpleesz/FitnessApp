@@ -120,305 +120,354 @@
 
 
         <LinearLayout
-            android:paddingTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:paddingTop="20dp"
             android:weightSum="7">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center">
-                <CheckBox
-                    android:id="@+id/monCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+
+                    <CheckBox
+                        android:id="@+id/monCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/monday"/>
+                    android:text="@string/monday" />
+
                 <EditText
                     android:id="@+id/MonStart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:focusableInTouchMode="false"
-                    android:textSize="12sp"
-                    android:inputType="time"/>
+                    android:gravity="center"
+                    android:inputType="time"
+                    android:textSize="12sp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="-"/>
+                    android:text="-" />
+
                 <EditText
                     android:id="@+id/MonEnd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:focusableInTouchMode="false"
-                    android:textSize="12sp"
-                    android:inputType="time"/>
+                    android:gravity="center"
+                    android:inputType="time"
+                    android:textSize="12sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center">
+
                     <CheckBox
                         android:id="@+id/tuesCheckBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/tuesday"/>
+                    android:text="@string/tuesday" />
+
                 <EditText
                     android:id="@+id/TuesStart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:focusableInTouchMode="false"
-                    android:textSize="12sp"
-                    android:inputType="time"/>
+                    android:gravity="center"
+                    android:inputType="time"
+                    android:textSize="12sp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="-"/>
+                    android:text="-" />
+
                 <EditText
                     android:id="@+id/TuesEnd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:focusableInTouchMode="false"
-                    android:textSize="12sp"
-                    android:inputType="time"/>
+                    android:gravity="center"
+                    android:inputType="time"
+                    android:textSize="12sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center">
+
                     <CheckBox
                         android:id="@+id/wedCheckBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/wednesday"/>
+                    android:text="@string/wednesday" />
+
                 <EditText
                     android:id="@+id/WedStart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:focusableInTouchMode="false"
-                    android:textSize="12sp"
-                    android:inputType="time"/>
+                    android:gravity="center"
+                    android:inputType="time"
+                    android:textSize="12sp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="-"/>
+                    android:text="-" />
+
                 <EditText
                     android:id="@+id/WedEnd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:focusableInTouchMode="false"
-                    android:textSize="12sp"
-                    android:inputType="time"/>
+                    android:gravity="center"
+                    android:inputType="time"
+                    android:textSize="12sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center">
+
                     <CheckBox
                         android:id="@+id/thursCheckBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/thursday"/>
+                    android:text="@string/thursday" />
+
                 <EditText
                     android:id="@+id/ThursStart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:focusableInTouchMode="false"
-                    android:textSize="12sp"
-                    android:inputType="time"/>
+                    android:gravity="center"
+                    android:inputType="time"
+                    android:textSize="12sp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="-"/>
+                    android:text="-" />
+
                 <EditText
                     android:id="@+id/ThursEnd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:focusableInTouchMode="false"
-                    android:textSize="12sp"
-                    android:inputType="time"/>
+                    android:gravity="center"
+                    android:inputType="time"
+                    android:textSize="12sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center">
+
                     <CheckBox
                         android:id="@+id/friCheckBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/friday"/>
+                    android:text="@string/friday" />
+
                 <EditText
                     android:id="@+id/FriStart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:focusableInTouchMode="false"
-                    android:textSize="12sp"
-                    android:inputType="time"/>
+                    android:gravity="center"
+                    android:inputType="time"
+                    android:textSize="12sp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="-"/>
+                    android:text="-" />
+
                 <EditText
                     android:id="@+id/FriEnd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:focusableInTouchMode="false"
-                    android:textSize="12sp"
-                    android:inputType="time"/>
+                    android:gravity="center"
+                    android:inputType="time"
+                    android:textSize="12sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center">
+
                     <CheckBox
                         android:id="@+id/satCheckBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/saturday"/>
+                    android:text="@string/saturday" />
+
                 <EditText
                     android:id="@+id/SatStart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:focusableInTouchMode="false"
-                    android:textSize="12sp"
-                    android:inputType="time"/>
+                    android:gravity="center"
+                    android:inputType="time"
+                    android:textSize="12sp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="-"/>
+                    android:text="-" />
+
                 <EditText
                     android:id="@+id/SatEnd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:focusableInTouchMode="false"
-                    android:textSize="12sp"
-                    android:inputType="time"/>
+                    android:gravity="center"
+                    android:inputType="time"
+                    android:textSize="12sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center">
+
                     <CheckBox
                         android:id="@+id/sunCheckBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/sunday"/>
+                    android:text="@string/sunday" />
+
                 <EditText
                     android:id="@+id/SunStart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:focusableInTouchMode="false"
-                    android:textSize="12sp"
-                    android:inputType="time"/>
+                    android:gravity="center"
+                    android:inputType="time"
+                    android:textSize="12sp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="-"/>
+                    android:text="-" />
+
                 <EditText
                     android:id="@+id/SunEnd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:focusableInTouchMode="false"
-                    android:textSize="12sp"
-                    android:inputType="time"/>
+                    android:gravity="center"
+                    android:inputType="time"
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dip"
             android:layout_marginTop="16dip"
+            android:layout_marginBottom="16dip"
             android:text="@string/available_equipment"
             android:textColor="@android:color/black"
             android:textSize="16sp"
@@ -427,8 +476,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="300dp">
-        <include layout="@layout/recyclerview_equipment" />
-    </LinearLayout>
+
+            <include layout="@layout/recyclerview_equipment" />
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>

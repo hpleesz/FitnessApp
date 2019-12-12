@@ -9,19 +9,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         android:paddingLeft="16dp"
-        android:paddingRight="16dp"
         android:paddingTop="80dp"
+        android:paddingRight="16dp"
 
         android:theme="@style/addItemDialog">
 
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/location_color" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/location_color" />
 
 
         <TextView
@@ -37,8 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:textSize="16sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -53,8 +53,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:textSize="16sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -69,8 +69,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dip"
-            android:textSize="16sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
                 android:gravity="center"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -125,6 +125,7 @@
                 android:textSize="16sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -144,9 +145,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
                 android:gravity="center"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -166,9 +168,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
                 android:gravity="center"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -191,6 +194,7 @@
                 android:textSize="16sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -213,6 +217,7 @@
                 android:textSize="16sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -233,7 +238,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dip"
                 android:gravity="center"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 

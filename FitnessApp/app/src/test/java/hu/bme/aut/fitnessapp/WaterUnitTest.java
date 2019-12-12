@@ -3,12 +3,12 @@ package hu.bme.aut.fitnessapp;
 import org.junit.Before;
 import org.junit.Test;
 
-import hu.bme.aut.fitnessapp.Controllers.User.Water.EditWaterDialogFragment;
-import hu.bme.aut.fitnessapp.Controllers.User.Water.NewWaterDialogFragment;
-import hu.bme.aut.fitnessapp.Controllers.User.Water.WaterActivity;
-import hu.bme.aut.fitnessapp.Models.UserModels.WaterModels.EditWaterModel;
-import hu.bme.aut.fitnessapp.Models.UserModels.WaterModels.NewWaterModel;
-import hu.bme.aut.fitnessapp.Models.UserModels.WaterModels.WaterModel;
+import hu.bme.aut.fitnessapp.controllers.user.water.EditWaterDialogFragment;
+import hu.bme.aut.fitnessapp.controllers.user.water.NewWaterDialogFragment;
+import hu.bme.aut.fitnessapp.controllers.user.water.WaterActivity;
+import hu.bme.aut.fitnessapp.models.user_models.water_models.EditWaterModel;
+import hu.bme.aut.fitnessapp.models.user_models.water_models.NewWaterModel;
+import hu.bme.aut.fitnessapp.models.user_models.water_models.WaterModel;
 
 import static org.junit.Assert.assertEquals;
 
@@ -35,7 +35,7 @@ public class WaterUnitTest {
     @Test
     public void calculateRecommendedTextTest() {
         double current_weight = 80;
-        waterModel.setCurrent_weight(current_weight);
+        waterModel.setCurrentWeight(current_weight);
         waterModel.calculateRecommendedText();
         double display = waterModel.getDisplay();
         assertEquals(Double.toString(3.6), Double.toString(display));
@@ -63,7 +63,7 @@ public class WaterUnitTest {
 
     @Test
     public void getWaterEditTest() {
-        editWaterModel.setWater_saved(1.8);
+        editWaterModel.setWaterSaved(1.8);
 
         double water = editWaterModel.getWater("3.5");
         assertEquals(Double.toString(3.5), Double.toString(water));

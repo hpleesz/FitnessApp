@@ -25,8 +25,16 @@
     <string name="title_activity_main">Workout</string>
     <string name="title_activity_login">Register</string>
     <string name="title_activity_register">Register</string>
+    <string name="title_activity_gym_main">Locations</string>
+    <string name="title_activity_new_public_location">New Gym</string>
+    <string name="title_activity_save_public_location">Search for Gym</string>
+    <string name="title_activity_map">Map</string>
+    <string name="title_activity_edit_public_location">Edit Gym</string>
+    <string name="title_activity_view_public_location_details">ViewPublicLocationDetails</string>
+    <string name="title_activity_internet_check">InternetCheckActivity</string>
+    <string name="title_activity_stretch_warm_up">StretchWarmUpActivity</string>
 
-
+    <string name="notifications">Notifications:</string>
     <string name="name">Name:</string>
     <string name="weight">Weight:</string>
     <string name="goal_weight">Goal weight:</string>
@@ -89,32 +97,28 @@
     <string name="measurements_for">Measurements for</string>
     <string name="already_entered">already entered for this date.</string>
 
-    <string name="title_activity_gym_main">Locations</string>
     <string-array name="user_types_array">
         <item>User</item>
         <item>Gym</item>
     </string-array>
-    <string name="title_activity_new_public_location">New Gym</string>
-    <string name="title_activity_save_public_location">Search for Gym</string>
-    <string name="title_activity_map">Map</string>
-    <string name="title_activity_edit_public_location">Edit Gym</string>
-    <string name="title_activity_view_public_location_details">ViewPublicLocationDetails</string>
-    <string name="title_activity_internet_check">InternetCheckActivity</string>
-    <string name="title_activity_stretch_warm_up">StretchWarmUpActivity</string>
-    <string name="gym_details_missing">Please fill name, description and address out</string>
-    <string name="gym_time_error">If gym is closed uncheck checkbox, otherwise fill out both times</string>
-    <string name="gym_time_diff_error">Close time must be later than open time</string>
+
     <string name="password_match_error">Passwords don\'t match!</string>
     <string name="registered">Registered!</string>
     <string name="no_profile_type_error">Please choose profile type!</string>
-    <string name="location_not_found_dialog">Location could not be found!</string>
-    <string name="registtration_canceled_toast">Registration canceled</string>
+    <string name="registration_canceled_toast">Registration canceled</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="register_now">No account yet? Register now!</string>
-    <string name="notifications">Notifications:</string>
+
+    <string name="gym_details_missing">Please fill name, description and address out</string>
+    <string name="gym_time_error">If gym is closed uncheck checkbox, otherwise fill out both times</string>
+    <string name="gym_time_diff_error">Close time must be later than open time</string>
+
+
     <string name="waiting_for_internet_connection">Waiting for internet connection!</string>
+
+    <string name="location_not_found_dialog">Location could not be found!</string>
     <string name="description">Description:</string>
     <string name="country">Country:</string>
     <string name="city">City:</string>
@@ -140,6 +144,7 @@
     <string name="saturday_full">Saturday:</string>
     <string name="sunday_full">Sunday:</string>
     <string name="no_locations_found">No locations found!</string>
+
     <string name="shoulders">Shoulders:</string>
     <string name="chest">Chest:</string>
     <string name="waist">Waist:</string>

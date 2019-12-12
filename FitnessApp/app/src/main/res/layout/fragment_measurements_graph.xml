@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="8dp"
     android:paddingLeft="8dp"
-    android:paddingRight="8dp"
     android:paddingTop="64dp"
-    tools:context=".Controllers.User.Weight.WeightActivity">
+    android:paddingRight="8dp"
+    android:paddingBottom="8dp"
+    tools:context=".controllers.user.weight.WeightActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

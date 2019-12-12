@@ -6,8 +6,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import hu.bme.aut.fitnessapp.Controllers.User.Settings.SettingsActivity;
-import hu.bme.aut.fitnessapp.Models.UserModels.SettingsModels.SettingsModel;
+import hu.bme.aut.fitnessapp.controllers.user.settings.SettingsActivity;
+import hu.bme.aut.fitnessapp.models.user_models.settings_models.SettingsModel;
 
 
 public class SettingsUnitTest {
@@ -25,8 +25,8 @@ public class SettingsUnitTest {
     public void isValidTest() {
         settingsModel.setFemale(true);
         settingsModel.setMale(false);
-        settingsModel.setGain_muscle(true);
-        settingsModel.setLose_weight(true);
+        settingsModel.setGainMuscle(true);
+        settingsModel.setLoseWeight(true);
 
         boolean valid = settingsModel.isValid(1,1,1);
         assertTrue(valid);
@@ -36,12 +36,12 @@ public class SettingsUnitTest {
         assertFalse(valid);
 
         settingsModel.setMale(false);
-        settingsModel.setLose_weight(false);
-        settingsModel.setGain_muscle(false);
+        settingsModel.setLoseWeight(false);
+        settingsModel.setGainMuscle(false);
         valid = settingsModel.isValid(1,1,1);
         assertFalse(valid);
 
-        settingsModel.setGain_muscle(true);
+        settingsModel.setGainMuscle(true);
         valid = settingsModel.isValid(1,0,1);
         assertFalse(valid);
 

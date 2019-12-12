@@ -5,19 +5,19 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import hu.bme.aut.fitnessapp.Entities.Equipment;
-import hu.bme.aut.fitnessapp.Entities.Exercise;
-import hu.bme.aut.fitnessapp.Entities.Location;
-import hu.bme.aut.fitnessapp.Entities.User;
-import hu.bme.aut.fitnessapp.Entities.WorkoutDetails;
-import hu.bme.aut.fitnessapp.Controllers.User.Workout.ExerciseInfoActivity;
-import hu.bme.aut.fitnessapp.Controllers.User.Workout.MainActivity;
-import hu.bme.aut.fitnessapp.Controllers.User.Workout.StretchActivity;
-import hu.bme.aut.fitnessapp.Controllers.User.Workout.WarmUpActivity;
-import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.ExerciseInfoModel;
-import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.MainModel;
-import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.StretchModel;
-import hu.bme.aut.fitnessapp.Models.UserModels.WorkoutModels.WarmUpModel;
+import hu.bme.aut.fitnessapp.entities.Equipment;
+import hu.bme.aut.fitnessapp.entities.Exercise;
+import hu.bme.aut.fitnessapp.entities.Location;
+import hu.bme.aut.fitnessapp.entities.User;
+import hu.bme.aut.fitnessapp.entities.WorkoutDetails;
+import hu.bme.aut.fitnessapp.controllers.user.workout.ExerciseInfoActivity;
+import hu.bme.aut.fitnessapp.controllers.user.workout.MainActivity;
+import hu.bme.aut.fitnessapp.controllers.user.workout.StretchActivity;
+import hu.bme.aut.fitnessapp.controllers.user.workout.WarmUpActivity;
+import hu.bme.aut.fitnessapp.models.user_models.workout_models.ExerciseInfoModel;
+import hu.bme.aut.fitnessapp.models.user_models.workout_models.MainModel;
+import hu.bme.aut.fitnessapp.models.user_models.workout_models.StretchModel;
+import hu.bme.aut.fitnessapp.models.user_models.workout_models.WarmUpModel;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -153,12 +153,12 @@ public class WorkoutUnitTest {
         Location location = new Location(1, "Name", equipment);
 
         mainModel.getAvailableEquipment(location);
-        assertTrue(mainModel.getEquipment_ids().contains(5));
-        assertTrue(mainModel.getEquipment_ids().contains(6));
-        assertTrue(mainModel.getEquipment_ids().contains(7));
-        assertTrue(mainModel.getEquipment_ids().contains(20));
-        assertTrue(mainModel.getEquipment_ids().contains(4));
-        assertTrue(mainModel.getEquipment_ids().contains(1));
+        assertTrue(mainModel.getEquipmentIds().contains(5));
+        assertTrue(mainModel.getEquipmentIds().contains(6));
+        assertTrue(mainModel.getEquipmentIds().contains(7));
+        assertTrue(mainModel.getEquipmentIds().contains(20));
+        assertTrue(mainModel.getEquipmentIds().contains(4));
+        assertTrue(mainModel.getEquipmentIds().contains(1));
 
     }
 
@@ -177,13 +177,13 @@ public class WorkoutUnitTest {
         exercises.add(new Exercise(2, 4, 1, new String[]{}, "Name2", 1));
         exercises.add(new Exercise(3, 1, 1, new String[]{}, "Name3", 1));
 
-        mainModel.setEquipment_ids(equipment);
+        mainModel.setEquipmentIds(equipment);
         mainModel.setExerciseList(exercises);
         mainModel.getExercisesForLocation();
 
         assertEquals(2, mainModel.getExercisesForChosenLocation().size());
-        assertEquals("Name2", mainModel.getExercisesForChosenLocation().get(0).name);
-        assertEquals("Name3", mainModel.getExercisesForChosenLocation().get(1).name);
+        assertEquals("Name2", mainModel.getExercisesForChosenLocation().get(0).getName());
+        assertEquals("Name3", mainModel.getExercisesForChosenLocation().get(1).getName());
 
 
     }
@@ -215,7 +215,7 @@ public class WorkoutUnitTest {
         mainModel.selectCardio();
 
         assertEquals(1, mainModel.getChosenExercises().size());
-        assertTrue(mainModel.getChosenExercises().get(0).name.equals("Name2") || mainModel.getChosenExercises().get(0).name.equals("Name3"));
+        assertTrue(mainModel.getChosenExercises().get(0).getName().equals("Name2") || mainModel.getChosenExercises().get(0).getName().equals("Name3"));
     }
 
 }
