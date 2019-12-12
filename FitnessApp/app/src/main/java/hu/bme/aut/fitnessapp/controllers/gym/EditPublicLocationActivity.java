@@ -59,8 +59,10 @@ public class EditPublicLocationActivity extends NewPublicLocationActivity {
             else {
                 getCheckBoxes().get(i).setChecked(true);
                 getOpenHours().get(j).setText(publicLocationModel.getPublicLocation().getOpenHours().get(i)[0]);
+                getOpenHours().get(j).setEnabled(true);
                 j++;
                 getOpenHours().get(j).setText(publicLocationModel.getPublicLocation().getOpenHours().get(i)[1]);
+                getOpenHours().get(j).setEnabled(true);
                 j++;
             }
         }

@@ -160,6 +160,10 @@ public class NewPublicLocationActivity extends InternetCheckActivity implements 
         openHours.add(sunStart);
         openHours.add(sunEnd);
 
+        for(EditText editText : openHours) {
+            editText.setEnabled(false);
+        }
+
         name = findViewById(R.id.LocationNameEditText);
         description = findViewById(R.id.LocationDescriptionEditText);
         country = findViewById(R.id.LocationCountryEditText);
@@ -186,6 +190,7 @@ public class NewPublicLocationActivity extends InternetCheckActivity implements 
         checkBoxes.add(friCheckBox);
         checkBoxes.add(satCheckBox);
         checkBoxes.add(sunCheckBox);
+
     }
 
     public void setDatePickers() {

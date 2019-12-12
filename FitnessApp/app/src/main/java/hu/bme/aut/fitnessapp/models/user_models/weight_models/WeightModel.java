@@ -82,6 +82,7 @@ public class WeightModel implements LoadWeight.WeightLoadedListener , LoadUser.U
             startingWeight = itemlist.get(0).getValue();
             chartListener.onChartUpdate(false);
         }
+        checkProgress();
 
     }
 
@@ -130,7 +131,7 @@ public class WeightModel implements LoadWeight.WeightLoadedListener , LoadUser.U
     public void createWeight(final Measurement newItem) {
         loadWeight.addNewItem(Long.parseLong(newItem.getDate()), newItem.getValue());
         itemlist.add(newItem);
-        checkProgress();
+        //checkprogress
     }
 
     public void checkProgress() {
@@ -194,7 +195,7 @@ public class WeightModel implements LoadWeight.WeightLoadedListener , LoadUser.U
     public void deleteWeight(final Measurement item) {
         loadWeight.removeItem(Long.parseLong(item.getDate()));
         itemlist.remove(item);
-        checkProgress();
+        //checkProgress
     }
 
 
