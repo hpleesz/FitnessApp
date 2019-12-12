@@ -69,7 +69,7 @@ public class LoadUserPublicLocations extends DatabaseConnection{
 
                         if(val.equals(id)){
                             String key = dataSnapshot2.getKey();
-                            getDatabaseReference().child(user).child(key).removeValue();
+                            getDatabaseReference().child(USER_PUBLIC_LOCATIONS).child(user).child(key).removeValue();
                         }
                     }
                 }
