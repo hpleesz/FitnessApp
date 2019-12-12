@@ -46,12 +46,12 @@ public class LoadUser extends DatabaseConnection {
                 int year = dataSnapshot.child("year").getValue(Integer.class);
                 int month = dataSnapshot.child("month").getValue(Integer.class);
                 int day = dataSnapshot.child("day").getValue(Integer.class);
-                boolean gainMuscle = dataSnapshot.child("gain_muscle").getValue(Boolean.class);
-                boolean loseWeight = dataSnapshot.child("lose_weight").getValue(Boolean.class);
+                boolean gainMuscle = dataSnapshot.child("gainMuscle").getValue(Boolean.class);
+                boolean loseWeight = dataSnapshot.child("loseWeight").getValue(Boolean.class);
                 int gender = dataSnapshot.child("gender").getValue(Integer.class);
-                double goalWeight = dataSnapshot.child("goal_weight").getValue(Integer.class);
+                double goalWeight = dataSnapshot.child("goalWeight").getValue(Integer.class);
                 double height = dataSnapshot.child("height").getValue(Double.class);
-                boolean goalReached = dataSnapshot.child("goal_reached").getValue(Boolean.class);
+                boolean goalReached = dataSnapshot.child("goalReached").getValue(Boolean.class);
 
                 User user = new User(name, year, month, day, gainMuscle, loseWeight, gender, goalWeight, height);
                 user.setGoalReached(goalReached);
@@ -93,7 +93,7 @@ public class LoadUser extends DatabaseConnection {
     }
 
     public void setGoalReached(boolean reached) {
-        getDatabaseReference().child(USERS).child(getUserId()).child("goal_reached").setValue(reached);
+        getDatabaseReference().child(USERS).child(getUserId()).child("goalReached").setValue(reached);
     }
 
     public void removeListeners() {
